@@ -13,10 +13,10 @@
 #header .group-search {
     display: flex;
     width: 706px;
-    border: 1px solid #03c75a;
-    border-radius: 33px;
-    background-color: #fff;
     margin: 0 auto;
+    border: 1px solid #03c75a;
+    background-color: #fff;
+    border-radius: 33px;
 }
 #header .group-search .logo{}
 #header .group-search .logo .link{
@@ -35,25 +35,25 @@
     height: 58px;
 }
 #header .group-search .input-text{
-    flex: 1;
-    color: #000;
-    color: var(--color_search);
     padding: 17px 0;
     background-color: rgba(0,0,0,0);
-    font-size: 2rem;
-    line-height: 24px;
     font-weight: bold;
+    font-size: 2rem;
+    color: #000;
+    color: var(--color_search);
+    line-height: 24px;
+    flex: 1;
     outline: 0;
 }
 #header .group-search .btn-keyboard{
     padding: 22px 3px;
 }
 #header .group-search .btn-keyboard::after {
+    display: block;
     width: 24px;
     height: 14px;
-    content: '';
-    display: block;
     background-position: -123px -301px;
+    content: '';
 }
 
 #header .group-search .btn-auto{
@@ -63,8 +63,8 @@
     display: block;
     width: 10px;
     height: 6px;
-    content: '';
     background-position: -221px -184px;
+    content: '';
 }
 
 #header .group-search .btn-submit{
@@ -97,21 +97,21 @@
     height: 44px;
 }
 #header .group-nav .icon::before{
-    content: "";
     position: absolute;
     top: -1px;
     left: -3px;
-    background-position: -153px -142px;
     width: 50px;
     height: 50px;
+    background-position: -153px -142px;
+    content: "";
 }
 #header .group-nav .icon::after{
     position: absolute;
-    top: 0;left: 0;right: 0;bottom: 0;
-    content: '';
+    top: 0;right: 0;bottom: 0;left: 0;
     width: 40px;
     height: 40px;
     margin: auto;
+    content: '';
 }
 #header .group-nav .name{}
 #header .group-nav .ic-mail::after{
@@ -137,9 +137,9 @@
 }
 #header .util-area > *::after {
     display: block;
-    content: '';
     width: 32px;
     height: 32px;
+    content: '';
 }
 #header .util-area .btn-menu::after {
     background-position: -311px -166px;

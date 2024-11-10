@@ -1,15 +1,15 @@
-.blind { position: absolute; width: 1px; height: 1px; overflow: hidden; margin: -1px; clip: rect(0, 0, 0, 0);}
+.blind { position: absolute; overflow: hidden; width: 1px; height: 1px; margin: -1px; clip: rect(0, 0, 0, 0);}
 
 #skipNav {
     position: absolute;
 }
 #skipNav a{
     position: absolute;
-    white-space: nowrap;
+    top: -50px;
     padding: 10px;
     background-color: #000;
     color: #fff;
-    top: -50px;
+    white-space: nowrap;
 }
 #skipNav a:focus,
 #skipNav a:active{
