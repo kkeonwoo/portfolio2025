@@ -1,0 +1,173 @@
+html {
+    font-size: 10.5px;
+    line-height: 10.5px;
+}
+
+body {
+    font-size: 1.4rem;
+    line-height: 1.7rem;
+}
+
+.main{ display: flex; justify-content: space-between; width: 1280px; margin: 0 auto;}
+.main-left{
+    width: 830px;
+}
+.main-right{
+    width: 420px;
+}
+.main .frame {
+    background-color: #fff;
+    background-color: var(--color_block_bg);
+    position: relative;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 0 0 1px #e3e5e8,0 1px 2px 0 rgba(0,0,0,.04);
+    box-shadow: 0 0 0 1px #e3e5e8,0 1px 2px 0 rgba(0,0,0,.04);
+}
+.main .frame + .frame {
+    margin-top: 16px;
+}
+
+.tab-style1 {
+    display: flex;
+    padding: 18px 20px 17px;
+}
+.tab-style1 .tab-item {
+}
+.tab-style1 .tab-item.dot {
+    display: flex;
+}
+.tab-style1 .tab-item.dot .tab{
+    display: flex;
+    align-items: center;
+}
+.tab-style1 .tab-item.dot .tab + .tab::before {
+    width: 4px;
+    height: 4px;
+    background-color: #f00;
+    content: '';
+    margin: 0 10px;
+    border-radius: 50%;
+}
+.tab-style1 .tab-item + .tab-item {
+    position: relative;
+    padding-left: 26px;
+}
+.tab-style1 .tab-item + .tab-item::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 13px;
+    width: 1px;
+    height: 15px;
+    background-color: #d3d5d7;
+    background-color: var(--color_dot_divider);
+    -webkit-transform: skewX(-15deg);
+    -ms-transform: skewX(-15deg);
+    transform: skewX(-15deg);
+}
+.tab-style1 .tab-item .tab {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 23px;
+    font-weight: 800;
+    color: rgba(8,8,8,.5);
+    -webkit-font-smoothing: antialiased;
+}
+
+.control-style1 {
+    border-top: 1px solid #ebebeb;
+    border-top: 1px solid var(--color_border_in);
+    position: relative;
+    padding: 10px 0 11px;
+    line-height: 34px;
+    text-align: center;
+}
+.control-style1 .control-area{
+    display: flex;
+    border: 1px solid #000;
+    justify-content: center;
+}
+.control-style1 .view-area{
+    position: absolute;
+    top: 0;left: 0;
+}
+
+.ad-banner {
+    overflow: hidden;
+}
+
+.sc-news {}
+.sc-news .group-head{}
+
+.sc-news .group-issue{
+    background-color: #f5f7f8;
+    background-color: var(--color_option_bg);
+    display: flex;
+    margin: 0 20px;
+    padding: 12px 20px;
+    border-radius: 4px;
+    line-height: 26px;
+}
+.sc-news .group-issue .issue-area{
+    display: flex;
+    flex: 1;
+}
+.sc-news .group-issue .btn-all{}
+.sc-news .group-issue .link-media{}
+.sc-news .group-issue .link-issue{
+    flex: 1;
+}
+.sc-news .group-issue .news-area{
+    display: flex;
+}
+.sc-news .group-issue .link-news{}
+
+.sc-news .group-media{
+    margin: 18px 20px 18px 20px;
+}
+.sc-news .group-media .content{
+    border: 1px solid #ebebeb;
+    border: 1px solid var(--color_border_in);
+    overflow: hidden;
+    position: relative;
+    height: 224px;
+    border-radius: 4px;
+}
+.sc-news .group-media .media-list{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(4, 1fr);
+    height: 100%;
+}
+.sc-news .group-media .media-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sc-news .group-media .media-item img{
+    height: 20px;
+}
+.sc-news .group-media .vt-line{
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #ebebeb;
+}
+.sc-news .group-media .vt-line.vt1{left: calc((100% / 6) * 1);}
+.sc-news .group-media .vt-line.vt2{left: calc((100% / 6) * 2);}
+.sc-news .group-media .vt-line.vt3{left: calc((100% / 6) * 3);}
+.sc-news .group-media .vt-line.vt4{left: calc((100% / 6) * 4);}
+.sc-news .group-media .vt-line.vt5{left: calc((100% / 6) * 5);}
+.sc-news .group-media .hr-line{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ebebeb;
+}
+.sc-news .group-media .hr-line.hr1{top: calc((100% / 4) * 1);}
+.sc-news .group-media .hr-line.hr2{top: calc((100% / 4) * 2);}
+.sc-news .group-media .hr-line.hr3{top: calc((100% / 4) * 3);}
+
+.sc-news .group-control{}

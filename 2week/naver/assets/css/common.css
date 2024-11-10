@@ -1,0 +1,28 @@
+.blind { position: absolute; width: 1px; height: 1px; overflow: hidden; margin: -1px; clip: rect(0, 0, 0, 0);}
+
+#skipNav {
+    position: absolute;
+}
+#skipNav a{
+    position: absolute;
+    white-space: nowrap;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    top: -50px;
+}
+#skipNav a:focus,
+#skipNav a:active{
+    top: 0;
+}
+
+/* sp1 */
+#header .util-area > *::after,
+#header .group-search .btn-keyboard::after,
+#header .group-search .btn-auto::after,
+#header .group-nav .icon::before,
+#header .group-nav .icon::after {
+    background-image: url(../images/sp-bg1.png);
+    background-repeat: no-repeat;
+    background-size: 463px auto;
+}
