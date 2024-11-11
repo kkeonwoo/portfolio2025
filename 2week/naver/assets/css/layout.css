@@ -85,11 +85,15 @@
 #header .group-nav .nav-item{
     width: 64px;
 }
+#header .group-nav .nav-item + .nav-item {
+    margin-left: -3px;
+}
 #header .group-nav .link{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4px;
+    position: relative;
 }
 #header .group-nav .icon{
     position: relative;
@@ -113,12 +117,62 @@
     margin: auto;
     content: '';
 }
-#header .group-nav .name{}
+#header .group-nav .name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    margin-top: 4px;
+    font-size: 1.3rem;
+    line-height: 20px;
+    text-align: center;
+}
+
 #header .group-nav .ic-mail::after{
     background-position: -205px -219px;
 }
 #header .group-nav .ic-cafe::after{
     background-position: -41px -219px;
+}
+#header .group-nav .ic-blog::after{
+    background-position: 0px -219px;
+}
+#header .group-nav .ic-store::after{
+    background-position: -41px -260px;
+}
+#header .group-nav .ic-new {
+    position: absolute;
+    top: -5px;
+    right: 3px;
+    background-position: -33px -349px;
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 22px;
+}
+#header .group-nav .ic-new::before,
+#header .group-nav .ic-new::after {
+    content: none;
+}
+#header .group-nav .ic-news::after{
+    background-position: -270px -205px;
+}
+#header .group-nav .ic-finance::after{
+    background-position: -123px -260px;
+}
+#header .group-nav .ic-home::after{
+    background-position: 0px -260px;
+}
+#header .group-nav .ic-map::after{
+    background-position: -270px 0px;
+}
+#header .group-nav .ic-cartoon::after{
+    background-position: -164px -260px;
+}
+#header .group-nav .ic-stream::after{
+    background-position: center center;
+}
+#header .group-nav .ic-more::after{
+    background-position: -270px -123px;
 }
 
 #header .util-area {

@@ -21,8 +21,17 @@
 #header .group-search .btn-keyboard::after,
 #header .group-search .btn-auto::after,
 #header .group-nav .icon::before,
-#header .group-nav .icon::after {
+#header .group-nav .icon::after,
+#header .group-nav .ic-new,
+.control-style1 .btn::before,
+.control-style1 .view-area [class*="btn-"]::before,
+.sc-login .icon.ic-login {
     background-image: url(../images/sp-bg1.png);
     background-repeat: no-repeat;
     background-size: 463px auto;
+}
+
+#header .group-nav .icon.ic-stream::after {
+    background-image: url(../images/icon_stream.png);
+    background-size: 44px 44px;
 }
