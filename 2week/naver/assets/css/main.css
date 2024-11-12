@@ -26,6 +26,14 @@ body {
 .main .frame + .frame {
     margin-top: 16px;
 }
+.frame.img-area {
+    overflow: hidden;
+}
+.main .frame2 {
+    border: 1px solid rgba(0,0,0,.05);
+    background-color: rgba(245,248,251,.6);
+    border-radius: 4px;
+}
 
 .tab-style1 {
     display: flex;
@@ -153,6 +161,54 @@ body {
     overflow: hidden;
 }
 
+.feed-style1 .feed-area {
+    margin: 0 20px;
+}
+.feed-style1 .feed-list {
+    display: flex;
+    gap: 20px;
+}
+.feed-style1 .feed-item {
+    min-width: 0;
+    flex: 1;
+}
+.feed-style1 .link-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.feed-style1 .txt-area {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.feed-style1 .name {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #ebaa00;
+    line-height: 20px;
+}
+.feed-style1 .feed-title {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    overflow: hidden;
+    max-height: 40px;
+    line-height: 20px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.feed-style1 .feed-desc {
+    display: -webkit-box;
+    overflow: hidden;
+    margin-top: 4px;
+    font-size: 1.3rem;
+    color: var(--color_caption1);
+    line-height: 20px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
 .sc-news {}
 .sc-news .group-head{}
 
@@ -175,11 +231,11 @@ body {
     position: relative;
 }
 .sc-news .group-issue .btn-all::after {
-    content: '';
     width: 9px;
     height: 6px;
     margin-left: 5px;
     background-position: -242px -184px;
+    content: '';
 }
 .sc-news .group-issue .link-media {
     display: flex;
@@ -187,19 +243,19 @@ body {
     position: relative;
 }
 .sc-news .group-issue .link-media::before {
-    content: '';
     width: 1px;
     height: 12px;
-    background-color: var(--color_dot_divider);
     margin: 0 12px;
+    background-color: var(--color_dot_divider);
+    content: '';
 }
 .sc-news .group-issue .link-media::after {
-    content: '';
     width: 3px;
     height: 3px;
-    border-radius: 50%;
-    background-color: var(--color_dot_divider);
     margin: 0 6px;
+    background-color: var(--color_dot_divider);
+    content: '';
+    border-radius: 50%;
 }
 .sc-news .group-issue .link-issue{
     flex: 1;
@@ -213,11 +269,11 @@ body {
     position: relative;
 }
 .sc-news .group-issue .link-news + .link-news::before {
-    content: '';
     width: 1px;
     height: 12px;
-    background-color: var(--color_dot_divider);
     margin: 0 12px;
+    background-color: var(--color_dot_divider);
+    content: '';
 }
 
 .sc-news .group-media{
@@ -322,23 +378,22 @@ body {
     justify-content: space-between;
     align-items: center;
 }
-.sc-shop .control-area {
+.sc-shop .group-head .control-area {
     display: flex;
-    gap: 9px;
     padding: 18px 20px 17px;
+    gap: 9px;
 }
-.sc-shop .control-area .navi {
+.sc-shop .group-head .control-area .navi {
     display: flex;
 }
-.sc-shop .control-area .navi .btn { 
+.sc-shop .group-head .control-area .navi .btn { 
     position: relative;
     width: 30px;
     height: 30px;
     border: 1px solid rgba(211, 213, 215, .8);
     border-radius: 4px;
 }
-.sc-shop .control-area .navi .btn::before {
-    content: '';
+.sc-shop .group-head .control-area .navi .btn::before {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -347,16 +402,206 @@ body {
     border: 2px solid #80868c;
     border-right: none;
     border-bottom: none;
+    content: '';
 }
-.sc-shop .control-area .navi .btn.prev {
+.sc-shop .group-head .control-area .navi .btn.prev {
     border-radius: 4px 0 0 4px;
 }
-.sc-shop .control-area .navi .btn.prev::before {
+.sc-shop .group-head .control-area .navi .btn.prev::before {
     transform: translate(-50%, -50%) rotate(-45deg);
 }
-.sc-shop .control-area .navi .btn.next {
+.sc-shop .group-head .control-area .navi .btn.next {
+    left: -1px;
     border-radius: 0 4px 4px 0;
 }
-.sc-shop .control-area .navi .btn.next::before {
+.sc-shop .group-head .control-area .navi .btn.next::before {
     transform: translate(-50%, -50%) rotate(135deg);
+}
+.sc-shop .group-shop {
+    display: flex;
+    padding: 0 20px;
+    gap: 20px;
+}
+.sc-shop .shop-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+.sc-shop .shop-right {
+    width: 522px;
+}
+.sc-shop .brand-area {
+    padding: 9px 11px 4px;
+    border-radius: 4px;
+}
+.sc-shop .brand-area .brand-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sc-shop .brand-area .brand-box + .brand-box {
+    margin-top: 5px;
+}
+.sc-shop .brand-area .link-brand {
+    font-size: 13px;
+    color: var(--color_caption1);
+    line-height: 20px;
+    letter-spacing: -.6px;
+}
+.sc-shop .brand-area .link-brand strong {
+    font-weight: bold;
+    color: var(--color_body);
+}
+.sc-shop .brand-area .ic-dot {
+    display: block;
+    width: 3px;
+    height: 3px;
+    background-color: var(--color_dot_divider);
+    border-radius: 50%;
+}
+
+.sc-shop .member-area {
+    padding: 9px;
+}
+.sc-shop .member-area .member-list{
+    display: flex;
+    justify-content: space-between;
+}
+.sc-shop .member-area .member-item{
+
+}
+.sc-shop .member-area .member-item .link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+    color: var(--color_caption1);
+    gap: 2px;
+}
+.sc-shop .member-area .icon{
+    display: block;
+    position: relative;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(238,242,248,.8);
+    background-color: #fff;
+    border-radius: 50%;
+}
+.sc-shop .member-area .icon::before {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    content: '';
+}
+.sc-shop .member-area .icon.ic-my::before{
+    background-position: -34px 0;
+}
+.sc-shop .member-area .icon.ic-review::before{
+    background-position: -68px -34px;
+}
+.sc-shop .member-area .icon.ic-order::before{
+    background-position: -34px -34px;
+}
+.sc-shop .member-area .icon.ic-cart::before{
+    width: 17px;
+    height: 16px;
+    background-position: -19px -121px;
+}
+.sc-shop .shop-banner .txt {
+    margin-top: 8px;
+    font-size: 1.3rem;
+    text-align: center;
+    line-height: 19px;
+}
+.sc-shop .shop-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 14px 8px;
+}
+.sc-shop .shop-list .link-shop {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.sc-shop .shop-list .shop-item .txt {
+    font-size: 1.3rem;
+    line-height: 19px;
+    letter-spacing: -.4px;
+    white-space: nowrap;
+}
+
+.sc-shop .group-today {
+    padding: 18px 20px;
+}
+.sc-shop .group-today .today-area {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px 14px;
+    background-color: var(--color_option_bg);
+    border-radius: 4px;
+}
+.sc-shop .group-today .today-title {
+    font-weight: bold;
+}
+.sc-shop .group-today .link-today {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.sc-shop .group-today .link-today::before {
+    width: 3px;
+    height: 3px;
+    margin: 0 8px;
+    background-color: var(--color_dot_divider);
+    content: '';
+    border-radius: 50%;
+}
+.sc-shop .group-today .icon {
+    display: block;
+    width: 83px;
+    height: 13px;
+    margin-right: 8px;
+}
+.sc-shop .group-today .icon.ic-auction {
+    background: url(../images/ic-auction.png) no-repeat center center / 100% auto;
+}
+.sc-shop .group-today .point {
+    color: #9858f5;
+}
+.sc-shop .group-control .pagination .point {
+    color: #9858f5;
+}
+.sc-shop .group-control .tag-area {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+.sc-shop .group-control .ad-tag {
+    display: block;
+    width: 30px;
+    border: 1px solid var(--color_border_out);
+    font-size: 1.2rem;
+    color: var(--color_caption2);
+    text-align: center;
+    line-height: 18px;
+    border-radius: 4px;
+}
+.sc-feed .group-feed .feed-title {
+    display: block;
+    white-space: nowrap;
+    font-weight: 500;
+}
+.sc-feed .group-feed2 {
+    margin-top: 24px;
+    padding: 20px;
+}
+.sc-feed .group-recipe .feed-title {
+    font-weight: 600;
 }

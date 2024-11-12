@@ -36,3 +36,9 @@
     background-image: url(../images/icon_stream.png);
     background-size: 44px 44px;
 }
+
+.sc-shop .member-area .icon::before {
+    background-image: url(../images/sp-bg2.png);
+    background-repeat: no-repeat;
+    background-size: 158px 137px;
+}
