@@ -44,7 +44,7 @@ body {
     width: 4px;
     height: 4px;
     margin: 0 10px;
-    background-color: #f00;
+    background-color: var(--color_dot_divider);
     content: '';
     border-radius: 50%;
 }
@@ -109,14 +109,15 @@ body {
 .control-style1 .btn.next::before {
     background-position: -452px -91px;
 }
-.control-style1 .pagination {
+.pagination {
     display: flex;
     align-items: center;
+    color: rgba(96, 96, 96, .5);
 } 
-.control-style1 .pagination .more,
-.control-style1 .pagination .curr { 
+.pagination .more,
+.pagination .curr { 
     font-weight: bold;
-    color: #000;
+    color: #606060;
 }
 
 .control-style1 .view-area{
@@ -168,15 +169,56 @@ body {
     display: flex;
     flex: 1;
 }
-.sc-news .group-issue .btn-all{}
-.sc-news .group-issue .link-media{}
+.sc-news .group-issue .btn-all {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.sc-news .group-issue .btn-all::after {
+    content: '';
+    width: 9px;
+    height: 6px;
+    margin-left: 5px;
+    background-position: -242px -184px;
+}
+.sc-news .group-issue .link-media {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.sc-news .group-issue .link-media::before {
+    content: '';
+    width: 1px;
+    height: 12px;
+    background-color: var(--color_dot_divider);
+    margin: 0 12px;
+}
+.sc-news .group-issue .link-media::after {
+    content: '';
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: var(--color_dot_divider);
+    margin: 0 6px;
+}
 .sc-news .group-issue .link-issue{
     flex: 1;
 }
 .sc-news .group-issue .news-area{
     display: flex;
 }
-.sc-news .group-issue .link-news{}
+.sc-news .group-issue .link-news{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.sc-news .group-issue .link-news + .link-news::before {
+    content: '';
+    width: 1px;
+    height: 12px;
+    background-color: var(--color_dot_divider);
+    margin: 0 12px;
+}
 
 .sc-news .group-media{
     margin: 18px 20px 18px 20px;
@@ -273,4 +315,48 @@ body {
     margin: 0 12px;
     background-color: var(--color_dot_divider);
     content: '';
+}
+
+.sc-shop .group-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sc-shop .control-area {
+    display: flex;
+    gap: 9px;
+    padding: 18px 20px 17px;
+}
+.sc-shop .control-area .navi {
+    display: flex;
+}
+.sc-shop .control-area .navi .btn { 
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(211, 213, 215, .8);
+    border-radius: 4px;
+}
+.sc-shop .control-area .navi .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    border: 2px solid #80868c;
+    border-right: none;
+    border-bottom: none;
+}
+.sc-shop .control-area .navi .btn.prev {
+    border-radius: 4px 0 0 4px;
+}
+.sc-shop .control-area .navi .btn.prev::before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.sc-shop .control-area .navi .btn.next {
+    border-radius: 0 4px 4px 0;
+}
+.sc-shop .control-area .navi .btn.next::before {
+    transform: translate(-50%, -50%) rotate(135deg);
 }

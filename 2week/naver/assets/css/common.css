@@ -25,7 +25,8 @@
 #header .group-nav .ic-new,
 .control-style1 .btn::before,
 .control-style1 .view-area [class*="btn-"]::before,
-.sc-login .icon.ic-login {
+.sc-login .icon.ic-login,
+.sc-news .group-issue .btn-all::after {
     background-image: url(../images/sp-bg1.png);
     background-repeat: no-repeat;
     background-size: 463px auto;
