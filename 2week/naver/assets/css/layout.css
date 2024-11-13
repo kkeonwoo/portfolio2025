@@ -210,3 +210,6 @@
 #header .util-area .link-cart::after {
     background-position: -33px -316px;
 }
+#container {
+    padding-bottom: 50px;
+}
