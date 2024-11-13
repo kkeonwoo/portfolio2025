@@ -26,7 +26,18 @@
 .control-style1 .btn::before,
 .control-style1 .view-area [class*="btn-"]::before,
 .sc-login .icon.ic-login,
-.sc-news .group-issue .btn-all::after {
+.sc-news .group-issue .btn-all::after,
+.sc-weather .group-head .link-compare::before,
+.sc-stock .group-head .link-more,
+.sc-stock .group-head .btn-refresh,
+.sc-stock .group-info .info-right .icon.ic-down,
+.sc-stock .group-info .info-right .stock-item.more .link-stock::after,
+.sc-stock .group-info .info-left .icon.ic-up,
+.sc-widget .group-dictionary .btn-search::before,
+.sc-widget .group-papago .icon.ic-papago::before,
+.sc-widget .group-papago .icon.ic-papago::after,
+.sc-widget .download-area .link-download::before,
+.sc-widget .download-area .link-download::after {
     background-image: url(../images/sp-bg1.png);
     background-repeat: no-repeat;
     background-size: 463px auto;
@@ -41,4 +52,11 @@
     background-image: url(../images/sp-bg2.png);
     background-repeat: no-repeat;
     background-size: 158px 137px;
+}
+
+.sc-weather .info-left .info-total .icon.ic-weather,
+.sc-weather .info-right .icon.ic-cloud {
+    background-image: url(../images/sp-bg3.png);
+    background-size: 641px 587px;
+    background-repeat: no-repeat;
 }
