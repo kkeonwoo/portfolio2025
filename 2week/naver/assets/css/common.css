@@ -37,7 +37,8 @@
 .sc-widget .group-papago .icon.ic-papago::before,
 .sc-widget .group-papago .icon.ic-papago::after,
 .sc-widget .download-area .link-download::before,
-.sc-widget .download-area .link-download::after {
+.sc-widget .download-area .link-download::after,
+#footer .group-notice .link-all::after {
     background-image: url(../images/sp-bg1.png);
     background-repeat: no-repeat;
     background-size: 463px auto;
