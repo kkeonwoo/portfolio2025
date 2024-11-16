@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+    </style>
+    <button class="btn1">play</button>
+    <button class="btn2">pause</button>
+    <button class="btn3">restart</button>
+    <button class="btn4">reverse</button>
+    <div class="box box1"></div>
+    <div class="box box2"></div>
+    <div class="box box3"></div>
+    <div class="box box4"></div>
+    <div class="box box5"></div>
+    <script>
+        // gsap.defaults({
+        //     ease: 'none'
+        // })
+        $('.btn1').click(function () {
+            tl.play()
+        })
+        $('.btn2').click(function () {
+            tl.pause()
+        })
+        $('.btn3').click(function () {
+            tl.restart()
+        })
+        $('.btn4').click(function () {
+            tl.reverse()
+        })
+        tl = gsap.timeline({
+            paused: true,
+            defaults: {
+                ease: 'none'
+            }
+        })
+        tl.to('.box1', { x: 100 })
+            .to('.box2', { x: 100 }, 'a+=.1')
+            .to('.box3', { x: 100 })
+            .to('.box4', { x: 100 })
+            .to('.box5', { x: 100 })
+    </script>
+</body>
+
+</html>

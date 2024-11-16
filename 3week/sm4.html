@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .list {}
+
+        .list a {
+            display: flex;
+            padding: 0 20px;
+            height: 50px;
+            align-items: center;
+            background-color: #ccc;
+        }
+
+        .list .item {}
+
+        .list .title {
+            justify-content: space-between;
+            background-color: #f00;
+            color: #fff;
+        }
+
+        .list .title::after {
+            width: 8px;
+            height: 8px;
+            border: 2px solid #fff;
+            border-width: 2px 2px 0 0;
+            transform: rotate(135deg);
+            content: '';
+        }
+
+        .list .title.on {}
+
+        .list .title.on::after {
+            transform: rotate(-45deg);
+        }
+
+        .list .sub {
+            display: none;
+        }
+    </style>
+
+    <ul class="list">
+        <li class="item">
+            <a href="" class="title">대메뉴</a>
+            <ul class="sub">
+                <li><a href="">sub1</a></li>
+                <li><a href="">sub1</a></li>
+                <li><a href="">sub1</a></li>
+                <li><a href="">sub1</a></li>
+            </ul>
+        </li>
+        <li class="item">
+            <a href="" class="title">대메뉴</a>
+            <ul class="sub">
+                <li><a href="">sub1</a></li>
+                <li><a href="">sub1</a></li>
+            </ul>
+        </li>
+        <li class="item">
+            <a href="" class="title">대메뉴</a>
+            <ul class="sub">
+                <li><a href="">sub1</a></li>
+                <li><a href="">sub1</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        $('.title').click(function (e) {
+            e.preventDefault();
+            if ($(this).hasClass('on')) {
+                $(this).removeClass('on').siblings('.sub').stop().slideUp()
+            } else {
+                $(this).addClass('on').siblings('.sub').stop().slideDown()
+            }
+        })
+    </script>
+</body>
+
+</html>

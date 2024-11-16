@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background-color: #f00;
+            opacity: 0.6;
+        }
+
+        header.on {
+            background-color: #0f0;
+        }
+
+        .area {
+            height: 60vh;
+            border: 1px solid #000;
+            margin: 50px;
+        }
+
+        .area.here {
+            background-color: #00f;
+        }
+    </style>
+
+    <header>header</header>
+
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area here"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+    <div class="area"></div>
+
+    <script>
+        let scrollFlag = false;
+        let lastScroll = 0;
+        $(window).scroll(function () {
+            curr = $(this).scrollTop();
+            here = $('.here').offset().top;
+
+            if (curr > lastScroll) {
+                console.log('내림');
+            } else {
+                console.log('올림');
+            }
+            lastScroll = curr
+
+            // if (curr >= here) {
+            //     $('header').addClass('on');
+            //     if (scrollFlag === false) {
+            //         alert(1)
+            //         scrollFlag = true;
+            //     }
+            // } else {
+            //     $('header').removeClass('on');
+            // }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .side-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 100%;
+            background-color: #f00;
+            transform: translateX(-100%);
+            transition: transform .3s;
+            /* will-change: transform; */
+        }
+
+        .side-nav.show {
+            transform: translateX(0);
+        }
+    </style>
+
+    <header>
+        <button class="btn1">1</button>
+        <a href="" class="btn2">2</a>
+
+        <div class="side-nav">
+            <button class="close">닫기</button>
+        </div>
+    </header>
+
+    <script>
+        $('.btn1').click(function (e) {
+            e.preventDefault();
+            $('.side-nav').addClass('show');
+        });
+        $('.close').click(function (e) {
+            e.preventDefault();
+            $('.side-nav').removeClass('show');
+        });
+    </script>
+</body>
+
+</html>

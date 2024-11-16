@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tab-list {
+            display: flex;
+        }
+
+        .tab-list .tab-item {
+            flex: 1;
+            background-color: #ccc;
+        }
+
+        .tab-list .tab-item.active {
+            background-color: #f00;
+        }
+
+        .tab-list .tab-item a {
+            display: flex;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tab-con {}
+
+        .tab-con .con {
+            display: none;
+        }
+
+        .tab-con .con.active {
+            display: block;
+            font-size: 100px;
+        }
+    </style>
+
+    <ul class="tab-list">
+        <li class="tab-item" data-tab="#tab1">
+            <a href="">tatb1</a>
+        </li>
+        <li class="tab-item" data-tab="#tab2">
+            <a href="">tatb1</a>
+        </li>
+        <li class="tab-item" data-tab="#tab3">
+            <a href="">tatb1</a>
+        </li>
+    </ul>
+    <div class="tab-con">
+        <div id="tab1" class="con active">1</div>
+        <div id="tab2" class="con">2</div>
+        <div id="tab3" class="con">3</div>
+    </div>
+    <script>
+        $('.tab-item').click(function (e) {
+            e.preventDefault();
+            tabName = $(this).data('tab')
+            $(this).addClass('active').siblings().removeClass('active')
+            $(tabName).addClass('active').siblings().removeClass('active')
+        });
+    </script>
+</body>
+
+</html>

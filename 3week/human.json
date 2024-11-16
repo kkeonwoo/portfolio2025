@@ -1,0 +1,22 @@
+{
+    "humanList": [
+        {
+            "name": "미미",
+            "age": 30,
+            "tatto": false,
+            "bag": ["총", "칼"]
+        },
+        {
+            "name": "비비",
+            "age": 10,
+            "tatto": false,
+            "bag": ["총"]
+        },
+        {
+            "name": "기기",
+            "age": 30,
+            "tatto": false,
+            "bag": ["총", "칼", "빵"]
+        }
+    ]
+}

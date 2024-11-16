@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .area {
+            height: 70vh;
+            border: 1px solid #000;
+            margin: 50px;
+        }
+
+        .area.here {
+            background-color: #ccc;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+
+        .on {
+            background-color: #000;
+        }
+    </style>
+    <section class="area"></section>
+    <section class="area"></section>
+    <section class="area here">
+        <div class="box">11111</div>
+        <div class="box">11111</div>
+        <div class="box">11111</div>
+        <div class="box">11111</div>
+        <div class="box">11111</div>
+    </section>
+    <section class="area"></section>
+    <section class="area"></section>
+    <section class="area"></section>
+    <script>
+
+        motion = gsap.to('.box', { x: 100 })
+        ScrollTrigger.create({
+            animation: motion,
+            trigger: '.here',
+            start: '0% 50%',
+            end: '100% 60%',
+            markers: true,
+        })
+        // gsap.to('.box', {
+        //     scrollTrigger: {
+        //         trigger: '.here',
+        //         start: '0% 50%',
+        //         end: '100% 60%',
+        //         markers: true,
+        //         onUpdate: function (self) {
+        //             total = $('.box').length
+        //             idx = Math.floor(self.progress * total)
+
+        //             console.log(idx);
+
+        //         },
+        //         toggleClass: {
+        //             targets: 'body, .box',
+        //             className: 'on'
+        //         }, //trigger
+        //         // toggleActions: "none play none reset"
+        //         // onEnter 도달
+        //         // onLeave 나갔
+        //         // onEnterBack 나갔다 재진입
+        //         // onLeaveBack 재진입후 나감
+        //     },
+        //     x: 300
+        // })
+
+        // gsap.to('.box', {
+        //     scrollTrigger: {
+        //         trigger: '.here',
+        //         start: '0% 50%',
+        //         end: '100% 60%',
+        //         markers: true
+        //     },
+        //     x: 300
+        // })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<input type="text" class="text">
+<button class="submit">전송</button>
+
+<ul>
+
+</ul>
+
+<body>
+    <script>
+        $('.submit').click(function (e) {
+            e.preventDefault();
+            keyword = $('.text').val();
+            list(keyword)
+        })
+        function list(keyword) {
+            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${keyword}&maxResults=3&key=AIzaSyA6Ox5oyt9LGAuiItSkR8CCac2MNyq4tFg`)
+                .then(res => res.json())
+                .then(json => {
+                    data = json.items
+                    console.log(data);
+
+
+                    html = ``;
+                    data.forEach(el => {
+                        html += `<li>
+                        <a href="https://www.youtube.com/watch?v=${el.id.videoId}">
+                            <img src="${el.snippet.thumbnails.medium.url}" alt="">
+                            <p>${el.snippet.title}</p>
+                        </a>
+                    </li>`
+                    });
+
+                    $('ul').html(html)
+                })
+        }
+    </script>
+</body>
+
+</html>
