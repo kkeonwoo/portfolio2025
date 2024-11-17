@@ -8,19 +8,19 @@
   height: 100%;
   object-fit: cover;
 }
-.sc-01 .txt-area {
+.sc-01 .txt-box {
   position: absolute;
   top: 50%;
   left: 50%;
   color: #fff;
   transform: translate(-50%, -50%);
 }
-.sc-01 .txt-area .txt {
+.sc-01 .txt-box .txt {
   font-size: 26px;
   line-height: 1.35;
   font-weight: 700;
 }
-.sc-01 .txt-area .txt.desc {
+.sc-01 .txt-box .txt.desc {
   font-size: 24px;
   line-height: 1.67;
 }
