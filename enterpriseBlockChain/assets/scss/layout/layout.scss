@@ -15,6 +15,10 @@
     color: #fff;
     z-index: 999;
 
+    &.color-black {
+        color: #000;
+    }
+
     .header-inner {
         display: flex;
         justify-content: space-between;

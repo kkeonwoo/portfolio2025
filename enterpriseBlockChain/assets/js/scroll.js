@@ -79,19 +79,30 @@ const sc02Tl = gsap.timeline({
     scrollTrigger: {
         trigger: '.sc-02',
         start: 'top top',
-        end: 'bottom top',
+        end: '+=3000 top',
         markers: true,
         pin: true,
-        pinSpacing: false,
         scrub: 1,
     }
 })
-
-.to(CSSRulePlugin.getRule(".sc-02 .img-area .img-cover:nth-child(1)::before"), { cssRule: { opacity: 0.6 } })
+.fromTo(CSSRulePlugin.getRule(".sc-02 .img-area .img-cover:nth-child(1)::before"), { cssRule: { opacity: 0 } },{ cssRule: { opacity: 0.6 } })
 .fromTo('.sc-02 .txt-box:nth-child(1) .txt-move', { x: -innerWidth}, { x: 0})
 .fromTo('.sc-02 .txt-box:nth-child(2) .txt-move', { x: innerWidth}, { x: 0})
 .fromTo('.sc-02 .txt-box:nth-child(3) .txt-move', { x: -innerWidth}, { x: 0})
-.fromTo(CSSRulePlugin.getRule(".sc-02::before"), { cssRule: { } })
-.fromTo(CSSRulePlugin.getRule(".sc-02::after"), { cssRule: { } })
 .to('.sc-02 .img-cover:nth-child(1)', { height: 0})
 .to('.sc-02 .img-cover:nth-child(2)', { height: 0})
+.set('.sc-02 .txt-area.fade-in', { zIndex: 20})
+.fromTo(CSSRulePlugin.getRule(".sc-02 .img-area .img-cover:nth-child(1)::before"), { cssRule: { opacity: 0 } },{ cssRule: { opacity: 0.6 } })
+.from('.sc-02 .txt-area.fade-in .txt-move', { opacity: 0}, '<')
+
+gsap.utils.toArray('.section').forEach((section, idx) => {
+    ScrollTrigger.create({
+        trigger: section,
+        start: 'top top',
+        end: 'bottom top',
+        pin: false,
+        pinSpacing: false,
+        markers: true,
+        scrub: true,
+    })
+})
