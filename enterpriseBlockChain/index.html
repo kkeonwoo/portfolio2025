@@ -10,9 +10,12 @@
     <script src="./assets/js/lib/jquery-3.7.1.min.js"></script>
     <script src="./assets/js/lib/gsap/gsap.min.js"></script>
     <script src="./assets/js/lib/gsap/ScrollTrigger.min.js"></script>
+    <script src="./assets/js/lib/gsap/ScrollToPlugin.min.js"></script>
     <script src="./assets/js/lib/gsap/CSSRulePlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.7.5/smooth-scrollbar.js"></script>
     <script src="./assets/js/common.js" defer></script>
     <script src="./assets/js/scroll.js" defer></script>
+    <!-- <script src="./assets/js/setting.js" defer></script> -->
 </head>
 
 <body>
@@ -100,9 +103,11 @@
                 <section class="section sc-02">
                     <h2 class="blind">section2</h2>
                     <div class="img-area">
-                        <img src="./assets/images/img-sc02-01.jpg" alt="">
-                        <img src="./assets/images/img-sc02-02.jpg" alt="">
-                        <img src="./assets/images/img-sc02-03.jpg" alt="">
+                        <div class="img-cover">
+                            <img src="./assets/images/img-sc02-03.jpg" alt="">
+                        </div>
+                        <div class="img-cover"><img src="./assets/images/img-sc02-02.jpg" alt=""></div>
+                        <div class="img-cover"><img src="./assets/images/img-sc02-01.jpg" alt=""></div>
                     </div>
                     <div class="txt-area">
                         <div class="txt-box">
@@ -118,11 +123,6 @@
                         <div class="txt-box">
                             <div class="txt-move">
                                 <p class="txt">성장하기</p>
-                            </div>
-                        </div>
-                        <div class="txt-box">
-                            <div class="txt-move">
-                                <p class="txt desc">성장하기</p>
                             </div>
                         </div>
                     </div>
