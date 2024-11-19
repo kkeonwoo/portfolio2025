@@ -4,6 +4,7 @@
   position: relative;
   height: 100vh;
   color: #fff;
+  font-weight: 600;
 }
 .section > * {
   flex: 1;
@@ -19,6 +20,7 @@
   opacity: 0;
 }
 .sc-01 .video-area video {
+  width: 100%;
   height: 100%;
   object-fit: cover;
 }
@@ -69,26 +71,27 @@
 }
 .sc-02 .txt-area {
   position: absolute;
-  overflow: hidden;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-size: 24px;
+  line-height: 1.67;
+  max-width: 600px;
+  padding: 32px;
 }
 .sc-02 .txt-area:not(.fade-in) {
   z-index: 5;
-}
-.sc-02 .txt-area .txt-box .txt {
-  font-size: 26px;
-  line-height: 1.35;
-  font-weight: 700;
+  font-size: 100px;
+  line-height: 1.2;
 }
 
 .sc-03 {
   color: #000;
-  font-weight: 600;
+  justify-content: center;
 }
 .sc-03 .inner {
-  padding: 200px 100px;
+  flex: unset;
+  padding: 80px 100px;
 }
 .sc-03 .inner .title {
   font-size: 72px;
@@ -100,4 +103,35 @@
   font-size: 24px;
   line-height: 1.67;
   margin-left: auto;
+}
+
+.sc-04 {
+  background: url("../images/bg-sc04.jpg") no-repeat center center/100% auto;
+  font-size: 72px;
+  line-height: 1.28;
+  text-align: center;
+  height: 720px;
+}
+.sc-04::before, .sc-04::after {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 100%;
+  max-width: 21.875%;
+  height: 140px;
+  background-color: #fff;
+}
+.sc-04::before {
+  top: 0;
+  right: 0;
+}
+.sc-04::after {
+  bottom: 0;
+  left: 0;
+}
+.sc-04 .txt-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }/*# sourceMappingURL=main.css.map */

@@ -1,12 +1,3 @@
-$flex-map: (
-    start: flex-start,
-    end: flex-end,
-    between: space-between,
-    around: space-around,
-    stretch: stretch,
-    center: center,
-);
-
 @mixin flex($js: center, $ai: center) {
     display: flex;
     align-items: _get-flex-value($ai);
@@ -24,41 +15,6 @@ $flex-map: (
     flex-direction: column;
     align-items: _get-flex-value($ai);
     justify-content: _get-flex-value($js);
-}
-
-$media-up: (
-    pc: 1201px,
-);
-$media-down: (
-    xl: 1599px,
-    lg: 1399px,
-    tab: 1200px,
-    mob:768px,
-    sm:480px,
-);
-
-@mixin media-down($breakpoint) {
-
-    @each $breakpoints,
-    $size in $media-down {
-        @if $breakpoint==$breakpoints {
-            @media all and (max-width: $size) {
-                @content;
-            }
-        }
-    }
-}
-
-@mixin media-up($breakpoint) {
-
-    @each $breakpoints,
-    $size in $media-up {
-        @if $breakpoint==$breakpoints {
-            @media all and (min-width: $size) {
-                @content;
-            }
-        }
-    }
 }
 
 @mixin absCenter($horizontal: true, $vertical: true) {
@@ -103,7 +59,7 @@ $media-down: (
 }
 
 @mixin bg($url, $pos: center center, $size: 100% auto) {
-    background: url('../../images/#{$url}') no-repeat $pos / $size;
+    background: url("../images/#{$url}") no-repeat $pos / $size;
 }
 
 @mixin bge($pos: center center, $size: 100% auto) {

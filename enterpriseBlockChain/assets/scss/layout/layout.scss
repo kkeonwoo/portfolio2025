@@ -16,7 +16,14 @@
     z-index: 999;
 
     &.color-black {
-        color: #000;
+        color: $color-black;
+        .logo svg * {
+            fill: black;
+        }
+        .lang svg * {
+            stroke: black;
+        }
+
     }
 
     .header-inner {
@@ -41,25 +48,6 @@
                             display: flex;
                             align-items: center;
                             gap: 5px;
-
-                            &::before,
-                            &::after {
-                                @include pseudo($pos: relative);
-                                background-image: url("data:image/svg+xml,%3Csvg width='800' height='800' viewBox='0 0 800 800' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M26 4L29 6L32 4' stroke='white' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4 15H9M4 15V20H9M4 15V10H9M9 15V20M9 15H14M9 15V10M9 20H14M14 15V20M14 15H19M14 15V10M14 20H19V15M19 15V10M19 10V5H14V10M19 10H14M14 10H9' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
-                                background-size: 800px 800px;
-                            }
-
-                            &::before {
-                                width: 24px;
-                                height: 24px;
-                                background-position: 0 0;
-                            }
-
-                            &::after {
-                                width: 10px;
-                                height: 10px;
-                                background-position: -24px 0;
-                            }
                         }
                     }
 

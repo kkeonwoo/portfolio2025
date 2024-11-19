@@ -8,6 +8,7 @@
     position: relative;
     height: 100vh;
     color: #fff;
+    font-weight: 600;
 
     > * {
         flex: 1;
@@ -25,6 +26,7 @@
 
     .video-area {
         video {
+            width: 100%;
             height: 100%;
             object-fit: cover;
         }
@@ -82,32 +84,28 @@
         }
     }
     .txt-area {
-        position: absolute;
-        overflow: hidden;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        @include absCenter();
+        font-size: 24px;
+        line-height: 1.67;
+        max-width: 600px;
+        padding: 32px;
+
         &:not(.fade-in) {
             z-index: 5;
+            font-size: 100px;
+            line-height: 1.2;
         }
-
-        .txt-box {
-            .txt {
-                font-size: 26px;
-                line-height: 1.35;
-                font-weight: 700;
-            }
-        }
-
     }
 }
 
 .sc-03 {
     color: #000;
-    font-weight: 600;
+    justify-content: center;
 
     .inner {
-        padding: 200px 100px;
+        flex: unset;
+        padding: 80px 100px;
+        
         .title{
             font-size: 72px;
             line-height: 1.28;
@@ -119,5 +117,33 @@
             line-height: 1.67;
             margin-left: auto;
         }
+    }
+}
+
+.sc-04 {
+    @include bg('bg-sc04.jpg');
+    font-size: 72px;
+    line-height: 1.28;
+    text-align: center;
+    height: 720px;
+    &::before,
+    &::after {
+        @include pseudo();
+        width: 100%;
+        max-width: 21.875%;
+        height: 140px;
+        background-color: #fff;
+    }
+    &::before {
+        top: 0;
+        right: 0;
+    }
+    &::after {
+        bottom: 0;
+        left: 0;
+    }
+
+    .txt-area {
+        @include absCenter();
     }
 }
