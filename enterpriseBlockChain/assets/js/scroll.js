@@ -60,9 +60,12 @@ const sc01Tl = gsap.timeline({
         trigger: '.sc-01',
         start: 'top top',
         end: 'bottom top',
-        markers: true,
+        // markers: true,
         pin: true,
         scrub: 1,
+        onToggle: ({isActive}) => {
+            gsap.to('.sc-01 .scroll-down', { opacity: isActive ? 1 : 0})
+        }
     }
 })
 .to(CSSRulePlugin.getRule(".sc-01::before"), { duration: 1, cssRule: { opacity: 0.6 } })
@@ -80,20 +83,20 @@ const sc02Tl = gsap.timeline({
         trigger: '.sc-02',
         start: 'top top',
         end: '+=3000 top',
-        markers: true,
+        // markers: true,
         pin: true,
         scrub: 1,
     }
 })
-.fromTo(CSSRulePlugin.getRule(".sc-02 .img-area .img-cover:nth-child(1)::before"), { cssRule: { opacity: 0 } },{ cssRule: { opacity: 0.6 } })
+// .to(CSSRulePlugin.getRule(".sc-02 .img-area .img-cover:nth-child(1)::before"),{ cssRule: { opacity: 0.6 } })
 .from('.sc-02 .txt-box .txt-move', { opacity: 0})
 .fromTo('.sc-02 .txt-box:nth-child(1) .txt-move', { x: 0}, { x: 200})
 .fromTo('.sc-02 .txt-box:nth-child(3) .txt-move', { x: 0}, { x: -200}, '<')
 .to('.sc-02 .txt-box .txt-move', { opacity: 0})
-.to('.sc-02 .img-cover:nth-child(1)', { height: 0})
-.to('.sc-02 .img-cover:nth-child(2)', { height: 0})
-.set('.sc-02 .txt-area.fade-in', { zIndex: 20})
-.fromTo(CSSRulePlugin.getRule(".sc-02 .img-area .img-cover:nth-child(1)::before"), { cssRule: { opacity: 0 } },{ cssRule: { opacity: 0.6 } })
+.to('.sc-02 .img-cover:nth-child(2)', { yPercent:-100})
+.to('.sc-02 .img-cover:nth-child(3)', { yPercent:-200})
+// .set('.sc-02 .txt-area.fade-in', { zIndex: 20})
+// .to(CSSRulePlugin.getRule(".sc-02 .img-area .img-cover:nth-of-type(3)::before"), { cssRule: { opacity: 0.6, immediateRender: false, } })
 .from('.sc-02 .txt-area.fade-in .txt-move', { opacity: 0}, '<')
 
 const header = $('#header');
@@ -102,9 +105,41 @@ ScrollTrigger.create({
     start: `top ${header.outerHeight() / 2}`,
     end: 'bottom top',
     endTrigger: '.sc-06',
-    markers:true,
+    // markers:true,
     onToggle: ({ isActive, animation }) => {
         isActive ? header.addClass('color-black') : header.removeClass('color-black')
     }
 })
 
+let txt01With = $('.sc-04 .txt-box:nth-child(1) .title').outerWidth();
+let txt02With = $('.sc-04 .txt-box:nth-child(2) .title').outerWidth();
+let txt03With = $('.sc-04 .txt-box:nth-child(3) .title').outerWidth();
+let txt01X = (txt01With + txt02With) / 2;
+let txt03X = (txt03With + txt02With) / 2;
+
+const sc04Tl = gsap.timeline({
+    scrollTrigger: {
+        trigger: '.sc-04',
+        start: '-50% bottom',
+        end: 'bottom bottom',
+        // markers: true,
+        // pin: true,
+        scrub: 1,
+    }
+})
+.from(CSSRulePlugin.getRule(".sc-04::before"), { cssRule: { x: innerWidth } })
+.to('.sc-04 .txt-box:nth-child(1) .txt-move', { x: -`${txt01X}`}, '-=0.5')
+.to('.sc-04 .txt-box:nth-child(3) .txt-move', { x: `${txt03X}`}, '-=0.5')
+.from(CSSRulePlugin.getRule(".sc-04::after"), { cssRule: { x: -innerWidth } }, '-=0.5')
+
+ScrollTrigger.create({
+    trigger: '.sc-05',
+    start: 'top top',
+    // end: () => `+=${$('.sc-06').offset().top - $('.sc-05').offset().top}`,
+    end: 'bottom bottom',
+    endTrigger: '.sc-06',
+    pin: '.sc-05 .txt-box',
+    markers: true,
+})
+
+markers()

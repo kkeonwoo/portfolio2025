@@ -2,6 +2,11 @@
 @import '../utils/mixin';
 @import '../utils/vars';
 
+#main {
+    width: 100vw;
+    height: 100vh;
+}
+
 .section {
     display: flex;
     flex-direction: column;
@@ -12,6 +17,10 @@
 
     > * {
         flex: 1;
+    }
+
+    .inner {
+        padding: 80px 100px;
     }
 }
 
@@ -75,12 +84,12 @@
                 background-color: rgba(0, 0, 0);
                 opacity: 0;
             }
-            &:nth-child(2) {
-                z-index: 10;
-            }
-            &:nth-child(3) {
-                z-index: 15;
-            }
+            // &:nth-child(2) {
+            //     z-index: 10;
+            // }
+            // &:nth-child(3) {
+            //     z-index: 15;
+            // }
         }
     }
     .txt-area {
@@ -104,7 +113,6 @@
 
     .inner {
         flex: unset;
-        padding: 80px 100px;
         
         .title{
             font-size: 72px;
@@ -145,5 +153,54 @@
 
     .txt-area {
         @include absCenter();
+
+        .txt-move {
+            width: fit-content;
+            margin: 0 auto;
+        }
     }
+}
+
+.sc-05 {
+    color: #000;
+    height: unset;
+    .inner {
+        display: flex;
+        justify-content: space-between;
+        
+        .txt-area {
+            flex: 0 0 470px;
+            .txt-box {
+                display: flex;
+                align-items: center;
+                height: 100vh;
+                .title {
+                    font-size: 72px;
+                    line-height: 1.28;
+                }
+            }
+        }
+        .img-area {
+            flex: 1;
+            padding-top: 100vh;
+            .img-box {
+                max-width: 46%;
+                & + .img-box { 
+                    margin-top: 185px;
+                }
+                &:nth-child(2n - 1) {
+                    margin-left: auto;
+                }
+                .txt {
+                    margin-top: 12px;
+                    font-size: 16px;
+                    line-height: 1.5;
+                }
+            }
+        }
+    }
+}
+
+.sc-06 {
+    color: #000;
 }

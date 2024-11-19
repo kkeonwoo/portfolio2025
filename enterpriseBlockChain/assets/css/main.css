@@ -1,3 +1,8 @@
+#main {
+  width: 100vw;
+  height: 100vh;
+}
+
 .section {
   display: flex;
   flex-direction: column;
@@ -8,6 +13,9 @@
 }
 .section > * {
   flex: 1;
+}
+.section .inner {
+  padding: 80px 100px;
 }
 
 .sc-01::before {
@@ -63,12 +71,6 @@
   background-color: rgb(0, 0, 0);
   opacity: 0;
 }
-.sc-02 .img-area .img-cover:nth-child(2) {
-  z-index: 10;
-}
-.sc-02 .img-area .img-cover:nth-child(3) {
-  z-index: 15;
-}
 .sc-02 .txt-area {
   position: absolute;
   top: 50%;
@@ -91,7 +93,6 @@
 }
 .sc-03 .inner {
   flex: unset;
-  padding: 80px 100px;
 }
 .sc-03 .inner .title {
   font-size: 72px;
@@ -134,4 +135,51 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.sc-04 .txt-area .txt-move {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.sc-05 {
+  color: #000;
+  height: unset;
+}
+.sc-05 .inner {
+  display: flex;
+  justify-content: space-between;
+}
+.sc-05 .inner .txt-area {
+  flex: 0 0 470px;
+}
+.sc-05 .inner .txt-area .txt-box {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+.sc-05 .inner .txt-area .txt-box .title {
+  font-size: 72px;
+  line-height: 1.28;
+}
+.sc-05 .inner .img-area {
+  flex: 1;
+  padding-top: 100vh;
+}
+.sc-05 .inner .img-area .img-box {
+  max-width: 46%;
+}
+.sc-05 .inner .img-area .img-box + .img-box {
+  margin-top: 185px;
+}
+.sc-05 .inner .img-area .img-box:nth-child(2n-1) {
+  margin-left: auto;
+}
+.sc-05 .inner .img-area .img-box .txt {
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.sc-06 {
+  color: #000;
 }/*# sourceMappingURL=main.css.map */
