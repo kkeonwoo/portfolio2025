@@ -111,9 +111,9 @@ ScrollTrigger.create({
     }
 })
 
-let txt01With = $('.sc-04 .txt-box:nth-child(1) .title').outerWidth();
-let txt02With = $('.sc-04 .txt-box:nth-child(2) .title').outerWidth();
-let txt03With = $('.sc-04 .txt-box:nth-child(3) .title').outerWidth();
+let txt01With = gsap.getProperty('.sc-04 .txt-box:nth-child(1) .title', 'width');
+let txt02With = gsap.getProperty('.sc-04 .txt-box:nth-child(2) .title', 'width');
+let txt03With = gsap.getProperty('.sc-04 .txt-box:nth-child(3) .title', 'width');
 let txt01X = (txt01With + txt02With) / 2;
 let txt03X = (txt03With + txt02With) / 2;
 
@@ -136,10 +136,37 @@ ScrollTrigger.create({
     trigger: '.sc-05',
     start: 'top top',
     // end: () => `+=${$('.sc-06').offset().top - $('.sc-05').offset().top}`,
-    end: 'bottom bottom',
-    endTrigger: '.sc-06',
+    end: 'bottom top',
+    // endTrigger: '.sc-06',
     pin: '.sc-05 .txt-box',
     markers: true,
+})
+
+ScrollTrigger.create({
+    trigger: '.sc-06',
+    start: '-=50% center',
+    // end: 'bottom center',
+    // animation: ,
+    // pin: false,
+    // pinSpacing: false,
+    markers: true,
+    scrub: true,
+    onToggle: ({isActive}) => {
+        
+    }
+})
+
+const horizonWidth = gsap.getProperty('.sc-06 .move-horizon', 'width')
+
+ScrollTrigger.create({
+    trigger: '.sc-06',
+    start: 'left left',
+    end: `+=${horizonWidth}`,
+    animation: gsap.to('.sc-06 .move-horizon', { x: -(horizonWidth - window.innerWidth)}),
+    markers: true,
+    scrub: true,
+    pin:true,
+    // horizontal: true,
 })
 
 markers()

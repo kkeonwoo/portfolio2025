@@ -162,6 +162,7 @@
 }
 
 .sc-05 {
+    transition: .3s;
     color: #000;
     height: unset;
     .inner {
@@ -203,4 +204,80 @@
 
 .sc-06 {
     color: #000;
+    .inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 100px;
+        .move-horizon {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            .txt-area {
+                flex-shrink: 0;
+                margin-right: 160px;
+                .title {
+                    font-size: 72px;
+                    line-height: 1.28;
+                }
+            }
+            .id-list {
+                display: flex;
+                align-items: center;
+                .id-item {
+                    width: 300px;
+                    flex-shrink: 0;
+
+                    & + .id-item {
+                        margin-left: 75px;
+                        & .img-area::before {
+                            content: "";
+                            display: block;
+                            position: absolute;
+                            right: -44px;
+                            top: 50%;
+                            transform: rotate(45deg);
+                            width: 20px;
+                            height: 20px;
+                            border: 8px solid #fff;
+                            border-left: 0;
+                            border-bottom: 0;
+                        }
+                    }
+                    .img-area {
+                        width: 100%;
+                        border: 2px solid #fff;
+                        border-radius: 58px;
+                        background-color: #000;
+                        padding-top: 100%;
+                        position: relative;
+                        img {
+                            @include absCenter();
+                            width: 160px;
+                            height: 160px;
+                        }
+                    }
+                    .txt {
+                        font-size: 24px;
+                        line-height: 1.67;
+                        margin-top: 24px;
+                        padding: 0 0 0 20px;
+                        font-weight: 700;
+                    }
+                }
+            }
+            .graphic-area {
+                width: 100vw;
+                img {
+                    width: 505px;
+                    margin: 0 auto;
+                }
+            }
+        }
+        > .txt {
+            font-size: 14px;
+            line-height: 1.63;
+            color: hsla(0, 0%, 100%, .6);
+        }
+    }
 }

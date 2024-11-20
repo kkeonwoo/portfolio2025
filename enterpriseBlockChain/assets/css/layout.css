@@ -16,6 +16,19 @@
   clip: rect(0, 0, 0, 0);
 }
 
+body {
+  color: #000;
+  background: #fff;
+  transition: 0.3s;
+}
+body.theme-black {
+  color: #fff;
+  background: #000;
+}
+body.theme-black .sc-05, body.theme-black .sc-06 {
+  color: #fff;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -70,14 +83,15 @@ body {
   right: 0;
   color: #fff;
   z-index: 999;
+  transition: 0.3s;
 }
-#header.color-black {
+#header.theme-white {
   color: #000;
 }
-#header.color-black .logo svg * {
+#header.theme-white .logo svg * {
   fill: black;
 }
-#header.color-black .lang svg * {
+#header.theme-white .lang svg * {
   stroke: black;
 }
 #header .header-inner {
