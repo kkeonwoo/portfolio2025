@@ -16,19 +16,36 @@
   clip: rect(0, 0, 0, 0);
 }
 
-body {
-  color: #000;
-  background: #fff;
-  transition: 0.3s;
+@font-face {
+  font-family: "archivo";
+  font-weight: 100;
+  font-style: normal;
+  src: url('../fonts/archivo/Archivo-Thin.woff2') format(' woff2') if true, url('../fonts/archivo/Archivo-Thin.woff') format(' woff') if true, url('../fonts/archivo/Archivo-Thin.ttf') format(' truetype') if false, url('../fonts/archivo/Archivo-Thin.otf') format(' opentype') if false, url('../fonts/archivo/Archivo-Thin.eot') format(' embedded-opentype') if false;
 }
-body.theme-black {
-  color: #fff;
-  background: #000;
+@font-face {
+  font-family: "archivo";
+  font-weight: 300;
+  font-style: normal;
+  src: url('../fonts/archivo/Archivo-Light.woff2') format(' woff2') if true, url('../fonts/archivo/Archivo-Light.woff') format(' woff') if true, url('../fonts/archivo/Archivo-Light.ttf') format(' truetype') if false, url('../fonts/archivo/Archivo-Light.otf') format(' opentype') if false, url('../fonts/archivo/Archivo-Light.eot') format(' embedded-opentype') if false;
 }
-body.theme-black .sc-05, body.theme-black .sc-06 {
-  color: #fff;
+@font-face {
+  font-family: "archivo";
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/archivo/Archivo-Regular.woff2') format(' woff2') if true, url('../fonts/archivo/Archivo-Regular.woff') format(' woff') if true, url('../fonts/archivo/Archivo-Regular.ttf') format(' truetype') if false, url('../fonts/archivo/Archivo-Regular.otf') format(' opentype') if false, url('../fonts/archivo/Archivo-Regular.eot') format(' embedded-opentype') if false;
 }
-
+@font-face {
+  font-family: "archivo";
+  font-weight: 500;
+  font-style: normal;
+  src: url('../fonts/archivo/Archivo-Medium.woff2') format(' woff2') if true, url('../fonts/archivo/Archivo-Medium.woff') format(' woff') if true, url('../fonts/archivo/Archivo-Medium.ttf') format(' truetype') if false, url('../fonts/archivo/Archivo-Medium.otf') format(' opentype') if false, url('../fonts/archivo/Archivo-Medium.eot') format(' embedded-opentype') if false;
+}
+@font-face {
+  font-family: "archivo";
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/archivo/Archivo-SemiBold.woff2') format(' woff2') if true, url('../fonts/archivo/Archivo-SemiBold.woff') format(' woff') if true, url('../fonts/archivo/Archivo-SemiBold.ttf') format(' truetype') if false, url('../fonts/archivo/Archivo-SemiBold.otf') format(' opentype') if false, url('../fonts/archivo/Archivo-SemiBold.eot') format(' embedded-opentype') if false;
+}
 * {
   margin: 0;
   padding: 0;
@@ -73,7 +90,7 @@ fieldset, input {
 }
 
 body {
-  font-family: "Archivo", "NotoSansCJKkr";
+  font-family: "Archivo", "NotoSansCJKkr", sans-serif;
 }
 
 #header {
@@ -83,7 +100,6 @@ body {
   right: 0;
   color: #fff;
   z-index: 999;
-  transition: 0.3s;
 }
 #header.theme-white {
   color: #000;

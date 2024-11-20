@@ -12,25 +12,25 @@
     flex-direction: column;
     position: relative;
     height: 100vh;
-    color: #fff;
     font-weight: 600;
+    color: #fff;
 
     > * {
         flex: 1;
     }
 
     .inner {
-        padding: 80px 100px;
+        padding: 0 100px;
     }
 }
 
 .sc-01 {
     &::before {
-        @include pseudo();
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0);
         opacity: 0;
+        @include pseudo();
     }
 
     .video-area {
@@ -43,17 +43,17 @@
 
     .txt-box {
         position: absolute;
-        width: 100%;
         top: 50%;
         left: 50%;
+        width: 100%;
         transform: translate(-50%, -50%);
 
         .txt {
             width: fit-content;
             margin: 0 auto;
-            font-size: 26px;
-            line-height: 1.35;
             font-weight: 700;
+            font-size: 52px;
+            line-height: 1.35;
 
             &.desc {
                 font-size: 24px;
@@ -64,8 +64,8 @@
 
     .scroll-down {
         position: absolute;
-        left: 50%;
         bottom: 40px;
+        left: 50%;
         transform: translateX(-50%);
     }
 }
@@ -74,15 +74,15 @@
     .img-area {
         .img-cover {
             position: relative;
-            height: 100vh;
             overflow: hidden;
+            height: 100vh;
             &:nth-child(1)::before,
             &:nth-child(3)::before {
-                @include pseudo;
                 width: 100%;
                 height: 100%;
                 background-color: rgba(0, 0, 0);
                 opacity: 0;
+                @include pseudo;
             }
             // &:nth-child(2) {
             //     z-index: 10;
@@ -93,11 +93,11 @@
         }
     }
     .txt-area {
-        @include absCenter();
-        font-size: 24px;
-        line-height: 1.67;
         max-width: 600px;
         padding: 32px;
+        font-size: 24px;
+        line-height: 1.67;
+        @include absCenter();
 
         &:not(.fade-in) {
             z-index: 5;
@@ -108,39 +108,38 @@
 }
 
 .sc-03 {
-    color: #000;
     justify-content: center;
+    color: #000;
 
     .inner {
         flex: unset;
-        
         .title{
             font-size: 72px;
             line-height: 1.28;
         }
         .desc {
             width: 50%;
+            margin-left: auto;
             padding-left: 100px;
             font-size: 24px;
             line-height: 1.67;
-            margin-left: auto;
         }
     }
 }
 
 .sc-04 {
-    @include bg('bg-sc04.jpg');
-    font-size: 72px;
-    line-height: 1.28;
-    text-align: center;
     height: 720px;
+    font-size: 72px;
+    text-align: center;
+    line-height: 1.28;
+    @include bg('bg-sc04.jpg');
     &::before,
     &::after {
-        @include pseudo();
         width: 100%;
         max-width: 21.875%;
         height: 140px;
         background-color: #fff;
+        @include pseudo();
     }
     &::before {
         top: 0;
@@ -162,9 +161,9 @@
 }
 
 .sc-05 {
-    transition: .3s;
-    color: #000;
     height: unset;
+    color: #000;
+
     .inner {
         display: flex;
         justify-content: space-between;
@@ -182,8 +181,8 @@
             }
         }
         .img-area {
-            flex: 1;
             padding-top: 100vh;
+            flex: 1;
             .img-box {
                 max-width: 46%;
                 & + .img-box { 
@@ -208,11 +207,13 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 0 100px;
+        padding: 0;
+
         .move-horizon {
             display: flex;
             align-items: center;
             width: fit-content;
+            padding: 0 100px;
             .txt-area {
                 flex-shrink: 0;
                 margin-right: 160px;
@@ -224,60 +225,149 @@
             .id-list {
                 display: flex;
                 align-items: center;
+                flex-shrink: 0;
                 .id-item {
                     width: 300px;
-                    flex-shrink: 0;
-
+                    
                     & + .id-item {
                         margin-left: 75px;
                         & .img-area::before {
-                            content: "";
                             display: block;
                             position: absolute;
-                            right: -44px;
                             top: 50%;
-                            transform: rotate(45deg);
+                            left: -28px;
                             width: 20px;
                             height: 20px;
                             border: 8px solid #fff;
-                            border-left: 0;
                             border-bottom: 0;
+                            border-left: 0;
+                            transform: translateX(-100%) rotate(45deg);
+                            content: "";
                         }
                     }
                     .img-area {
-                        width: 100%;
-                        border: 2px solid #fff;
-                        border-radius: 58px;
-                        background-color: #000;
-                        padding-top: 100%;
                         position: relative;
+                        width: 100%;
+                        padding-top: 100%;
+                        border: 2px solid #fff;
+                        background-color: #000;
+                        border-radius: 58px;
                         img {
-                            @include absCenter();
                             width: 160px;
                             height: 160px;
+                            @include absCenter();
                         }
                     }
                     .txt {
-                        font-size: 24px;
-                        line-height: 1.67;
                         margin-top: 24px;
                         padding: 0 0 0 20px;
                         font-weight: 700;
+                        font-size: 24px;
+                        line-height: 1.67;
                     }
                 }
             }
-            .graphic-area {
-                width: 100vw;
-                img {
-                    width: 505px;
-                    margin: 0 auto;
+            .graphic-wrap {
+                flex-shrink: 0;
+                padding: 0 60px 0 160px;
+                .graphic-area {
+                    width: calc(100vw - 100px);
+                    // padding-left: 100px;
+                    
+                    .graphic-box {
+                        position: relative;
+                        width: 505px;
+                        margin: 0 auto;
+                        .txt-area {
+                            .txt-box {
+                                position: absolute;
+                                text-align: center;
+                                &:nth-child(1) {
+                                    top: 9%;
+                                    width: 100%;
+                                }
+                                &:nth-child(2), &:nth-child(3) {
+                                    width: 33.5%;
+                                    bottom: 26.3%;
+                                }
+                                &:nth-child(3) {
+                                    right: 0;
+                                }
+                                .title {
+                                    font-size: 24px;
+                                    line-height: 1.42;
+                                }
+                                .desc {
+                                    font-size: 16px;
+                                    line-height: 1.63;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
         > .txt {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 4.1667vh;
+            padding: 0 100px;
             font-size: 14px;
-            line-height: 1.63;
             color: hsla(0, 0%, 100%, .6);
+            line-height: 1.63;
         }
     }
+}
+
+.sc-07 {
+    justify-content: center;
+    background-color: #000;
+
+    .inner {
+        flex: unset;
+        .title {
+            width: 50%;
+            font-size: 72px;
+            line-height: 1.28;
+        }
+        .txt {
+            width: 50%;
+            font-size: 24px;
+            padding-left: 100px;
+            line-height: 1.67;
+            margin-left: auto;
+        }
+    }
+}
+
+.sc-08 {
+    height: 173px;
+    background-color: #000;
+    .bg-area {
+        display: flex;
+        .bg-box {
+            flex: 1;
+            &:nth-child(1) {
+                background-color: #e657af;
+            }
+            &:nth-child(2) {
+                background-color: #0049ff;
+            }
+            &:nth-child(3) {
+                background-color: #00bf41;
+            }
+        }
+    }
+    .txt-area {
+        @include absCenter();
+        font-size: 40px;
+        line-height: 1.25;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.sc-09 {
+    background-color: #000;
 }

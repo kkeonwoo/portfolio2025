@@ -1,19 +1,32 @@
-
 gsap.registerPlugin(ScrollTrigger);
+
+class DisableScroll extends Scrollbar.ScrollbarPlugin{
+    static pluginName = 'DisableScroll'
+
+    transformDelta(delta){
+        delta['x'] = 0;
+
+        return delta;
+    }
+}
+
+Scrollbar.use(DisableScroll)
 
 const container = document.querySelector('#main');
 const options = {
     damping: 0.1,
-    alwaysShowTracks: false,
-}
+    alwaysShowTracks: true,
+};
 const scrollbar = Scrollbar.init(container, {
-    ...options
+    ...options,
 });
+
+scrollbar.track.xAxis.element.remove();
 
 ScrollTrigger.scrollerProxy(container, {
     scrollTop(value) {
         if (arguments.length) {
-            scrollbar.scrollTop = value; // setter
+        scrollbar.scrollTop = value; // setter
         }
         return scrollbar.scrollTop; // getter
     },

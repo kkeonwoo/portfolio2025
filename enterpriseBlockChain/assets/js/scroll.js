@@ -54,6 +54,7 @@
 
 // }
 // section2Animation()
+gsap.defaults({ease: 'none'})
 
 const sc01Tl = gsap.timeline({
     scrollTrigger: {
@@ -104,10 +105,10 @@ ScrollTrigger.create({
     trigger: '.sc-03',
     start: `top ${header.outerHeight() / 2}`,
     end: 'bottom top',
-    endTrigger: '.sc-06',
+    endTrigger: '.sc-05',
     // markers:true,
     onToggle: ({ isActive, animation }) => {
-        isActive ? header.addClass('color-black') : header.removeClass('color-black')
+        isActive ? header.addClass('theme-white') : header.removeClass('theme-white')
     }
 })
 
@@ -139,20 +140,27 @@ ScrollTrigger.create({
     end: 'bottom top',
     // endTrigger: '.sc-06',
     pin: '.sc-05 .txt-box',
-    markers: true,
+    // markers: true,
 })
 
 ScrollTrigger.create({
     trigger: '.sc-06',
     start: '-=50% center',
-    // end: 'bottom center',
-    // animation: ,
-    // pin: false,
-    // pinSpacing: false,
-    markers: true,
+    // markers: true,
     scrub: true,
-    onToggle: ({isActive}) => {
-        
+    onEnter: () => {
+        gsap.to('.sc-05, .sc-06', { color: '#fff', backgroundColor: '#000'})
+        $('#header').removeClass('theme-white')
+    },
+    // onEnterBack: () => {
+    //     gsap.to('.section', { color: '#fff', backgroundColor: '#000'})
+    // },
+    // onLeave: () => {
+    //     gsap.to('.section', { color: '#000', backgroundColor: '#fff'})
+    // },
+    onLeaveBack: () => {
+        gsap.to('.sc-05, .sc-06', { color: '#000', backgroundColor: '#fff'})
+        $('#header').addClass('theme-white')
     }
 })
 
@@ -160,13 +168,50 @@ const horizonWidth = gsap.getProperty('.sc-06 .move-horizon', 'width')
 
 ScrollTrigger.create({
     trigger: '.sc-06',
-    start: 'left left',
+    start: 'top top',
     end: `+=${horizonWidth}`,
-    animation: gsap.to('.sc-06 .move-horizon', { x: -(horizonWidth - window.innerWidth)}),
+    animation: gsap.to('.sc-06 .move-horizon', { x: -(horizonWidth - window.innerWidth + 100)}),
     markers: true,
     scrub: true,
     pin:true,
     // horizontal: true,
 })
+// gsap.to('.sc-06 .move-horizon', { 
+//     x: -(horizonWidth - window.innerWidth),
+//     scrollTrigger: {
+//         trigger: '.sc-06',
+//         start: 'top top',
+//         end: `+=${horizonWidth}`,
+//         markers: true,
+//         scrub: true,
+//         pin:true,
+//         // horizontal: true,
+//     }
+// })
+ScrollTrigger.create({
+    trigger: '.sc-08',
+    start: '-=50% center',
+    end: 'bottom center',
+    // animation: ,
+    // pin: false,
+    // pinSpacing: false,
+    markers: true,
+    scrub: true,
+})
+
+// ScrollTrigger.create({
+//     trigger: '.sc-10',
+//     start: 'top top',
+//     markers: true,
+//     scrub: true,
+//     onEnter: () => {
+//         $('#header').addClass('theme-white')
+//         // gsap.to('.section', { color: '#000', backgroundColor: '#fff'})
+//     },
+//     onLeaveBack: () => {
+//         $('#header').removeClass('theme-white')
+//         // gsap.to('.section', { color: '#fff', backgroundColor: '#000'})
+//     }
+// })
 
 markers()

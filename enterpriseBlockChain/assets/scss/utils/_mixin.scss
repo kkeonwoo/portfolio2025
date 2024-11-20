@@ -83,10 +83,9 @@
         font-style: $style;
 
         src: #{"url('#{$file-path}.woff2') format(' woff2')"} if $woff2,
-#{"url('#{$file-path}.woff') format(' woff')"} if $woff,
-#{"url('#{$file-path}.ttf') format(' truetype')"} if $ttf,
-#{"url('#{$file-path}.otf') format(' opentype')"} if $otf,
-#{"url('#{$file-path}.eot') format(' embedded-opentype')"} if $eot;
-
+             #{"url('#{$file-path}.woff') format(' woff')"} if $woff,
+             #{"url('#{$file-path}.ttf') format(' truetype')"} if $ttf,
+             #{"url('#{$file-path}.otf') format(' opentype')"} if $otf,
+             #{"url('#{$file-path}.eot') format(' embedded-opentype')"} if $eot;
     }
 }
