@@ -170,7 +170,7 @@ ScrollTrigger.create({
     trigger: '.sc-06',
     start: 'top top',
     end: `+=${horizonWidth}`,
-    animation: gsap.to('.sc-06 .move-horizon', { x: -(horizonWidth - window.innerWidth + 100)}),
+    animation: gsap.to('.sc-06 .move-horizon', { x: -(horizonWidth - window.innerWidth)}),
     markers: true,
     scrub: true,
     pin:true,

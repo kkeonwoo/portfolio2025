@@ -189,6 +189,18 @@
   justify-content: center;
   padding: 0;
 }
+.sc-06 .inner::before {
+  display: block;
+  position: absolute;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1px;
+  height: 100%;
+  background-color: #f00;
+}
 .sc-06 .inner .move-horizon {
   display: flex;
   align-items: center;
@@ -252,14 +264,15 @@
 }
 .sc-06 .inner .move-horizon .graphic-wrap {
   flex-shrink: 0;
-  padding: 0 60px 0 160px;
+  padding: 0 160px;
 }
 .sc-06 .inner .move-horizon .graphic-wrap .graphic-area {
   width: calc(100vw - 100px);
+  padding-left: 100px;
 }
 .sc-06 .inner .move-horizon .graphic-wrap .graphic-area .graphic-box {
   position: relative;
-  width: 505px;
+  width: 506px;
   margin: 0 auto;
 }
 .sc-06 .inner .move-horizon .graphic-wrap .graphic-area .graphic-box .txt-area .txt-box {
