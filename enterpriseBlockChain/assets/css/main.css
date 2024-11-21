@@ -62,7 +62,7 @@
   overflow: hidden;
   height: 100vh;
 }
-.sc-02 .img-area .img-cover:nth-child(1)::before, .sc-02 .img-area .img-cover:nth-child(3)::before {
+.sc-02 .img-area .img-cover .bg {
   width: 100%;
   height: 100%;
   background-color: rgb(0, 0, 0);
@@ -189,22 +189,11 @@
   justify-content: center;
   padding: 0;
 }
-.sc-06 .inner::before {
-  display: block;
-  position: absolute;
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1px;
-  height: 100%;
-  background-color: #f00;
-}
 .sc-06 .inner .move-horizon {
   display: flex;
   align-items: center;
   width: fit-content;
+  height: 100%;
   padding: 0 100px;
 }
 .sc-06 .inner .move-horizon .txt-area {
@@ -348,6 +337,16 @@
 .sc-08 .bg-area .bg-box:nth-child(3) {
   background-color: #00bf41;
 }
+.sc-08 .bg-area .bg-box.filter {
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .sc-08 .txt-area {
   position: absolute;
   top: 50%;
@@ -361,4 +360,90 @@
 
 .sc-09 {
   background-color: #000;
+}
+.sc-09 .inner .move-horizon {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: 100%;
+  padding: 0 100px;
+}
+.sc-09 .inner .move-horizon .txt-area {
+  flex-shrink: 0;
+  margin-right: 160px;
+}
+.sc-09 .inner .move-horizon .txt-area .title {
+  font-size: 72px;
+  line-height: 1.28;
+}
+.sc-09 .inner .move-horizon .group-card {
+  flex-shrink: 0;
+}
+.sc-09 .inner .move-horizon .group-card .card-list {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.sc-09 .inner .move-horizon .group-card .card-list .card-item {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 540px;
+  padding: 34px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+}
+.sc-09 .inner .move-horizon .group-card .card-list .card-item.gradient {
+  border: 2px solid transparent;
+  padding: 0;
+  background-image: linear-gradient(#000, #000), linear-gradient(315deg, #e657af, #0049ff, #43cf2e);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+.sc-09 .inner .move-horizon .group-card .card-list .card-item.gradient .img-area {
+  position: relative;
+  height: 100%;
+}
+.sc-09 .inner .move-horizon .group-card .card-list .card-item.gradient .img-area img {
+  width: 150px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.sc-09 .inner .move-horizon .group-card .card-list .card-item .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 110px;
+}
+.sc-09 .inner .move-horizon .group-card .card-list .card-item .card-header .title {
+  font-size: 50px;
+  line-height: 1;
+}
+.sc-09 .inner .move-horizon .group-card .card-list .card-item .card-header .start {
+  font-size: 30px;
+  line-height: 0.67;
+}
+.sc-09 .inner .move-horizon .group-card .card-list .card-item .card-body {
+  margin-top: 56px;
+}
+.sc-09 .inner .move-horizon .group-card .card-list .card-item .card-body .img-area {
+  max-width: 280px;
+}
+.sc-09 .inner .move-horizon .group-card .card-list .card-item .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex: 1;
+}
+.sc-09 .inner .move-horizon .group-card .card-list .card-item .card-footer .f-title {
+  font-size: 24px;
+  line-height: 1.67;
+}
+.sc-09 .inner .move-horizon .group-card .card-list .card-item .card-footer .ico.ico-card {
+  display: block;
+  background: url("../images/icon-contract.png") no-repeat center center/100% auto;
+  width: 40px;
+  height: 40px;
 }/*# sourceMappingURL=main.css.map */

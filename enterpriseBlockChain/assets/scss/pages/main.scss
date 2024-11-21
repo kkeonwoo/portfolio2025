@@ -76,8 +76,7 @@
             position: relative;
             overflow: hidden;
             height: 100vh;
-            &:nth-child(1)::before,
-            &:nth-child(3)::before {
+            .bg {
                 width: 100%;
                 height: 100%;
                 background-color: rgba(0, 0, 0);
@@ -208,18 +207,12 @@
         flex-direction: column;
         justify-content: center;
         padding: 0;
-        &::before {
-            @include pseudo();
-            @include absCenter();
-            width: 1px;
-            height: 100%;
-            background-color: #f00;
-        }
 
         .move-horizon {
             display: flex;
             align-items: center;
             width: fit-content;
+            height: 100%;
             padding: 0 100px;
             .txt-area {
                 flex-shrink: 0;
@@ -365,6 +358,14 @@
             &:nth-child(3) {
                 background-color: #00bf41;
             }
+            &.filter {
+                width: 100%;
+                height: 100%;
+                // z-index: 10;
+                -webkit-backdrop-filter: blur(50px);
+                backdrop-filter: blur(50px);
+                @include absCenter();
+            }
         }
     }
     .txt-area {
@@ -378,4 +379,107 @@
 
 .sc-09 {
     background-color: #000;
+
+    .inner {
+        .move-horizon {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            height: 100%;
+            padding: 0 100px;
+            .txt-area {
+                flex-shrink: 0;
+                margin-right: 160px;
+                .title {
+                    font-size: 72px;
+                    line-height: 1.28;
+                }
+            }
+            .group-card {
+                flex-shrink: 0;
+
+                .card-list {
+                    display: flex;
+                    align-items: center;
+                    gap: 40px;
+
+                    .card-item {
+                        display: flex;
+                        flex-direction: column;
+                        width: 400px;
+                        height: 540px;
+                        padding: 34px;
+                        border: 2px solid #fff;
+                        border-radius: 20px;
+
+                        &.gradient {
+                            border: 2px solid transparent;
+                            padding: 0;
+                            background-image: linear-gradient(#000, #000), linear-gradient(315deg, #e657af, #0049ff, #43cf2e);
+                            background-origin: border-box;
+                            background-clip: content-box, border-box;
+                            
+                            .img-area {
+                                position: relative;
+                                height: 100%;
+
+                                img {
+                                    width: 150px;
+                                    @include absCenter();
+                                }
+                            }
+                        }
+
+                        .card-header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: flex-start;
+                            height: 110px;
+
+                            .title {
+                                font-size: 50px;
+                                line-height: 1;
+                            }
+                            .start {
+                                font-size: 30px;
+                                line-height: .67;
+                            }
+                        }
+
+                        .card-body {
+                            margin-top: 56px;
+                            // padding-right: 50px;
+
+                            .img-area {
+                                max-width: 280px;
+                                img {
+
+                                }
+                            }
+                        }
+
+                        .card-footer {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: end;
+                            flex: 1;
+                            .f-title {
+                                font-size: 24px;
+                                line-height: 1.67;
+                            }
+                            .ico {
+                                &.ico-card {
+                                    display: block;
+                                    @include bg('icon-contract.png');
+                                    width: 40px;
+                                    height: 40px;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
 }

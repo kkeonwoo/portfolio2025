@@ -34,3 +34,17 @@ ScrollTrigger.scrollerProxy(container, {
 
 scrollbar.addListener(ScrollTrigger.update);
 ScrollTrigger.defaults({ scroller: container });
+
+// 스크롤 위치 저장
+window.addEventListener('beforeunload', () => {
+    const scrollPosition = scrollbar.offset.y;
+    sessionStorage.setItem('scrollPosition', scrollPosition);
+});
+
+// 스크롤 위치 복원
+window.addEventListener('load', () => {
+    const savedPosition = sessionStorage.getItem('scrollPosition');
+    if (savedPosition) {
+        scrollbar.scrollTo(0, parseFloat(savedPosition), 0); // 애니메이션 없이 이동
+    }
+});

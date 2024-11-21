@@ -83,22 +83,23 @@ const sc02Tl = gsap.timeline({
     scrollTrigger: {
         trigger: '.sc-02',
         start: 'top top',
-        end: '+=3000 top',
+        end: '+=4000 top',
         // markers: true,
         pin: true,
         scrub: 1,
     }
 })
-// .to(CSSRulePlugin.getRule(".sc-02 .img-area .img-cover:nth-child(1)::before"),{ cssRule: { opacity: 0.6 } })
-.from('.sc-02 .txt-box .txt-move', { opacity: 0})
+.to((".sc-02 .img-area .img-cover:nth-child(1) .bg"), { duration: 1, opacity: 0.6})
+.from('.sc-02 .txt-box .txt-move', { duration: 1, opacity: 0})
 .fromTo('.sc-02 .txt-box:nth-child(1) .txt-move', { x: 0}, { x: 200})
 .fromTo('.sc-02 .txt-box:nth-child(3) .txt-move', { x: 0}, { x: -200}, '<')
 .to('.sc-02 .txt-box .txt-move', { opacity: 0})
 .to('.sc-02 .img-cover:nth-child(2)', { yPercent:-100})
 .to('.sc-02 .img-cover:nth-child(3)', { yPercent:-200})
+.to((".sc-02 .img-area .img-cover:nth-child(3) .bg"), { duration: 1, opacity: 0.6})
 // .set('.sc-02 .txt-area.fade-in', { zIndex: 20})
 // .to(CSSRulePlugin.getRule(".sc-02 .img-area .img-cover:nth-of-type(3)::before"), { cssRule: { opacity: 0.6, immediateRender: false, } })
-.from('.sc-02 .txt-area.fade-in .txt-move', { opacity: 0}, '<')
+.from('.sc-02 .txt-area.fade-in .txt-move', { duration: 1, opacity: 0}, '<')
 
 const header = $('#header');
 ScrollTrigger.create({
@@ -188,13 +189,49 @@ ScrollTrigger.create({
 //         // horizontal: true,
 //     }
 // })
+
+const sc08Tl = gsap.timeline()
+.from('.sc-08 .move-left', { duration:2, xPercent: -50})
+.from('.sc-08 .move-right', { duration:2, xPercent: 50}, '<')
+.from('.sc-08 .title', { opacity: 0}, '+=0.3')
+.from('.sc-08 .filter', { opacity: 0},'<')
+
 ScrollTrigger.create({
     trigger: '.sc-08',
-    start: '-=50% center',
-    end: 'bottom center',
+    start: '-=60% bottom',
+    end: 'center bottom',
+    endTrigger: '.sc-09',
+    animation: sc08Tl,
+    // markers: true,
+    scrub: true,
+}) 
+
+const sc09HorizonWidth = gsap.getProperty('.sc-06 .move-horizon', 'width')
+const sc09MoveHorizonTween = gsap.to('.sc-09 .move-horizon', { x: -(sc09HorizonWidth - window.innerWidth)})
+
+ScrollTrigger.create({
+    trigger: '.sc-09',
+    start: 'top top',
+    end: `+=${sc09HorizonWidth}`,
+    animation: sc09MoveHorizonTween,
+    markers: true,
+    scrub: true,
+    pin:true,
+})
+
+ScrollTrigger.create({
+    trigger: '.sc-09 .group-card',
+    start: 'left left',
+    // end: `+=${boxEnd - boxWidth}`,
     // animation: ,
-    // pin: false,
-    // pinSpacing: false,
+    animation: gsap.to('.box', {
+        x: (_, t) => {
+            return boxEnd - t.offsetWidth
+        },
+        // rotation: 360
+    }),
+    containerAnimation: sc09MoveHorizonTween,
+    horizontal: true,
     markers: true,
     scrub: true,
 })
