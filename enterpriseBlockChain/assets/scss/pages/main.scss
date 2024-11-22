@@ -377,109 +377,75 @@
     }
 }
 
+
+
 .sc-09 {
     background-color: #000;
 
-    .inner {
-        .move-horizon {
-            display: flex;
-            align-items: center;
-            width: fit-content;
-            height: 100%;
-            padding: 0 100px;
-            .txt-area {
-                flex-shrink: 0;
-                margin-right: 160px;
-                .title {
-                    font-size: 72px;
-                    line-height: 1.28;
-                }
+    .move-horizon {
+        display: flex;
+        align-items: center;
+        width: fit-content;
+        height: 100%;
+        padding: 0 100px;
+        .txt-area {
+            flex-shrink: 0;
+            padding-right: 160px;
+            .title {
+                font-size: 72px;
+                line-height: 1.28;
             }
-            .group-card {
-                flex-shrink: 0;
-
-                .card-list {
-                    display: flex;
-                    align-items: center;
-                    gap: 40px;
-
-                    .card-item {
-                        display: flex;
-                        flex-direction: column;
-                        width: 400px;
-                        height: 540px;
-                        padding: 34px;
-                        border: 2px solid #fff;
-                        border-radius: 20px;
-
-                        &.gradient {
-                            border: 2px solid transparent;
-                            padding: 0;
-                            background-image: linear-gradient(#000, #000), linear-gradient(315deg, #e657af, #0049ff, #43cf2e);
-                            background-origin: border-box;
-                            background-clip: content-box, border-box;
-                            
-                            .img-area {
-                                position: relative;
-                                height: 100%;
-
-                                img {
-                                    width: 150px;
-                                    @include absCenter();
-                                }
-                            }
+        }
+        .group-card {
+            flex-shrink: 0;
+            
+            .card-item {
+                padding-right: 40px;
+                
+                &:last-child {
+                    padding-right: 0;
+                    .img-area {
+                        position: relative;
+                        height: 100%;
+    
+                        img {
+                            width: 150px;
+                            @include absCenter();
                         }
-
-                        .card-header {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: flex-start;
-                            height: 110px;
-
-                            .title {
-                                font-size: 50px;
-                                line-height: 1;
-                            }
-                            .start {
-                                font-size: 30px;
-                                line-height: .67;
-                            }
-                        }
-
-                        .card-body {
-                            margin-top: 56px;
-                            // padding-right: 50px;
-
-                            .img-area {
-                                max-width: 280px;
-                                img {
-
-                                }
-                            }
-                        }
-
-                        .card-footer {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: end;
-                            flex: 1;
-                            .f-title {
-                                font-size: 24px;
-                                line-height: 1.67;
-                            }
-                            .ico {
-                                &.ico-card {
-                                    display: block;
-                                    @include bg('icon-contract.png');
-                                    width: 40px;
-                                    height: 40px;
-                                }
-                            }
-                        }
-
                     }
                 }
             }
         }
     }
+    
+    .vertical {
+        display: flex;
+        align-items: center;
+        margin-top: -100vh;
+
+        .inner {
+            display: flex;
+            .service-left {
+                width: 400px;
+                .card {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .txt-gradient {
+                        background-image: linear-gradient(90deg, #43cf2e, #0049ff, #e657af);
+                        background-size: cover;
+                        -webkit-background-clip: text;
+                        background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        text-fill-color: transparent;
+                        font-size: 40px;
+                        line-height: 1.25;
+                    }
+                }
+            }
+        }
+    }
+}
+.sc-10 {
+    background-color: #000;
 }

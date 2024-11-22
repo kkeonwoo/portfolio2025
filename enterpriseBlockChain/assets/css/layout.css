@@ -16,6 +16,14 @@
   clip: rect(0, 0, 0, 0);
 }
 
+.border-gradient {
+  padding: 0 !important;
+  border: 2px solid transparent !important;
+  background-image: linear-gradient(#000, #000), linear-gradient(315deg, #e657af, #0049ff, #43cf2e);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+}
+
 @font-face {
   font-family: "archivo";
   font-weight: 100;
@@ -90,7 +98,7 @@ fieldset, input {
 }
 
 body {
-  font-family: "Archivo", "NotoSansCJKkr", sans-serif;
+  font-family: "Archivo", "NotoSansCJKkr";
 }
 
 #header {
@@ -157,4 +165,58 @@ body {
 }
 #header .header-inner .group-nav .nav-list .nav-item .depth2 li.active {
   color: #fff;
+}
+
+.card-list {
+  display: flex;
+  align-items: center;
+}
+.card-list .card-item {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 540px;
+}
+.card-list .card-item .card {
+  padding: 34px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  background-color: #000;
+  height: 100%;
+}
+.card-list .card-item .card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 110px;
+}
+.card-list .card-item .card .card-header .title {
+  font-size: 50px;
+  line-height: 1;
+}
+.card-list .card-item .card .card-header .start {
+  font-size: 30px;
+  line-height: 0.67;
+}
+.card-list .card-item .card .card-body {
+  margin-top: 56px;
+}
+.card-list .card-item .card .card-body .img-area {
+  max-width: 280px;
+}
+.card-list .card-item .card .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex: 1;
+}
+.card-list .card-item .card .card-footer .f-title {
+  font-size: 24px;
+  line-height: 1.67;
+}
+.card-list .card-item .card .card-footer .ico.ico-card {
+  display: block;
+  background: url("../images/icon-contract.png") no-repeat center center/100% auto;
+  width: 40px;
+  height: 40px;
 }/*# sourceMappingURL=layout.css.map */

@@ -86,3 +86,68 @@
         }
     }
 }
+
+.card-list {
+    display: flex;
+    align-items: center;
+
+    .card-item {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        height: 540px;
+
+        .card {
+            padding: 34px;
+            border: 2px solid #fff;
+            border-radius: 20px;
+            background-color: #000;
+            height: 100%;
+
+            .card-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                height: 110px;
+
+                .title {
+                    font-size: 50px;
+                    line-height: 1;
+                }
+                .start {
+                    font-size: 30px;
+                    line-height: .67;
+                }
+            }
+
+            .card-body {
+                margin-top: 56px;
+
+                .img-area {
+                    max-width: 280px;
+                }
+            }
+
+            .card-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: end;
+                flex: 1;
+                .f-title {
+                    font-size: 24px;
+                    line-height: 1.67;
+                }
+                .ico {
+                    &.ico-card {
+                        display: block;
+                        @include bg('icon-contract.png');
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+            }
+
+        }
+
+    }
+}

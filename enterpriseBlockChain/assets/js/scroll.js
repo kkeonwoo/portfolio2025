@@ -206,35 +206,51 @@ ScrollTrigger.create({
     scrub: true,
 }) 
 
-const sc09HorizonWidth = gsap.getProperty('.sc-06 .move-horizon', 'width')
-const sc09MoveHorizonTween = gsap.to('.sc-09 .move-horizon', { x: -(sc09HorizonWidth - window.innerWidth)})
+const sc09HorizonWidth = gsap.getProperty('.sc-09 .move-horizon', 'width')
+const sc09TxtWidth = gsap.getProperty('.sc-09 .move-horizon > .txt-area', 'width')
+const cardListWidth = gsap.getProperty('.sc-09 .move-horizon .card-list', 'width')
+const cardWidth = gsap.getProperty('.sc-09 .move-horizon .card-item', 'width')
+
+const sc09ContainerAni = gsap.timeline()
+.to('.sc-09 .move-horizon', { x: -(sc09TxtWidth)})
+// const sc09innnerAni = gsap.timeline()
+.add(cardTl())
+.to('.unlock', { opacity: 0}, '<')
+.from('.lock', { opacity: 0})
+.to('.lock', { opacity: 0})
+.from('.vertical', { opacity: 0})
+
+function cardTl() {
+    const tl = gsap.timeline()
+    gsap.utils.toArray('.sc-09 .move-horizon .card-item').forEach((card, idx) => {
+        tl.to(card, { x: -(cardWidth * idx)}, '<')
+    })
+    return tl;
+}
 
 ScrollTrigger.create({
     trigger: '.sc-09',
     start: 'top top',
     end: `+=${sc09HorizonWidth}`,
-    animation: sc09MoveHorizonTween,
-    markers: true,
+    // end: `+=3000`,
+    animation: sc09ContainerAni,
+    // markers: true,
     scrub: true,
     pin:true,
 })
 
-ScrollTrigger.create({
-    trigger: '.sc-09 .group-card',
-    start: 'left left',
-    // end: `+=${boxEnd - boxWidth}`,
-    // animation: ,
-    animation: gsap.to('.box', {
-        x: (_, t) => {
-            return boxEnd - t.offsetWidth
-        },
-        // rotation: 360
-    }),
-    containerAnimation: sc09MoveHorizonTween,
-    horizontal: true,
-    markers: true,
-    scrub: true,
-})
+const sc09VerticalAni = gsap.timeline()
+
+// ScrollTrigger.create({
+//     trigger: '.sc-09 .vertical',
+//     start: 'top top',
+//     end: `bottom top`,
+//     animation: sc09VerticalAni,
+//     pin: true,
+//     // pin: '.sc-09 .service-left',
+//     markers: true,
+//     scrub: true,
+// })
 
 // ScrollTrigger.create({
 //     trigger: '.sc-10',
