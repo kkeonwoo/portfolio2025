@@ -219,7 +219,7 @@ const sc09ContainerAni = gsap.timeline()
 .to('.unlock', { opacity: 0}, '<')
 .from('.lock', { opacity: 0})
 .to('.lock', { opacity: 0})
-.to('.horizon', { opacity: 0})
+.to('.horizon1', { opacity: 0})
 .from('.vertical', { opacity: 0}, '<')
 
 function cardTl() {
@@ -246,11 +246,12 @@ ScrollTrigger.create({
 ScrollTrigger.create({
     trigger: '.sc-09 .vertical',
     start: `+=${sc09HorizonWidth}`,
-    end: `bottom top`,
+    end: `top bottom`,
+    endTrigger: '.sc-10',
     // animation: sc09VerticalAni,
     // pin: true,
-    pin: '.service-left',
-    // markers: true,
+    pin: '.sc-09 .service-left',
+    markers: true,
     scrub: true,
     id: 'vertical'
 })

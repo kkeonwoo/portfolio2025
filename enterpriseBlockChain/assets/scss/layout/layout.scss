@@ -92,17 +92,16 @@
     align-items: center;
 
     .card-item {
-        display: flex;
-        flex-direction: column;
-        width: 400px;
-        height: 540px;
-
         .card {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            height: 540px;
             padding: 34px;
             border: 2px solid #fff;
             border-radius: 20px;
             background-color: #000;
-            height: 100%;
+            position: relative;
 
             .card-header {
                 display: flex;

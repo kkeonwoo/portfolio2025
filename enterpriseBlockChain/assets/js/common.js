@@ -24,7 +24,7 @@ Enterprise = {
         },
         serviceSwiper: function() {
             let swiperService = new Swiper('.service-swiper', {
-                slidesPerView: 3,
+                slidesPerView: 'auto'
             })
         }
     }

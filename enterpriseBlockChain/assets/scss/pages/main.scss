@@ -381,7 +381,17 @@
     height: unset;
     background-color: #000;
 
-    .horizon1 {
+    .card.border-gradient {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .title {
+            font-size: 40px;
+            line-height: 1.25;
+        }
+    }
+
+    .horizon {
         height: 100vh;
 
         .move-horizon {
@@ -389,7 +399,23 @@
             align-items: center;
             width: fit-content;
             height: 100%;
-            // padding: 0 100px;
+            
+            .group-card {
+                flex-shrink: 0;
+                
+                .card-item {
+                    padding-right: 40px;
+                    
+                    &:last-child {
+                        padding-right: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .horizon1 {
+        .move-horizon {
             .txt-area {
                 flex-shrink: 0;
                 padding-right: 160px;
@@ -399,13 +425,8 @@
                 }
             }
             .group-card {
-                flex-shrink: 0;
-                
                 .card-item {
-                    padding-right: 40px;
-                    
                     &:last-child {
-                        padding-right: 0;
                         .img-area {
                             position: relative;
                             height: 100%;
@@ -415,6 +436,38 @@
                                 @include absCenter();
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    .horizon2 {
+        .card {
+            &:not(.border-gradient) {
+                position: relative;
+                background-color: unset;
+                border: none;
+                overflow: hidden;
+                &::before {
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    background-blend-mode: multiply;
+                    background-color: hsla(0, 0%, 42%, .3);
+                    @include pseudo();
+                }
+                .card-bg {
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                    @include absCenter();
+                    
+                    img {
+                        position: relative;
+                        z-index: -1;
+                        filter: blur(10px);
                     }
                 }
             }
@@ -434,22 +487,14 @@
                 display: flex;
                 align-items: center;
     
-                .card {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    .title {
-                        font-size: 40px;
-                        line-height: 1.25;
-                    }
-                }
+
                 
             }
     
             .service-right {
                 // margin-left: 400px;
                 flex: 0 0 calc(100% - 400px);
-                padding: calc(var(--full-height, 100vh)* 1) 0 calc(var(--full-height, 100vh)* 1) 13.5417vw;
+                padding: 100vh 0 0 13.5417vw;
     
                 .txt-area {
                     .title {
@@ -513,15 +558,15 @@
                         margin-top: 80px;
     
                         .swiper-slide {
-                            .link-service {
-                                img {
-                                    
-                                }
-                            }
+                            flex: 0 1 300px;
+                            margin-right: 50px;
     
                             .txt-area {
+                                margin-top: 24px;
                                 .service-title {
-    
+                                    font-size: 24px;
+                                    font-weight: 700;
+                                    line-height: 1.67;
                                 }
                             }
                         }
