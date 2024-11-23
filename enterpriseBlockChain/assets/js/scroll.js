@@ -200,19 +200,20 @@ ScrollTrigger.create({
     trigger: '.sc-08',
     start: '-=60% bottom',
     end: 'center bottom',
-    endTrigger: '.sc-09',
+    endTrigger: '.sc-09 .horizon',
     animation: sc08Tl,
-    // markers: true,
+    markers: true,
+    id: 'sc08',
     scrub: true,
 }) 
 
-const sc09HorizonWidth = gsap.getProperty('.sc-09 .move-horizon', 'width')
-const sc09TxtWidth = gsap.getProperty('.sc-09 .move-horizon > .txt-area', 'width')
-const cardListWidth = gsap.getProperty('.sc-09 .move-horizon .card-list', 'width')
-const cardWidth = gsap.getProperty('.sc-09 .move-horizon .card-item', 'width')
+const sc09HorizonWidth = gsap.getProperty('.sc-09 .horizon1 .move-horizon', 'width')
+const sc09TxtWidth = gsap.getProperty('.sc-09 .horizon1 .move-horizon > .txt-area', 'width')
+const cardListWidth = gsap.getProperty('.sc-09 .horizon1 .move-horizon .card-list', 'width')
+const cardWidth = gsap.getProperty('.sc-09 .horizon1 .move-horizon .card-item', 'width')
 
 const sc09ContainerAni = gsap.timeline()
-.to('.sc-09 .move-horizon', { x: -(sc09TxtWidth)})
+.to('.sc-09 .horizon1 .move-horizon', { x: -(sc09TxtWidth)})
 // const sc09innnerAni = gsap.timeline()
 .add(cardTl())
 .to('.unlock', { opacity: 0}, '<')
@@ -223,7 +224,7 @@ const sc09ContainerAni = gsap.timeline()
 
 function cardTl() {
     const tl = gsap.timeline()
-    gsap.utils.toArray('.sc-09 .move-horizon .card-item').forEach((card, idx) => {
+    gsap.utils.toArray('.sc-09 .horizon1 .move-horizon .card-item').forEach((card, idx) => {
         tl.to(card, { x: -(cardWidth * idx)}, '<')
     })
     return tl;
@@ -235,7 +236,7 @@ ScrollTrigger.create({
     end: `+=${sc09HorizonWidth}`,
     // end: `+=3000`,
     animation: sc09ContainerAni,
-    markers: true,
+    // markers: true,
     scrub: true,
     pin:true,
 })
@@ -251,7 +252,7 @@ ScrollTrigger.create({
     pin: '.service-left',
     // markers: true,
     scrub: true,
-    // id: 'vertical'
+    id: 'vertical'
 })
 
 // ScrollTrigger.create({

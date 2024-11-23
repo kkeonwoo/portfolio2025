@@ -362,37 +362,37 @@
   height: unset;
   background-color: #000;
 }
-.sc-09 .horizon {
+.sc-09 .horizon1 {
   height: 100vh;
 }
-.sc-09 .horizon .move-horizon {
+.sc-09 .horizon1 .move-horizon {
   display: flex;
   align-items: center;
   width: fit-content;
   height: 100%;
 }
-.sc-09 .horizon .move-horizon .txt-area {
+.sc-09 .horizon1 .move-horizon .txt-area {
   flex-shrink: 0;
   padding-right: 160px;
 }
-.sc-09 .horizon .move-horizon .txt-area .title {
+.sc-09 .horizon1 .move-horizon .txt-area .title {
   font-size: 72px;
   line-height: 1.28;
 }
-.sc-09 .horizon .move-horizon .group-card {
+.sc-09 .horizon1 .move-horizon .group-card {
   flex-shrink: 0;
 }
-.sc-09 .horizon .move-horizon .group-card .card-item {
+.sc-09 .horizon1 .move-horizon .group-card .card-item {
   padding-right: 40px;
 }
-.sc-09 .horizon .move-horizon .group-card .card-item:last-child {
+.sc-09 .horizon1 .move-horizon .group-card .card-item:last-child {
   padding-right: 0;
 }
-.sc-09 .horizon .move-horizon .group-card .card-item:last-child .img-area {
+.sc-09 .horizon1 .move-horizon .group-card .card-item:last-child .img-area {
   position: relative;
   height: 100%;
 }
-.sc-09 .horizon .move-horizon .group-card .card-item:last-child .img-area img {
+.sc-09 .horizon1 .move-horizon .group-card .card-item:last-child .img-area img {
   width: 150px;
   position: absolute;
   top: 50%;
