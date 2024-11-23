@@ -218,7 +218,8 @@ const sc09ContainerAni = gsap.timeline()
 .to('.unlock', { opacity: 0}, '<')
 .from('.lock', { opacity: 0})
 .to('.lock', { opacity: 0})
-.from('.vertical', { opacity: 0})
+.to('.horizon', { opacity: 0})
+.from('.vertical', { opacity: 0}, '<')
 
 function cardTl() {
     const tl = gsap.timeline()
@@ -234,23 +235,24 @@ ScrollTrigger.create({
     end: `+=${sc09HorizonWidth}`,
     // end: `+=3000`,
     animation: sc09ContainerAni,
-    // markers: true,
+    markers: true,
     scrub: true,
     pin:true,
 })
 
-const sc09VerticalAni = gsap.timeline()
+// const sc09VerticalAni = gsap.timeline()
 
-// ScrollTrigger.create({
-//     trigger: '.sc-09 .vertical',
-//     start: 'top top',
-//     end: `bottom top`,
-//     animation: sc09VerticalAni,
-//     pin: true,
-//     // pin: '.sc-09 .service-left',
-//     markers: true,
-//     scrub: true,
-// })
+ScrollTrigger.create({
+    trigger: '.sc-09 .vertical',
+    start: `+=${sc09HorizonWidth}`,
+    end: `bottom top`,
+    // animation: sc09VerticalAni,
+    // pin: true,
+    pin: '.service-left',
+    // markers: true,
+    scrub: true,
+    // id: 'vertical'
+})
 
 // ScrollTrigger.create({
 //     trigger: '.sc-10',
