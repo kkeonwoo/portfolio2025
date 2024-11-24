@@ -106,7 +106,7 @@
     }
 }
 
-.sc-03 {
+.sc-03, .sc-10 {
     justify-content: center;
     color: #000;
 
@@ -122,31 +122,39 @@
             padding-left: 100px;
             font-size: 24px;
             line-height: 1.67;
+            word-break: keep-all;
         }
     }
 }
 
 .sc-04 {
+    @include bg('bg-sc04.jpg');
+}
+.sc-11 {
+    @include bg('bg-sc11.jpg');
+}
+.sc-04, .sc-11 {
     height: 720px;
     font-size: 72px;
     text-align: center;
     line-height: 1.28;
-    @include bg('bg-sc04.jpg');
-    &::before,
-    &::after {
-        width: 100%;
-        max-width: 21.875%;
-        height: 140px;
-        background-color: #fff;
-        @include pseudo();
-    }
-    &::before {
-        top: 0;
-        right: 0;
-    }
-    &::after {
-        bottom: 0;
-        left: 0;
+    .bg-area {
+        .bg1,
+        .bg2 {
+            position: absolute;
+            width: 100%;
+            max-width: 21.875%;
+            height: 140px;
+            background-color: #fff;
+        }
+        .bg1 {
+            top: 0;
+            right: 0;
+        }
+        .bg2 {
+            bottom: 0;
+            left: 0;
+        }
     }
 
     .txt-area {
@@ -200,28 +208,34 @@
     }
 }
 
-.sc-06 {
-    color: #000;
+.sc-06, .sc-12 {
     .inner {
         display: flex;
         flex-direction: column;
         justify-content: center;
         padding: 0;
-
         .move-horizon {
             display: flex;
             align-items: center;
             width: fit-content;
             height: 100%;
             padding: 0 100px;
+            flex-shrink: 0;
+            
             .txt-area {
-                flex-shrink: 0;
-                margin-right: 160px;
                 .title {
                     font-size: 72px;
                     line-height: 1.28;
                 }
             }
+        }
+    }
+}
+
+.sc-06 {
+    color: #000;
+    .inner {
+        .move-horizon {
             .id-list {
                 display: flex;
                 align-items: center;
@@ -288,8 +302,8 @@
                                     width: 100%;
                                 }
                                 &:nth-child(2), &:nth-child(3) {
-                                    width: 33.5%;
                                     bottom: 26.3%;
+                                    width: 33.5%;
                                 }
                                 &:nth-child(3) {
                                     right: 0;
@@ -310,9 +324,9 @@
         }
         > .txt {
             position: absolute;
-            left: 0;
             right: 0;
             bottom: 4.1667vh;
+            left: 0;
             padding: 0 100px;
             font-size: 14px;
             color: hsla(0, 0%, 100%, .6);
@@ -334,10 +348,10 @@
         }
         .txt {
             width: 50%;
-            font-size: 24px;
-            padding-left: 100px;
-            line-height: 1.67;
             margin-left: auto;
+            padding-left: 100px;
+            font-size: 24px;
+            line-height: 1.67;
         }
     }
 }
@@ -369,11 +383,11 @@
         }
     }
     .txt-area {
-        @include absCenter();
-        font-size: 40px;
-        line-height: 1.25;
         width: 100%;
+        font-size: 40px;
         text-align: center;
+        line-height: 1.25;
+        @include absCenter();
     }
 }
 
@@ -381,54 +395,29 @@
     height: unset;
     background-color: #000;
 
-    .card.border-gradient {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .title {
-            font-size: 40px;
-            line-height: 1.25;
-        }
-    }
+    .card {
+        border: 2px solid #fff;
+        background-color: #000;
 
-    .horizon {
-        height: 100vh;
-
-        .move-horizon {
+        &.border-gradient {
             display: flex;
+            justify-content: center;
             align-items: center;
-            width: fit-content;
-            height: 100%;
-            
-            .group-card {
-                flex-shrink: 0;
-                
-                .card-item {
-                    padding-right: 40px;
-                    
-                    &:last-child {
-                        padding-right: 0;
-                    }
-                }
+            .title {
+                font-size: 40px;
+                line-height: 1.25;
             }
         }
     }
 
     .horizon1 {
         .move-horizon {
-            .txt-area {
-                flex-shrink: 0;
-                padding-right: 160px;
-                .title {
-                    font-size: 72px;
-                    line-height: 1.28;
-                }
-            }
             .group-card {
                 .card-item {
-                    &:last-child {
+                    .border-gradient {
                         .img-area {
                             position: relative;
+                            width: 100%;
                             height: 100%;
         
                             img {
@@ -443,64 +432,52 @@
     }
 
     .horizon2 {
+        .card-item:first-child {
+            position: relative;
+            z-index: 5;
+            opacity: 0;
+        }
         .card {
             &:not(.border-gradient) {
                 position: relative;
-                background-color: unset;
-                border: none;
                 overflow: hidden;
-                &::before {
-                    width: 100%;
-                    height: 100%;
-                    top: 0;
-                    left: 0;
-                    background-blend-mode: multiply;
-                    background-color: hsla(0, 0%, 42%, .3);
-                    @include pseudo();
-                }
-                .card-bg {
-                    width: 100%;
-                    height: 100%;
-                    z-index: -1;
-                    @include absCenter();
-                    
-                    img {
-                        position: relative;
-                        z-index: -1;
-                        filter: blur(10px);
-                    }
+                border: none;
+                background-color: unset;                
+            }
+        }
+    }
+
+    .vertical {
+        margin-top: -100vh;
+        .service-left {
+            display: flex;
+            align-items: center;
+            width: 400px;
+            height: 100vh;
+        }
+        .service-right {
+            flex: 0 0 calc(100% - 400px);
+            .txt-area {
+                .title {
+                    font-size: 72px;
+                    line-height: 1.28;
                 }
             }
         }
     }
-    
-    .vertical {
+
+    .vertical1 {
         .move-vertical {
-            margin-top: -100vh;
             display: flex;
 
             .service-left {
-                // position: fixed;
-                top: 0;
-                width: 400px;
-                height: 100vh;
-                display: flex;
-                align-items: center;
-    
-
-                
+                opacity: 0;
             }
     
             .service-right {
-                // margin-left: 400px;
-                flex: 0 0 calc(100% - 400px);
                 padding: 100vh 0 0 13.5417vw;
     
                 .txt-area {
-                    .title {
-                        font-size: 72px;
-                        line-height: 1.28;
-                    }
                     .desc {
                         max-width: 750px;
                         margin-top: 34px;
@@ -521,8 +498,8 @@
                         }
     
                         .service-info-box {
-                            flex: 0 0.5 400px;
                             height: 200px;
+                            flex: 0 0.5 400px;
                             border-radius: 20px;
                             
                             .info-box-inner {
@@ -540,9 +517,9 @@
                         }
     
                         .txt {
+                            margin-left: 52px;
                             font-size: 24px;
                             line-height: 1.67;
-                            margin-left: 52px;
                         }
                     }
                 }
@@ -558,14 +535,14 @@
                         margin-top: 80px;
     
                         .swiper-slide {
-                            flex: 0 1 300px;
                             margin-right: 50px;
+                            flex: 0 1 300px;
     
                             .txt-area {
                                 margin-top: 24px;
                                 .service-title {
-                                    font-size: 24px;
                                     font-weight: 700;
+                                    font-size: 24px;
                                     line-height: 1.67;
                                 }
                             }
@@ -575,7 +552,326 @@
             }
         }
     }
+
+    .vertical2 {
+        display: flex;
+        align-items: center;
+        opacity: 0;
+        .service-left {
+            .card-list {
+                .card-item {
+                    position: relative;
+                    .bg-glow {
+                        position: absolute;
+                        top: -30%;
+                        left: -30%;
+                        width: 160%;
+                        height: 160%;
+                        @include bg('bg-card-glow.png');
+                    }
+                }
+            }
+        }
+        .service-right {
+            .txt-area {
+                .title {
+                    padding-left: 200px;
+                }
+            }
+        }
+    }
 }
+
 .sc-10 {
     background-color: #000;
+}
+
+.sc-12, .sc-14 {
+    .desc-area {
+        flex-shrink: 0;
+        padding: 0 60px 0 160px;
+
+        .desc {
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 1.67;
+        }
+    }
+}
+
+.sc-12 {
+    color: #000;
+    @keyframes arrow {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: .5;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .card {
+        &.card1 {
+            background-color: #e657af;
+        }
+        &.card2 {
+            background-color: #0049ff;
+        }
+
+        .card-header {
+            height: unset;
+
+            .card-header-right {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+    
+                .txt { 
+                    font-size: 16px;
+                    line-height: 1.63;
+                }
+            }
+        }
+
+        .card-body {
+            .txt-box {
+                & + .txt-box {
+                    margin-top: 30px;
+                }
+                .title {
+                    font-size: 20px;
+                }
+                .txt {
+                    margin-top: 3px;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 1.63;
+                }
+            }
+        }
+
+        .card-footer {
+            .f-title {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.down-area {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    padding: 10px 0 calc(100vh * .065);
+    background-image: linear-gradient(180deg, hsla(0, 0%, 98%, 0), #fff);
+    text-align: center;
+    transform: translateX(-50%);
+    
+    .down {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .down-arrow {
+            display: block;
+            width: 27px;
+            height: 27px;
+            margin-right: -6px;
+            border-width: 8px;
+            border-width: 6px;
+            border-bottom: 0;
+            border-left: 0;
+            border-style: solid;
+            transform: rotate(45deg);
+            animation: arrow 1s infinite alternate;
+
+            &:nth-child(1) {
+                border-image: linear-gradient(60deg,#e657af 60%,#0049ff 160%);
+                border-image-slice: 1;
+                animation-delay: 0.1s; 
+            }
+            &:nth-child(2) {
+                border-image: linear-gradient(60deg,#e657af 20%,#0049ff 145%);
+                border-image-slice: 1;
+                animation-delay: 0.2s;
+            }
+            &:nth-child(3) {
+                border-image: linear-gradient(60deg,#e657af,#0049ff 130%);
+                border-image-slice: 1;
+                animation-delay: 0.3s; 
+            }
+            &:nth-child(4) {
+                border-image: linear-gradient(50deg,#e657af,#0049ff 100%);
+                border-image-slice: 1;
+                animation-delay: 0.4s; 
+            }
+            &:nth-child(5) {
+                border-image: linear-gradient(50deg,#e657af,#0049ff 80%);
+                border-image-slice: 1;
+                animation-delay: 0.5s; 
+            }
+            &:nth-child(6) {
+                border-image: linear-gradient(50deg,#0049ff 45%,#43cf2e 135%);
+                border-image-slice: 1;
+                animation-delay: 0.6s; 
+            }
+            &:nth-child(7) {
+                border-image: linear-gradient(51deg,#0049ff,#43cf2e 75%);
+                border-image-slice: 1;
+                animation-delay: 0.7s; 
+            }
+        }
+    }
+
+    .txt-area {
+        position: relative;
+        margin-top: 15px;
+
+        .txt {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            font-size: 24px;
+            line-height: 1.67;
+            transform: translateX(-46.5%);
+            
+            &:not(:first-child) {
+                opacity: 0;
+            }
+        }
+    }
+
+}
+
+.sc-13 {
+    @include bg('bg-sc13.jpg');
+
+    .inner {
+        display: flex;
+        align-items: center;
+
+        .txt-area {
+            left: 200px;
+            @include absCenter(false, true);
+            .title {
+                font-size: 60px;
+                line-height: 1.2 ;
+            }
+            .desc {
+                font-size: 24px;
+                line-height: 1.67;
+                margin-top: 26px;
+            }
+        }
+    }
+}
+
+.sc-14 {
+    color: #000;
+    
+    .card {
+        &.card2 {
+            background-color: #0049ff;
+        }
+        &.card3 {
+            background-color: #131415;
+        }
+        &.card4 {
+            background-color: #00bf41;
+        }
+        .card-body {
+            .txt {
+                p {
+                    margin-top: 24px;
+                    & + p {
+                        margin-top: 8px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sc-15 {
+    height: unset;
+    color: #000;
+    padding: 200px 0;
+
+    .txt-area {
+        .title {
+            font-size: 72px;
+            line-height: 1.28;
+        }
+        .txt{
+            font-size: 24px;
+            line-height: 1.67;
+            margin-top: 34px;
+        }
+    }
+    .link-wrap {
+        display: flex;
+        margin-top: 70px;
+        gap: 18px;
+
+        .link {
+            font-size: 18px;
+            line-height: 2.22;
+            border: 2px solid #000;
+            padding: 3px 21px 1px;
+            display: block;
+
+            &.link-black {
+                background: #000;
+                color: #fff;
+            }
+        }
+    }
+}
+
+.join {
+    .join-box {
+        display: flex;
+        position: relative;
+
+        &:after {
+            @include pseudo();
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            backdrop-filter: blur(36px);
+        }
+
+        .join-item {
+            flex-shrink: 0;
+            &:nth-child(3n-1) {
+                background: #0049ff;
+            }
+            &:nth-child(3n-2) {
+                background:#00bf41;
+            }
+            &:nth-child(3n) {
+                background: #e657af;
+            } 
+            .join-txt {
+                position: relative;
+                display: block;
+                color: #fff;
+                font-weight: 600;
+                padding: 10px 72px;
+                white-space: nowrap;
+                z-index: 2;
+                font-size: 24px;
+                line-height: 1.67;
+
+                .txt-italic {
+                    font-style: italic;
+                }
+            }
+        }
+    }
 }

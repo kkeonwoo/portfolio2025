@@ -113,26 +113,28 @@ ScrollTrigger.create({
     }
 })
 
-let txt01With = gsap.getProperty('.sc-04 .txt-box:nth-child(1) .title', 'width');
-let txt02With = gsap.getProperty('.sc-04 .txt-box:nth-child(2) .title', 'width');
-let txt03With = gsap.getProperty('.sc-04 .txt-box:nth-child(3) .title', 'width');
-let txt01X = (txt01With + txt02With) / 2;
-let txt03X = (txt03With + txt02With) / 2;
-
-const sc04Tl = gsap.timeline({
-    scrollTrigger: {
-        trigger: '.sc-04',
-        start: '-50% bottom',
-        end: 'bottom bottom',
-        // markers: true,
-        // pin: true,
-        scrub: 1,
-    }
-})
-.from(CSSRulePlugin.getRule(".sc-04::before"), { cssRule: { x: innerWidth } })
-.to('.sc-04 .txt-box:nth-child(1) .txt-move', { x: -`${txt01X}`}, '-=0.5')
-.to('.sc-04 .txt-box:nth-child(3) .txt-move', { x: `${txt03X}`}, '-=0.5')
-.from(CSSRulePlugin.getRule(".sc-04::after"), { cssRule: { x: -innerWidth } }, '-=0.5')
+function crossTxtAni (target) {
+    let txt01With = gsap.getProperty(`${target} .txt-box:nth-child(1) .title`, 'width');
+    let txt02With = gsap.getProperty(`${target} .txt-box:nth-child(2) .title`, 'width');
+    let txt03With = gsap.getProperty(`${target} .txt-box:nth-child(3) .title`, 'width');
+    let txt01X = (txt01With + txt02With) / 2;
+    let txt03X = (txt03With + txt02With) / 2;
+    
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: target,
+            start: '-50% bottom',
+            end: 'bottom bottom',
+            scrub: 1,
+            markers: true,
+        }
+    })
+    .from(`${target} .bg1`, { x: innerWidth })
+    .from(`${target} .bg2`, { x: -innerWidth }, '<')
+    .to(`${target} .txt-box:nth-child(1) .txt-move`, { x: -`${txt01X}`}, '<')
+    .to(`${target} .txt-box:nth-child(3) .txt-move`, { x: `${txt03X}`}, '<')
+}
+crossTxtAni('.sc-04')
 
 ScrollTrigger.create({
     trigger: '.sc-05',
@@ -165,18 +167,18 @@ ScrollTrigger.create({
     }
 })
 
-const horizonWidth = gsap.getProperty('.sc-06 .move-horizon', 'width')
+let horizonWidth = gsap.getProperty(`.sc-06 .move-horizon`, 'width')
+let moveX = horizonWidth - window.innerWidth;
 
 ScrollTrigger.create({
     trigger: '.sc-06',
     start: 'top top',
     end: `+=${horizonWidth}`,
-    animation: gsap.to('.sc-06 .move-horizon', { x: -(horizonWidth - window.innerWidth)}),
-    markers: true,
+    animation: gsap.to(`.sc-06 .move-horizon`, { x: -moveX}),
     scrub: true,
     pin:true,
-    // horizontal: true,
 })
+
 // gsap.to('.sc-06 .move-horizon', { 
 //     x: -(horizonWidth - window.innerWidth),
 //     scrollTrigger: {
@@ -202,73 +204,182 @@ ScrollTrigger.create({
     end: 'center bottom',
     endTrigger: '.sc-09 .horizon',
     animation: sc08Tl,
-    markers: true,
+    // markers: true,
     id: 'sc08',
     scrub: true,
 }) 
 
 const sc09HorizonWidth = gsap.getProperty('.sc-09 .horizon1 .move-horizon', 'width')
+const sc09HorizonHeight = gsap.getProperty('.sc-09 .horizon1 .move-horizon', 'height')
 const sc09TxtWidth = gsap.getProperty('.sc-09 .horizon1 .move-horizon > .txt-area', 'width')
 const cardListWidth = gsap.getProperty('.sc-09 .horizon1 .move-horizon .card-list', 'width')
 const cardWidth = gsap.getProperty('.sc-09 .horizon1 .move-horizon .card-item', 'width')
 
 const sc09ContainerAni = gsap.timeline()
 .to('.sc-09 .horizon1 .move-horizon', { x: -(sc09TxtWidth)})
-// const sc09innnerAni = gsap.timeline()
-.add(cardTl())
+.add(cardTl('.sc-09 .horizon1 .move-horizon .card-item'))
 .to('.unlock', { opacity: 0}, '<')
 .from('.lock', { opacity: 0})
 .to('.lock', { opacity: 0})
-.to('.horizon1', { opacity: 0})
-.from('.vertical', { opacity: 0}, '<')
+.set('.sc-09 .horizon1', { opacity: 0})
 
-function cardTl() {
+function cardTl(target) {
     const tl = gsap.timeline()
-    gsap.utils.toArray('.sc-09 .horizon1 .move-horizon .card-item').forEach((card, idx) => {
+    gsap.utils.toArray(target).forEach((card, idx) => {
         tl.to(card, { x: -(cardWidth * idx)}, '<')
     })
     return tl;
 }
 
 ScrollTrigger.create({
-    trigger: '.sc-09',
+    trigger: '.sc-09 .horizon1',
     start: 'top top',
-    end: `+=${sc09HorizonWidth}`,
-    // end: `+=3000`,
+    end: `+=${sc09HorizonWidth + sc09HorizonWidth}`,
     animation: sc09ContainerAni,
     // markers: true,
     scrub: true,
     pin:true,
+    // onLeave: () => {
+    //     gsap.set('.horizon1', { opacity: 0})
+    //     gsap.set('.sc-09 .service-left', {opacity: 1})
+    // } ,
+    // onEnterBack: () => {
+    //     gsap.set('.horizon1', { opacity: 1})
+    //     gsap.set('.sc-09 .service-left', {opacity: 0})
+    // } ,
 })
-
-// const sc09VerticalAni = gsap.timeline()
 
 ScrollTrigger.create({
-    trigger: '.sc-09 .vertical',
-    start: `+=${sc09HorizonWidth}`,
+    trigger: '.sc-09 .vertical1',
+    start: `top top`,
     end: `top bottom`,
     endTrigger: '.sc-10',
-    // animation: sc09VerticalAni,
-    // pin: true,
     pin: '.sc-09 .service-left',
-    markers: true,
+    // animation: gsap.from('.sc-09 .service-left .title', { opacity: 0}),
+    // onLeave: () => gsap.set('.sc-09 .service-left', {opacity: 0}),
+    // onEnterBack: () => gsap.set('.sc-09 .service-left', {opacity: 1}),
+    // markers: true,
     scrub: true,
-    id: 'vertical'
+    id: 'vertical',
+    onEnter: () => {
+        gsap.set('.sc-09 .service-left', {opacity: 1})
+    },
+    onLeaveBack: () => {
+        gsap.set('.sc-09 .service-left', {opacity: 0})
+    },
+    onLeave: () => {
+        gsap.set('.sc-09 .vertical1', {opacity: 0})
+    },
+    onEnterBack: () => {
+        gsap.set('.sc-09 .vertical1', {opacity: 1})
+    }
 })
 
-// ScrollTrigger.create({
-//     trigger: '.sc-10',
-//     start: 'top top',
-//     markers: true,
-//     scrub: true,
-//     onEnter: () => {
-//         $('#header').addClass('theme-white')
-//         // gsap.to('.section', { color: '#000', backgroundColor: '#fff'})
-//     },
-//     onLeaveBack: () => {
-//         $('#header').removeClass('theme-white')
-//         // gsap.to('.section', { color: '#fff', backgroundColor: '#000'})
-//     }
-// })
+gsap.from('.sc-09 .vertical1 .border-gradient .title', {
+    opacity: 0,
+    scrollTrigger: ({
+        trigger: '.sc-09 .vertical1 .move-vertical',
+        start: 'top top',
+        end: '+=1000',
+        scrub: true,
+    })
+})
+
+const sc09Horizon2Width = gsap.getProperty('.sc-09 .horizon2 .move-horizon', 'width')
+const cardListWidth2 = gsap.getProperty('.sc-09 .horizon2 .move-horizon .card-list', 'width')
+
+const sc09HorizonAni2 = gsap.timeline()
+.set('.sc-09 .horizon2 .card.border-gradient', { opacity: 1})
+.add(cardTl('.sc-09 .horizon2 .move-horizon .card-item'))
+
+ScrollTrigger.create({
+    trigger: '.sc-09 .horizon2',
+    start: 'top top',
+    // start: `+=${sc09HorizonWidth}`,
+    end: `+=${sc09Horizon2Width}`,
+    animation: sc09HorizonAni2,
+    scrub: true,
+    pin:true,
+    id: 'horizontal2',
+    // markers: true,
+    onEnter: () => {
+        gsap.set('.sc-09 .vertical1 .service-left', {opacity: 0})
+        gsap.set('.sc-09 .horizon2 .card-item:first-child', {opacity: 1})
+    },
+    onLeaveBack: () => {
+        gsap.set('.sc-09 .vertical1 .service-left', {opacity: 1})
+        gsap.set('.sc-09 .horizon2 .card-item:first-child', {opacity: 0})
+    },
+    onLeave: () => {
+        gsap.set('.sc-09 .horizon2', {opacity: 0})
+        gsap.set('.sc-09 .vertical2', {opacity: 1})
+    },
+    onEnterBack: () => {
+        gsap.set('.sc-09 .horizon2', {opacity: 1})
+        gsap.set('.sc-09 .vertical2', {opacity: 0})
+    }
+})
+
+const sc09Vertical02 = gsap.timeline()
+.from('.sc-09 .vertical2 .service-left .bg-glow', { opacity: 0})
+.from('.sc-09 .vertical2 .service-right .title', { opacity: 0}, '<')
+
+ScrollTrigger.create({
+    trigger: '.sc-09 .vertical2',
+    start: `top top`,
+    end: `+=1000`,
+    // endTrigger: '.sc-10',
+    pin: true,
+    // animation: gsap.from('.sc-09 .service-left .title', { opacity: 0}),
+    animation: sc09Vertical02,
+    // markers: true,
+    scrub: true,
+    id: 'vertical2',
+})
+
+ScrollTrigger.create({
+    trigger: '.sc-10',
+    start: '-=50% top',
+    // end: 'bottom bottom',
+    // markers: true,
+    id: 'sc10',
+    scrub: true,
+    onEnter: () => {
+        $('#header').addClass('theme-white')
+        gsap.to('.sc-09, .sc-10', { color: '#000', backgroundColor: '#fff'})
+    },
+    onLeaveBack: () => {
+        $('#header').removeClass('theme-white')
+        gsap.to('.sc-09, .sc-10', { color: '#fff', backgroundColor: '#000'})
+    }
+})
+
+crossTxtAni('.sc-11');
+
+let horizonWidth2 = gsap.getProperty(`.sc-12 .move-horizon`, 'width')
+let moveX2 = horizonWidth - window.innerWidth;
+
+ScrollTrigger.create({
+    trigger: '.sc-12',
+    start: 'top top',
+    end: `+=${horizonWidth2}`,
+    animation: gsap.to(`.sc-12 .move-horizon`, { x: -moveX2}),
+    scrub: true,
+    pin:true,
+})
+
+const sc13Tl = gsap.timeline()
+.from('.sc-13 .txt-area', { opacity: 0})
+.to('.sc-13 .txt-area', { opacity: 0})
+
+ScrollTrigger.create({
+    trigger: '.sc-13',
+    start: 'top top',
+    end: 'bottom top',
+    animation: sc13Tl,
+    pin: true,
+    markers: true,
+    scrub: true,
+})
 
 markers()

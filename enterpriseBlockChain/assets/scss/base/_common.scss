@@ -15,6 +15,10 @@
     clip: rect(0, 0, 0, 0);
 }
 
+.card-mask { 
+    display: none;
+}
+
 .border-gradient {
     padding: 0 !important;
     border: 2px solid transparent !important;
