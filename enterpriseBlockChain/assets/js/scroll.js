@@ -61,7 +61,6 @@ const sc01Tl = gsap.timeline({
         trigger: '.sc-01',
         start: 'top top',
         end: 'bottom top',
-        // markers: true,
         pin: true,
         scrub: 1,
         onToggle: ({isActive}) => {
@@ -84,7 +83,6 @@ const sc02Tl = gsap.timeline({
         trigger: '.sc-02',
         start: 'top top',
         end: '+=4000 top',
-        // markers: true,
         pin: true,
         scrub: 1,
     }
@@ -126,7 +124,6 @@ function crossTxtAni (target) {
             start: '-50% bottom',
             end: 'bottom bottom',
             scrub: 1,
-            // markers: true,
         }
     })
     .from(`${target} .bg1`, { x: innerWidth })
@@ -143,13 +140,11 @@ ScrollTrigger.create({
     end: 'bottom top',
     // endTrigger: '.sc-06',
     pin: '.sc-05 .txt-box',
-    // markers: true,
 })
 
 ScrollTrigger.create({
     trigger: '.sc-06',
     start: '-=50% center',
-    // markers: true,
     scrub: true,
     onEnter: () => {
         gsap.to('.sc-05, .sc-06', { color: '#fff', backgroundColor: '#000'})
@@ -204,7 +199,6 @@ ScrollTrigger.create({
     end: 'center bottom',
     endTrigger: '.sc-09 .horizon',
     animation: sc08Tl,
-    // markers: true,
     id: 'sc08',
     scrub: true,
 }) 
@@ -236,7 +230,6 @@ ScrollTrigger.create({
     start: 'top top',
     end: `+=${sc09HorizonWidth + sc09HorizonWidth}`,
     animation: sc09ContainerAni,
-    // markers: true,
     scrub: true,
     pin:true,
     // onLeave: () => {
@@ -258,7 +251,6 @@ ScrollTrigger.create({
     // animation: gsap.from('.sc-09 .service-left .title', { opacity: 0}),
     // onLeave: () => gsap.set('.sc-09 .service-left', {opacity: 0}),
     // onEnterBack: () => gsap.set('.sc-09 .service-left', {opacity: 1}),
-    // markers: true,
     scrub: true,
     id: 'vertical',
     onEnter: () => {
@@ -301,7 +293,6 @@ ScrollTrigger.create({
     scrub: true,
     pin:true,
     id: 'horizontal2',
-    // markers: true,
     onEnter: () => {
         gsap.set('.sc-09 .vertical1 .service-left', {opacity: 0})
         gsap.set('.sc-09 .horizon2 .card-item:first-child', {opacity: 1})
@@ -332,7 +323,6 @@ ScrollTrigger.create({
     pin: true,
     // animation: gsap.from('.sc-09 .service-left .title', { opacity: 0}),
     animation: sc09Vertical02,
-    // markers: true,
     scrub: true,
     id: 'vertical2',
 })
@@ -341,7 +331,6 @@ ScrollTrigger.create({
     trigger: '.sc-10',
     start: '-=50% top',
     // end: 'bottom bottom',
-    // markers: true,
     id: 'sc10',
     scrub: true,
     onEnter: () => {
@@ -357,13 +346,13 @@ ScrollTrigger.create({
 crossTxtAni('.sc-11');
 
 let horizonWidth2 = gsap.getProperty(`.sc-12 .move-horizon`, 'width')
-let moveX2 = horizonWidth - innerWidth;
-
+let lastDescBoxWidth = gsap.getProperty('.sc-12 .desc-area', 'width')
+let moveX2 = horizonWidth - innerWidth - (innerWidth - lastDescBoxWidth);
 
 ScrollTrigger.create({
     trigger: '.sc-12',
     start: 'top top',
-    end: `+=${horizonWidth2}`,
+    end: `bottom`,
     animation: gsap.to(`.sc-12 .move-horizon`, { x: -moveX2}),
     scrub: true,
     pin:true,
@@ -401,21 +390,20 @@ ScrollTrigger.create({
     end: 'bottom top',
     animation: sc13Tl,
     // pin: true,
-    // markers: true,
     scrub: true,
 })
 
 let horizonWidth3 = gsap.getProperty(`.sc-14 .move-horizon`, 'width')
-let moveX3 = horizonWidth - innerWidth;
+let lastDescBoxWidth3 = gsap.getProperty('.sc-14 .desc-area', 'width')
+let moveX3 = horizonWidth3 - innerWidth + lastDescBoxWidth3;
 
 ScrollTrigger.create({
     trigger: '.sc-14',
     start: 'top top',
-    end: `+=${horizonWidth3}`,
+    end: `bottom`,
     animation: gsap.to(`.sc-14 .move-horizon`, { x: -moveX3}),
     scrub: true,
     pin:true,
-    markers:true,
     id: 'sc14',
 })
 
@@ -430,7 +418,6 @@ ScrollTrigger.create({
     end: 'bottom bottom',
     animation: sc15Tl,
     toggleActions: 'restart none reverse none',
-    // markers: true,
     // id: '15'
 })
 
@@ -439,7 +426,6 @@ ScrollTrigger.create({
     start: 'top top',
     end: 'bottom top',
     endTrigger: '#footer',
-    // markers: true,
     onUpdate: (self) => {
         if (self.direction === 1) {
             // scroll down

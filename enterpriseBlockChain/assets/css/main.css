@@ -320,13 +320,13 @@
   line-height: 1.5;
 }
 
-.sc-06 .inner, .sc-12 .inner {
+.sc-06 .inner, .sc-12 .inner, .sc-14 .inner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0;
 }
-.sc-06 .inner .move-horizon, .sc-12 .inner .move-horizon {
+.sc-06 .inner .move-horizon, .sc-12 .inner .move-horizon, .sc-14 .inner .move-horizon {
   display: flex;
   align-items: center;
   width: fit-content;
@@ -334,7 +334,7 @@
   padding: 0 100px;
   flex-shrink: 0;
 }
-.sc-06 .inner .move-horizon .txt-area .title, .sc-12 .inner .move-horizon .txt-area .title {
+.sc-06 .inner .move-horizon .txt-area .title, .sc-12 .inner .move-horizon .txt-area .title, .sc-14 .inner .move-horizon .txt-area .title {
   font-size: 72px;
   line-height: 1.28;
 }
@@ -644,6 +644,9 @@
   background-color: #000;
 }
 
+.sc-12 .move-horizon, .sc-14 .move-horizon {
+  flex-wrap: nowrap;
+}
 .sc-12 .desc-area, .sc-14 .desc-area {
   flex-shrink: 0;
   padding: 0 60px 0 160px;

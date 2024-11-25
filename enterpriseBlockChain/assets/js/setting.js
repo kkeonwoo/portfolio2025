@@ -16,6 +16,7 @@ const container = document.querySelector('#main');
 const options = {
     damping: 0.1,
     alwaysShowTracks: true,
+    delegateTo: document,
 };
 const scrollbar = Scrollbar.init(container, {
     ...options,

@@ -360,7 +360,7 @@
     }
 }
 
-.sc-06, .sc-12 {
+.sc-06, .sc-12, .sc-14 {
     .inner {
         display: flex;
         flex-direction: column;
@@ -739,6 +739,9 @@
 }
 
 .sc-12, .sc-14 {
+    .move-horizon {
+        flex-wrap: nowrap;
+    }
     .desc-area {
         flex-shrink: 0;
         padding: 0 60px 0 160px;
