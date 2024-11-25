@@ -16,6 +16,20 @@
   clip: rect(0, 0, 0, 0);
 }
 
+.btn-top {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 100px;
+  bottom: 40px;
+  z-index: 50;
+  background-color: #111;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+}
+
 .card-mask {
   display: none;
 }
@@ -180,139 +194,9 @@ body {
   color: #fff;
 }
 
-.horizon {
-  height: 100vh;
-}
-
-.move-horizon {
-  display: flex;
-  align-items: center;
-  width: fit-content;
-  height: 100%;
-}
-.move-horizon .txt-area {
-  flex-shrink: 0;
-  padding-right: 160px;
-}
-.move-horizon .txt-area .title {
-  font-size: 72px;
-  line-height: 1.28;
-}
-.move-horizon .group-card {
-  flex-shrink: 0;
-}
-.move-horizon .group-card .card-item {
-  padding-right: 40px;
-}
-.move-horizon .group-card .card-item:last-child {
-  padding-right: 0;
-}
-
-.card-list {
-  display: flex;
-  align-items: center;
-}
-.card-list .card {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 400px;
-  height: 540px;
-  padding: 34px;
-  color: #fff;
-  border-radius: 20px;
-  overflow: hidden;
-}
-.card-list .card .card-bg {
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.card-list .card .card-bg::before {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: hsla(0, 0%, 42%, 0.3);
-  background-blend-mode: multiply;
-  display: block;
-  position: absolute;
-  content: "";
-}
-.card-list .card .card-bg img {
-  position: relative;
-  z-index: -1;
-  filter: url(#sharpBlur);
-}
-.card-list .card .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  height: 110px;
-}
-.card-list .card .card-header .title {
-  font-size: 50px;
-  line-height: 1;
-}
-.card-list .card .card-header .star {
-  font-size: 30px;
-  line-height: 0.67;
-}
-.card-list .card .card-body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  margin-top: 56px;
-}
-.card-list .card .card-body .img-area {
-  max-width: 280px;
-}
-.card-list .card .card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.card-list .card .card-footer .f-title {
-  font-size: 24px;
-  line-height: 1.67;
-}
-.card-list .card .card-footer .profile {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-.card-list .card .card-footer .profile .ico {
-  display: block;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-}
-.card-list .card .card-footer .profile .ico.ico-profile1 {
-  background-color: #ff009d;
-}
-.card-list .card .card-footer .profile .ico.ico-profile2 {
-  background-color: #0049ff;
-}
-.card-list .card .card-footer .profile .ico.ico-profile3 {
-  background-color: #26ff00;
-}
-.card-list .card .card-footer .profile .profile-name {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.63;
-}
-.card-list .card .card-footer .ico.ico-card {
-  display: block;
-  width: 40px;
-  height: 40px;
-  background: url("../images/icon-contract.png") no-repeat center center/100% auto;
-}
-
 #footer {
+  position: relative;
+  z-index: 1;
   background-color: #000;
   color: #fff;
 }

@@ -24,6 +24,156 @@
     }
 }
 
+.horizon {
+    height: 100vh;
+}
+
+.move-horizon {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: 100%;
+
+    .txt-area {
+        flex-shrink: 0;
+        padding-right: 160px;
+        .title {
+            font-size: 72px;
+            line-height: 1.28;
+        }
+    }
+    
+    .group-card {
+        flex-shrink: 0;
+        
+        .card-item {
+            padding-right: 40px;
+            
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+    }
+}
+
+.card-list {
+    display: flex;
+    align-items: center;
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 400px;
+        height: 540px;
+        padding: 34px;
+        color: #fff;
+        border-radius: 20px;
+        overflow: hidden;
+
+        .card-bg {
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            @include absCenter();
+            
+            &::before {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: hsla(0, 0%, 42%, .3);
+                background-blend-mode: multiply;
+                @include pseudo();
+            }
+
+            img {
+                position: relative;
+                z-index: -1;
+                filter: url(#sharpBlur);
+            }
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            height: 110px;
+
+            .title {
+                font-size: 50px;
+                line-height: 1;
+            }
+            .star {
+                font-size: 30px;
+                line-height: .67;
+            }
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin-top: 56px;
+
+            .img-area {
+                max-width: 280px;
+            }
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .f-title {
+                font-size: 24px;
+                line-height: 1.67;
+            }
+
+            .profile {
+                display: flex;
+                align-items: center;
+                gap: 9px;
+
+                .ico {
+                    display: block;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+
+                    &.ico-profile1 {
+                        background-color: #ff009d;
+                    }
+                    &.ico-profile2 {
+                        background-color: #0049ff;
+                    }
+                    &.ico-profile3 {
+                        background-color: #26ff00;
+                    }
+                }
+                .profile-name {
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 1.63;
+                }
+            }
+
+            .ico {
+                &.ico-card {
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    @include bg('icon-contract.png');
+                }
+
+            }
+
+        }
+
+    }
+}
+
 .sc-01 {
     &::before {
         width: 100%;
@@ -130,9 +280,11 @@
 .sc-04 {
     @include bg('bg-sc04.jpg');
 }
+
 .sc-11 {
     @include bg('bg-sc11.jpg');
 }
+
 .sc-04, .sc-11 {
     height: 720px;
     font-size: 72px;
@@ -670,6 +822,7 @@
     background-image: linear-gradient(180deg, hsla(0, 0%, 98%, 0), #fff);
     text-align: center;
     transform: translateX(-50%);
+    opacity: 0;
     
     .down {
         display: flex;
@@ -833,10 +986,15 @@
 }
 
 .join {
+    .marquee {
+
+        display: flex;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+    }
     .join-box {
         display: flex;
         position: relative;
-
         &:after {
             @include pseudo();
             top: 0;

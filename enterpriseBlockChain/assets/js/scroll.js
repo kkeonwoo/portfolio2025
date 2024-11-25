@@ -126,7 +126,7 @@ function crossTxtAni (target) {
             start: '-50% bottom',
             end: 'bottom bottom',
             scrub: 1,
-            markers: true,
+            // markers: true,
         }
     })
     .from(`${target} .bg1`, { x: innerWidth })
@@ -168,7 +168,7 @@ ScrollTrigger.create({
 })
 
 let horizonWidth = gsap.getProperty(`.sc-06 .move-horizon`, 'width')
-let moveX = horizonWidth - window.innerWidth;
+let moveX = horizonWidth - innerWidth;
 
 ScrollTrigger.create({
     trigger: '.sc-06',
@@ -357,7 +357,8 @@ ScrollTrigger.create({
 crossTxtAni('.sc-11');
 
 let horizonWidth2 = gsap.getProperty(`.sc-12 .move-horizon`, 'width')
-let moveX2 = horizonWidth - window.innerWidth;
+let moveX2 = horizonWidth - innerWidth;
+
 
 ScrollTrigger.create({
     trigger: '.sc-12',
@@ -366,6 +367,28 @@ ScrollTrigger.create({
     animation: gsap.to(`.sc-12 .move-horizon`, { x: -moveX2}),
     scrub: true,
     pin:true,
+    markers:true,
+    onEnter: () => {
+        gsap.to(`.down-area`, { autoAlpha: 1})
+    },
+    onLeave: () => {
+        gsap.to(`.down-area`, { autoAlpha: 0})
+    },
+    onLeaveBack: () => {
+        gsap.to(`.down-area`, { autoAlpha: 0})
+    },
+    onEnterBack: () => {
+        gsap.to(`.down-area`, { autoAlpha: 1})
+    },
+    onUpdate: (self) => {
+        if(self.progress.toFixed(2) > 0.5) {
+            gsap.to('.down-area .txt1', { opacity: 0})
+            gsap.to('.down-area .txt2', { opacity: 1})
+        } else {
+            gsap.to('.down-area .txt1', { opacity: 1})
+            gsap.to('.down-area .txt2', { opacity: 0})
+        }
+    }
 })
 
 const sc13Tl = gsap.timeline()
@@ -377,9 +400,60 @@ ScrollTrigger.create({
     start: 'top top',
     end: 'bottom top',
     animation: sc13Tl,
-    pin: true,
-    markers: true,
+    // pin: true,
+    // markers: true,
     scrub: true,
+})
+
+let horizonWidth3 = gsap.getProperty(`.sc-14 .move-horizon`, 'width')
+let moveX3 = horizonWidth - innerWidth;
+
+ScrollTrigger.create({
+    trigger: '.sc-14',
+    start: 'top top',
+    end: `+=${horizonWidth3}`,
+    animation: gsap.to(`.sc-14 .move-horizon`, { x: -moveX3}),
+    scrub: true,
+    pin:true,
+    markers:true,
+    id: 'sc14',
+})
+
+const joinWidth = gsap.getProperty('.join-item', 'width')
+const sc15Tl = gsap.timeline()
+.from('.join', { yPercent: 100})
+.from('.marquee', {duration: 12, x: -(joinWidth * 3), repeat: -1}, '<')
+
+ScrollTrigger.create({
+    trigger: '#footer',
+    start: 'bottom bottom',
+    end: 'bottom bottom',
+    animation: sc15Tl,
+    toggleActions: 'restart none reverse none',
+    // markers: true,
+    // id: '15'
+})
+
+ScrollTrigger.create({
+    trigger: '.sc-02',
+    start: 'top top',
+    end: 'bottom top',
+    endTrigger: '#footer',
+    // markers: true,
+    onUpdate: (self) => {
+        if (self.direction === 1) {
+            // scroll down
+            gsap.to('.btn-top', { opacity: 0})
+        } else {
+            // scroll up
+            gsap.to('.btn-top', { opacity: 1})
+        }
+
+        $('#header .lang .depth2').removeClass('open');
+    },
+    onLeaveBack: () => {
+        gsap.to('.btn-top', { opacity: 0})
+    }
 })
 
 markers()

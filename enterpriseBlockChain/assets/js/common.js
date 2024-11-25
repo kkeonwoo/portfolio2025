@@ -2,6 +2,7 @@ Enterprise = {
     init: function () {
         this.handleLang();
         this.swiper.init();
+        this.scrollTop();
     },
     handleLang: function () {
         const navItem = $('#header .lang')
@@ -17,6 +18,12 @@ Enterprise = {
             e.preventDefault();
             $(this).addClass('active').siblings().removeClass('active');
         })
+
+        $(window).on('click', function(e) {
+            if (!$(e.target).closest(navItem).length) {
+                navLink.siblings().removeClass('open')
+            }
+        })
     },
     swiper: {
         init: function() {
@@ -27,6 +34,16 @@ Enterprise = {
                 slidesPerView: 'auto'
             })
         }
+    },
+    scrollTop: () => {
+        $('.btn-top').on('click', function() {
+            scrollbar.scrollTo(0, 0, 1000, {
+                callback: () => {
+                    $('#header').removeClass('theme-white');
+                    ScrollTrigger.refresh(); 
+                }
+            });
+        })
     }
 }
 
