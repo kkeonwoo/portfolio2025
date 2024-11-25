@@ -48,7 +48,6 @@
 //         animation: tl,
 //         pin: true,
 //         pinSpacing: false,
-//         markers: true,
 //         scrub: true,
 //     })
 
@@ -105,7 +104,6 @@ ScrollTrigger.create({
     start: `top ${header.outerHeight() / 2}`,
     end: 'bottom top',
     endTrigger: '.sc-05',
-    // markers:true,
     onToggle: ({ isActive, animation }) => {
         isActive ? header.addClass('theme-white') : header.removeClass('theme-white')
     }
@@ -180,7 +178,6 @@ ScrollTrigger.create({
 //         trigger: '.sc-06',
 //         start: 'top top',
 //         end: `+=${horizonWidth}`,
-//         markers: true,
 //         scrub: true,
 //         pin:true,
 //         // horizontal: true,
@@ -356,7 +353,6 @@ ScrollTrigger.create({
     animation: gsap.to(`.sc-12 .move-horizon`, { x: -moveX2}),
     scrub: true,
     pin:true,
-    markers:true,
     onEnter: () => {
         gsap.to(`.down-area`, { autoAlpha: 1})
     },
