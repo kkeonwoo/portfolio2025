@@ -8,6 +8,30 @@
   clip: rect(0, 0, 0, 0);
 }
 
+@font-face {
+  font-family: "archivo";
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/APK-Protocol-Regular.woff2') format(' woff2') if true, url('../fonts/APK-Protocol-Regular.woff') format(' woff') if true, url('../fonts/APK-Protocol-Regular.ttf') format(' truetype') if false, url('../fonts/APK-Protocol-Regular.otf') format(' opentype') if false, url('../fonts/APK-Protocol-Regular.eot') format(' embedded-opentype') if false;
+}
+@font-face {
+  font-family: "archivo";
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/SharpGrotesk-Black15.woff2') format(' woff2') if true, url('../fonts/SharpGrotesk-Black15.woff') format(' woff') if true, url('../fonts/SharpGrotesk-Black15.ttf') format(' truetype') if false, url('../fonts/SharpGrotesk-Black15.otf') format(' opentype') if false, url('../fonts/SharpGrotesk-Black15.eot') format(' embedded-opentype') if false;
+}
+@font-face {
+  font-family: "archivo";
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/SharpGrotesk-Black20.woff2') format(' woff2') if true, url('../fonts/SharpGrotesk-Black20.woff') format(' woff') if true, url('../fonts/SharpGrotesk-Black20.ttf') format(' truetype') if false, url('../fonts/SharpGrotesk-Black20.otf') format(' opentype') if false, url('../fonts/SharpGrotesk-Black20.eot') format(' embedded-opentype') if false;
+}
+@font-face {
+  font-family: "archivo";
+  font-weight: 900;
+  font-style: normal;
+  src: url('../fonts/SharpGrotesk-Black25.woff2') format(' woff2') if true, url('../fonts/SharpGrotesk-Black25.woff') format(' woff') if true, url('../fonts/SharpGrotesk-Black25.ttf') format(' truetype') if false, url('../fonts/SharpGrotesk-Black25.otf') format(' opentype') if false, url('../fonts/SharpGrotesk-Black25.eot') format(' embedded-opentype') if false;
+}
 * {
   margin: 0;
   padding: 0;
@@ -49,4 +73,8 @@ ul, ol {
 
 fieldset, input {
   border: 0;
+}
+
+body {
+  font-size: 17px;
 }/*# sourceMappingURL=layout.css.map */

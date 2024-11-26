@@ -91,7 +91,7 @@
                             <a href="" class="link">제휴문의</a>
                         </li>
                         <li class="nav-item lang">
-                            <a href="#" class="link" role="btn">
+                            <button href="#" class="link" aria-expanded="false" aria-haspopup="menu">
                                 <span>
                                     <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <g fill-rule="nonzero" fill="none">
@@ -105,13 +105,13 @@
                                         <path d="m2 4 3 2 3-2" stroke="#FFF" stroke-width="1.2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path>
                                     </svg>
                                 </span>
-                            </a>
+                            </button>
                             <ul class="depth2">
-                                <li class="active">
-                                    <a href="#" class="link" role="button">KR</a>
+                                <li class="active" role="radiogroup">
+                                    <button href="#" class="link" role="radio" aria-selected="true">KR</button>
                                 </li>
                                 <li>
-                                    <a href="#" class="link" role="button">EN</a>
+                                    <button href="#" class="link" role="radio" aria-selected="false">EN</button>
                                 </li>
                             </ul>
                         </li>
@@ -1005,7 +1005,7 @@
                             </div>
                         </div>
                         <div class="link-wrap">
-                            <a href="#" class="link link-black">회사소개서 다운로드</a>
+                            <a href="#" role="button" class="link link-black">회사소개서 다운로드</a>
                             <a href="#" class="link">제휴문의</a>
                             <a href="#" class="link">채용문의</a>
                         </div>

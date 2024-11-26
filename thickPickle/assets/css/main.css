@@ -1,1 +1,18 @@
-/*# sourceMappingURL=main.css.map */
+.intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #262c03;
+}
+.intro .ico-loader {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  font-size: clamp(48px, 8.75vw, 140px);
+}
+
+.sc-hero {
+  height: 100vh;
+}/*# sourceMappingURL=main.css.map */
