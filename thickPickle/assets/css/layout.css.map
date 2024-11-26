@@ -1,0 +1,1 @@
+{"version":3,"sourceRoot":"","sources":["../scss/layout/layout.scss","../scss/base/_common.scss","../scss/base/_reset.scss"],"names":[],"mappings":"AAIA;ACJA;EACI;EACA;EACA;EACA;EACA;EACA;;;ACHJ;EAAE;EAAS;EAAU;EAAa;;;AAClC;EAAoB;;;AACpB;EAAY;;;AACZ;EAAkC;EAAe;;;AACjD;EAAQ;EAAgB;EAAS;;;AACjC;EAAG;;;AACH;EAAO;EAAyB;;;AAChC;EAAO;;;AACP;EAAiB","file":"layout.css"}

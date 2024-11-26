@@ -1,0 +1,5 @@
+@import './vars';
+
+@function _get-flex-value($key) {
+    @return map-get($flex-map, $key);
+}
