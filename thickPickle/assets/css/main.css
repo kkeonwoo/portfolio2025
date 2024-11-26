@@ -15,4 +15,14 @@
 
 .sc-hero {
   height: 100vh;
+}
+.sc-hero .group-bg .bg-box {
+  position: relative;
+  padding-top: 56.25%;
+}
+.sc-hero .group-bg .bg-box .video {
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }/*# sourceMappingURL=main.css.map */
