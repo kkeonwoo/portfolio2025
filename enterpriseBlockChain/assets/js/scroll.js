@@ -95,14 +95,14 @@ ScrollTrigger.create({
     }
 })
 
-let horizonWidth = gsap.getProperty(`.sc-06 .move-horizon`, 'width')
-let moveX = horizonWidth - innerWidth;
+let horizonWidth = gsap.getProperty(`.sc-06 .move-horizon`, 'width');
+let moveX = $('.sc-06 .last').offset().left;
 
 ScrollTrigger.create({
     trigger: '.sc-06',
     start: 'top top',
     end: `+=${horizonWidth}`,
-    animation: gsap.to(`.sc-06 .move-horizon`, { x: -moveX}),
+    animation: gsap.to('.sc-06 .move-horizon', { x: -moveX}),
     scrub: true,
     pin:true,
 })
@@ -252,8 +252,8 @@ ScrollTrigger.create({
 crossTxtAni('.sc-11');
 
 let horizonWidth2 = gsap.getProperty(`.sc-12 .move-horizon`, 'width')
-let lastDescBoxWidth = gsap.getProperty('.sc-12 .desc-area', 'width')
-let moveX2 = horizonWidth - innerWidth - (innerWidth - lastDescBoxWidth);
+let lastWidth2 = gsap.getProperty('.sc-12 .last', 'width')
+let moveX2 = $('.sc-12 .last').offset().left - (innerWidth - lastWidth2);
 
 ScrollTrigger.create({
     trigger: '.sc-12',
@@ -299,8 +299,8 @@ ScrollTrigger.create({
 })
 
 let horizonWidth3 = gsap.getProperty(`.sc-14 .move-horizon`, 'width')
-let lastDescBoxWidth3 = gsap.getProperty('.sc-14 .desc-area', 'width')
-let moveX3 = horizonWidth3 - innerWidth + lastDescBoxWidth3;
+let lastWidth3 = gsap.getProperty('.sc-14 .last', 'width')
+let moveX3 = $('.sc-14 .last').offset().left - (innerWidth - lastWidth3);
 
 ScrollTrigger.create({
     trigger: '.sc-14',

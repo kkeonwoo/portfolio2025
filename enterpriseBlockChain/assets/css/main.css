@@ -376,37 +376,34 @@
 }
 .sc-06 .inner .move-horizon .graphic-wrap {
   flex-shrink: 0;
+  width: 100vw;
   padding: 0 160px;
 }
-.sc-06 .inner .move-horizon .graphic-wrap .graphic-area {
-  width: calc(100vw - 100px);
-  padding-left: 100px;
-}
-.sc-06 .inner .move-horizon .graphic-wrap .graphic-area .graphic-box {
+.sc-06 .inner .move-horizon .graphic-wrap .graphic-box {
   position: relative;
   width: 506px;
   margin: 0 auto;
 }
-.sc-06 .inner .move-horizon .graphic-wrap .graphic-area .graphic-box .txt-area .txt-box {
+.sc-06 .inner .move-horizon .graphic-wrap .graphic-box .txt-area .txt-box {
   position: absolute;
   text-align: center;
 }
-.sc-06 .inner .move-horizon .graphic-wrap .graphic-area .graphic-box .txt-area .txt-box:nth-child(1) {
+.sc-06 .inner .move-horizon .graphic-wrap .graphic-box .txt-area .txt-box:nth-child(1) {
   top: 9%;
   width: 100%;
 }
-.sc-06 .inner .move-horizon .graphic-wrap .graphic-area .graphic-box .txt-area .txt-box:nth-child(2), .sc-06 .inner .move-horizon .graphic-wrap .graphic-area .graphic-box .txt-area .txt-box:nth-child(3) {
+.sc-06 .inner .move-horizon .graphic-wrap .graphic-box .txt-area .txt-box:nth-child(2), .sc-06 .inner .move-horizon .graphic-wrap .graphic-box .txt-area .txt-box:nth-child(3) {
   bottom: 26.3%;
   width: 33.5%;
 }
-.sc-06 .inner .move-horizon .graphic-wrap .graphic-area .graphic-box .txt-area .txt-box:nth-child(3) {
+.sc-06 .inner .move-horizon .graphic-wrap .graphic-box .txt-area .txt-box:nth-child(3) {
   right: 0;
 }
-.sc-06 .inner .move-horizon .graphic-wrap .graphic-area .graphic-box .txt-area .txt-box .title {
+.sc-06 .inner .move-horizon .graphic-wrap .graphic-box .txt-area .txt-box .title {
   font-size: 24px;
   line-height: 1.42;
 }
-.sc-06 .inner .move-horizon .graphic-wrap .graphic-area .graphic-box .txt-area .txt-box .desc {
+.sc-06 .inner .move-horizon .graphic-wrap .graphic-box .txt-area .txt-box .desc {
   font-size: 16px;
   line-height: 1.63;
 }
