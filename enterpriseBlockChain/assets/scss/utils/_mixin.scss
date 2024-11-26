@@ -1,20 +1,20 @@
-@mixin flex($js: center, $ai: center) {
+@mixin flex($js: null, $ai: null) {
     display: flex;
-    align-items: _get-flex-value($ai);
-    justify-content: _get-flex-value($js);
+    @if ($js) { justify-content: map-get($flex-map, $js);}
+    @if ($ai) { align-items: map-get($flex-map, $ai);}
 }
 
-@mixin inline-flex($js: center, $ai: center) {
+@mixin inline-flex($js: null, $ai: null) {
     display: inline-flex;
-    align-items: _get-flex-value($ai);
-    justify-content: _get-flex-value($js);
+    @if ($js) { justify-content: map-get($flex-map, $js);}
+    @if ($ai) { align-items: map-get($flex-map, $ai);}
 }
 
-@mixin column-flex($js: center, $ai: center) {
+@mixin column-flex($js: null, $ai: null) {
     display: flex;
     flex-direction: column;
-    align-items: _get-flex-value($ai);
-    justify-content: _get-flex-value($js);
+    @if ($js) { justify-content: map-get($flex-map, $js);}
+    @if ($ai) { align-items: map-get($flex-map, $ai);}
 }
 
 @mixin absCenter($horizontal: true, $vertical: true) {

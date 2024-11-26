@@ -17,24 +17,29 @@
 .section .inner {
   padding: 0 100px;
 }
+.section .title {
+  font-size: 72px;
+  line-height: 1.28;
+}
+
+.txt {
+  font-size: 24px;
+  line-height: 1.67;
+}
 
 .horizon {
   height: 100vh;
 }
 
 .move-horizon {
-  display: flex;
-  align-items: center;
   width: fit-content;
   height: 100%;
+  display: flex;
+  align-items: center;
 }
 .move-horizon .txt-area {
   flex-shrink: 0;
   padding-right: 160px;
-}
-.move-horizon .txt-area .title {
-  font-size: 72px;
-  line-height: 1.28;
 }
 .move-horizon .group-card {
   flex-shrink: 0;
@@ -51,8 +56,6 @@
   align-items: center;
 }
 .card-list .card {
-  display: flex;
-  flex-direction: column;
   position: relative;
   width: 400px;
   height: 540px;
@@ -60,6 +63,8 @@
   color: #fff;
   border-radius: 20px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .card-list .card .card-bg {
   z-index: -1;
@@ -109,14 +114,14 @@
 .card-list .card .card-body .img-area {
   max-width: 280px;
 }
+.card-list .card .card-body .txt {
+  font-size: 16px;
+  line-height: 1.63;
+}
 .card-list .card .card-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.card-list .card .card-footer .f-title {
-  font-size: 24px;
-  line-height: 1.67;
 }
 .card-list .card .card-footer .profile {
   display: flex;
@@ -165,10 +170,10 @@
   object-fit: cover;
 }
 .sc-01 .txt-box {
+  width: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
   transform: translate(-50%, -50%);
 }
 .sc-01 .txt-box .txt {
@@ -183,8 +188,8 @@
   line-height: 1.67;
 }
 .sc-01 .scroll-down {
-  position: absolute;
   bottom: 40px;
+  position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -199,21 +204,17 @@
   height: 100%;
   background-color: rgb(0, 0, 0);
   opacity: 0;
-  display: block;
   position: absolute;
-  content: "";
 }
 .sc-02 .txt-area {
   max-width: 600px;
   padding: 32px;
-  font-size: 24px;
-  line-height: 1.67;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.sc-02 .txt-area:not(.fade-in) {
+.sc-02 .txt-area:not(.fade-in) .txt {
   z-index: 5;
   font-size: 100px;
   line-height: 1.2;
@@ -226,16 +227,10 @@
 .sc-03 .inner, .sc-10 .inner {
   flex: unset;
 }
-.sc-03 .inner .title, .sc-10 .inner .title {
-  font-size: 72px;
-  line-height: 1.28;
-}
-.sc-03 .inner .desc, .sc-10 .inner .desc {
+.sc-03 .inner .txt, .sc-10 .inner .txt {
   width: 50%;
   margin-left: auto;
   padding-left: 100px;
-  font-size: 24px;
-  line-height: 1.67;
   word-break: keep-all;
 }
 
@@ -297,10 +292,6 @@
   align-items: center;
   height: 100vh;
 }
-.sc-05 .inner .txt-area .txt-box .title {
-  font-size: 72px;
-  line-height: 1.28;
-}
 .sc-05 .inner .img-area {
   padding-top: 100vh;
   flex: 1;
@@ -321,31 +312,27 @@
 }
 
 .sc-06 .inner, .sc-12 .inner, .sc-14 .inner {
+  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0;
 }
 .sc-06 .inner .move-horizon, .sc-12 .inner .move-horizon, .sc-14 .inner .move-horizon {
-  display: flex;
-  align-items: center;
   width: fit-content;
   height: 100%;
   padding: 0 100px;
   flex-shrink: 0;
-}
-.sc-06 .inner .move-horizon .txt-area .title, .sc-12 .inner .move-horizon .txt-area .title, .sc-14 .inner .move-horizon .txt-area .title {
-  font-size: 72px;
-  line-height: 1.28;
+  display: flex;
+  align-items: center;
 }
 
 .sc-06 {
   color: #000;
 }
 .sc-06 .inner .move-horizon .id-list {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  flex-shrink: 0;
 }
 .sc-06 .inner .move-horizon .id-list .id-item {
   width: 300px;
@@ -354,8 +341,6 @@
   margin-left: 75px;
 }
 .sc-06 .inner .move-horizon .id-list .id-item + .id-item .img-area::before {
-  display: block;
-  position: absolute;
   top: 50%;
   left: -28px;
   width: 20px;
@@ -364,6 +349,8 @@
   border-bottom: 0;
   border-left: 0;
   transform: translateX(-100%) rotate(45deg);
+  display: block;
+  position: absolute;
   content: "";
 }
 .sc-06 .inner .move-horizon .id-list .id-item .img-area {
@@ -386,8 +373,6 @@
   margin-top: 24px;
   padding: 0 0 0 20px;
   font-weight: 700;
-  font-size: 24px;
-  line-height: 1.67;
 }
 .sc-06 .inner .move-horizon .graphic-wrap {
   flex-shrink: 0;
@@ -443,17 +428,10 @@
 .sc-07 .inner {
   flex: unset;
 }
-.sc-07 .inner .title {
-  width: 50%;
-  font-size: 72px;
-  line-height: 1.28;
-}
 .sc-07 .inner .txt {
   width: 50%;
   margin-left: auto;
   padding-left: 100px;
-  font-size: 24px;
-  line-height: 1.67;
 }
 
 .sc-08 {
@@ -487,13 +465,15 @@
 }
 .sc-08 .txt-area {
   width: 100%;
-  font-size: 40px;
   text-align: center;
-  line-height: 1.25;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.sc-08 .txt-area .title {
+  font-size: 40px;
+  line-height: 1.25;
 }
 
 .sc-09 {
@@ -513,12 +493,12 @@
   font-size: 40px;
   line-height: 1.25;
 }
-.sc-09 .horizon1 .move-horizon .group-card .card-item .border-gradient .img-area {
+.sc-09 .horizon1 .border-gradient .img-area {
   position: relative;
   width: 100%;
   height: 100%;
 }
-.sc-09 .horizon1 .move-horizon .group-card .card-item .border-gradient .img-area img {
+.sc-09 .horizon1 .border-gradient .img-area img {
   width: 150px;
   position: absolute;
   top: 50%;
@@ -540,17 +520,13 @@
   margin-top: -100vh;
 }
 .sc-09 .vertical .service-left {
-  display: flex;
-  align-items: center;
   width: 400px;
   height: 100vh;
+  display: flex;
+  align-items: center;
 }
 .sc-09 .vertical .service-right {
   flex: 0 0 calc(100% - 400px);
-}
-.sc-09 .vertical .service-right .txt-area .title {
-  font-size: 72px;
-  line-height: 1.28;
 }
 .sc-09 .vertical1 .move-vertical {
   display: flex;
@@ -561,11 +537,9 @@
 .sc-09 .vertical1 .move-vertical .service-right {
   padding: 100vh 0 0 13.5417vw;
 }
-.sc-09 .vertical1 .move-vertical .service-right .txt-area .desc {
+.sc-09 .vertical1 .move-vertical .service-right .txt-area .txt {
   max-width: 750px;
   margin-top: 34px;
-  font-size: 24px;
-  line-height: 1.67;
 }
 .sc-09 .vertical1 .move-vertical .service-right .service-info-list {
   margin-top: 80px;
@@ -583,11 +557,11 @@
   border-radius: 20px;
 }
 .sc-09 .vertical1 .move-vertical .service-right .service-info-list .service-info-item .service-info-box .info-box-inner {
+  height: 100%;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  text-align: center;
 }
 .sc-09 .vertical1 .move-vertical .service-right .service-info-list .service-info-item .service-info-box .info-box-inner .info-txt {
   font-size: 28px;
@@ -595,8 +569,6 @@
 }
 .sc-09 .vertical1 .move-vertical .service-right .service-info-list .service-info-item .txt {
   margin-left: 52px;
-  font-size: 24px;
-  line-height: 1.67;
 }
 .sc-09 .vertical1 .move-vertical .service-right .service-status {
   margin-top: 160px;
@@ -615,15 +587,13 @@
 .sc-09 .vertical1 .move-vertical .service-right .service-status .service-swiper .swiper-slide .txt-area {
   margin-top: 24px;
 }
-.sc-09 .vertical1 .move-vertical .service-right .service-status .service-swiper .swiper-slide .txt-area .service-title {
+.sc-09 .vertical1 .move-vertical .service-right .service-status .service-swiper .swiper-slide .txt-area .txt {
   font-weight: 700;
-  font-size: 24px;
-  line-height: 1.67;
 }
 .sc-09 .vertical2 {
+  opacity: 0;
   display: flex;
   align-items: center;
-  opacity: 0;
 }
 .sc-09 .vertical2 .service-left .card-list .card-item {
   position: relative;
@@ -647,14 +617,12 @@
 .sc-12 .move-horizon, .sc-14 .move-horizon {
   flex-wrap: nowrap;
 }
-.sc-12 .desc-area, .sc-14 .desc-area {
+.sc-12 .move-horizon .desc-area, .sc-14 .move-horizon .desc-area {
   flex-shrink: 0;
   padding: 0 60px 0 160px;
 }
-.sc-12 .desc-area .desc, .sc-14 .desc-area .desc {
+.sc-12 .move-horizon .desc-area .txt, .sc-14 .move-horizon .desc-area .txt {
   font-weight: 700;
-  font-size: 24px;
-  line-height: 1.67;
 }
 
 .sc-12 {
@@ -698,8 +666,6 @@
 .sc-12 .card .card-body .txt-box .txt {
   margin-top: 3px;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 1.63;
 }
 .sc-12 .card .card-footer .f-title {
   font-size: 16px;
@@ -777,6 +743,7 @@
   position: absolute;
   top: 0;
   left: 50%;
+  font-weight: 700;
   font-size: 24px;
   line-height: 1.67;
   transform: translateX(-46.5%);
@@ -832,13 +799,7 @@
   color: #000;
   padding: 200px 0;
 }
-.sc-15 .txt-area .title {
-  font-size: 72px;
-  line-height: 1.28;
-}
 .sc-15 .txt-area .txt {
-  font-size: 24px;
-  line-height: 1.67;
   margin-top: 34px;
 }
 .sc-15 .link-wrap {
@@ -868,14 +829,14 @@
   position: relative;
 }
 .join .join-box:after {
-  display: block;
-  position: absolute;
-  content: "";
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   backdrop-filter: blur(36px);
+  display: block;
+  position: absolute;
+  content: "";
 }
 .join .join-box .join-item {
   flex-shrink: 0;
@@ -889,17 +850,15 @@
 .join .join-box .join-item:nth-child(3n) {
   background: #e657af;
 }
-.join .join-box .join-item .join-txt {
+.join .join-box .join-item .txt {
   position: relative;
   display: block;
   color: #fff;
-  font-weight: 600;
   padding: 10px 72px;
   white-space: nowrap;
+  font-weight: 600;
   z-index: 2;
-  font-size: 24px;
-  line-height: 1.67;
 }
-.join .join-box .join-item .join-txt .txt-italic {
+.join .join-box .join-item .txt .txt-italic {
   font-style: italic;
 }/*# sourceMappingURL=main.css.map */

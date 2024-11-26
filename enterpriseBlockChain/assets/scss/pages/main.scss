@@ -22,6 +22,15 @@
     .inner {
         padding: 0 100px;
     }
+
+    .title {
+        font-size: 72px;
+        line-height: 1.28;
+    }
+}
+.txt {
+    font-size: 24px;
+    line-height: 1.67;
 }
 
 .horizon {
@@ -29,18 +38,13 @@
 }
 
 .move-horizon {
-    display: flex;
-    align-items: center;
     width: fit-content;
     height: 100%;
+    @include flex(_, center);
 
     .txt-area {
         flex-shrink: 0;
         padding-right: 160px;
-        .title {
-            font-size: 72px;
-            line-height: 1.28;
-        }
     }
     
     .group-card {
@@ -61,8 +65,6 @@
     align-items: center;
 
     .card {
-        display: flex;
-        flex-direction: column;
         position: relative;
         width: 400px;
         height: 540px;
@@ -70,6 +72,7 @@
         color: #fff;
         border-radius: 20px;
         overflow: hidden;
+        @include column-flex(_, _);
 
         .card-bg {
             z-index: -1;
@@ -95,9 +98,7 @@
         }
 
         .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            @include flex(between, start);
             height: 110px;
 
             .title {
@@ -119,21 +120,18 @@
             .img-area {
                 max-width: 280px;
             }
+
+            .txt {
+                font-size: 16px;
+                line-height: 1.63;
+            }
         }
 
         .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .f-title {
-                font-size: 24px;
-                line-height: 1.67;
-            }
+            @include flex(between, center);
 
             .profile {
-                display: flex;
-                align-items: center;
+                @include flex(_,center);
                 gap: 9px;
 
                 .ico {
@@ -166,11 +164,8 @@
                     height: 40px;
                     @include bg('icon-contract.png');
                 }
-
             }
-
         }
-
     }
 }
 
@@ -192,11 +187,8 @@
     }
 
     .txt-box {
-        position: absolute;
-        top: 50%;
-        left: 50%;
         width: 100%;
-        transform: translate(-50%, -50%);
+        @include absCenter();
 
         .txt {
             width: fit-content;
@@ -213,10 +205,8 @@
     }
 
     .scroll-down {
-        position: absolute;
         bottom: 40px;
-        left: 50%;
-        transform: translateX(-50%);
+        @include absCenter(true, false);
     }
 }
 
@@ -226,29 +216,22 @@
             position: relative;
             overflow: hidden;
             height: 100vh;
+
             .bg {
                 width: 100%;
                 height: 100%;
                 background-color: rgba(0, 0, 0);
                 opacity: 0;
-                @include pseudo;
+                position: absolute;
             }
-            // &:nth-child(2) {
-            //     z-index: 10;
-            // }
-            // &:nth-child(3) {
-            //     z-index: 15;
-            // }
         }
     }
     .txt-area {
         max-width: 600px;
         padding: 32px;
-        font-size: 24px;
-        line-height: 1.67;
         @include absCenter();
 
-        &:not(.fade-in) {
+        &:not(.fade-in) .txt {
             z-index: 5;
             font-size: 100px;
             line-height: 1.2;
@@ -262,16 +245,10 @@
 
     .inner {
         flex: unset;
-        .title{
-            font-size: 72px;
-            line-height: 1.28;
-        }
-        .desc {
+        .txt {
             width: 50%;
             margin-left: auto;
             padding-left: 100px;
-            font-size: 24px;
-            line-height: 1.67;
             word-break: keep-all;
         }
     }
@@ -324,19 +301,13 @@
     color: #000;
 
     .inner {
-        display: flex;
-        justify-content: space-between;
+        @include flex(between, _);
         
         .txt-area {
             flex: 0 0 470px;
             .txt-box {
-                display: flex;
-                align-items: center;
+                @include flex(_, center);
                 height: 100vh;
-                .title {
-                    font-size: 72px;
-                    line-height: 1.28;
-                }
             }
         }
         .img-area {
@@ -362,24 +333,14 @@
 
 .sc-06, .sc-12, .sc-14 {
     .inner {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         padding: 0;
+        @include column-flex(center, _);
         .move-horizon {
-            display: flex;
-            align-items: center;
             width: fit-content;
             height: 100%;
             padding: 0 100px;
             flex-shrink: 0;
-            
-            .txt-area {
-                .title {
-                    font-size: 72px;
-                    line-height: 1.28;
-                }
-            }
+            @include flex(_, center);
         }
     }
 }
@@ -389,17 +350,14 @@
     .inner {
         .move-horizon {
             .id-list {
-                display: flex;
-                align-items: center;
                 flex-shrink: 0;
+                @include flex(_, center);
                 .id-item {
                     width: 300px;
                     
                     & + .id-item {
                         margin-left: 75px;
                         & .img-area::before {
-                            display: block;
-                            position: absolute;
                             top: 50%;
                             left: -28px;
                             width: 20px;
@@ -408,7 +366,7 @@
                             border-bottom: 0;
                             border-left: 0;
                             transform: translateX(-100%) rotate(45deg);
-                            content: "";
+                            @include pseudo();
                         }
                     }
                     .img-area {
@@ -428,15 +386,13 @@
                         margin-top: 24px;
                         padding: 0 0 0 20px;
                         font-weight: 700;
-                        font-size: 24px;
-                        line-height: 1.67;
                     }
                 }
             }
             .graphic-wrap {
                 flex-shrink: 0;
                 padding: 0 160px;
-                // padding: 0 60px 0 160px;
+
                 .graphic-area {
                     width: calc(100vw - 100px);
                     padding-left: 100px;
@@ -445,10 +401,12 @@
                         position: relative;
                         width: 506px;
                         margin: 0 auto;
+
                         .txt-area {
                             .txt-box {
                                 position: absolute;
                                 text-align: center;
+
                                 &:nth-child(1) {
                                     top: 9%;
                                     width: 100%;
@@ -493,17 +451,10 @@
 
     .inner {
         flex: unset;
-        .title {
-            width: 50%;
-            font-size: 72px;
-            line-height: 1.28;
-        }
         .txt {
             width: 50%;
             margin-left: auto;
             padding-left: 100px;
-            font-size: 24px;
-            line-height: 1.67;
         }
     }
 }
@@ -511,10 +462,13 @@
 .sc-08 {
     height: 173px;
     background-color: #000;
+
     .bg-area {
         display: flex;
+
         .bg-box {
             flex: 1;
+
             &:nth-child(1) {
                 background-color: #e657af;
             }
@@ -527,7 +481,6 @@
             &.filter {
                 width: 100%;
                 height: 100%;
-                // z-index: 10;
                 -webkit-backdrop-filter: blur(50px);
                 backdrop-filter: blur(50px);
                 @include absCenter();
@@ -536,10 +489,13 @@
     }
     .txt-area {
         width: 100%;
-        font-size: 40px;
         text-align: center;
-        line-height: 1.25;
         @include absCenter();
+        
+        .title {
+            font-size: 40px;
+            line-height: 1.25;
+        }
     }
 }
 
@@ -552,9 +508,8 @@
         background-color: #000;
 
         &.border-gradient {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include flex(center, center);
+
             .title {
                 font-size: 40px;
                 line-height: 1.25;
@@ -563,21 +518,15 @@
     }
 
     .horizon1 {
-        .move-horizon {
-            .group-card {
-                .card-item {
-                    .border-gradient {
-                        .img-area {
-                            position: relative;
-                            width: 100%;
-                            height: 100%;
-        
-                            img {
-                                width: 150px;
-                                @include absCenter();
-                            }
-                        }
-                    }
+        .border-gradient {
+            .img-area {
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                img {
+                    width: 150px;
+                    @include absCenter();
                 }
             }
         }
@@ -602,19 +551,12 @@
     .vertical {
         margin-top: -100vh;
         .service-left {
-            display: flex;
-            align-items: center;
             width: 400px;
             height: 100vh;
+            @include flex(_, center);
         }
         .service-right {
             flex: 0 0 calc(100% - 400px);
-            .txt-area {
-                .title {
-                    font-size: 72px;
-                    line-height: 1.28;
-                }
-            }
         }
     }
 
@@ -630,11 +572,9 @@
                 padding: 100vh 0 0 13.5417vw;
     
                 .txt-area {
-                    .desc {
+                    .txt {
                         max-width: 750px;
                         margin-top: 34px;
-                        font-size: 24px;
-                        line-height: 1.67;
                     }
                 }
     
@@ -642,8 +582,7 @@
                     margin-top: 80px;
     
                     .service-info-item {
-                        display: flex;
-                        align-items: center;
+                        @include flex(_, center);
     
                         & + .service-info-item {
                             margin-top: 50px;
@@ -655,11 +594,9 @@
                             border-radius: 20px;
                             
                             .info-box-inner {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
                                 height: 100%;
                                 text-align: center;
+                                @include flex(center, center);
     
                                 .info-txt {
                                     font-size: 28px;
@@ -670,8 +607,6 @@
     
                         .txt {
                             margin-left: 52px;
-                            font-size: 24px;
-                            line-height: 1.67;
                         }
                     }
                 }
@@ -692,10 +627,8 @@
     
                             .txt-area {
                                 margin-top: 24px;
-                                .service-title {
+                                .txt {
                                     font-weight: 700;
-                                    font-size: 24px;
-                                    line-height: 1.67;
                                 }
                             }
                         }
@@ -706,9 +639,9 @@
     }
 
     .vertical2 {
-        display: flex;
-        align-items: center;
         opacity: 0;
+        @include flex(_, center);
+        
         .service-left {
             .card-list {
                 .card-item {
@@ -741,15 +674,14 @@
 .sc-12, .sc-14 {
     .move-horizon {
         flex-wrap: nowrap;
-    }
-    .desc-area {
-        flex-shrink: 0;
-        padding: 0 60px 0 160px;
 
-        .desc {
-            font-weight: 700;
-            font-size: 24px;
-            line-height: 1.67;
+        .desc-area {
+            flex-shrink: 0;
+            padding: 0 60px 0 160px;
+    
+            .txt {
+                font-weight: 700;
+            }
         }
     }
 }
@@ -802,8 +734,6 @@
                 .txt {
                     margin-top: 3px;
                     font-weight: 400;
-                    font-size: 16px;
-                    line-height: 1.63;
                 }
             }
         }
@@ -828,9 +758,7 @@
     opacity: 0;
     
     .down {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex(center, center);
 
         .down-arrow {
             display: block;
@@ -891,6 +819,7 @@
             position: absolute;
             top: 0;
             left: 50%;
+            font-weight: 700;
             font-size: 24px;
             line-height: 1.67;
             transform: translateX(-46.5%);
@@ -958,13 +887,7 @@
     padding: 200px 0;
 
     .txt-area {
-        .title {
-            font-size: 72px;
-            line-height: 1.28;
-        }
         .txt{
-            font-size: 24px;
-            line-height: 1.67;
             margin-top: 34px;
         }
     }
@@ -990,7 +913,6 @@
 
 .join {
     .marquee {
-
         display: flex;
         flex-wrap: nowrap;
         white-space: nowrap;
@@ -999,12 +921,12 @@
         display: flex;
         position: relative;
         &:after {
-            @include pseudo();
             top: 0;
             left: 0;
             height: 100%;
             width: 100%;
             backdrop-filter: blur(36px);
+            @include pseudo();
         }
 
         .join-item {
@@ -1018,16 +940,14 @@
             &:nth-child(3n) {
                 background: #e657af;
             } 
-            .join-txt {
+            .txt {
                 position: relative;
                 display: block;
                 color: #fff;
-                font-weight: 600;
                 padding: 10px 72px;
                 white-space: nowrap;
+                font-weight: 600;
                 z-index: 2;
-                font-size: 24px;
-                line-height: 1.67;
 
                 .txt-italic {
                     font-style: italic;

@@ -49,4 +49,7 @@ Enterprise = {
 
 $(() => {
     Enterprise.init();
+    $(window).on('refresh', () => {
+        $('#header').removeClass('theme-white')
+    })
 });

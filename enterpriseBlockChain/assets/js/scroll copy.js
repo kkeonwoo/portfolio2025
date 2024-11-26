@@ -1,3 +1,58 @@
+// const text = document.querySelectorAll('.txt-box');
+// const exceptTxt = `.sc-01 .txt-box:not(:last-child)`
+// const video = document.querySelector('#mainVideo');
+
+// const textTl = gsap.timeline({
+//     scrollTrigger: {
+//         trigger: '.sc-01',
+//         start: 'top top',
+//         end: 'bottom top',
+//         pin: true,
+//         // pinSpacing: false,
+//         scrub: 1,
+//     }
+// })
+// .to(CSSRulePlugin.getRule(".sc-01::before"), { duration: 1, cssRule: { opacity: 0.6 } })
+// text.forEach((txt, idx) => {
+//     textTl.from(txt, { 
+//         opacity: 0,
+//         onComplete: () => idx === 0 && $('#header').addClass('on'),
+//     })
+//     .to(exceptTxt, { 
+//         opacity: 0,
+//     })
+// })
+
+// function section2Animation() {
+
+//     gsap.utils.toArray('.sc-02 .txt-box').forEach((txt, idx) => {
+//         const target = txt.querySelector('.txt-move');
+    
+//         ScrollTrigger.create({
+//             trigger: txt,
+//             start: 'top center',
+//             end: 'bottom center',
+//             animation: gsap.fromTo(target, { x: idx % 2 ? innerWidth : -innerWidth}, { x: 0}),
+//             scrub: true,
+//         })
+//     });
+
+//     const tl = gsap.timeline()
+//     .to(CSSRulePlugin.getRule(".sc-02 .img-cover:nth-child(1)::before"), { cssRule: { opacity: 0.6 } })
+//     .to(CSSRulePlugin.getRule(".sc-02 .img-cover:nth-child(1)::before"), { cssRule: { opacity: 0 } })
+
+//     ScrollTrigger.create({
+//         trigger: '.sc-02',
+//         start: 'top top',
+//         end: '+=300% top',
+//         animation: tl,
+//         pin: true,
+//         pinSpacing: false,
+//         scrub: true,
+//     })
+
+// }
+// section2Animation()
 gsap.defaults({ease: 'none'})
 
 const sc01Tl = gsap.timeline({
@@ -39,6 +94,8 @@ const sc02Tl = gsap.timeline({
 .to('.sc-02 .img-cover:nth-child(2)', { yPercent:-100})
 .to('.sc-02 .img-cover:nth-child(3)', { yPercent:-200})
 .to((".sc-02 .img-area .img-cover:nth-child(3) .bg"), { duration: 1, opacity: 0.6})
+// .set('.sc-02 .txt-area.fade-in', { zIndex: 20})
+// .to(CSSRulePlugin.getRule(".sc-02 .img-area .img-cover:nth-of-type(3)::before"), { cssRule: { opacity: 0.6, immediateRender: false, } })
 .from('.sc-02 .txt-area.fade-in .txt-move', { duration: 1, opacity: 0}, '<')
 
 const header = $('#header');
@@ -77,7 +134,9 @@ crossTxtAni('.sc-04')
 ScrollTrigger.create({
     trigger: '.sc-05',
     start: 'top top',
+    // end: () => `+=${$('.sc-06').offset().top - $('.sc-05').offset().top}`,
     end: 'bottom top',
+    // endTrigger: '.sc-06',
     pin: '.sc-05 .txt-box',
 })
 
@@ -89,6 +148,12 @@ ScrollTrigger.create({
         gsap.to('.sc-05, .sc-06', { color: '#fff', backgroundColor: '#000'})
         $('#header').removeClass('theme-white')
     },
+    // onEnterBack: () => {
+    //     gsap.to('.section', { color: '#fff', backgroundColor: '#000'})
+    // },
+    // onLeave: () => {
+    //     gsap.to('.section', { color: '#000', backgroundColor: '#fff'})
+    // },
     onLeaveBack: () => {
         gsap.to('.sc-05, .sc-06', { color: '#000', backgroundColor: '#fff'})
         $('#header').addClass('theme-white')
@@ -106,6 +171,18 @@ ScrollTrigger.create({
     scrub: true,
     pin:true,
 })
+
+// gsap.to('.sc-06 .move-horizon', { 
+//     x: -(horizonWidth - window.innerWidth),
+//     scrollTrigger: {
+//         trigger: '.sc-06',
+//         start: 'top top',
+//         end: `+=${horizonWidth}`,
+//         scrub: true,
+//         pin:true,
+//         // horizontal: true,
+//     }
+// })
 
 const sc08Tl = gsap.timeline()
 .from('.sc-08 .move-left', { duration:2, xPercent: -50})
@@ -152,6 +229,14 @@ ScrollTrigger.create({
     animation: sc09ContainerAni,
     scrub: true,
     pin:true,
+    // onLeave: () => {
+    //     gsap.set('.horizon1', { opacity: 0})
+    //     gsap.set('.sc-09 .service-left', {opacity: 1})
+    // } ,
+    // onEnterBack: () => {
+    //     gsap.set('.horizon1', { opacity: 1})
+    //     gsap.set('.sc-09 .service-left', {opacity: 0})
+    // } ,
 })
 
 ScrollTrigger.create({
@@ -160,6 +245,9 @@ ScrollTrigger.create({
     end: `top bottom`,
     endTrigger: '.sc-10',
     pin: '.sc-09 .service-left',
+    // animation: gsap.from('.sc-09 .service-left .title', { opacity: 0}),
+    // onLeave: () => gsap.set('.sc-09 .service-left', {opacity: 0}),
+    // onEnterBack: () => gsap.set('.sc-09 .service-left', {opacity: 1}),
     scrub: true,
     id: 'vertical',
     onEnter: () => {
@@ -196,6 +284,7 @@ const sc09HorizonAni2 = gsap.timeline()
 ScrollTrigger.create({
     trigger: '.sc-09 .horizon2',
     start: 'top top',
+    // start: `+=${sc09HorizonWidth}`,
     end: `+=${sc09Horizon2Width}`,
     animation: sc09HorizonAni2,
     scrub: true,
@@ -227,7 +316,9 @@ ScrollTrigger.create({
     trigger: '.sc-09 .vertical2',
     start: `top top`,
     end: `+=1000`,
+    // endTrigger: '.sc-10',
     pin: true,
+    // animation: gsap.from('.sc-09 .service-left .title', { opacity: 0}),
     animation: sc09Vertical02,
     scrub: true,
     id: 'vertical2',
@@ -323,6 +414,7 @@ ScrollTrigger.create({
     end: 'bottom bottom',
     animation: sc15Tl,
     toggleActions: 'restart none reverse none',
+    // id: '15'
 })
 
 ScrollTrigger.create({
