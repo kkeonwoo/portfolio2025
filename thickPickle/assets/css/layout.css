@@ -156,23 +156,22 @@ html {
   left: 0;
   width: 100%;
   z-index: 100;
+  padding: calc(var(--grid-gutter) * 1);
 }
 #header .header-inner {
+  position: relative;
   mix-blend-mode: difference;
-  padding: calc(var(--grid-gutter) * 1);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 #header .header-inner .logo {
-  top: calc(var(--grid-gutter) * 1);
+  top: 0;
   left: calc(50% - 1.15em);
   width: 2.3em;
   font-size: 2.375rem;
   transform-origin: 50% 0;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 #header .header-inner .logo svg {
   display: block;
