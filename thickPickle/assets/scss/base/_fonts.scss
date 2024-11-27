@@ -1,4 +1,4 @@
-@include font-face('archivo', '../fonts/APK-Protocol-Regular', 400, normal);
-@include font-face('archivo', '../fonts/SharpGrotesk-Black15', 400, normal);
-@include font-face('archivo', '../fonts/SharpGrotesk-Black20', 700, normal);
-@include font-face('archivo', '../fonts/SharpGrotesk-Black25', 900, normal);
+@include font-face('APK-Protocol', '../fonts/APK-Protocol-Regular', 400, normal, "woff2");
+@include font-face('SharpGrotesk', '../fonts/SharpGrotesk-Black15', 400, normal, "woff2");
+@include font-face('SharpGrotesk', '../fonts/SharpGrotesk-Black20', 700, normal, "woff2");
+@include font-face('SharpGrotesk', '../fonts/SharpGrotesk-Black25', 900, normal, "woff2");

@@ -8,29 +8,42 @@
   clip: rect(0, 0, 0, 0);
 }
 
+.dot {
+  display: block;
+  position: absolute;
+  background-color: var(--dot-color, currentColor);
+  border-radius: 50%;
+}
+@media (min-width: 700px) {
+  .dot {
+    width: var(--dot-default-size);
+    height: var(--dot-default-size);
+  }
+}
+
 @font-face {
-  font-family: "archivo";
+  font-family: "APK-Protocol";
   font-weight: 400;
   font-style: normal;
-  src: url('../fonts/APK-Protocol-Regular.woff2') format(' woff2') if true, url('../fonts/APK-Protocol-Regular.woff') format(' woff') if true, url('../fonts/APK-Protocol-Regular.ttf') format(' truetype') if false, url('../fonts/APK-Protocol-Regular.otf') format(' opentype') if false, url('../fonts/APK-Protocol-Regular.eot') format(' embedded-opentype') if false;
+  src: url('../fonts/APK-Protocol-Regular.woff2') format('woff2');
 }
 @font-face {
-  font-family: "archivo";
+  font-family: "SharpGrotesk";
   font-weight: 400;
   font-style: normal;
-  src: url('../fonts/SharpGrotesk-Black15.woff2') format(' woff2') if true, url('../fonts/SharpGrotesk-Black15.woff') format(' woff') if true, url('../fonts/SharpGrotesk-Black15.ttf') format(' truetype') if false, url('../fonts/SharpGrotesk-Black15.otf') format(' opentype') if false, url('../fonts/SharpGrotesk-Black15.eot') format(' embedded-opentype') if false;
+  src: url('../fonts/SharpGrotesk-Black15.woff2') format('woff2');
 }
 @font-face {
-  font-family: "archivo";
+  font-family: "SharpGrotesk";
   font-weight: 700;
   font-style: normal;
-  src: url('../fonts/SharpGrotesk-Black20.woff2') format(' woff2') if true, url('../fonts/SharpGrotesk-Black20.woff') format(' woff') if true, url('../fonts/SharpGrotesk-Black20.ttf') format(' truetype') if false, url('../fonts/SharpGrotesk-Black20.otf') format(' opentype') if false, url('../fonts/SharpGrotesk-Black20.eot') format(' embedded-opentype') if false;
+  src: url('../fonts/SharpGrotesk-Black20.woff2') format('woff2');
 }
 @font-face {
-  font-family: "archivo";
+  font-family: "SharpGrotesk";
   font-weight: 900;
   font-style: normal;
-  src: url('../fonts/SharpGrotesk-Black25.woff2') format(' woff2') if true, url('../fonts/SharpGrotesk-Black25.woff') format(' woff') if true, url('../fonts/SharpGrotesk-Black25.ttf') format(' truetype') if false, url('../fonts/SharpGrotesk-Black25.otf') format(' opentype') if false, url('../fonts/SharpGrotesk-Black25.eot') format(' embedded-opentype') if false;
+  src: url('../fonts/SharpGrotesk-Black25.woff2') format('woff2');
 }
 :root {
   --grid-columns: 4;
@@ -62,6 +75,7 @@
     --grid-columns: 12;
     --grid-gutter: 1.5rem;
     --grid-margin: 1.25rem;
+    --dot-default-size: 1.5rem;
   }
 }
 
@@ -156,11 +170,11 @@ html {
   left: 0;
   width: 100%;
   z-index: 100;
+  mix-blend-mode: difference;
   padding: calc(var(--grid-gutter) * 1);
 }
 #header .header-inner {
   position: relative;
-  mix-blend-mode: difference;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -178,4 +192,10 @@ html {
   width: 2.3em;
   height: 1.4999999999em;
   fill: #8eff00;
+}
+#header .header-inner .link-utils {
+  clip-path: polygon(0 0, 100% 0, 100% 120%, 0 120%);
+}
+#header .header-inner .link-utils .txt {
+  display: block;
 }/*# sourceMappingURL=layout.css.map */

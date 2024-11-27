@@ -13,11 +13,11 @@
     left: 0;
     width: 100%;
     z-index: 100;
+    mix-blend-mode: difference;
     padding: calc(var(--grid-gutter)* 1);
 
     .header-inner {
         position: relative;
-        mix-blend-mode: difference;
         @include flex(between, center);
 
         .logo {
@@ -33,6 +33,14 @@
                 width: 2.3em;
                 height: calc(2.3em* .652173913);
                 fill: #8eff00;
+            }
+        }
+        
+        .link-utils {
+            clip-path: polygon(0 0, 100% 0, 100% 120%, 0 120%);
+            
+            .txt { 
+                display: block;
             }
         }
     }
