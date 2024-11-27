@@ -15,10 +15,27 @@
 
 .sc-hero {
   height: 100vh;
+  color: #8eff00;
 }
 .sc-hero .group-bg .bg-box .video {
   display: block;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
+}
+.sc-hero .group-title {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.sc-hero .group-title .txt-ani .txt {
+  font-size: 0.9em;
+  mix-blend-mode: difference;
+  line-height: 0.775;
+  font-weight: 900;
+}
+.sc-hero .group-title .txt-ani .txt.txt-lg {
+  font-family: "SharpGrotesk 20", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  font-size: 0.5em;
 }/*# sourceMappingURL=main.css.map */

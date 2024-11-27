@@ -20,6 +20,7 @@
 
 .sc-hero {
     height: 100vh;
+    color: #8eff00;
 
     .group-bg {
         .bg-box {
@@ -28,6 +29,27 @@
                 width: 100vw;
                 height: 100vh;
                 object-fit: cover;
+            }
+        }
+    }
+
+    .group-title {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        .txt-ani {
+            .txt {
+                font-size: .9em;
+                mix-blend-mode: difference;
+                line-height: .775;
+                font-weight: 900;
+
+                &.txt-lg {
+                    font-family: "SharpGrotesk 20", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+                    font-size: .5em;
+                }
             }
         }
     }
