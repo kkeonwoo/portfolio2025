@@ -198,4 +198,9 @@ html {
 }
 #header .header-inner .link-utils .txt {
   display: block;
+}
+
+#main {
+  width: 100vw;
+  height: 100vh;
 }/*# sourceMappingURL=layout.css.map */
