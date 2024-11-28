@@ -21,7 +21,6 @@ const options = {
 const scrollbar = Scrollbar.init(container, {
     ...options,
 });
-console.log(scrollbar);
 
 scrollbar.track.xAxis.element.remove();
 
