@@ -84,6 +84,7 @@
   padding: 0;
   font: inherit;
   color: inherit;
+  text-transform: uppercase;
 }
 
 *, :after, :before {
@@ -195,6 +196,9 @@ html {
 }
 #header .header-inner .link-utils {
   clip-path: polygon(0 0, 100% 0, 100% 120%, 0 120%);
+}
+#header .header-inner .link-utils:hover .txt {
+  text-decoration: underline;
 }
 #header .header-inner .link-utils .txt {
   display: block;
