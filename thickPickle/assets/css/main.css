@@ -1,3 +1,7 @@
+.txt-ani {
+  overflow: hidden;
+}
+
 .intro {
   position: fixed;
   top: 0;
@@ -63,4 +67,18 @@
 }
 .sc-hero .dot:nth-of-type(2) {
   right: calc(var(--grid-gutter) * 1);
+}
+
+.sc-character {
+  position: relative;
+  height: 100vh;
+}
+.sc-character .group-img {
+  display: flex;
+  justify-content: center;
+}
+.sc-character .group-txt .txt-area {
+  position: absolute;
+  left: calc(var(--grid-gutter) * 1);
+  bottom: calc(var(--grid-gutter) * 1);
 }/*# sourceMappingURL=main.css.map */

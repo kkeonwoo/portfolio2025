@@ -2,6 +2,10 @@
 @import '../utils/mixin';
 @import '../utils/vars';
 
+.txt-ani {
+    overflow: hidden;
+}
+
 .intro {
     position: fixed;
     top: 0;
@@ -79,18 +83,28 @@
 }
 
 .sc-character {
+    position: relative;
+    height: 100vh;
 
     .group-img {
+        display: flex;
+        justify-content: center;
+
         .img-area {
+            position: relative;
+            width: calc(718 / 1920 * 100%);
+            padding-top: ;
             #canvas {
-                // width: ;
-                // height: ;
             }
         }
     }
 
     .group-txt {
-
+        .txt-area {
+            position: absolute;
+            left: calc(var(--grid-gutter)* 1);
+            bottom: calc(var(--grid-gutter)* 1);
+        }
     }
 
 }
