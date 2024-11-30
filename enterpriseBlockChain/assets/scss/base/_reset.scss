@@ -13,4 +13,9 @@ fieldset, input {border: 0;}
 
 body {
     font-family: 'Archivo','NotoSansCJKkr';
+    background-color: #fff;
+    transition: .3s;
+    &.dark {
+        background-color: #000;
+    }
 }

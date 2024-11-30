@@ -88,7 +88,8 @@
 }
 
 *, :after, :before {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html, body {
@@ -176,16 +177,23 @@ html {
 }
 #header .header-inner {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 #header .header-inner .logo {
   top: 0;
   left: calc(50% - 1.15em);
   width: 2.3em;
   font-size: 2.375rem;
-  transform-origin: 50% 0;
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
   position: absolute;
 }
 #header .header-inner .logo svg {
@@ -195,7 +203,8 @@ html {
   fill: #8eff00;
 }
 #header .header-inner .link-utils {
-  clip-path: polygon(0 0, 100% 0, 100% 120%, 0 120%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 120%, 0 120%);
+          clip-path: polygon(0 0, 100% 0, 100% 120%, 0 120%);
 }
 #header .header-inner .link-utils:hover .txt {
   text-decoration: underline;

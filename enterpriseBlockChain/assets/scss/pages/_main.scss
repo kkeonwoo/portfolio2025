@@ -1,23 +1,7 @@
-@import '../utils/function';
-@import '../utils/mixin';
-@import '../utils/vars';
-
-#main {
-    width: 100vw;
-    height: 100vh;
-}
-
 .section {
-    display: flex;
-    flex-direction: column;
     position: relative;
-    height: 100vh;
     font-weight: 600;
     color: #fff;
-
-    > * {
-        flex: 1;
-    }
 
     .inner {
         padding: 0 100px;
@@ -170,15 +154,25 @@
 }
 
 .sc-01 {
-    &::before {
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0);
-        opacity: 0;
-        @include pseudo();
+    --opacity: 0;
+    height: 800vh;
+    
+    .sticky {
+        &::before {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(#000, .3);
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+            opacity: var(--opacity);
+            @include pseudo();
+        }
     }
 
     .video-area {
+        height: 100%;
+
         video {
             width: 100%;
             height: 100%;
@@ -188,6 +182,7 @@
 
     .txt-box {
         width: 100%;
+        z-index: 2;
         @include absCenter();
 
         .txt {
@@ -211,24 +206,43 @@
 }
 
 .sc-02 {
-    .img-area {
-        .img-cover {
-            position: relative;
-            overflow: hidden;
-            height: 100vh;
+    --opacity: 0;
+    height: 600vh;
 
-            .bg {
+    .sticky {
+        &::before {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(#000, .3);
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+            opacity: var(--opacity);
+            @include pseudo();
+        }
+    }
+    .img-area {
+        height: 100vh;
+
+        .img-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+
+            img{
                 width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0);
-                opacity: 0;
-                position: absolute;
+                height: 100vh;
+                object-fit: cover;
             }
         }
     }
     .txt-area {
         max-width: 600px;
         padding: 32px;
+        z-index: 1;
         @include absCenter();
 
         &:not(.fade-in) .txt {
@@ -263,6 +277,7 @@
 }
 
 .sc-04, .sc-11 {
+    --progress: 0;
     height: 720px;
     font-size: 72px;
     text-align: center;
@@ -271,8 +286,7 @@
         .bg1,
         .bg2 {
             position: absolute;
-            width: 100%;
-            max-width: 21.875%;
+            width: calc(21.875% * var(--progress));
             height: 140px;
             background-color: #fff;
         }
@@ -297,13 +311,15 @@
 }
 
 .sc-05 {
-    height: unset;
     color: #000;
 
     .inner {
         @include flex(between, _);
         
         .txt-area {
+            position: sticky;
+            top: 0;
+            height: 100vh;
             flex: 0 0 470px;
             .txt-box {
                 @include flex(_, center);
@@ -311,7 +327,7 @@
             }
         }
         .img-area {
-            padding-top: 100vh;
+            padding: 100vh 0;
             flex: 1;
             .img-box {
                 max-width: 46%;
@@ -327,6 +343,20 @@
                     line-height: 1.5;
                 }
             }
+        }
+    }
+}
+
+.horizon-parent {
+    .inner {
+        padding: 0;
+        @include column-flex(center, _);
+        .move-horizon {
+            width: fit-content;
+            height: 100%;
+            padding: 0 100px;
+            flex-shrink: 0;
+            @include flex(_, center);
         }
     }
 }
@@ -347,7 +377,17 @@
 
 .sc-06 {
     color: #000;
+    // @extend .horizon-parent;
+    border: 10px solid #f00;
+    height: 300vh;
+    .dark & {
+        color: #fff;
+    }
+    .sticky {
+
+    }
     .inner {
+        height: 100%;
         .move-horizon {
             .id-list {
                 flex-shrink: 0;
@@ -461,6 +501,7 @@
 
     .bg-area {
         display: flex;
+        height: 100%;
 
         .bg-box {
             flex: 1;
@@ -479,6 +520,7 @@
                 height: 100%;
                 -webkit-backdrop-filter: blur(50px);
                 backdrop-filter: blur(50px);
+                opacity: 0;
                 @include absCenter();
             }
         }
@@ -496,8 +538,20 @@
 }
 
 .sc-09 {
-    height: unset;
-    background-color: #000;
+
+    .horizon-wrap {
+        border: 10px solid #f00;
+        height: 500vh;
+        .horizon-wrapper {
+            height: 600vh;
+            border: 20px solid pink;
+        }
+        .horizon {
+            position: sticky;
+            top: 0;
+            border: 5px solid #0f0;
+        }
+    }
 
     .card {
         border: 2px solid #fff;
@@ -664,11 +718,11 @@
 }
 
 .sc-10 {
-    background-color: #000;
 }
 
 .sc-12, .sc-14 {
     .move-horizon {
+        width: max-content;
         flex-wrap: nowrap;
 
         .desc-area {
@@ -684,6 +738,8 @@
 
 .sc-12 {
     color: #000;
+    height: 500vh;
+
     @keyframes arrow {
         0% {
             opacity: 0;
