@@ -7,8 +7,7 @@
     <title>Thick Pickle | Gloriously thick pickles.</title>
 
     <!-- link:css -->
-    <link rel="stylesheet" href="./assets/css/layout.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/swiper.min.css">
     <!-- script -->
     <script src="./assets/js/lib/jquery-3.7.1.min.js"></script>
@@ -17,10 +16,6 @@
     <script src="./assets/js/lib/gsap/gsap.min.js"></script>
     <script src="./assets/js/lib/gsap/ScrollTrigger.min.js"></script>
     <script src="./assets/js/lib/gsap/ScrollToPlugin.min.js"></script>
-    <script src="./assets/js/lib/gsap/CSSRulePlugin.min.js"></script>
-    <script src="./assets/js/lib/smooth-scrollbar.min.js"></script>
-    <script src="./assets/js/lib/splitting.min.js"></script>
-    <script src="./assets/js/setting.js" defer></script>
     <script src="./assets/js/common.js" defer></script>
     <script src="./assets/js/scroll.js" defer></script>
 </head>
@@ -60,72 +55,213 @@
                     </div>
 
                     <div class="group-title">
-                        <div class="title-area">
-                            <div class="txt-ani"><h2 class="title txt-sm">Meet</h2></div>
-                            <div class="txt-ani"><h2 class="title">the world's</h2></div>
-                            <div class="txt-ani"><h2 class="title txt-lg">thickest</h2></div>
-                            <div class="txt-ani"><h2 class="title txt-lg">pickles</h2></div>
-                        </div>
+                        <h2 class="title-area">
+                            <span class="txt-ani"><span class="title txt-sm">Meet</span></span>
+                            <span class="txt-ani"><span class="title">the world's</span></span>
+                            <span class="txt-ani"><span class="title txt-lg">thickest</span></span>
+                            <span class="txt-ani"><span class="title txt-lg">pickles</span></span>
+                        </h2>
                     </div>
 
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                    <div class="dot dot1"></div>
+                    <div class="dot dot2"></div>
 
                 </section>
 
                 <section class="sc-character">
-
-                    <div class="group-img">
-                        <div class="img-area">
-                            <canvas id="canvas"></canvas>
-                        </div>
-                    </div>
+                    <h2 class="blind">pickle character</h2>
                     
-                    <div class="group-txt">
+                    <div class="sticky">
+
+                        <div class="group-img">
+                            <div class="img-area">
+                                <img src="./assets/images/seq/0000.webp" alt="" class="img">
+                                <!-- <canvas id="canvas"></canvas> -->
+                            </div>
+                        </div>
+                        
                         <div class="txt-area txt1">
-                            <div class="title-box">
-                                <div class="txt-ani"><h2 class="tilte">Maximum</h2></div>
-                                <div class="txt-ani"><h2 class="tilte">Circumference</h2></div>
-                            </div>
-                            <div class="txt-box">
-                                <div class="txt-ani"><p class="txt">We've sourced smoe of the largest</p></div>
-                                <div class="txt-ani"><p class="txt">pickling cucumpers available.</p></div>
-                            </div>
+                            <p class="title-box">
+                                <span class="txt-ani"><span class="title">Maximum</span></span>
+                                <span class="txt-ani"><span class="title">Circumference</span></span>
+                            </p>
+                            <p class="txt-box">
+                                <span class="txt-ani"><span class="txt">We've sourced smoe of the largest</span></span>
+                                <span class="txt-ani"><span class="txt">pickling cucumpers available.</span></span>
+                            </p>
                         </div>
+
                         <div class="txt-area txt2">
-                            <div class="title-box">
-                                <div class="txt-ani"><h2 class="tilte">Spices</h2></div>
-                                <div class="txt-ani"><h2 class="tilte">we got spices</h2></div>
-                            </div>
-                            <div class="txt-box">
-                                <div class="txt-ani"><p class="txt">Out proprietary blend of pickling spices</p></div>
-                                <div class="txt-ani"><p class="txt">keeps every crunch exciting.</p></div>
-                            </div>
+                            <p class="title-box">
+                                <span class="txt-ani"><span class="title">Spices</span></span>
+                                <span class="txt-ani"><span class="title">we got spices</span></span>
+                            </p>
+                            <p class="txt-box">
+                                <span class="txt-ani"><span class="txt">Out proprietary blend of pickling spices</span></span>
+                                <span class="txt-ani"><span class="txt">keeps every crunch exciting.</span></span>
+                            </p>
                         </div>
+
                         <div class="txt-area txt3">
-                            <div class="title-box">
-                                <div class="txt-ani"><h2 class="tilte">Good for</h2></div>
-                                <div class="txt-ani"><h2 class="tilte">the tum</h2></div>
-                            </div>
-                            <div class="txt-box">
-                                <div class="txt-ani"><p class="txt">Our pickle juice is infused with probiotics.</p></div>
-                                <div class="txt-ani"><p class="txt">When you're done, drink up!</p></div>
-                            </div>
+                            <p class="title-box">
+                                <span class="txt-ani"><span class="title">Good for</span></span>
+                                <span class="txt-ani"><span class="title">the tum</span></span>
+                            </p>
+                            <p class="txt-box">
+                                <span class="txt-ani"><span class="txt">Our pickle juice is infused with probiotics.</span></span>
+                                <span class="txt-ani"><span class="txt">When you're done, drink up!</span></span>
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section class="sc-fact">
+
+                    <div class="group-title">
+                        <h2 class="title-area">
+                            <span class="txt-ani"><span class="title">When the</span></span>
+                            <span class="txt-ani"><span class="title txt-lg">pickle</span></span>
+                            <span class="txt-ani"><span class="title">is thicker</span></span>
+                            <span class="txt-ani"><span class="title txt-md">the crunch</span></span>
+                            <span class="txt-ani"><span class="title">is much</span></span>
+                            <span class="txt-ani"><span class="title txt-lg">sicker</span></span>
+                        </h2>
+                    </div>
+
+                    <div class="group-info">
+                        <div class="info-hdr">
+                            <p class="txt-ani"><span class="title">picklefacts</span></p>
+                        </div>
+                        <div class="info-bdy">
+                            <ul class="info-list">
+                                <li class="info-item">
+                                    The Department of Agriculture estimates that the average American eats 8.5 lbs of pickles a year.
+                                </li>
+                                <li class="info-item">
+                                    Ancient Egyptian queen Cleopatra claimed pickles made her beautiful.
+                                </li>
+                                <li class="info-item">
+                                    Sweet pickles are made by soaking dill pickles in strong kool - aid and are very popular in parts of Mississippi.
+                                </li>
+                                <li class="info-item">
+                                    Pickles have been around since ancient times.Some believe the first pickle was created in Mesopotamia in 2400 B.C.E.
+                                </li>
+                                <li class="info-item">
+                                    You can hear the crunch of a good pickle at 10 paces.
+                                </li>
+                                <li class="info-item">
+                                    In Connecticut in order for a pickle to officially be considered a pickle, it must bounce.
+                                </li>
+                                <li class="info-item">
+                                    If it weren't for pickles, Christopher Columbus might never have “discovered” America.
+                                </li>
+                                <li class="info-item">
+                                    The Department of Agriculture estimates that the average American eats 8.5 lbs of pickles a year.
+                                </li>
+                                <li class="info-item">
+                                    Ancient Egyptian queen Cleopatra claimed pickles made her beautiful.
+                                </li>
+                                <li class="info-item">
+                                    Sweet pickles are made by soaking dill pickles in strong kool - aid and are very popular in parts of Mississippi.
+                                </li>
+                                <li class="info-item">
+                                    Pickles have been around since ancient times.Some believe the first pickle was created in Mesopotamia in 2400 B.C.E.
+                                </li>
+                                <li class="info-item">
+                                    You can hear the crunch of a good pickle at 10 paces.
+                                </li>
+                                <li class="info-item">
+                                    In Connecticut in order for a pickle to officially be considered a pickle, it must bounce.
+                                </li>
+                                <li class="info-item">
+                                    If it weren't for pickles, Christopher Columbus might never have “discovered” America.
+                                </li>
+                            </ul>
                         </div>
                     </div>
+
+                    <div class="group-banner">
+                        <div class="banner-box">
+                            <div class="txt-area">
+                                <p class="txt-ani">
+                                    <span class="txt">respect the respect the respect the respect the</span>
+                                    <span class="txt">Thiccness</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="dot dot1"></div>
+                        <div class="dot dot2"></div>
+                        <div class="dot dot3"></div>
+                        <div class="dot dot4"></div>
+                    </div>
+
+                    <div class="group-vinegar">
+
+                        <div class="sub-title-area">
+                            <div class="txt-ani flex">
+                                <span class="txt">The tang gang</span>
+                                <span class="txt">2023</span>
+                                <span class="txt">The tang gang</span>
+                            </div>
+                            <p class="txt-ani">
+                                <span class="txt">XXL cucumberS preserved in a world-famous</span>
+                                <span class="txt">XXTRA tangy brine.</span>
+                            </p>
+                            <div class="txt-ani"><span class="txt">2023</span></div>
+                        </div>
+
+                        <div class="title-area">
+                            <p class="title">
+                                <span class="txt-ani"><span class="txt txt-lg">Vinegar</span></span>
+                                <span class="txt-ani"><span class="txt">for the</span></span>
+                                <span class="txt-ani"><span class="txt txt-lg">winegar</span></span>
+                            </p>
+                        </div>
+
+                        <div class="txt-ani"><span class="desc">With over 3000 years of pickling experience</span></div>
+
+                        <div class="circle-area">
+                            <span class="circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M11.49,3.46l-.85-.2L11.4.05l.9.22c.68.15.86.49.74,1l-.23.94c-.12.55-.45.81-1.13.65h0ZM12,2l.2-.87c0-.07,0-.13-.07-.15L11.82,2.1C11.88,2.12,11.92,2.08,12,2Z"></path><path d="M14.73,1.17l-1.42,3-.84-.4,1.42-3Z"></path><path d="M13.91,3.39l.9-1.16a.86.86,0,0,1,1.37-.17.82.82,0,0,1,.15,1.34L16,3.82l-.72-.56.33-.42c.1-.14.1-.15.07-.17s0,0-.15.11l-.88,1.14c-.11.13-.11.15-.07.17s0,0,.14-.11l.36-.46.72.56-.37.49a.86.86,0,0,1-1.36.17A.83.83,0,0,1,13.91,3.39Z"></path><path d="M16.35,5.28l-1,.71-.53-.73,2.68-1.93.52.73-.49.35-.6.33.58-.24.66-.23.57.78-1.42.44L16.09,7l-.58-.8.63-.7.28-.25Z"></path><path d="M19.07,5.73l.34.87-2.22.86.17.45-.86.34L16,6.92Z"></path><path d="M16.51,8.25l3.26-.49L20,9.29l-.85.13-.1-.65-.33.05.1.64L18,9.59l-.1-.65L17.52,9l.09.64-.87.13Z"></path><path d="M16.53,11.47l.2-.86,3.22.75-.21.91c-.16.67-.49.86-1,.73l-.94-.22c-.54-.12-.81-.45-.65-1.13v0Zm1.48.45.88.2a.1.1,0,0,0,.14-.07l-1.13-.26C17.88,11.85,17.92,11.89,18,11.92Z"></path><path d="M18.84,14.7l-3-1.42.4-.84,3,1.42Z"></path><path d="M16.62,13.89l1.16.9A.85.85,0,0,1,18,16.15a.82.82,0,0,1-1.34.16L16.19,16l.56-.72.42.32c.14.11.15.1.17.07s0,0-.11-.15l-1.14-.88c-.13-.1-.15-.1-.17-.07s0,0,.11.15l.46.36-.56.72-.49-.37a.86.86,0,0,1-.17-1.36A.83.83,0,0,1,16.62,13.89Z"></path><path d="M14.74,16.33l-.71-1,.72-.52,1.94,2.67L16,18l-.36-.49-.33-.6.24.59.23.66-.77.56-.45-1.42L13,16.08l.81-.58.7.62.25.28Z"></path><path d="M14.3,19.05l-.87.34-.87-2.21-.45.18-.34-.86L13.1,16Z"></path><path d="M11.77,16.51l.5,3.26L10.74,20l-.13-.85.65-.1,0-.33-.65.1L10.43,18l.65-.1L11,17.51l-.65.1-.13-.87Z"></path><path d="M8.55,16.54l.86.2L8.67,20l-.91-.2c-.67-.16-.86-.49-.74-1l.22-.94c.12-.54.45-.81,1.13-.65h0ZM8.11,18l-.2.88A.1.1,0,0,0,8,19l.26-1.14C8.17,17.89,8.13,17.93,8.11,18Z"></path><path d="M5.33,18.86l1.4-3,.84.39-1.4,3Z"></path><path d="M6.14,16.63l-.9,1.17A.86.86,0,0,1,3.87,18a.82.82,0,0,1-.16-1.34L4,16.22l.72.55-.32.42c-.1.14-.1.16-.07.17s0,0,.15-.11l.88-1.14c.1-.13.1-.15.06-.18s0,0-.14.12L5,16.51,4.24,16l.37-.48A.85.85,0,0,1,6,15.28.83.83,0,0,1,6.14,16.63Z"></path><path d="M3.68,14.77l1-.72.53.72L2.53,16.72,2,16l.49-.36.6-.34-.59.25-.66.24L1.28,15l1.41-.45,1.24-1.51.58.8-.62.7-.28.25Z"></path><path d="M1,14.33l-.34-.86,2.21-.88-.18-.45.85-.34L4,13.12Z"></path><path d="M3.5,11.8l-3.26.51L0,10.78l.85-.13.1.65.33-.06-.1-.64L2,10.46l.1.65.35,0-.1-.65.87-.14Z"></path><path d="M3.45,8.58l-.19.85L0,8.71l.2-.91c.15-.67.48-.86,1-.74l.94.21c.55.12.81.45.66,1.12v0ZM2,8.14l-.88-.2C1,7.93,1,7.94,1,8l1.14.26C2.1,8.2,2.06,8.16,2,8.14Z"></path><path d="M1.13,5.36l3,1.39-.4.85-3-1.4Z"></path><path d="M3.35,6.16,2.17,5.27A.87.87,0,0,1,2,3.9a.81.81,0,0,1,1.33-.16l.43.32-.56.73-.42-.32c-.14-.11-.15-.1-.17-.07s0,0,.11.14l1.15.88c.13.1.15.1.18.06s0,0-.12-.14L3.47,5,4,4.26l.49.37A.85.85,0,0,1,4.7,6,.83.83,0,0,1,3.35,6.16Z"></path><path d="M5.21,3.7l.72,1-.72.53-2-2.65L4,2l.36.49.34.59-.26-.58-.23-.66L5,1.29,5.41,2.7,6.93,3.94l-.8.59-.71-.62-.25-.28Z"></path><path d="M5.63,1,6.49.63l.89,2.2.45-.18.34.86L6.85,4Z"></path><path d="M8.17,3.5,7.65.24,9.18,0l.13.85L8.67,1l.05.33.65-.1L9.5,2l-.65.1.06.35.65-.1.14.87Z"></path></svg>
+                            </span>
+                            <span class="circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M11.49,3.46l-.85-.2L11.4.05l.9.22c.68.15.86.49.74,1l-.23.94c-.12.55-.45.81-1.13.65h0ZM12,2l.2-.87c0-.07,0-.13-.07-.15L11.82,2.1C11.88,2.12,11.92,2.08,12,2Z"></path><path d="M14.73,1.17l-1.42,3-.84-.4,1.42-3Z"></path><path d="M13.91,3.39l.9-1.16a.86.86,0,0,1,1.37-.17.82.82,0,0,1,.15,1.34L16,3.82l-.72-.56.33-.42c.1-.14.1-.15.07-.17s0,0-.15.11l-.88,1.14c-.11.13-.11.15-.07.17s0,0,.14-.11l.36-.46.72.56-.37.49a.86.86,0,0,1-1.36.17A.83.83,0,0,1,13.91,3.39Z"></path><path d="M16.35,5.28l-1,.71-.53-.73,2.68-1.93.52.73-.49.35-.6.33.58-.24.66-.23.57.78-1.42.44L16.09,7l-.58-.8.63-.7.28-.25Z"></path><path d="M19.07,5.73l.34.87-2.22.86.17.45-.86.34L16,6.92Z"></path><path d="M16.51,8.25l3.26-.49L20,9.29l-.85.13-.1-.65-.33.05.1.64L18,9.59l-.1-.65L17.52,9l.09.64-.87.13Z"></path><path d="M16.53,11.47l.2-.86,3.22.75-.21.91c-.16.67-.49.86-1,.73l-.94-.22c-.54-.12-.81-.45-.65-1.13v0Zm1.48.45.88.2a.1.1,0,0,0,.14-.07l-1.13-.26C17.88,11.85,17.92,11.89,18,11.92Z"></path><path d="M18.84,14.7l-3-1.42.4-.84,3,1.42Z"></path><path d="M16.62,13.89l1.16.9A.85.85,0,0,1,18,16.15a.82.82,0,0,1-1.34.16L16.19,16l.56-.72.42.32c.14.11.15.1.17.07s0,0-.11-.15l-1.14-.88c-.13-.1-.15-.1-.17-.07s0,0,.11.15l.46.36-.56.72-.49-.37a.86.86,0,0,1-.17-1.36A.83.83,0,0,1,16.62,13.89Z"></path><path d="M14.74,16.33l-.71-1,.72-.52,1.94,2.67L16,18l-.36-.49-.33-.6.24.59.23.66-.77.56-.45-1.42L13,16.08l.81-.58.7.62.25.28Z"></path><path d="M14.3,19.05l-.87.34-.87-2.21-.45.18-.34-.86L13.1,16Z"></path><path d="M11.77,16.51l.5,3.26L10.74,20l-.13-.85.65-.1,0-.33-.65.1L10.43,18l.65-.1L11,17.51l-.65.1-.13-.87Z"></path><path d="M8.55,16.54l.86.2L8.67,20l-.91-.2c-.67-.16-.86-.49-.74-1l.22-.94c.12-.54.45-.81,1.13-.65h0ZM8.11,18l-.2.88A.1.1,0,0,0,8,19l.26-1.14C8.17,17.89,8.13,17.93,8.11,18Z"></path><path d="M5.33,18.86l1.4-3,.84.39-1.4,3Z"></path><path d="M6.14,16.63l-.9,1.17A.86.86,0,0,1,3.87,18a.82.82,0,0,1-.16-1.34L4,16.22l.72.55-.32.42c-.1.14-.1.16-.07.17s0,0,.15-.11l.88-1.14c.1-.13.1-.15.06-.18s0,0-.14.12L5,16.51,4.24,16l.37-.48A.85.85,0,0,1,6,15.28.83.83,0,0,1,6.14,16.63Z"></path><path d="M3.68,14.77l1-.72.53.72L2.53,16.72,2,16l.49-.36.6-.34-.59.25-.66.24L1.28,15l1.41-.45,1.24-1.51.58.8-.62.7-.28.25Z"></path><path d="M1,14.33l-.34-.86,2.21-.88-.18-.45.85-.34L4,13.12Z"></path><path d="M3.5,11.8l-3.26.51L0,10.78l.85-.13.1.65.33-.06-.1-.64L2,10.46l.1.65.35,0-.1-.65.87-.14Z"></path><path d="M3.45,8.58l-.19.85L0,8.71l.2-.91c.15-.67.48-.86,1-.74l.94.21c.55.12.81.45.66,1.12v0ZM2,8.14l-.88-.2C1,7.93,1,7.94,1,8l1.14.26C2.1,8.2,2.06,8.16,2,8.14Z"></path><path d="M1.13,5.36l3,1.39-.4.85-3-1.4Z"></path><path d="M3.35,6.16,2.17,5.27A.87.87,0,0,1,2,3.9a.81.81,0,0,1,1.33-.16l.43.32-.56.73-.42-.32c-.14-.11-.15-.1-.17-.07s0,0,.11.14l1.15.88c.13.1.15.1.18.06s0,0-.12-.14L3.47,5,4,4.26l.49.37A.85.85,0,0,1,4.7,6,.83.83,0,0,1,3.35,6.16Z"></path><path d="M5.21,3.7l.72,1-.72.53-2-2.65L4,2l.36.49.34.59-.26-.58-.23-.66L5,1.29,5.41,2.7,6.93,3.94l-.8.59-.71-.62-.25-.28Z"></path><path d="M5.63,1,6.49.63l.89,2.2.45-.18.34.86L6.85,4Z"></path><path d="M8.17,3.5,7.65.24,9.18,0l.13.85L8.67,1l.05.33.65-.1L9.5,2l-.65.1.06.35.65-.1.14.87Z"></path></svg>
+                            </span>
+                            <span class="circle">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M11.49,3.46l-.85-.2L11.4.05l.9.22c.68.15.86.49.74,1l-.23.94c-.12.55-.45.81-1.13.65h0ZM12,2l.2-.87c0-.07,0-.13-.07-.15L11.82,2.1C11.88,2.12,11.92,2.08,12,2Z"></path><path d="M14.73,1.17l-1.42,3-.84-.4,1.42-3Z"></path><path d="M13.91,3.39l.9-1.16a.86.86,0,0,1,1.37-.17.82.82,0,0,1,.15,1.34L16,3.82l-.72-.56.33-.42c.1-.14.1-.15.07-.17s0,0-.15.11l-.88,1.14c-.11.13-.11.15-.07.17s0,0,.14-.11l.36-.46.72.56-.37.49a.86.86,0,0,1-1.36.17A.83.83,0,0,1,13.91,3.39Z"></path><path d="M16.35,5.28l-1,.71-.53-.73,2.68-1.93.52.73-.49.35-.6.33.58-.24.66-.23.57.78-1.42.44L16.09,7l-.58-.8.63-.7.28-.25Z"></path><path d="M19.07,5.73l.34.87-2.22.86.17.45-.86.34L16,6.92Z"></path><path d="M16.51,8.25l3.26-.49L20,9.29l-.85.13-.1-.65-.33.05.1.64L18,9.59l-.1-.65L17.52,9l.09.64-.87.13Z"></path><path d="M16.53,11.47l.2-.86,3.22.75-.21.91c-.16.67-.49.86-1,.73l-.94-.22c-.54-.12-.81-.45-.65-1.13v0Zm1.48.45.88.2a.1.1,0,0,0,.14-.07l-1.13-.26C17.88,11.85,17.92,11.89,18,11.92Z"></path><path d="M18.84,14.7l-3-1.42.4-.84,3,1.42Z"></path><path d="M16.62,13.89l1.16.9A.85.85,0,0,1,18,16.15a.82.82,0,0,1-1.34.16L16.19,16l.56-.72.42.32c.14.11.15.1.17.07s0,0-.11-.15l-1.14-.88c-.13-.1-.15-.1-.17-.07s0,0,.11.15l.46.36-.56.72-.49-.37a.86.86,0,0,1-.17-1.36A.83.83,0,0,1,16.62,13.89Z"></path><path d="M14.74,16.33l-.71-1,.72-.52,1.94,2.67L16,18l-.36-.49-.33-.6.24.59.23.66-.77.56-.45-1.42L13,16.08l.81-.58.7.62.25.28Z"></path><path d="M14.3,19.05l-.87.34-.87-2.21-.45.18-.34-.86L13.1,16Z"></path><path d="M11.77,16.51l.5,3.26L10.74,20l-.13-.85.65-.1,0-.33-.65.1L10.43,18l.65-.1L11,17.51l-.65.1-.13-.87Z"></path><path d="M8.55,16.54l.86.2L8.67,20l-.91-.2c-.67-.16-.86-.49-.74-1l.22-.94c.12-.54.45-.81,1.13-.65h0ZM8.11,18l-.2.88A.1.1,0,0,0,8,19l.26-1.14C8.17,17.89,8.13,17.93,8.11,18Z"></path><path d="M5.33,18.86l1.4-3,.84.39-1.4,3Z"></path><path d="M6.14,16.63l-.9,1.17A.86.86,0,0,1,3.87,18a.82.82,0,0,1-.16-1.34L4,16.22l.72.55-.32.42c-.1.14-.1.16-.07.17s0,0,.15-.11l.88-1.14c.1-.13.1-.15.06-.18s0,0-.14.12L5,16.51,4.24,16l.37-.48A.85.85,0,0,1,6,15.28.83.83,0,0,1,6.14,16.63Z"></path><path d="M3.68,14.77l1-.72.53.72L2.53,16.72,2,16l.49-.36.6-.34-.59.25-.66.24L1.28,15l1.41-.45,1.24-1.51.58.8-.62.7-.28.25Z"></path><path d="M1,14.33l-.34-.86,2.21-.88-.18-.45.85-.34L4,13.12Z"></path><path d="M3.5,11.8l-3.26.51L0,10.78l.85-.13.1.65.33-.06-.1-.64L2,10.46l.1.65.35,0-.1-.65.87-.14Z"></path><path d="M3.45,8.58l-.19.85L0,8.71l.2-.91c.15-.67.48-.86,1-.74l.94.21c.55.12.81.45.66,1.12v0ZM2,8.14l-.88-.2C1,7.93,1,7.94,1,8l1.14.26C2.1,8.2,2.06,8.16,2,8.14Z"></path><path d="M1.13,5.36l3,1.39-.4.85-3-1.4Z"></path><path d="M3.35,6.16,2.17,5.27A.87.87,0,0,1,2,3.9a.81.81,0,0,1,1.33-.16l.43.32-.56.73-.42-.32c-.14-.11-.15-.1-.17-.07s0,0,.11.14l1.15.88c.13.1.15.1.18.06s0,0-.12-.14L3.47,5,4,4.26l.49.37A.85.85,0,0,1,4.7,6,.83.83,0,0,1,3.35,6.16Z"></path><path d="M5.21,3.7l.72,1-.72.53-2-2.65L4,2l.36.49.34.59-.26-.58-.23-.66L5,1.29,5.41,2.7,6.93,3.94l-.8.59-.71-.62-.25-.28Z"></path><path d="M5.63,1,6.49.63l.89,2.2.45-.18.34.86L6.85,4Z"></path><path d="M8.17,3.5,7.65.24,9.18,0l.13.85L8.67,1l.05.33.65-.1L9.5,2l-.65.1.06.35.65-.1.14.87Z"></path></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="group-banner">
+                        <div class="banner-box">
+                            <div class="txt-area">
+                                <p class="txt-ani">
+                                    <span class="txt">vinegardium</span>
+                                    <span class="txt">picklioso!</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+
                 </section>
 
             </div>
 
-            <div id="footer">
-            </div>
+            <footer id="footer">
+            </footer>
 
         </main>
 
+        <div class="cursor"></div>
+
     </div>
 
-    <script> Splitting({}); </script>
-    <script src="./assets/js/markers.js"></script>
 </body>
 
 </html>
