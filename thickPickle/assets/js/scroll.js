@@ -64,18 +64,22 @@ ScrollTrigger.create({
 // }
 
 
-gsap.utils.toArray('.sc-fact .group-title .title').forEach((title, idx) => {
+gsap.utils.toArray('.sc-fact .title').forEach((title, idx) => {
     ScrollTrigger.create({
         trigger: title.parentNode,
         start: 'top bottom',
         end: 'bottom bottom',
-        animation: gsap.from(title, { opacity: 0, yPercent: 100, rotateX: -90, duration: 1, delay: 0.1, stagger: { each: 0.1, ease: 'power4.in'}}),
+        animation: gsap.from(title, { opacity: 0, yPercent: 100, rotateX: -90, duration: 1, delay: 0.1, stagger: { each: 0.1, ease: 'power2.inOut'}}),
     })
 })
 
 const infoWidth = gsap.getProperty('.sc-fact .info-item', 'width');
 const infoTl = gsap.timeline()
 .to('.sc-fact .info-item', { x: -infoWidth * 7, repeat: -1, duration: 60 })
+const circleTl = gsap.timeline()
+.to('.sc-fact .circle', { rotate: (i, t) => {
+    return (i + 1) * 360
+}, repeat: -1, duration: 30, stagger: { each: 0.2}})
 
 ScrollTrigger.create({
     trigger: '.sc-fact',
@@ -88,9 +92,17 @@ ScrollTrigger.create({
             factor *= -1;
         }
         
+        // handle marquee timeScale
+        gsap.killTweensOf(infoTl);
         gsap.timeline()
         .to(infoTl, { timeScale: factor * 2.5, duration:  0.2})
         .to(infoTl, { timeScale: factor / 2.5, duration: 1}, "+=0.3")
+
+        // handle circle marquee timeScale
+        gsap.killTweensOf(circleTl);
+        gsap.timeline()
+        .to(circleTl, { timeScale: factor * 3, duration:  0.2})
+        .to(circleTl, { timeScale: factor / 2.5}, "+=0.3")
     },
     scrub: 0,
 })
@@ -100,10 +112,39 @@ ScrollTrigger.create({
     start: 'top bottom',
     end: 'bottom bottom',
     scrub: 0,
-    // once: true,
-    markers:true,
+    // markers:true,
     onEnter: () => {
         $('.sc-fact .group-info').addClass('is-ani');
     }
 })
 
+const bannerTl = gsap.timeline({
+    defaults: {
+        ease: 'power2.inOut'
+    }
+})
+.from('.group-banner .txt-area', { scaleX: 0, duration: 2})
+.from('.group-banner .txt', { xPercent: (i, t) => {
+    return i % 2 === 0 ? -10 : 10
+}, duration: 2}, '-=1.5')
+.set('.group-banner .dot', { opacity: 1})
+.to('.group-banner .dot', { '--moveY': 0, ease: 'power2.out'})
+
+gsap.utils.toArray('.sc-fact .group-banner').forEach((banner, idx) => {
+    ScrollTrigger.create({
+        trigger: banner,
+        start: 'top bottom',
+        end: 'bottom bottom',
+        animation: bannerTl,
+        markers: true,
+    })
+})
+
+gsap.utils.toArray('.group-vinegar .txt').forEach((txt, idx) => {
+    ScrollTrigger.create({
+        trigger: txt,
+        start: 'top bottom',
+        end: 'bottom bottom',
+        animation: gsap.from(txt, { yPercent: 100, ease: 'power2.inOut'}),
+    })
+})

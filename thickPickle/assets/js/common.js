@@ -10,7 +10,7 @@ Enterprise = {
         .done( function( instance ) {
             const heroTitle = $('.sc-hero .title');
 
-            gsap.killTweensOf(introIcon);
+            gsap.killTweensOf(introIcon, 'opacity');
 
             const introTl = gsap.timeline()
             .to(introIcon, { opacity: 0})

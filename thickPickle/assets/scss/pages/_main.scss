@@ -67,7 +67,7 @@
 
     .dot {
         bottom: 25px;
-        background-color: rgb(171, 171, 171);
+        background-color: #ababab;
 
         &.dot1 {
             left: 25px;
@@ -149,7 +149,7 @@
                 .txt {
                     display: block;
                     font-size: 18px;
-                    color: rgb(171, 171, 171);
+                    color: #ababab;
                     transform: translateY(100%);
                     transition: 1.5s cubic-bezier(.215, .61, .355, 1);
                 }
@@ -182,20 +182,20 @@
                 width: 100%;
                 perspective: 700px;
                 overflow: hidden;
-                // transform: scaleX(0.75);
                 
                 .title {
                     display: block;
-                    transform-origin: 50% 0;
                     text-align: center;
                     font-size: 192px;
                     font-weight: 700;
                     line-height: 148px;
+                    transform: scaleX(0.75);
+                    transform-origin: 50% 0;
 
                     &.txt-md {
                         font-size: 280px;
                         line-height: 218px;
-                        font-weight: 900;
+                        font-weight: 700;
                     }
                     
                     &.txt-lg {
@@ -213,7 +213,7 @@
         text-align: center;
         
         &.is-ani {
-            .info-hdr .txt-ani .title {
+            .info-hdr .txt-ani .txt {
                 transform: translateY(0);
             }
 
@@ -249,11 +249,12 @@
             }
             
             .txt-ani {
+                font-family: "SharpGrotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
                 overflow: hidden;
 
-                .title {
+                .txt {
                     display: block;
-                    font-weight: 900;
+                    font-weight: 400;
                     font-size: 68px;
                     line-height: 52px;
                     transform: translateY(120%);
@@ -282,35 +283,81 @@
     }
 
     .group-banner {
+        --padding: 54px;
+        --moveY: var(--padding);
+        position: relative;
         padding: 0 22px 28px;
 
         .banner-box {
+            position: relative;
             padding: 54px 0;
+            overflow: hidden;
             
             .txt-area {
-    
+                padding: 28px 0;
+                transform-origin: 50% 50%;
+                background: #041a00;
+                overflow: hidden;
+
                 .txt-ani {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
                     .txt {
-    
+                        display: block;
+                        font-family: "SharpGrotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+                        font-weight: 400;
+                        color: #ababab;
+                        font-size: 9vw;
+                        line-height: 148px;
+                        white-space: nowrap;
+                        
+                        &.txt-lg {
+                            font-weight: 900;
+                            font-size: 12vw;
+                            line-height: 198px;
+                        }
                     }
                 }
             }
+
+            .dot {
+                opacity: 0;
+                background-color: #041a00;
+    
+                &.dot1 {
+                    top: var(--moveY);
+                    left: 0;
+                }
+                &.dot2 {
+                    top: var(--moveY);
+                    right: 0;
+                }
+                &.dot3 {
+                    bottom: var(--moveY);
+                    left: 0;
+                }
+                &.dot4 {
+                    bottom: var(--moveY);
+                    right: 0;
+                }
+            }
+
         }
 
-        .dot {
-            background-color: #041a00;
 
-            &.dot1 {
-                
-            }
-            &.dot2 {
+        &.banner2 {
+            .banner-box .txt-area .txt-ani .txt {
+                line-height: 89px;
+                font-size: 5.4vw;
+                font-weight: 900;
 
-            }
-            &.dot3 {
-
-            }
-            &.dot4 {
-
+                &.txt-lg {
+                    line-height: 416px;
+                    font-weight: 400;
+                    font-size: 25vw;
+                }
             }
         }
 
@@ -319,6 +366,16 @@
     .group-vinegar {
         text-align: center;
         color: #041a00;
+
+        .txt-ani {
+            overflow: hidden;
+
+            .txt {
+                display: block;
+                font-size: 27px;
+                line-height: 1.3;
+            }   
+        }
 
         .sub-title-area {
             .txt-ani {
@@ -332,40 +389,33 @@
                 & + .txt-ani {
                     margin-top: 28px;
                 }
-
-                .txt {
-                    display: block;
-                    font-size: 28px;
-                    line-height: 1.3;
-                }   
             }
         }
 
         .title-area {
             padding: 128px 0;
             
-            .title {
-                .txt-ani {
-                    .txt {
-                        display: block;
-                        font-family: "SharpGrotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
-                        font-size: 192px;
-                        line-height: 148px;
-                        font-weight: 900;
-                        
-                        &.txt-lg {
-                            font-size: 422px;
-                            line-height: 327px;
-                        }
+            .txt-ani {
+                display: block;
+                transform-style: preserve-3d;
+                width: 100%;
+                perspective: 700px;
+                overflow: hidden;
+
+                .title {
+                    display: block;
+                    font-family: "SharpGrotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+                    font-size: 192px;
+                    line-height: 148px;
+                    font-weight: 400;
+                    transform: scaleX(0.75);
+                    transform-origin: 50% 0;
+                    
+                    &.txt-lg {
+                        font-size: 420px;
+                        line-height: 327px;
                     }
                 }
-            }
-        }
-
-        > .txt-ani {
-            .desc {
-                font-size: 28px;
-                line-height: 1.3;
             }
         }
 
@@ -378,6 +428,10 @@
             .circle {
                 flex: 1;
                 max-width: 426px;
+
+                svg {
+                    fill: #041a00;
+                }
             }
         }
     }
