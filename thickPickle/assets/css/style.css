@@ -23,6 +23,8 @@
 }
 
 .flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -59,7 +61,8 @@
 }
 
 *, :after, :before {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html, body {
@@ -114,16 +117,23 @@ html {
 }
 #header .header-inner {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 #header .header-inner .logo {
   top: 0;
   left: calc(50% - 1.15em);
   width: 2.3em;
   font-size: 2.375rem;
-  transform-origin: 50% 0;
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
   position: absolute;
 }
 #header .header-inner .logo svg {
@@ -158,16 +168,18 @@ html {
   font-size: clamp(48px, 8.75vw, 140px);
 }
 
+.group-bg .bg-box .video {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .sc-hero {
   position: relative;
   height: 100vh;
   font-size: 15px;
-}
-.sc-hero .group-bg .bg-box .video {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
 }
 .sc-hero .group-title {
   bottom: 25px;
@@ -176,13 +188,16 @@ html {
   mix-blend-mode: difference;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 .sc-hero .group-title .txt-ani {
   display: block;
   text-align: center;
-  transform-style: preserve-3d;
-  perspective: 700px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 700px;
+          perspective: 700px;
 }
 .sc-hero .group-title .txt-ani .title {
   display: block;
@@ -190,7 +205,8 @@ html {
   font-size: 208px;
   text-align: center;
   line-height: 0.775;
-  transform-origin: 50% 0;
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
 }
 .sc-hero .group-title .txt-ani .title.txt-sm {
   font-weight: 700;
@@ -217,6 +233,7 @@ html {
 }
 .sc-character.active::after {
   opacity: 0;
+  -webkit-transition: opacity 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: opacity 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .sc-character::after {
@@ -226,6 +243,7 @@ html {
   height: 100%;
   background-color: #262c03;
   opacity: 1;
+  -webkit-transition: opacity 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: opacity 0.25s cubic-bezier(0.215, 0.61, 0.355, 1);
   pointer-events: none;
   display: block;
@@ -233,9 +251,15 @@ html {
   content: "";
 }
 .sc-character .sticky {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .sc-character .sticky .group-img {
   width: 37.3958333333%;
@@ -271,18 +295,23 @@ html {
   font-weight: 900;
   font-family: "SharpGrotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
   line-height: 52px;
-  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .sc-character .sticky .txt-area .txt-box .txt {
   display: block;
   font-size: 18px;
   color: #ababab;
-  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .sc-character .sticky .txt-area.ani-translate .title, .sc-character .sticky .txt-area.ani-translate .txt {
-  transform: translateY(0);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 .sc-fact {
@@ -297,9 +326,11 @@ html {
 }
 .sc-fact .group-title .title-area .txt-ani {
   display: block;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
   width: 100%;
-  perspective: 700px;
+  -webkit-perspective: 700px;
+          perspective: 700px;
   overflow: hidden;
 }
 .sc-fact .group-title .title-area .txt-ani .title {
@@ -308,8 +339,10 @@ html {
   font-size: 192px;
   font-weight: 700;
   line-height: 148px;
-  transform: scaleX(0.75);
-  transform-origin: 50% 0;
+  -webkit-transform: scaleX(0.75);
+          transform: scaleX(0.75);
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
 }
 .sc-fact .group-title .title-area .txt-ani .title.txt-md {
   font-size: 280px;
@@ -326,10 +359,12 @@ html {
   text-align: center;
 }
 .sc-fact .group-info.is-ani .info-hdr .txt-ani .txt {
-  transform: translateY(0);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 .sc-fact .group-info.is-ani .info-hdr::before, .sc-fact .group-info.is-ani .info-hdr::after {
-  transform: translateX(-50%) scaleX(1);
+  -webkit-transform: translateX(-50%) scaleX(1);
+          transform: translateX(-50%) scaleX(1);
 }
 .sc-fact .group-info .info-hdr {
   position: relative;
@@ -340,8 +375,12 @@ html {
   width: 100%;
   height: 1px;
   background-color: #041a00;
+  -webkit-transition: -webkit-transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: -webkit-transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
-  transform: translateX(-50%) scaleX(0);
+  transition: transform 1s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-transform: translateX(-50%) scaleX(0);
+          transform: translateX(-50%) scaleX(0);
   display: block;
   position: absolute;
   content: "";
@@ -361,15 +400,21 @@ html {
   font-weight: 400;
   font-size: 68px;
   line-height: 52px;
-  transform: translateY(120%);
+  -webkit-transform: translateY(120%);
+          transform: translateY(120%);
+  -webkit-transition: 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: 1.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .sc-fact .group-info .info-bdy .info-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   overflow: hidden;
 }
 .sc-fact .group-info .info-bdy .info-list .info-item {
-  flex: 1 0 40vw;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 40vw;
+          flex: 1 0 40vw;
   padding: 36px;
   font-size: 20px;
   line-height: 1.4;
@@ -390,14 +435,22 @@ html {
 }
 .sc-fact .group-banner .banner-box .txt-area {
   padding: 28px 0;
-  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
   background: #041a00;
   overflow: hidden;
 }
 .sc-fact .group-banner .banner-box .txt-area .txt-ani {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .sc-fact .group-banner .banner-box .txt-area .txt-ani .txt {
   display: block;
@@ -459,7 +512,9 @@ html {
   width: 100%;
   max-width: 1034px;
   margin: 0 auto;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .sc-fact .group-vinegar .sub-title-area .txt-ani + .txt-ani {
   margin-top: 28px;
@@ -469,9 +524,11 @@ html {
 }
 .sc-fact .group-vinegar .title-area .txt-ani {
   display: block;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
   width: 100%;
-  perspective: 700px;
+  -webkit-perspective: 700px;
+          perspective: 700px;
   overflow: hidden;
 }
 .sc-fact .group-vinegar .title-area .txt-ani .title {
@@ -480,25 +537,67 @@ html {
   font-size: 192px;
   line-height: 148px;
   font-weight: 400;
-  transform: scaleX(0.75);
-  transform-origin: 50% 0;
+  -webkit-transform: scaleX(0.75);
+          transform: scaleX(0.75);
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
 }
 .sc-fact .group-vinegar .title-area .txt-ani .title.txt-lg {
   font-size: 420px;
   line-height: 327px;
 }
 .sc-fact .group-vinegar .circle-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   margin: 100px 0;
   padding: 0 22px;
+  overflow: hidden;
 }
 .sc-fact .group-vinegar .circle-area .circle {
-  flex: 1;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   max-width: 426px;
 }
 .sc-fact .group-vinegar .circle-area .circle svg {
   fill: #041a00;
+}
+
+.sc-video {
+  position: relative;
+}
+.sc-video .group-title {
+  mix-blend-mode: difference;
+  width: calc(100% - 50px);
+  bottom: 25px;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.sc-video .group-title .title-area .txt-ani {
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-perspective: 700px;
+          perspective: 700px;
+}
+.sc-video .group-title .title-area .txt-ani .title {
+  color: #ababab;
+  display: block;
+  width: 100%;
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
+  font-family: "SharpGrotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  font-weight: 400;
+  font-size: 12vw;
+  line-height: 148px;
+  white-space: nowrap;
 }
 
 .cursor {
@@ -509,7 +608,8 @@ html {
   height: 18px;
   background-color: #8eff00;
   border-radius: 50%;
-  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
   pointer-events: none;
   mix-blend-mode: difference;
 }/*# sourceMappingURL=style.css.map */

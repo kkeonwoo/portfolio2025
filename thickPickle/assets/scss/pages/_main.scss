@@ -15,21 +15,21 @@
     }
 }
 
+.group-bg {
+    .bg-box {
+        .video {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+        }
+    }
+}
+
 .sc-hero {
     position: relative;
     height: 100vh;
     font-size: 15px;
-
-    .group-bg {
-        .bg-box {
-            .video {
-                display: block;
-                width: 100vw;
-                height: 100vh;
-                object-fit: cover;
-            }
-        }
-    }
 
     .group-title {
         bottom: 25px;
@@ -424,6 +424,7 @@
             justify-content: space-around;
             margin: 100px 0;
             padding: 0 22px;
+            overflow: hidden;
 
             .circle {
                 flex: 1;
@@ -436,6 +437,40 @@
         }
     }
 
+}
+
+.sc-video {
+    position: relative;
+
+    .group-title {
+        mix-blend-mode: difference;
+        width: calc(100% - 50px);
+        bottom: 25px;
+        @include absCenter(true, false);
+
+        .title-area {
+            .txt-ani {
+                display: block;
+                overflow: hidden;
+                text-align: center;
+                transform-style: preserve-3d;
+                perspective: 700px;
+                
+                .title {
+                    color: #ababab;
+                    display: block;
+                    width: 100%;
+                    // transform: scaleX(0.75);
+                    transform-origin: 50% 0;
+                    font-family: "SharpGrotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+                    font-weight: 400;
+                    font-size: 12vw;
+                    line-height: 148px;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
 }
 
 .cursor {

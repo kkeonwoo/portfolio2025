@@ -64,7 +64,7 @@ ScrollTrigger.create({
 // }
 
 
-gsap.utils.toArray('.sc-fact .title').forEach((title, idx) => {
+gsap.utils.toArray('.sc-fact .title, .sc-video .title').forEach((title, idx) => {
     ScrollTrigger.create({
         trigger: title.parentNode,
         start: 'top bottom',
