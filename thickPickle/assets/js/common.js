@@ -3,6 +3,8 @@ Enterprise = {
         this.introAni();
         this.scrollHdrAni();
         this.handleCursor();
+        this.handleSwiper();
+        this.handleImgMove();
     },
     introAni: function() {
         const introIcon = $('.intro .ico-loader');
@@ -31,10 +33,10 @@ Enterprise = {
 
             if (curr > lastScroll) {
                 gsap.to(utilTxt, { yPercent: -100})
-                gsap.to(logo, { scale: 0.75})
+                gsap.to(logo, { xPercent: -50, scale: 0.75})
             } else {
                 gsap.to(utilTxt, { yPercent: 0})
-                gsap.to(logo, { scale: 1})
+                gsap.to(logo, { xPercent: -50, scale: 1})
             }
 
             lastScroll = curr;
@@ -53,6 +55,54 @@ Enterprise = {
             xTo(x);
             yTo(y);
         })
+    },
+    handleSwiper: function() {
+        const swiperSpecies = new Swiper('.species-swiper', {
+            loop: true,
+            slidesPerView: 1,
+            allowTouchMove: false,
+            effect: "fade",
+            navigation: {
+                nextEl: ".species-swiper .swiper-button-next",
+                prevEl: ".species-swiper .swiper-button-prev",
+            },
+            pagination: {
+                el: ".species-swiper .swiper-pagination",
+                clickable: true
+            },
+            on: {
+                init: function() {
+                    $('.swiper-slide').removeClass('swiper-slide-active')
+                },
+                click: function() {
+                    let idx = swiperSpecies.realIndex;
+                    if (idx < $('.species-swiper .swiper-slide').length - 1) {
+                        swiperSpecies.slideToLoop(idx + 1);
+                    } else {
+                        swiperSpecies.slideToLoop(0);
+                    }
+                },
+            }
+        })
+    },
+    handleImgMove: function() {
+        const images = document.querySelectorAll('.swiper-slide img');
+        const animators = Array.from(images).map((img, idx) => {
+            return {
+                xTo: gsap.quickTo(img, 'x'),
+                yTo: gsap.quickTo(img, 'y'),
+            };
+        });
+        
+        $('.species-swiper').on('mousemove', function({ clientX: x, clientY: y }) {
+            animators.forEach(({ xTo, yTo }, idx) => {
+                const moveAmount = idx % 2 === 0 ? 0.02 : 0.05;
+                const multiplier = (idx === 1 || idx === 2) ? -1 : 1;
+                
+                xTo(x * moveAmount * multiplier);
+                yTo(y * moveAmount * multiplier);
+            });
+        });
     }
 }
 

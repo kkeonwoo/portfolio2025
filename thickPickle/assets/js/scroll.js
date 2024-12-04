@@ -64,7 +64,7 @@ ScrollTrigger.create({
 // }
 
 
-gsap.utils.toArray('.sc-fact .title, .sc-video .title').forEach((title, idx) => {
+gsap.utils.toArray('.sc-fact .title, .sc-video .title, .sc-species .title, .sc-product .title').forEach((title, idx) => {
     ScrollTrigger.create({
         trigger: title.parentNode,
         start: 'top bottom',
@@ -112,7 +112,6 @@ ScrollTrigger.create({
     start: 'top bottom',
     end: 'bottom bottom',
     scrub: 0,
-    // markers:true,
     onEnter: () => {
         $('.sc-fact .group-info').addClass('is-ani');
     }
@@ -136,15 +135,43 @@ gsap.utils.toArray('.sc-fact .group-banner').forEach((banner, idx) => {
         start: 'top bottom',
         end: 'bottom bottom',
         animation: bannerTl,
-        markers: true,
     })
 })
 
-gsap.utils.toArray('.group-vinegar .txt').forEach((txt, idx) => {
+ScrollTrigger.create({
+    trigger: '.sc-species',
+    start: 'top center',
+    end: 'bottom center',
+    onEnter: () => {
+        $('.swiper-slide:nth-child(1)').addClass('swiper-slide-active');
+    }
+})
+
+gsap.utils.toArray('.group-vinegar .txt, .sc-product .txt, .sc-species .group-title .txt').forEach((txt, idx) => {
     ScrollTrigger.create({
         trigger: txt,
         start: 'top bottom',
         end: 'bottom bottom',
-        animation: gsap.from(txt, { yPercent: 100, ease: 'power2.inOut'}),
+        animation: gsap.from(txt, { yPercent: 120, ease: 'power2.inOut'}),
+    })
+})
+
+ScrollTrigger.create({
+    trigger: '.sc-pickle',
+    start: 'top top',
+    end: 'bottom top',
+})
+
+const footerTitle = gsap.utils.toArray('#footer .title');
+footerTitle.forEach((title, idx) => {
+    ScrollTrigger.create({
+        trigger: title.parentNode,
+        start: 'top bottom',
+        end: 'bottom bottom',
+        animation: gsap.from(title, { opacity: 0, yPercent: 100, rotateX: -90, duration: 1, delay: 0.1, stagger: { each: 0.1, ease: 'power2.inOut'}, onComplete: () => {
+            if (idx === footerTitle.length - 1) {
+                gsap.to('#footer', { '--transformX': 0})
+            }
+        }}),
     })
 })

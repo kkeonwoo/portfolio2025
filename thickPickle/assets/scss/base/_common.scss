@@ -9,9 +9,17 @@
 
 .dot {
     position: absolute;
-    border-radius: 50%;
     width: 25px;
     height: 25px;
+    border-radius: 50%;
+    @include tablet() {
+        width: 22px;
+        height: 22px;
+    }
+    @include mobile() {
+        width: 14px;
+        height: 14px;
+    }
 }
 
 .sticky {
@@ -22,4 +30,24 @@
 
 .flex {
     display: flex;
+}
+
+.txt-ani {
+    display: block;
+    overflow: hidden;
+
+    .title, .txt {
+        display: block;
+        line-height: .775;
+    }
+
+    .title {
+        font-family: "SharpGrotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+        transform-origin: 50% 0;
+    }
+
+    .title-area & {
+        transform-style: preserve-3d;
+        perspective: 700px;
+    }
 }

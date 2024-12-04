@@ -2,27 +2,25 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     z-index: 100;
-    mix-blend-mode: difference;
+    width: 100%;
     padding: 25px;
+    mix-blend-mode: difference;
 
     .header-inner {
         position: relative;
         @include flex(between, center);
 
         .logo {
-            top: 0;
-            left: calc(50% - 1.15em);
-            width: 2.3em;
-            font-size: 2.375rem;
-            transform-origin: 50% 0;
             position: absolute;
+            top: 0;
+            left: 50%;
+            width: clamp(78px, 4.8vw, 92px);
+            transform: translateX(-50%);
+            transform-origin: 50% 0;
 
             svg {
                 display: block;
-                width: 2.3em;
-                height: calc(2.3em* .652173913);
                 fill: #8eff00;
             }
         }
@@ -37,6 +35,13 @@
             }
             .txt { 
                 display: block;
+                font-size: 17px;
+                @include tablet() {
+                    font-size: 15px;
+                }
+                @include mobile() {
+                    font-size: 14px;
+                }
             }
         }
     }
