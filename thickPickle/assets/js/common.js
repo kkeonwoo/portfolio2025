@@ -1,4 +1,4 @@
-Enterprise = {
+ThickPickle = {
     init: function () {
         this.introAni();
         this.scrollHdrAni();
@@ -107,5 +107,5 @@ Enterprise = {
 }
 
 $(() => {
-    Enterprise.init();
+    ThickPickle.init();
 });
