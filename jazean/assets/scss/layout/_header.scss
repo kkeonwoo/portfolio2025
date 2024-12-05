@@ -1,0 +1,46 @@
+#header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+
+    .header-inner {
+        padding: 36px 90px;
+        @include flex(between, center);
+
+        .logo {
+            .link {
+                display: block;
+                width: 234px;
+                height: 75px;
+            }
+        }
+
+        .group-nav {
+            @include absCenter(true, true);
+
+            .nav-list {
+                gap: 50px;
+                @include flex(center, center);
+
+                .nav-item {
+                    font-size: 18px;
+                }
+            }
+        }
+        
+        .link {
+            color: var(--light);
+            transition: color .5s cubic-bezier(.22,.61,.36,1);
+            
+            &:hover {
+                color: hsla(43,78%,98%,.7);
+            }
+
+            &.link-lang {
+                width: 42px;
+            }
+        }
+    }
+}
