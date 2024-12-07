@@ -3,14 +3,14 @@ Jazean = {
         gsap.registerPlugin(ScrollTrigger);
         gsap.defaults({ease: 'none'});
 
-        this.openingAni();
+        // this.openingAni();
         this.setStrokeAnimation('.path');
         this.scrollAni();
+        this.setSwiper();
     },
     openingAni: function() {
         $('#wrap').imagesLoaded()
         .done( function( instance ) {
-            
             const opeingTl = gsap.timeline()
             .set('body', { onStart: () => {
                 $('body').addClass('is-loaded');
@@ -27,22 +27,69 @@ Jazean = {
         });
     },
     scrollAni: function() {
-        gsap.utils.toArray('section').forEach((sc, idx) => {
-            let path = $(sc).find('.line:not(".line-logo") .path');
+        // gsap.utils.toArray('section').forEach((sc, idx) => {
+        //     let path = $(sc).find('.line:not(".line-logo") .path');
             
-            const svgTl = gsap.timeline()
-            .to(path, { strokeDashoffset: 0})
+        //     const svgTl = gsap.timeline()
+        //     .to(path, { strokeDashoffset: 0})
             
-            ScrollTrigger.create({
-                trigger: sc,
-                start: 'top center',
-                // endTrigger: '.sc-grain',
-                end: 'bottom center',
-                animation: svgTl,
-                scrub: true,
-                markers: true,
-            })
+        //     ScrollTrigger.create({
+        //         trigger: sc,
+        //         start: 'top center',
+        //         // endTrigger: '.sc-grain',
+        //         end: 'bottom center',
+        //         animation: svgTl,
+        //         scrub: true,
+        //         markers: true,
+        //     })
+        // })
 
+        // 질문
+        // [0] 과 .get(0)의 차이
+        // 둘다 dom요소 반환하는게 아닌지?
+        // video
+        // const $techVideo = $('.sc-tech video');
+        // const videoDuration = $techVideo.get(0).duration; // nan 오류
+        
+        // ScrollTrigger.create({
+        //     trigger: '.sc-tech',
+        //     start: 'top center',
+        //     end: 'bottom center',
+        //     scrub: true,
+        //     markers: true,
+        //     onUpdate: (self) => {
+        //         $techVideo.get(0).currentTime = self.progress * videoDuration;
+        //     }
+        // })
+
+        ScrollTrigger.create({
+            trigger: '.sc-roast',
+            start: 'top top',
+            end: 'bottom bottom',
+            // animation: ,
+            markers: true,
+            scrub: 0,
+        })
+    },
+    setSwiper: function() {
+        const swiperProduct = new Swiper('.sc-product .swiper-product', {
+            loop: true,
+            loopAdditionalSlides: 0,
+            initialSlide: 1,
+            slidesPerView: 4.5,
+            centeredSlides: true,
+            navigation: {
+                nextEl: ".swiper-product .btn-next",
+                prevEl: ".swiper-product .btn-prev",
+           },
+        })
+
+        const swiperNews = new Swiper('.sc-news .swiper-news', {
+            slidesPerView: 'auto',
+            navigation: {
+                nextEl: ".sc-news .btn-next",
+                prevEl: ".sc-news .btn-prev",
+           },
         })
     },
     getPathLength: function(t) {

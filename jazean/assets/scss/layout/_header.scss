@@ -6,14 +6,13 @@
     z-index: 999;
 
     .header-inner {
-        padding: 36px 90px;
+        padding: 2em 5em;
         @include flex(between, center);
 
         .logo {
             .link {
                 display: block;
-                width: 234px;
-                height: 75px;
+                width: 13em;
             }
         }
 
@@ -21,12 +20,8 @@
             @include absCenter(true, true);
 
             .nav-list {
-                gap: 50px;
+                gap: 2.8em;
                 @include flex(center, center);
-
-                .nav-item {
-                    font-size: 18px;
-                }
             }
         }
         
@@ -39,7 +34,9 @@
             }
 
             &.link-lang {
-                width: 42px;
+                position: relative;
+                top: .1em;
+                width: 2.3em;
             }
         }
     }
