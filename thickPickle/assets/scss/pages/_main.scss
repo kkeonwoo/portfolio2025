@@ -806,6 +806,7 @@
 
 .sc-product {
     position: relative;
+    z-index: 1;
     padding: 20px;
     background-color: #262c03;
     @include tablet() {
@@ -939,9 +940,9 @@
 
 .sc-pickle {
     position: relative;
-    z-index: -1;
+    // z-index: -1;
     height: 400vh;
-    margin-top: -100vh;
+    // margin-top: -100vh;
     background-color: #fff;
 
     &::after {
@@ -953,6 +954,7 @@
     }
     
     .sticky {
+        margin-top: -100vh;
 
         .pickle-area {
             iframe {

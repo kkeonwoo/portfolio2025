@@ -86,23 +86,31 @@ ThickPickle = {
         })
     },
     handleImgMove: function() {
-        const images = document.querySelectorAll('.swiper-slide img');
-        const animators = Array.from(images).map((img, idx) => {
-            return {
-                xTo: gsap.quickTo(img, 'x'),
-                yTo: gsap.quickTo(img, 'y'),
-            };
-        });
+        $('.species-swiper').mousemove(function(e) {
+            x = (e.clientX - window.innerWidth / 2) * 0.005
+            y = (e.clientY - window.innerHeight / 2) * 0.005
+            console.log(x+'//'+y);
+
+            // gsap.set('.sc', {--x: xVal, --y: yVal})
+            
+        })
+        // const images = document.querySelectorAll('.swiper-slide img');
+        // const animators = Array.from(images).map((img, idx) => {
+        //     return {
+        //         xTo: gsap.quickTo(img, 'x'),
+        //         yTo: gsap.quickTo(img, 'y'),
+        //     };
+        // });
         
-        $('.species-swiper').on('mousemove', function({ clientX: x, clientY: y }) {
-            animators.forEach(({ xTo, yTo }, idx) => {
-                const moveAmount = idx % 2 === 0 ? 0.02 : 0.05;
-                const multiplier = (idx === 1 || idx === 2) ? -1 : 1;
+        // $('.species-swiper').on('mousemove', function({ clientX: x, clientY: y }) {
+        //     animators.forEach(({ xTo, yTo }, idx) => {
+        //         const moveAmount = idx % 2 === 0 ? 0.02 : 0.05;
+        //         const multiplier = (idx === 1 || idx === 2) ? -1 : 1;
                 
-                xTo(x * moveAmount * multiplier);
-                yTo(y * moveAmount * multiplier);
-            });
-        });
+        //         xTo(x * moveAmount * multiplier);
+        //         yTo(y * moveAmount * multiplier);
+        //     });
+        // });
     }
 }
 
