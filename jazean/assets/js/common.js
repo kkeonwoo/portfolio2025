@@ -6,6 +6,7 @@ Jazean = {
         this.setSwiper();
         this.handleCursor();
         this.handleSnb();
+        this.TextSplit();
     },
     openingAni: function() {
         $('#wrap').imagesLoaded()
@@ -28,36 +29,6 @@ Jazean = {
         });
     },
     scrollAni: function() {
-        // const svgTl = gsap.timeline()
-        // .to('.sc-visual .path', { strokeDashoffset: 0})
-        // ScrollTrigger.create({
-        //     trigger: '.sticky-wrap',
-        //     start: 'top top',
-        //     end: 'bottom bottom',
-        //     animation: svgTl,
-        //     scrub: true,
-        //     markers:true,
-        //     onUpdate:() => {
-        //         console.log('aaa');
-        //     }
-        // })
-        // gsap.utils.toArray('section').forEach((sc, idx) => {
-        //     let path = $(sc).find('.line:not(".line-logo") .path');
-            
-        //     const svgTl = gsap.timeline()
-        //     .to(path, { strokeDashoffset: 0})
-            
-        //     ScrollTrigger.create({
-        //         trigger: sc,
-        //         start: 'top center',
-        //         // endTrigger: '.sc-grain',
-        //         end: 'bottom center',
-        //         animation: svgTl,
-        //         scrub: true,
-        //         markers: true,
-        //     })
-        // })
-
         // 질문
         // [0] 과 .get(0)의 차이
         // 둘다 dom요소 반환하는게 아닌지?
@@ -87,8 +58,6 @@ Jazean = {
     },
     setSwiper: function() {
         const swiperProduct = new Swiper('.sc-product .swiper-product', {
-            loop: true,
-            loopAdditionalSlides: 0,
             initialSlide: 1,
             slidesPerView: 4.5,
             centeredSlides: true,
@@ -96,7 +65,28 @@ Jazean = {
                 nextEl: ".swiper-product .btn-next",
                 prevEl: ".swiper-product .btn-prev",
             },
+            // on: {
+            //     reachBeginning: function() {
+            //         this.slideTo(this.slides.length - 1);
+            //     },
+            //     // reachEnd: function() {
+            //     //     console.log('click next');
+            //     //     this.slideTo(0);
+            //     // },
+            // }
         })
+
+        // $('.swiper-product .btn-next').on('click', () => {
+        //     if (swiperProduct.activeIndex === swiperProduct.slides.length) {
+        //         swiperProduct.slideTo(0);
+        //     }
+        // });
+
+        // $('.swiper-product .btn-prev').on('click', () => {
+        //     if (swiperProduct.activeIndex === 1) {
+        //         swiperProduct.slideTo(swiperProduct.slides.length);
+        //     }
+        // });
 
         const swiperNews = new Swiper('.sc-news .swiper-news', {
             slidesPerView: 'auto',
@@ -126,9 +116,30 @@ Jazean = {
         $linkSnb.each((idx, link) => {
             $(link).on('click', function(e) {
                 e.preventDefault();
-                let target = $(this).attr('href');
-                
-                lenis.scrollTo(target)
+                let flavorTop;
+                let href = $(this).attr('href');
+                if (href === "#roast") {
+                    flavorTop = $('.sc-roast').offset().top;
+                    lenis.scrollTo(flavorTop)
+                } else if (href === '#flavor') {
+                    flavorTop = $('.sc-roast').offset().top + $('.sc-roast').height() / 2;
+                    lenis.scrollTo(flavorTop)
+                } else {
+                    lenis.scrollTo(href)
+                }
+            })
+        })
+    },
+    TextSplit: function() {
+        const splitTxt = new SplitType('.marquee .txt', { types: 'words' });
+
+        gsap.utils.toArray('.marquee').forEach((marquee, idx) => {
+            $(marquee).on('mouseenter', function() {
+                let txt = $(marquee).find('.word');
+                const tl = gsap.timeline()
+                .to(txt, { autoAlpha: 0, yPercent: -100, duration: 0.3, ease: 'power2.inOut', stagger: {each: 0.1}})
+                .set(txt, { yPercent: 100})
+                .to(txt, { autoAlpha: 1, yPercent: 0, duration: 0.3, ease: 'power2.inOut', stagger: { each: 0.1}})
             })
         })
     },

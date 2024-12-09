@@ -119,3 +119,28 @@
     -webkit-mask-size: 100% 100%;
     @include absCenter(true, true);
 }
+
+.marquee {
+    &:hover {
+        .word {
+            // animation: translateY 1s .2s;
+        }
+    }
+
+    .txt {
+        display: inline-block;
+        overflow: hidden;
+    }
+}
+
+// @keyframes translateY {
+//     0% {
+//         transform: translateY(0);
+//     }
+//     50% {
+//         transform : translateY(-100%);
+//     }
+//     100% {
+//         transform: translateY(0);
+//     }
+// }

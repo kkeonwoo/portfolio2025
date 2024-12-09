@@ -16,7 +16,7 @@ $(document).ready(function() {
     .to('.sc-roast .top .path', { strokeDashoffset: 0})
     .to('.sc-roast .line-bean .path', { strokeDashoffset: 0})
     .to('.sc-roast .bottom .path', { strokeDashoffset: 0})
-    .to('.sc-discover .line .path', { strokeDashoffset: 0})
+    .to('.sc-discover .group-bg .line .path', { strokeDashoffset: 0})
     .from('.sc-discover .line .logo', { opacity: 0}, '<')
     
     ScrollTrigger.create({
@@ -24,7 +24,7 @@ $(document).ready(function() {
         start: 'top top',
         end: 'bottom bottom',
         animation: svgTl,
-        scrub: 0,
+        scrub: true,
     })
 
     const beanTween = gsap.from('.sc-bean .txt-area > *, .ico-bean', { autoAlpha: 0, yPercent: 100, stagger: { each: 0.2 }})
@@ -49,7 +49,7 @@ $(document).ready(function() {
         start: 'top bottom',
         end: 'bottom top',
         animation: grainTl,
-        scrub: 0,
+        scrub: true,
     })
 
     const grainTween = gsap.from('.sc-grain .txt-area > *', { autoAlpha: 0, yPercent: 100, stagger: { each: 0.2 }})
@@ -114,12 +114,12 @@ $(document).ready(function() {
         end: 'bottom bottom',
         animation: roastTl,
         markers: true,
-        scrub: 0,
+        scrub: true,
     })
 
     const discoverTL = gsap.timeline()
     .from('.sc-discover .txt-area > *, .sc-discover .link', { autoAlpha: 0, yPercent: 100, stagger: { each: 0.2 }})
-    .to('.sc-discover .line .path', { strokeDashoffset: 0}, '<')
+    .to('.sc-discover .group-cnt .line .path', { strokeDashoffset: 0}, '<')
 
     ScrollTrigger.create({
         trigger: '.sc-discover',

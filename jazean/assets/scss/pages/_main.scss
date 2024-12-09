@@ -524,28 +524,30 @@ section {
 
         .group-bg {
             .bg-wrap {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                // height: 100vh;
                 pointer-events: none;
-                height: 100vh;
                 
                 &#roast {
-                    // position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
                     clip-path: inset(calc(var(--inset) * 1%) 0 0 0);
                 }
 
                 &#flavor {
-                    video {
-                        z-index: -1;
-                    }
+                    z-index: -1;
+                    // video {
+                    //     z-index: -1;
+                    // }
                 }
 
-                video {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                }
+                // video {
+                //     position: absolute;
+                //     top: 0;
+                //     left: 0;
+                // }
             }
         }
 
@@ -688,26 +690,41 @@ section {
     display: flex;
     
     .btn {
-        border-radius: 50%;
-        border: 1px solid var(--light);
         position: relative;
         height: 3.813em;
         width: 3.813em;
         color: var(--light);
-        transition: color .5s cubic-bezier(.22,.61,.36,1);
-        @include flex(center, center);
-
-        .arw-hdr {
-            width: .479em;
+        transition: all .5s cubic-bezier(.22,.61,.36,1);
+        
+        &::before {
+            top: 0;
+            left: 0;
+            width: 3.813em;
+            height: 3.813em;
+            border-radius: 50%;
+            border: 1px solid var(--light);
+            transform-origin: 50% 50%;
+            transition: all .5s cubic-bezier(.22,.61,.36,1);
+            @include pseudo();
         }
+        
+        .ico-arw {
+            transition: all .5s cubic-bezier(.22,.61,.36,1);
+            @include flex(center, center);
 
-        .line {
-            display: block;
-            background: var(--light);
-            height: 1px;
-            margin-top: -1px;
-            position: relative;
-            width: 1em;
+            .arw-hdr {
+                width: .479em;
+            }
+    
+            .line {
+                display: block;
+                background: var(--light);
+                height: 1px;
+                margin-top: -1px;
+                position: relative;
+                width: 1em;
+                transition: all .5s cubic-bezier(.22,.61,.36,1);
+            }
         }
 
         &.btn-prev .line {
@@ -717,6 +734,28 @@ section {
         &.btn-next .line {
             margin-right: -5px;
         }
+
+        &:hover {
+            color: var(--orange) !important;
+            
+            &::before {
+                transform: scale(0.8);
+                border-color: var(--orange) !important;
+            }
+
+            &.btn-prev .ico-arw {
+                transform: translateX(-50%);
+            }
+            &.btn-next .ico-arw {
+                transform: translateX(50%);
+            }
+
+            .line {
+                width: 2.8em;
+                background: var(--orange) !important;
+            }
+        }
+
     }
 }
 
@@ -784,6 +823,10 @@ section {
                 color: var(--dark);
                 text-align: center;
                 background: var(--light);
+                .txt {
+                    margin: 0;
+                    color: inherit;
+                }
             }
         }
     }
