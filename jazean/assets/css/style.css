@@ -18,20 +18,71 @@
 
 .cursor {
   position: fixed;
-  height: 6em;
   top: 0;
   left: 0;
-  pointer-events: none;
-  width: 6em;
+  width: 1.4em;
+  min-width: 7px;
+  height: 1.4em;
+  min-height: 7px;
   z-index: 999;
   color: var(--light);
+  pointer-events: none;
+  mix-blend-mode: exclusion;
 }
-.cursor svg {
-  margin: 0 0.3em;
+.cursor::before {
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  min-width: 2px;
+  height: 30%;
+  min-height: 2px;
+  background: hsla(0, 0%, 100%, 0.7);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  content: "";
+}
+.cursor::after {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  content: "";
+}
+.cursor .drag {
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 6em;
+  height: 6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.cursor .drag svg.bg-circle-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.cursor .drag svg.ico-arw {
   width: 1em;
+  margin: 0 0.3em;
 }
-.cursor svg.ico-arw {
+.cursor .drag svg.ico-arw-left {
   transform: translateX(-20px);
+}
+.cursor .drag svg.ico-arw-right {
+  transform: translateX(20px);
 }
 
 .chars * {
@@ -105,7 +156,6 @@
   padding: 0;
   font: inherit;
   color: inherit;
-  text-transform: uppercase;
 }
 
 *, :after, :before {
@@ -160,6 +210,10 @@ body {
 svg, video {
   width: 100%;
   height: 100%;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 /* pages */
@@ -363,7 +417,7 @@ section {
   top: 0;
   max-width: 6em;
   height: 100vh;
-  z-index: 5;
+  z-index: 999;
   color: var(--dark);
   mix-blend-mode: exclusion;
 }
@@ -522,26 +576,32 @@ section {
   left: 50%;
   transform: translateX(-50%);
 }
-.sc-grain .group-bg .bg {
+.sc-grain .group-bg .cherry-box {
   position: absolute;
   width: 6em;
   height: 5em;
 }
-.sc-grain .group-bg .bg.bg1 {
+.sc-grain .group-bg .cherry-box:nth-of-type(1) {
   top: 5%;
   left: 26.25%;
+}
+.sc-grain .group-bg .cherry-box:nth-of-type(1) .bg1 {
   transform: scale(0.7) rotate(38.2779deg);
   filter: blur(5px);
 }
-.sc-grain .group-bg .bg.bg2 {
+.sc-grain .group-bg .cherry-box:nth-of-type(2) {
   top: 33.3333333333%;
   right: 4.6875%;
+}
+.sc-grain .group-bg .cherry-box:nth-of-type(2) .bg2 {
   filter: blur(10px);
   transform: scale(0.5) rotate(54.9446deg);
 }
-.sc-grain .group-bg .bg.bg3 {
+.sc-grain .group-bg .cherry-box:nth-of-type(3) {
   bottom: 28.3333333333%;
   left: 16.875%;
+}
+.sc-grain .group-bg .cherry-box:nth-of-type(3) .bg3 {
   transform: rotate(120deg);
 }
 .sc-grain .group-cnt {
@@ -569,6 +629,7 @@ section {
 }
 
 .sc-tech {
+  --yPercent: 0;
   height: 60em;
   background: #ead7ca;
   color: #341212;
@@ -607,6 +668,58 @@ section {
 .sc-tech .group-cnt .floating-beans .floating-bean {
   position: absolute;
   width: 5em;
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:first-child {
+  --yPercent: 360;
+  transform: translateY(calc(var(--yPercent) * 1%));
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:nth-child(2) {
+  --yPercent: 220;
+  transform: translateY(calc(var(--yPercent) * 1%));
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:nth-child(3) {
+  --yPercent: 290;
+  transform: translateY(calc(var(--yPercent) * 1%));
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:nth-child(4) {
+  --yPercent: 340;
+  transform: translateY(calc(var(--yPercent) * 1%));
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:nth-child(5) {
+  --yPercent: 230;
+  transform: translateY(calc(var(--yPercent) * 1%));
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:nth-child(6) {
+  --yPercent: 310;
+  transform: translateY(calc(var(--yPercent) * 1%));
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:nth-child(7) {
+  --yPercent: 290;
+  transform: translateY(calc(var(--yPercent) * 1%));
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:nth-child(8) {
+  --yPercent: 190;
+  transform: translateY(calc(var(--yPercent) * 1%));
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:nth-child(9) {
+  --yPercent: 310;
+  transform: translateY(calc(var(--yPercent) * 1%));
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:nth-child(10) {
+  --yPercent: 240;
+  transform: translateY(calc(var(--yPercent) * 1%));
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:nth-child(11) {
+  --yPercent: 230;
+  transform: translateY(calc(var(--yPercent) * 1%));
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:nth-child(12) {
+  --yPercent: 210;
+  transform: translateY(calc(var(--yPercent) * 1%));
+}
+.sc-tech .group-cnt .floating-beans .floating-bean:nth-child(13) {
+  --yPercent: 290;
+  transform: translateY(calc(var(--yPercent) * 1%));
 }
 .sc-tech .group-cnt .floating-beans .floating-bean svg {
   position: relative;
@@ -687,22 +800,38 @@ section {
 
 .sc-roast {
   display: block;
+  position: relative;
+  z-index: 5;
   height: 200vh;
+  --inset: 100;
 }
-.sc-roast .sticky {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.sc-roast .sticky .group-bg .bg-wrap {
+  pointer-events: none;
+  height: 100vh;
 }
-.sc-roast .sticky .group-bg video {
+.sc-roast .sticky .group-bg .bg-wrap#roast {
+  top: 0;
+  left: 0;
+  width: 100%;
+  clip-path: inset(calc(var(--inset) * 1%) 0 0 0);
+}
+.sc-roast .sticky .group-bg .bg-wrap#flavor video {
   z-index: -1;
+}
+.sc-roast .sticky .group-bg .bg-wrap video {
   position: absolute;
   top: 0;
   left: 0;
 }
+.sc-roast .sticky .group-cnt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .sc-roast .sticky .group-cnt .txt-area {
   width: 100%;
-  padding: 0 1em;
+  padding: 0 2em;
   text-align: center;
   position: absolute;
   left: 50%;
@@ -732,6 +861,8 @@ section {
 }
 
 .sc-discover {
+  position: relative;
+  z-index: 1;
   height: 60em;
   color: var(--light);
   background: #180d0a;
@@ -800,7 +931,7 @@ section {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: -2em;
+  margin-top: -1em;
   width: auto;
   height: 9.113em;
 }

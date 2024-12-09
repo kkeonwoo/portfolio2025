@@ -66,7 +66,7 @@ section {
     top: 0;
     max-width: 6em;
     height: 100vh;
-    z-index: 5;
+    z-index: 999;
     color: var(--dark);
     mix-blend-mode: exclusion;
 
@@ -245,27 +245,36 @@ section {
             }
         }
 
-        .bg {
+        .cherry-box {
             position: absolute;
             width: 6em;
             height: 5em;
             
-            &.bg1 {
+            &:nth-of-type(1) {
                 top: 5%;
                 left: 26.25%;
-                transform: scale(0.7) rotate(38.2779deg);
-                filter: blur(5px);
+
+                .bg1 {
+                    transform: scale(0.7) rotate(38.2779deg);
+                    filter: blur(5px);
+                }
             }
-            &.bg2 {
+            &:nth-of-type(2) {
                 top: 33.33333333333333%;
                 right: 4.6875%;
-                filter: blur(10px);
-                transform: scale(0.5) rotate(54.9446deg);
+
+                .bg2 {
+                    filter: blur(10px);
+                    transform: scale(0.5) rotate(54.9446deg);
+                }
             }
-            &.bg3 {
+            &:nth-of-type(3) {
                 bottom: 28.333333333333332%;
                 left: 16.875%;
-                transform: rotate(120deg);
+
+                .bg3 {
+                    transform: rotate(120deg);
+                }
             }
         }
     }
@@ -300,6 +309,7 @@ section {
 }
 
 .sc-tech {
+    --yPercent: 0;
     height: 60em;
     background: #ead7ca;
     color: #341212;
@@ -340,6 +350,71 @@ section {
             .floating-bean {
                 position: absolute;
                 width: 5em;
+
+                &:first-child {
+                    --yPercent: 360;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(2) {
+                    --yPercent: 220;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(3) {
+                     --yPercent: 290;
+                     transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(4) {
+                    --yPercent: 340;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(5) {
+                    --yPercent: 230;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(6) {
+                    --yPercent: 310;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(7) {
+                    --yPercent: 290;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(8) {
+                    --yPercent: 190;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(9) {
+                    --yPercent: 310;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(10) {
+                    --yPercent: 240;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(11) {
+                    --yPercent: 230;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(12) {
+                    --yPercent: 210;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(13) {
+                    --yPercent: 290;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
 
                 svg {
                     position: relative;
@@ -436,26 +511,51 @@ section {
 
 .sc-roast {
     display: block;
+    position: relative;
+    // 질문
+    // bottom line이 sc-discover에 가려서 전체 영역을 discover보다 높게 설정
+    // 홈페이지에선 line에 z-index 999 설정
+    z-index: 5;
     height: 200vh;
+    --inset: 100;
 
     .sticky {
-        @include flex(center, center);
+        // @include flex(center, center);
 
         .group-bg {
-            video {
-                z-index: -1;
-                position: absolute;
-                top: 0;
-                left: 0;
+            .bg-wrap {
+                pointer-events: none;
+                height: 100vh;
+                
+                &#roast {
+                    // position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    clip-path: inset(calc(var(--inset) * 1%) 0 0 0);
+                }
+
+                &#flavor {
+                    video {
+                        z-index: -1;
+                    }
+                }
+
+                video {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                }
             }
         }
 
         .group-cnt {
+            @include absCenter(true, true);
             @extend .bg-bean;
 
             .txt-area {
                 width: 100%;
-                padding: 0 1em;
+                padding: 0 2em;
                 text-align: center;
                 @include absCenter(true, false);
 
@@ -485,6 +585,8 @@ section {
 }
 
 .sc-discover {
+    position: relative;
+    z-index: 1;
     height: 60em;
     color: var(--light);
     background: #180d0a;
@@ -555,7 +657,9 @@ section {
     
         .group-bg {
             @include absCenter(true, true);
-            margin-top: -2em;
+            // 질문
+            // 홈페이지에선 top이 안써져있는데 위치가 잡히는 이유
+            margin-top: -1em;
             width: auto;
             height: 9.113em;
         }
