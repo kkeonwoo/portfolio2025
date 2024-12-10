@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jazean</title>
+    <title>Capsulin — Aluminium</title>
 
     <!-- link:css -->
     <link rel="stylesheet" href="./assets/css/swiper.min.css">
@@ -22,56 +22,415 @@
     <script src="./assets/js/lib/gsap/ScrollTrigger.min.js"></script>
     <script src="./assets/js/lib/gsap/ScrollToPlugin.min.js"></script>
     <script src="./assets/js/common.js" defer></script>
-    <script src="./assets/js/scroll.js" defer></script>
     <script src="./assets/js/settting.js" defer></script>
+    <script src="./assets/js/scroll.js"></script>
 </head>
 
 <body>
 
     <div id="wrap">
 
-        <div class="intro">
-            <span class="spinner"></span>
+        <div style="display: none;">
+            <object type="image/svg+xml" data="./assets/images/symbols.svg"></object>
         </div>
+
+        <!-- <div class="intro">
+            <span class="num"></span>
+        </div> -->
 
         <header id="header">
             <div class="header-inner">
-
-                <h1 class="logo">
-                    <a href="#" class="link">
-                        <!-- svg -->
-                    </a>
-                </h1>
-
                 <nav class="group-nav">
-                    <ul class="nav-list">
-                        <li class="nav-item mobile active">
-                            <a href="#" class="link">Home page</a>
-                        </li>
-                    </ul>
+
+                    <div class="menu">
+                        
+                        <ul class="nav-list">
+                            <li class="nav-item">
+                                <a href="#" class="link">design</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="link">engineering</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="link">customization</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="link">experience</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="link">specifications</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="link">contact</a>
+                            </li>
+                        </ul>
+
+                        <a href="#" class="link">
+                            <span class="txt">credits</span>
+                            <span class="txt">credits</span>
+                        </a>
+
+                    </div>
+
+                    <button class="btn-hamburger">
+                        <div class="ico-box">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                        <div class="txt-wrap">
+                            <span class="txt">menu</span>
+                            <span class="txt">menu</span>
+                        </div>
+                    </button>
+
+                    <a href="#" class="logo">
+                        <!-- svg -->
+                        <svg viewBox="0 0 47 56">
+                            <path d="M45.9,23.4C45.9,11,35.9,1,23.5,1S1.1,11,1.1,23.4s10,22.4,22.4,22.4V55L39,39.5l0,0C43.2,35.5,45.9,29.7,45.9,23.4z"></path>
+                            <path d="M32.2,13.6c-0.1-0.8-0.8-1.3-1.4-1c-0.4,0.2-0.5,0.5-0.6,1.1c-0.1,0.6-0.1,19.1,0,19.6c0.2,1.4,1.5,1.6,2,0.4C32.2,33.4,32.3,14.2,32.2,13.6z"></path>
+                            <path d="M17.7,16.4c1.1-0.4,0.9-0.3,5-0.4c3.3,0,3.7,0,3.9-0.1c1.1-0.4,1.1-1.6,0-1.9c-0.2-0.1-5.8-0.1-6.9-0.1c-5.7,0.4-9.8,5.3-9,11c0.6,4.2,4.4,7.8,8.7,8.1c0.7,0.1,6.5,0.1,6.9,0c1.4-0.2,1.5-1.6,0.2-2c-0.1,0-1-0.1-3.9-0.1c-4.4,0-4.4,0-5.8-0.7C10.9,27.3,11.5,18.5,17.7,16.4z"></path>
+                        </svg>
+                    </a>
+
+                    <a href="#" class="link">
+                        <span class="txt">constact us</span>
+                        <span class="txt">constact us</span>
+                    </a>
                 </nav>
-
-                <div class="utils">
-
-                </div>
             </div>
         </header>
 
         <main id="main">
-
             <div class="main">
 
-                <section class="sc-discover">
-                    <h2 class="blind">discover now</h2>
+                <div class="progress"></div>
 
-                    <div class="inner">
+                <section class="sc-hero">
 
+                    <div class="title-area">
+
+                        <div class="img-box">
+                            <img src="./assets/images/img-hero1.webp" alt="" class="img">
+                        </div>
+
+                        <h1 class="title">
+                            <span class="txt">Aluminium</span>
+                        </h1>
+
+                    </div>
+
+                    <div class="scroll-down-area">
+                        <div class="txt-wrap">
+                            <span class="txt">scroll to discover</span>
+                        </div>
+
+                        <div class="ico-box">
+                            <i class="ico ico-arw-down">
+                                <svg viewBox="0 0 16 10"><path d="M2.5,2.3L8,7.8l5.5-5.5"></path></svg>
+                            </i>
+                        </div>
                     </div>
 
                 </section>
 
-            </div>
+                <div class="sticky-wrap">
 
+                    <div class="sticky-area">
+                        <div class="sticky">
+                            <div class="pagination">
+                                <ol class="page-list">
+                                    <li class="page-item">
+                                        <span class="num">
+                                            <span class="active">01</span> / 06
+                                        </span>
+                                        <span class="txt">design</span>
+                                    </li>
+                                    <li class="page-item">
+                                        <span class="num">
+                                            <span class="active">02</span> / 06
+                                        </span>
+                                        <span class="txt">engineering</span>
+                                    </li>
+                                    <li class="page-item">
+                                        <span class="num">
+                                            <span class="active">03</span> / 06
+                                        </span>
+                                        <span class="txt">customization</span>
+                                    </li>
+                                    <li class="page-item">
+                                        <span class="num">
+                                            <span class="active">04</span> / 06
+                                        </span>
+                                        <span class="txt txt-stroke">experience</span>
+                                    </li>
+                                    <li class="page-item">
+                                        <span class="num">
+                                            <span class="active">05</span> / 06
+                                        </span>
+                                        <span class="txt txt-stroke">specifications</span>
+                                    </li>
+                                    <li class="page-item">
+                                        <span class="num">
+                                            <span class="active">06</span> / 06
+                                        </span>
+                                        <span class="txt txt-stroke">contact</span>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="sc-design">
+
+                        <div class="section full-w">
+                            <div class="title-area">
+                                <h2 class="title">
+                                    <span class="txt-wrap"><span class="txt txt-stroke">elegant</span></span>
+                                    <span class="txt-wrap"><span class="txt">and</span></span>
+                                    <span class="txt-wrap"><span class="txt font-e">differentiating</span></span>
+                                    <span class="txt-wrap"><span class="txt txt-stroke">design</span></span>
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="section half">
+
+                            <div class="sc-left">
+                                <div class="img-box">
+                                    <img src="./assets/images/img-design-capsule1.webp" alt="" class="img">
+                                </div>
+                            </div>
+
+                            <div class="sc-right">
+                                <div class="inner">
+
+                                    <div class="title-area">
+                                        <h3 class="title">
+                                            Elegant<br/>
+                                            &#38; differentiating<br/>
+                                            design
+                                        </h3>
+                                    </div>
+
+                                    <div class="txt-area">
+                                        <p class="txt">
+                                            Each of our customers is unique. We develop capsules at their image. Capsul'in capsule design will make your brand stand out from the crowd.
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="section sc-img half">
+
+                            <div class="sc-left">
+                                <div class="inner">
+                                    <div class="img-box">
+                                        <img src="./assets/images/img-design1.webp" alt="" class="img">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="sc-right">
+                                <div class="img-box">
+                                    <img src="./assets/images/img-design2.webp" alt="" class="img">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="section half">
+
+                            <div class="sc-left">
+                                <div class="img-box">
+                                    <img src="./assets/images/img-design-capsule2.webp" alt="" class="img">
+                                    <img src="./assets/images/img-design-capsule3.webp" alt="" class="img">
+                                    <img src="./assets/images/img-design-capsule4.webp" alt="" class="img">
+                                </div>
+                            </div>
+
+                            <div class="sc-right">
+                                <div class="inner">
+
+                                    <div class="title-area">
+                                        <h3 class="title">
+                                            3 exclusive<br/>
+                                            capsules designs
+                                        </h3>
+                                    </div>
+
+                                    <ul class="tab-list">
+                                        <li class="tab-item">
+                                            <button class="btn btn-design">
+                                                <span class="txt-wrap"><span class="num">01</span></span>
+                                                <span class="txt-wrap"><span class="txt">Moon</span></span>
+                                            </button>
+                                            <div class="line">
+                                                <span class="path"></span>
+                                                <span class="line-bg"></span>
+                                            </div>
+                                        </li>
+                                        <li class="tab-item">
+                                            <button class="btn btn-design">
+                                                <span class="txt-wrap"><span class="num">02</span></span>
+                                                <span class="txt-wrap"><span class="txt">Facets</span></span>
+                                            </button>
+                                            <div class="line">
+                                                <span class="path"></span>
+                                                <span class="line-bg"></span>
+                                            </div>
+                                        </li>
+                                        <li class="tab-item">
+                                            <button class="btn btn-design">
+                                                <span class="txt-wrap"><span class="num">03</span></span>
+                                                <span class="txt-wrap"><span class="txt">Lotus</span></span>
+                                            </button>
+                                            <div class="line">
+                                                <span class="path"></span>
+                                                <span class="line-bg"></span>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                    </section>
+
+                    <section class="sc-engine">
+
+                        <div class="section full-w">
+                            <div class="title-area">
+                                <p class="sub-title">
+                                    <span class="txt-wrap"><span class="txt">THE BEST FABRICATION PROCESS IN THE WORLD.</span></span>
+                                </p>
+                                <h2 class="title">
+                                    <span class="txt-wrap"><span class="txt txt-stroke">PRODUCED</span></span>
+                                    <span class="txt-wrap">
+                                        <i class="ico ico-produce">
+                                            <svg viewBox="0 0 107 107"><rect class="en0-svg-stroke" x="1.5" y="1.5" width="104" height="104"></rect><polygon class="en0-svg-stroke" points="44,21 63,21 63,44 86,44 86,63 63,63 63,86 44,86 44,63 21,63 21,44 44,44"></polygon></svg>
+                                        </i>
+                                    </span>
+                                    <span class="txt-wrap"><span class="txt">in</span></span>
+                                    <span class="txt-wrap"><span class="txt font-e">SWITZERLAND</span></span>
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="section full-w">
+
+                            <div class="title-area">
+                                <h2 class="title">
+                                    <span class="txt-wrap"><span class="txt">FUTURE</span></span>
+                                    <span class="txt-wrap"><span class="txt txt-stroke">PVC</span></span>
+                                    <span class="txt-wrap"><span class="txt font-e">FREE</span></span>
+                                    <span class="txt-wrap"><span class="txt">CAPSULES</span></span>
+                                </h2>
+                            </div>
+
+                            <div class="txt-area">
+                                <p class="txt">
+                                    Within the framework of our research and future development process, we are working on the realization of PVC-free capsules.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="section half">
+
+                            <div class="sc-left">
+                                <div class="img-box">
+                                    <img src="./assets/images/img-engine1.webp" alt="" class="img">
+                                    <img src="./assets/images/img-engine2.webp" alt="" class="img">
+                                    <img src="./assets/images/img-engine3.webp" alt="" class="img">
+                                </div>
+                            </div>
+
+                            <div class="sc-right">
+                                <div class="inner">
+                                    <ul class="tab-list">
+
+                                        <li class="tab-item">
+                                            <button class="btn btn-design">
+                                                <span class="txt-wrap">
+                                                    <span class="txt">
+                                                        Innovative<br/>
+                                                        Sealing Solution
+                                                    </span>
+                                                </span>
+                                            </button>
+                                            <div class="line">
+                                                <span class="path"></span>
+                                                <span class="line-bg"></span>
+                                            </div>
+                                        </li>
+
+                                        <li class="tab-item">
+                                            <button class="btn btn-design">
+                                                <span class="txt-wrap">
+                                                    <span class="txt">
+                                                        Largest<br/>
+                                                        Internal Volume
+                                                    </span>
+                                                </span>
+                                            </button>
+                                            <div class="line">
+                                                <span class="path"></span>
+                                                <span class="line-bg"></span>
+                                            </div>
+                                        </li>
+
+                                        <li class="tab-item">
+                                            <button class="btn btn-design">
+                                                <span class="txt-wrap">
+                                                    <span class="txt">
+                                                        Widest<br/>
+                                                        Sealing Area
+                                                    </span>
+                                                </span>
+                                            </button>
+                                            <div class="line">
+                                                <span class="path"></span>
+                                                <span class="line-bg"></span>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="section full-w">
+
+                            <div class="title-area">
+                                <h2 class="title">
+                                    <span class="txt-wrap"><span class="txt">OUR</span></span>
+                                    <span class="txt-wrap"><span class="txt txt-stroke">ALUMINIUM</span></span>
+                                    <span class="txt-wrap"><span class="txt">WILL BE</span></span>
+                                    <span class="txt-wrap"><span class="txt font-e">100%</span></span>
+                                    <span class="txt-wrap"><span class="txt font-e">RECYCLED</span></span>
+                                </h2>
+                            </div>
+
+                            <div class="txt-area">
+                                <p class="txt">
+                                    As part of our research and development process, we are working to integrate 100% recycled aluminum into our capsule production in the short term. This advance will allow us to create a production cycle from renewable material while guaranteeing optimal capsule quality.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
         </main>
 
         <footer id="footer">

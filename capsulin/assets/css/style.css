@@ -1,0 +1,84 @@
+/* utils */
+/* base */
+.blind {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
+}
+
+@font-face {
+  font-family: "e";
+  font-weight: 300;
+  font-style: normal;
+  src: url('../fonts/e-light.woff2') format('woff2');
+}
+@font-face {
+  font-family: "m";
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/m-regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: "m";
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/m-semibold.woff2') format('woff2');
+}
+@font-face {
+  font-family: "m";
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/m-bold.woff2') format('woff2');
+}
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+*, :after, :before {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+fieldset, input {
+  border: 0;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* pages *//*# sourceMappingURL=style.css.map */
