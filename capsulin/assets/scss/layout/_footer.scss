@@ -1,0 +1,151 @@
+#footer {
+    background-color: #180d0a;
+    .inner {
+        max-width: unset;
+        padding: 0 5em;
+        border-top: 1px solid #2c1712;
+        @include mobile() {
+            padding: 0 2em;
+        }
+
+        .ft-top {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 7.5em 0;
+            color: var(--light);
+            @include mobile() {
+                padding: 4em 0;
+            }
+
+            > *:not(:first-child) {
+                min-width: 8em;
+                margin-right: 7%;
+                @include tablet() {
+                    margin-top: 3em;
+                }
+            }
+
+            dt {
+                font-size: 1.333em;
+            }
+
+            dd {
+                margin-top: 1.5em;
+            }
+
+            .ft-logo {
+                flex: 16.667% 0 0;
+                @include tablet() {
+                    flex-basis: 100%;
+                    img {
+                        height: 184px;
+                    }
+                }
+            }
+
+            .f-nav {
+                ul {
+                    li {
+                        & + li {
+                            margin-top: .8em;
+                        }
+                    }
+                }
+            }
+
+            .contact {
+                @include mobile() {
+                    flex-basis: 100%;
+                }
+                .sns-list {
+                    display: flex;
+                    gap: 1em;
+                    .link {
+                        width: 2.25em;
+                        height: 2.25em;
+                        border: 1px solid hsla(43, 78%, 98%, .5);
+                        border-radius: 50%;
+                        @include flex(center, center);
+
+                        .ico {
+                            width: 1em;
+                            height: 1em;
+                        }
+                    }
+                }
+            }
+
+            .call {
+                margin-top: 4em;
+
+                dd {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.8em;
+
+                    .ico {
+                        &.ico-call {
+                            width: 1em;
+                        }
+                    }
+                }
+            }
+
+            .subscribe {
+                @include tablet() {
+                    flex-basis: 100%;
+                    margin-right: 0;
+                }
+
+                .form {
+                    @include laptop() {
+                        width: 24em;
+                    }
+                    @include tablet() {
+                        width: 100%;
+                    }
+
+                    .input-text {
+                        width: 100%;
+                        padding: 1em 0;
+                        background: none;
+                        border: none;
+                        border-bottom: 1px solid hsla(20, 18%, 80%, .2);
+                        color: var(--coffe-light);
+                        outline: none;
+                    }
+
+                    .btn {
+                        &.btn-submit {
+                            width: 100%;
+                            text-align: center;
+                            padding: 1em 1.4em;
+                            margin-top: 1.5em;
+                            background: var(--orange);
+                        }
+                    }
+                }
+            }
+        }
+
+        .ft-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: hsla(43, 78%, 98%, .7);
+            padding: 5em 0 3.125em;
+            @include mobile() {
+                flex-direction: column-reverse;
+                align-items: start;
+                padding: 3em 0;
+                gap: .5em;
+            }
+
+            ul {
+                display: flex;
+                gap: 2em;
+            }
+        }
+    }
+}
