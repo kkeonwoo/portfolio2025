@@ -4,6 +4,9 @@
         max-width: unset;
         padding: 0 5em;
         border-top: 1px solid #2c1712;
+        @include mobile() {
+            padding: 0 2em;
+        }
 
         .ft-top {
             display: flex;
@@ -11,10 +14,16 @@
             flex-wrap: wrap;
             padding: 7.5em 0;
             color: var(--light);
+            @include mobile() {
+                padding: 4em 0;
+            }
 
             > *:not(:first-child) {
                 min-width: 8em;
                 margin-right: 7%;
+                @include tablet() {
+                    margin-top: 3em;
+                }
             }
 
             dt {
@@ -27,6 +36,12 @@
 
             .ft-logo {
                 flex: 16.667% 0 0;
+                @include tablet() {
+                    flex-basis: 100%;
+                    img {
+                        height: 184px;
+                    }
+                }
             }
 
             .f-nav {
@@ -40,6 +55,9 @@
             }
 
             .contact {
+                @include mobile() {
+                    flex-basis: 100%;
+                }
                 .sns-list {
                     display: flex;
                     gap: 1em;
@@ -75,9 +93,17 @@
             }
 
             .subscribe {
+                @include tablet() {
+                    flex-basis: 100%;
+                    margin-right: 0;
+                }
+
                 .form {
                     @include laptop() {
                         width: 24em;
+                    }
+                    @include tablet() {
+                        width: 100%;
                     }
 
                     .input-text {
@@ -109,6 +135,12 @@
             align-items: center;
             color: hsla(43, 78%, 98%, .7);
             padding: 5em 0 3.125em;
+            @include mobile() {
+                flex-direction: column-reverse;
+                align-items: start;
+                padding: 3em 0;
+                gap: .5em;
+            }
 
             ul {
                 display: flex;

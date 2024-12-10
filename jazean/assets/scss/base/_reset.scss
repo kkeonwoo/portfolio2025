@@ -23,6 +23,13 @@ html {
     color: var(--dark);
     line-height: 1;
     font-size: .9375vw;
+
+    @include tablet() {
+        font-size: 2vw;
+    }
+    @include mobile() {
+        font-size: 3vw;
+    }
 }
 
 body {

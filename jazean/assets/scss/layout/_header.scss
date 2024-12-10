@@ -4,12 +4,21 @@
     left: 0;
     width: 100%;
     z-index: 999;
+    text-transform: uppercase;
 
     .header-inner {
         padding: 2em 5em;
         @include flex(between, center);
+        @include tablet() {
+            padding: 1.5em 3em;
+        }
+        @include mobile() {
+            padding: 1.5em 2em;
+        }
 
         .logo {
+            position: relative;
+            z-index: 996;
             .link {
                 display: block;
                 width: 13em;
@@ -17,11 +26,119 @@
         }
 
         .group-nav {
+            font-family: 'gothamlight';
             @include absCenter(true, true);
+            @include tablet() {
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                z-index: 995;
+                width: 100vw;
+                height: 100vh;
+                background: #180d0a;
+                opacity: 0;
+                visibility: hidden;
+                transform: translate(0);
+                @include flex(center, center);
+
+                &::before {
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 4em;
+                    @include bg('bg-pattern.webp');
+                    @include pseudo();
+                }
+            }
 
             .nav-list {
                 gap: 2.8em;
                 @include flex(center, center);
+                @include tablet() {
+                    align-items: flex-start;
+                    flex-direction: column;
+                    gap: 2em;
+
+                    .nav-item {
+                        font-size: 2em;
+
+                        &.active .link {
+                            color: var(--gold);
+                        }
+                    }
+                }
+
+            }
+
+            .sns {
+                margin-top: 5em;
+
+                dt {
+                    font-size: 1.333em;
+                    color: var(--light);
+                }
+                
+                .sns-list {
+                    display: flex;
+                    gap: 1em;
+                    margin-top: 1.5em;
+    
+                    .link {
+                        width: 2.25em;
+                        height: 2.25em;
+                        border: 1px solid hsla(43, 78%, 98%, .5);
+                        border-radius: 50%;
+                        @include flex(center, center);
+    
+                        .ico {
+                            width: 1em;
+                            height: 1em;
+                        }
+                    }
+                }
+            }
+        }
+
+        .utils {
+            display: flex;
+            gap: 2em;
+
+            .btn-hamburger {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: relative;
+                z-index: 996;
+                gap: 2.5px;
+                height: 21px;
+                @at-root #header.on .header-inner .btn-hamburger {
+                    justify-content: center;
+                }
+    
+                span {
+                    width: 17px;
+                    height: 2px;
+                    background: var(--light);
+                    transform-origin: 50% 50%;
+                    transition: all .5s cubic-bezier(.22,.61,.36,1);
+                    // 질문
+                    @at-root #header.on .header-inner .utils span {
+                        background: var(--gold);
+
+                        &:nth-child(1) {
+                            transform: rotate(45deg) translate(5px, 50%);
+                        }
+                        &:nth-child(2) {
+                            opacity: 0;
+                        }
+                        &:nth-child(3) {
+                            transform: rotate(-45deg) translate(5px, -50%);;
+                        }
+                    }
+                }
             }
         }
         
@@ -37,6 +154,7 @@
                 position: relative;
                 top: .1em;
                 width: 2.3em;
+                z-index: 996;
             }
         }
     }

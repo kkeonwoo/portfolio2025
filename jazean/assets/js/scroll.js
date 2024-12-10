@@ -2,23 +2,42 @@ $(document).ready(function() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.defaults({ease: 'none'});
 
+    // 질문
+    // 스크롤을 상단으로 쎄게 하면 튕기는 듯한 느낌
+
     // line의 타임라인과 개별 섹션의 애니메이션과 잘 안맞는 느낌
     // line이 너무 빨리 실행됨
     // 이 경우 tween의 duration을 늘려 scrolltrigger에서 차지하는 비중을 늘려야하는지
     // dom의 높이를 늘려야하는지 애매함
+    const isMobile = window.matchMedia("(max-width: 960px)").matches;
+
     const svgTl = gsap.timeline()
-    .to('.sc-visual .line-gradient .path', { strokeDashoffset: 0})
-    .to('.sc-bean .line-bean .path', { strokeDashoffset: 0})
-    .to('.sc-grain .line-grain .path', { strokeDashoffset: 0})
-    .to('.sc-grain .line-farmer .outline', { strokeDashoffset: 0})
-    .to('.sc-grain .line-farmer .path:not(.outline)', { strokeDashoffset: 0})
-    .to('.sc-tech .line .path', { strokeDashoffset: 0})
-    .to('.sc-roast .top .path', { strokeDashoffset: 0})
-    .to('.sc-roast .line-bean .path', { strokeDashoffset: 0})
-    .to('.sc-roast .bottom .path', { strokeDashoffset: 0})
+    .to('.sc-visual .line-gradient .path', { duration: .6, strokeDashoffset: 0})
+    .to('.sc-bean .line-bean .path', { duration: 1, strokeDashoffset: 0})
+    .to('.sc-grain .line-grain .path', { duration: () => {
+        return isMobile ? 1 : 2
+    }, strokeDashoffset: 0})
+    .add(pathGrainMobile())
+    .to('.sc-grain .line-farmer .outline', { duration: .4, strokeDashoffset: 0})
+    .to('.sc-grain .line-farmer .path:not(.outline)', { duration: .4, strokeDashoffset: 0}, '-=.2')
+    .to('.sc-tech .line .path', { duration: 1.5, strokeDashoffset: 0}, '-=.1')
+    .to('.sc-roast .top .path', { duration: .7, strokeDashoffset: 0})
+    .to('.sc-roast .line-bean .path', { duration: 1, strokeDashoffset: 0})
+    .to('.sc-roast .bottom .path', { duration: .7, strokeDashoffset: 0})
     .to('.sc-discover .group-bg .line .path', { strokeDashoffset: 0})
     .from('.sc-discover .line .logo', { opacity: 0}, '<')
+    function pathGrainMobile() {
+        if(isMobile) {
+            const tl = gsap.timeline()
+            .to('.sc-grain .line-bean .path', { duration: 1, strokeDashoffset: 0})
+            .to('.sc-grain .line-grain2 .path', { strokeDashoffset: 0})
+            return tl
+        }
+    }
+
+    console.log(svgTl);
     
+
     ScrollTrigger.create({
         trigger: '.sticky-wrap',
         start: 'top top',
