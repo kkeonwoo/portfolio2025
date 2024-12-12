@@ -85,23 +85,10 @@
     }
 }
 
-@mixin mobile {
-    @media (max-width: #{$breakpoint-mobile}) {
-        @content;
-    }
-}
-@mixin tablet {
-    @media (max-width: #{$breakpoint-tablet}) {
-        @content;
-    }
-}
-@mixin desktop {
-    @media (min-width: #{$breakpoint-tablet + 1px}) {
-        @content;
-    }
-}
-@mixin laptop {
-    @media (min-width: #{$breakpoint-laptop + 1px}) {
+// 세로모드
+// 참고: 가로모드 landscape
+@mixin portrait {
+    @media (orientation: portrait) {
         @content;
     }
 }

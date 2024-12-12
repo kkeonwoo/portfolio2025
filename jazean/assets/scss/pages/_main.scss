@@ -76,8 +76,6 @@ section {
     .snb-list {
         .snb-item {
             padding: 1em;
-            opacity: 0.5;
-            transition: opacity .5s cubic-bezier(.22,.61,.36,1);
 
             @include mobile() {
                 padding: 1em 0;

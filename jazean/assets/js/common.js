@@ -13,7 +13,7 @@ Jazean = {
         $('#wrap').imagesLoaded()
         .done( function( instance ) {
             const headTxt = new SplitType('.sc-visual .txt-area *', { types: 'chars', });
-
+            lenis.stop();
             const opeingTl = gsap.timeline()
             .set('body', { onStart: () => {
                 $('body').addClass('is-loaded');
@@ -25,8 +25,9 @@ Jazean = {
             .to('.sc-visual .txt-area', { autoAlpha: 0, yPercent: 100}, '+=1')
             .from('.group-line', { y: -156}, '<')
             .from('.snb-item', { autoAlpha: 0, y: 100, stagger: { each: 0.2}})
-            .from('.scroll-circle', { autoAlpha: 0}, '<')
-            .set('body', { overflow: 'auto'})
+            .from('.scroll-circle', { autoAlpha: 0, onComplete: () => {
+                lenis.start()
+            }}, '<')
         });
     },
     scrollAni: function() {

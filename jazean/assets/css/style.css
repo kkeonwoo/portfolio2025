@@ -389,19 +389,21 @@ svg, video {
   display: flex;
   gap: 2em;
 }
-#header .header-inner .utils .btn-hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  z-index: 996;
-  gap: 2.5px;
-  height: 21px;
-}
 #header.on .header-inner .btn-hamburger {
   justify-content: center;
 }
 
+@media (max-width: 960px) {
+  #header .header-inner .utils .btn-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 996;
+    gap: 2.5px;
+    height: 21px;
+  }
+}
 #header .header-inner .utils .btn-hamburger span {
   width: 17px;
   height: 2px;
@@ -652,8 +654,6 @@ section {
 }
 .snb .snb-list .snb-item {
   padding: 1em;
-  opacity: 0.5;
-  transition: opacity 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 @media (max-width: 580px) {
   .snb .snb-list .snb-item {

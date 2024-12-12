@@ -107,15 +107,17 @@
             gap: 2em;
 
             .btn-hamburger {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                position: relative;
-                z-index: 996;
-                gap: 2.5px;
-                height: 21px;
                 @at-root #header.on .header-inner .btn-hamburger {
                     justify-content: center;
+                }
+                @include tablet() {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    position: relative;
+                    z-index: 996;
+                    gap: 2.5px;
+                    height: 21px;
                 }
     
                 span {
