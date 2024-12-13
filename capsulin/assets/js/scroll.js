@@ -19,22 +19,14 @@ $(document).ready(() => {
         }
     })
 
-    // gsap.utils.toArray('.section').forEach((section, idx) => {
-    //     ScrollTrigger.create({
-    //         trigger: section,
-    //         start: 'top top',
-    //         end: 'bottom top',
-    //         markers: true,
-    //         scrub: false,
-    //         onEnter: () => {
-    //             console.log('enter')
-    //         },
-    //         onLeave: () => {
-    //             console.log('leave')
-    //         },
-    //         onLeaveBack: () => {
-    //             console.log('leaveBack')
-    //         },
-    //     })
-    // })
+    const tl = gsap.timeline()
+    .to('.sc-hero', { '--inset': 100})
+    ScrollTrigger.create({
+        trigger: '.sc-hero',
+        start: 'top top',
+        end: 'bottom bottom',
+        animation: tl,
+        markers: true,
+        scrub: 0,
+    })
 })

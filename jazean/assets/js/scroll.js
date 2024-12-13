@@ -35,9 +35,6 @@ $(document).ready(function() {
         }
     }
 
-    console.log(svgTl);
-    
-
     ScrollTrigger.create({
         trigger: '.sticky-wrap',
         start: 'top top',

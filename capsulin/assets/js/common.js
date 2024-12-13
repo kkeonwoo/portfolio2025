@@ -176,10 +176,10 @@ Capsulin = {
         })
     },
     fadeUp: function(t, each) {
-        gsap.fromTo(t, { yPercent: 100, stagger: { each: each ? each : 0}}, { yPercent: 0})
+        let tween = gsap.fromTo(t, { yPercent: 100, stagger: { each: each ? each : 0}}, { yPercent: 0})
     },
     fadeOut: function(t, dir, each) {
-        gsap.fromTo(t, { yPercent: 0, stagger: { each: each ? each : 0}}, { yPercent: () => {return dir < 0 ? 100 : -100}})
+        let tween = gsap.fromTo(t, { yPercent: 0, stagger: { each: each ? each : 0}}, { yPercent: () => {return dir < 0 ? 100 : -100}})
     },
     aniHeroEnter: function() {
         const tl = gsap.timeline()
