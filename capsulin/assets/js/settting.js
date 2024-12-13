@@ -13,4 +13,6 @@ gsap.ticker.add((time)=>{
     lenis.raf(time * 1000)
 })
 
+lenis.stop();
+
 gsap.ticker.lagSmoothing(0);

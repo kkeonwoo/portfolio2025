@@ -7,17 +7,17 @@ Capsulin = {
         this.textMarquee();
         this.handleTab();
         this.handleCustomTab();
+        this.handleModal();
     },
     introAni: function() {
+        // 질문 : 인트로 처리 방법
         $('#wrap').imagesLoaded()
         .done( function( instance ) {
             const heroText = new SplitType('.sc-hero .title .txt', { types: 'chars' })
             const introTl = gsap.timeline()
             .to('.intro', { yPercent: -100})
-            .from('.sc-hero .img-box', { autoAlpha: 0, yPercent: -100})
-            .from('.sc-hero .title .char', { yPercent: 100, stagger: { amount: .3}}, '<')
-            .from('.sc-hero .scroll-down-area .txt', { yPercent: -100}, '<')
-            .from('.sc-hero .scroll-down-area .ico', { yPercent: -100}, '<')
+            .add(Capsulin.aniHeroEnter())
+            .call(() => lenis.start())
         })
         .progress( function( instance, image ) {
             const num = $(".intro .num");
@@ -162,11 +162,33 @@ Capsulin = {
 
         })
     },
+    handleModal: function() {
+        const btnModal = $('.btn-modal');
+
+        btnModal.on('click', function() {
+            $('.dimmed').addClass('active');
+            $('.modal').toggleClass('modal-closed');
+        });
+        
+        $('.dimmed').on('click', function() {
+            $('.dimmed').removeClass('active');
+            $('.modal').addClass('modal-closed');
+        })
+    },
     fadeUp: function(t, each) {
         gsap.fromTo(t, { yPercent: 100, stagger: { each: each ? each : 0}}, { yPercent: 0})
     },
-    fadeOut: function(t, each) {
-        gsap.fromTo(t, { yPercent: 0, stagger: { each: each ? each : 0}}, { yPercent: -100})
+    fadeOut: function(t, dir, each) {
+        gsap.fromTo(t, { yPercent: 0, stagger: { each: each ? each : 0}}, { yPercent: () => {return dir < 0 ? 100 : -100}})
+    },
+    aniHeroEnter: function() {
+        const tl = gsap.timeline()
+        .from('.sc-hero .img-box', { autoAlpha: 0, yPercent: -100})
+        .from('.sc-hero .title .char', { yPercent: 100, stagger: { amount: .3}}, '<')
+        .from('.sc-hero .scroll-down-area .txt', { yPercent: -100}, '<')
+        .from('.sc-hero .scroll-down-area .ico', { yPercent: -100}, '<')
+
+        return tl;
     }
 }
 

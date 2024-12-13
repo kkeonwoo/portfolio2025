@@ -15,11 +15,26 @@ $(document).ready(() => {
             trigger: '.main',
             start: 'top top',
             end: 'bottom bottom',
-            // animation: ,
-            // pin: false,
-            // pinSpacing: false,
-            markers: true,
-            scrub: true,
+            scrub: 0,
         }
     })
+
+    // gsap.utils.toArray('.section').forEach((section, idx) => {
+    //     ScrollTrigger.create({
+    //         trigger: section,
+    //         start: 'top top',
+    //         end: 'bottom top',
+    //         markers: true,
+    //         scrub: false,
+    //         onEnter: () => {
+    //             console.log('enter')
+    //         },
+    //         onLeave: () => {
+    //             console.log('leave')
+    //         },
+    //         onLeaveBack: () => {
+    //             console.log('leaveBack')
+    //         },
+    //     })
+    // })
 })
