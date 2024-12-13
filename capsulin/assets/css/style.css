@@ -11,10 +11,8 @@
 
 .sticky {
   position: sticky;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100vh;
+  z-index: 900;
 }
 
 .font-e {
@@ -108,6 +106,7 @@
   background-color: #fff;
   color: #000;
   text-transform: uppercase;
+  transform: translateX(100%);
 }
 .modal.modal-right {
   right: 0;
@@ -533,7 +532,28 @@ html {
   background-color: #fff;
 }
 
+.intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: #091933;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.intro .num {
+  font-weight: 300;
+  font-family: "e";
+  font-size: 40px;
+  color: #fff;
+  line-height: 38px;
+}
+
 .sc-hero {
+  position: relative;
   height: 100vh;
   background: url("../images/bg-hero.webp") no-repeat center center/cover;
   display: flex;
@@ -558,6 +578,7 @@ html {
   transform: translateX(-50%);
 }
 .sc-hero .scroll-down-area .txt {
+  display: block;
   font-size: 12px;
   line-height: 18px;
   text-transform: uppercase;
@@ -568,6 +589,9 @@ html {
   height: 10px;
   margin: 18px auto 0;
 }
+.sc-hero .scroll-down-area .ico-box .ico {
+  display: block;
+}
 
 .sticky-wrap {
   position: relative;
@@ -575,9 +599,46 @@ html {
 .sticky-wrap .sticky-area {
   position: absolute;
   top: 0;
+  left: 5.714285vw;
+  height: 100%;
+}
+.sticky-wrap .sticky-area .sticky {
+  display: flex;
+  align-items: end;
+  top: 0;
   left: 0;
+  height: 100vh;
+  padding-bottom: 80px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.06em;
 }
 
+.pagination {
+  position: absolute;
+  transform: rotate(-90deg);
+  transform-origin: 0 0;
+}
+.pagination .page-list {
+  overflow: hidden;
+  height: 18px;
+}
+.pagination .page-list .page-item {
+  display: flex;
+  gap: 20px;
+}
+.pagination .page-list .page-item .num {
+  display: flex;
+  justify-content: space-between;
+  width: 46px;
+  color: rgba(255, 255, 255, 0.4);
+}
+.pagination .page-list .page-item .num .active {
+  display: block;
+  width: 16px;
+  color: #fff;
+}
 .sc-design .section.sc-01 {
   background: url("../images/bg-design1.webp") no-repeat center center/cover;
 }
@@ -1109,9 +1170,9 @@ html {
   width: 100%;
 }
 .sc-spec .section.sc-03 .title-area .title .txt-wrap:nth-child(3) {
-  margin-left: 7.38095vw;
   position: relative;
   z-index: 2;
+  margin-left: 7.38095vw;
 }
 .sc-spec .section.sc-03 .title-area .title .txt-wrap:nth-child(4) {
   position: absolute;
@@ -1119,10 +1180,10 @@ html {
   width: 100%;
 }
 .sc-spec .section.sc-03 .title-area .img-box {
-  width: 9.46429vw;
-  aspect-ratio: 1/1;
-  height: unset;
   z-index: 1;
+  width: 9.46429vw;
+  height: unset;
+  aspect-ratio: 1/1;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1140,8 +1201,8 @@ html {
   width: 27.61905vw;
 }
 .sc-spec .section.sc-04 .inner .sc-left .title-area .title {
-  margin: 0;
   position: static;
+  margin: 0;
   transform: translate(0);
 }
 .sc-spec .section.sc-04 .inner .sc-right {
@@ -1160,9 +1221,9 @@ html {
 }
 .sc-spec .section.sc-04 .process-list .process-item .ico {
   display: block;
-  margin-left: -1px;
   width: 42px;
   height: 28px;
+  margin-left: -1px;
 }
 .sc-spec .section.sc-04 .process-list .process-item .ico .circle {
   fill: none;

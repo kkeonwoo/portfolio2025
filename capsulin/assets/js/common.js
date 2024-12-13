@@ -1,11 +1,37 @@
 Capsulin = {
     init: function () {
+        this.introAni();
         this.customHTML();
         this.handleMenu();
         this.handleMenuItem();
         this.textMarquee();
         this.handleTab();
         this.handleCustomTab();
+    },
+    introAni: function() {
+        $('#wrap').imagesLoaded()
+        .done( function( instance ) {
+            const heroText = new SplitType('.sc-hero .title .txt', { types: 'chars' })
+            const introTl = gsap.timeline()
+            .to('.intro', { yPercent: -100})
+            .from('.sc-hero .img-box', { autoAlpha: 0, yPercent: -100})
+            .from('.sc-hero .title .char', { yPercent: 100, stagger: { amount: .3}}, '<')
+            .from('.sc-hero .scroll-down-area .txt', { yPercent: -100}, '<')
+            .from('.sc-hero .scroll-down-area .ico', { yPercent: -100}, '<')
+        })
+        .progress( function( instance, image ) {
+            const num = $(".intro .num");
+            const obj = { value: 0 };
+            const ratio = instance.progressedCount / instance.images.length;
+            gsap.to(obj, {
+                value: ratio * 100,
+                duration: 3,
+                ease: "none",
+                onUpdate: () => {
+                    num.text(`${Math.round(obj.value)}`);
+                },
+            });
+        });
     },
     customHTML: function() {
         const $titleArea = $('.color .title-area');
@@ -77,7 +103,7 @@ Capsulin = {
         const $btnMenu = $('.btn-hamburger');
         const $navNum = $('.nav-item .num');
         const $navTxt = $('.nav-item .txt');
-        const $credit = $('.link-credit .txt');
+        const $credit = $('.link-credit .txt:nth-child(1)');
         const $header = $('#header');
         $btnMenu.on('click', function() {
             $header.toggleClass('open');

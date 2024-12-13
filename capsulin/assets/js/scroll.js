@@ -7,4 +7,19 @@ $(document).ready(() => {
     lines.each((idx, line) => {
         $(line).wrap('<div class="txt-wrap"></div>');
     })
+
+    // full scroll
+    gsap.from('.progress-bar', {
+        height: 0,
+        scrollTrigger: {
+            trigger: '.main',
+            start: 'top top',
+            end: 'bottom bottom',
+            // animation: ,
+            // pin: false,
+            // pinSpacing: false,
+            markers: true,
+            scrub: true,
+        }
+    })
 })
