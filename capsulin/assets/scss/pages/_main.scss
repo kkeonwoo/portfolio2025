@@ -154,16 +154,16 @@
     }
 }
 .main {
-    height: 1000vh;
+    // height: 1000vh;
 
-    > .sticky {
-        display: grid;
+    // > .sticky {
+    //     display: grid;
 
-        > * {
-            grid-column: 1;
-            grid-row: 1;
-        }
-    }
+    //     > * {
+    //         grid-column: 1;
+    //         grid-row: 1;
+    //     }
+    // }
 }
 
 // .section, section {
@@ -174,11 +174,17 @@
 //     height: 100vh;
 // }
 
+.absolute {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
 .sc-hero {
     --inset: 0;
     z-index: 10;
     position: relative;
-    height: 100vh;
+    height: 300vh;
     clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
     @include bg('bg-hero.webp', $size: cover);
     @include flex(center, center);
@@ -222,19 +228,19 @@
 }
 
 .sticky-wrap {
-    display: grid;
+    // display: grid;
 
-    > *:not(.sticky-area) {
-        grid-column: 1;
-        grid-row: 1;
-        display: grid;
-        .section {
-            --insset: 0;
-            clip-path: inset(calc(var(--inset) * 1%) 0 0 0);
-            grid-column: 1;
-            grid-row: 1;
-        }
-    }
+    // > *:not(.sticky-area) {
+    //     grid-column: 1;
+    //     grid-row: 1;
+    //     display: grid;
+    //     .section {
+    //         --insset: 0;
+    //         clip-path: inset(calc(var(--inset) * 1%) 0 0 0);
+    //         grid-column: 1;
+    //         grid-row: 1;
+    //     }
+    // }
     .sticky-area {
         position: absolute;
         top: 0;

@@ -548,6 +548,13 @@
     @include mobile() {
         padding: 14px;
     }
+    
+    &.first {
+
+    }
+    @keyframes identifier {
+        
+    }
 
     .dot {
         background-color: #8eff00;

@@ -33,6 +33,7 @@ Jazean = {
     scrollAni: function() {
         // 질문
         // [0] 과 .get(0)의 차이
+        // .get(0) 비디오 객ㅊㅔ 접근 가능
         // 둘다 dom요소 반환하는게 아닌지?
         // video
         // const $techVideo = $('.sc-tech video');
@@ -125,7 +126,7 @@ Jazean = {
             },
             breakpoints: {
                 960: {
-                    slidesPerView: 4.5,
+                    slidesPerView: 5.05,
                 },
             },
         })
@@ -165,6 +166,7 @@ Jazean = {
             
             // this.slideTo(0);
         });
+        // 버튼에 부모를 만들고 자식에 btn-disabled인 경우 체크 slideto(0)
 
         // $('.swiper-product .btn-next').on('click', () => {
             
@@ -227,6 +229,8 @@ Jazean = {
         let yTo = gsap.quickTo(cursor, '--y', { duration: 0.4, ease: 'back(3)'})
         // let xTo2 = gsap.quickTo(cursor, '--xBefore', { duration: 0.4})
         // let yTo2 = gsap.quickTo(cursor, '--yBefore', { duration: 0.4})
+        
+        // absolte로 offset
 
         gsap.set(cursor, {xPercent: -50, yPercent: -50});
 

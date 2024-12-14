@@ -1,4 +1,4 @@
-gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger);
 gsap.defaults({ease: 'none'});
 
 // const canvas = document.getElementById('canvas');
@@ -138,12 +138,16 @@ gsap.utils.toArray('.sc-fact .group-banner').forEach((banner, idx) => {
     })
 })
 
+let speciesFlag = false;
 ScrollTrigger.create({
     trigger: '.sc-species',
     start: 'top center',
     end: 'bottom center',
     onEnter: () => {
-        $('.swiper-slide:nth-child(1)').addClass('swiper-slide-active');
+        if (speciesFlag === false) {
+            $('.sc-species').addClass('first');
+            speciesFlag = true;
+        }
     }
 })
 

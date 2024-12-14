@@ -71,9 +71,9 @@ ThickPickle = {
                 clickable: true
             },
             on: {
-                init: function() {
-                    $('.swiper-slide').removeClass('swiper-slide-active')
-                },
+                // init: function() {
+                //     $('.swiper-slide').removeClass('swiper-slide-active')
+                // },
                 click: function() {
                     let idx = swiperSpecies.realIndex;
                     if (idx < $('.species-swiper .swiper-slide').length - 1) {
