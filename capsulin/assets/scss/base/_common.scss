@@ -9,10 +9,16 @@
 
 .sticky {
     position: sticky;
-    // width: 100%;
     top: 0;
     height: 100vh;
-    z-index: 900;
+}
+
+.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .font-e {
@@ -32,7 +38,9 @@
     height: 100vh;
 
     &.full-w {
-        @include flex(center, center);
+        .sticky {
+            @include flex(center, center);
+        }
         
         @extend .txt-type1;
     }
@@ -40,7 +48,12 @@
     &.half {
         display: flex;
 
-        & > * {
+        .sticky {
+            display: flex;
+        }
+
+        & > *,
+        .sticky > * {
             flex: 1;
         }
 

@@ -9,6 +9,16 @@ $(document).ready(() => {
     })
 
     // full scroll
+    // const tl = gsap.timeline()
+    // .from('.progress-bar', {height: 0})
+
+    // ScrollTrigger.create({
+    //     trigger: '.main',
+    //     start: 'top top',
+    //     end: 'bottom bottom',
+    //     animation: tl,
+    //     scrub: 0,
+    // })
     gsap.from('.progress-bar', {
         height: 0,
         scrollTrigger: {
@@ -16,17 +26,84 @@ $(document).ready(() => {
             start: 'top top',
             end: 'bottom bottom',
             scrub: 0,
+            // markers: true
         }
     })
 
-    const tl = gsap.timeline()
-    .to('.sc-hero', { '--inset': 100})
     ScrollTrigger.create({
         trigger: '.sc-hero',
-        start: 'top top',
+        start: '10% 10%',
         end: 'bottom bottom',
-        animation: tl,
-        markers: true,
+        animation: gsap.to('.sc-hero .sticky', {'--inset': 100}),
+        // pin: true,
+        // pinSpacing: false,
+        // markers: true,
         scrub: 0,
     })
+
+    const designTl01 = gsap.timeline()
+    .to('.sc-design .sc-01 .sticky', {'--inset': 100})
+    .from('.sc-design .sc-02 .sticky', {'--top': 100, height: 0}, '<')
+    .from('.sc-design .sc-02 .sc-left', {flex: 0}, '<')
+
+    ScrollTrigger.create({
+        trigger: '.sc-design .sc-01',
+        start: '10% 10%',
+        end: 'bottom bottom',
+        animation: designTl01,
+        // pin: true,
+        // pinSpacing: false,
+        // markers: true,
+        scrub: 0,
+    })
+    const designTl02 = gsap.timeline()
+    .to('.sc-degin .sc-02 .sc-left', { scale: 0})
+    .to('')
+
+    ScrollTrigger.create({
+        trigger: '.sc-design .sc-02',
+        start: 'top top',
+        end: 'bottom bottom',
+        animation: designTl02,
+        // pin: true,
+        // pinSpacing: false,
+        markers: true,
+        // scrub: 0,
+    })
+    // const designTl = gsap.timeline()
+    // .to('.sc-hero .sticky', {'--inset': 100})
+
+    // ScrollTrigger.create({
+    //     trigger: '.sc-design .sc-01',
+    //     start: 'top top',
+    //     end: 'bottom bottom',
+    //     animation: designTl,
+    //     markers: true,
+    //     scrub: 0,
+    // })
+    // gsap.set('.sc-design .sc-01 .txt', { yPercent: 100})
+
+    // const designTl01 = gsap.timeline()
+    // ScrollTrigger.create({
+    //     trigger: '.sc-design .sc-01 .absolute',
+    //     start: 'top top',
+    //     // end: 'top top',
+    //     // animation: gsap.to('.sc-hero', {'--inset': 100}),
+    //     // pin: true,
+    //     // pinSpacing: false,
+    //     markers: true,
+    //     scrub: 0,
+    //     onEnter: () => {
+    //         gsap.fromTo('.sc-design .sc-01 .txt', { yPercent: 100}, { yPercent: 0, stagger: { each: 0.2}})
+    //     },
+    //     onLeave: () => {
+    //         gsap.fromTo('.sc-design .sc-01 .txt', { yPercent: 0}, { yPercent: -100})
+    //     },
+    //     onLeaveBack: () => {
+    //         gsap.fromTo('.sc-design .sc-01 .txt', { yPercent: 0}, { yPercent: 100})
+    //     },
+    //     onEnterBack: () => {
+    //         gsap.fromTo('.sc-design .sc-01 .txt', { yPercent: 100}, { yPercent: 0, stagger: { each: 0.2}})
+    //     }
+    // })
 })

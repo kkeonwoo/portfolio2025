@@ -13,7 +13,6 @@ Capsulin = {
         // 질문 : 인트로 처리 방법
         $('#wrap').imagesLoaded()
         .done( function( instance ) {
-            const heroText = new SplitType('.sc-hero .title .txt', { types: 'chars' })
             const introTl = gsap.timeline()
             .to('.intro', { yPercent: -100})
             .add(Capsulin.aniHeroEnter())
@@ -183,13 +182,13 @@ Capsulin = {
     },
     aniHeroEnter: function() {
         const tl = gsap.timeline()
-        .from('.sc-hero .img-box', { autoAlpha: 0, yPercent: -100})
-        .from('.sc-hero .title .char', { yPercent: 100, stagger: { amount: .3}}, '<')
-        .from('.sc-hero .scroll-down-area .txt', { yPercent: -100}, '<')
-        .from('.sc-hero .scroll-down-area .ico', { yPercent: -100}, '<')
+        .fromTo('.sc-hero .img-box', { autoAlpha: 0, yPercent: -100}, { autoAlpha: 1, yPercent: 0})
+        .fromTo('.sc-hero .title .char', { yPercent: 100}, { yPercent: 0, stagger: { amount: .3}}, '<')
+        .fromTo('.sc-hero .scroll-down-area .txt', { yPercent: -100}, { yPercent: 0}, '<')
+        .fromTo('.sc-hero .scroll-down-area .ico', { yPercent: -100}, { yPercent: 0}, '<')
 
         return tl;
-    }
+    },
 }
 
 $(() => {
