@@ -9,16 +9,6 @@ $(document).ready(() => {
     })
 
     // full scroll
-    // const tl = gsap.timeline()
-    // .from('.progress-bar', {height: 0})
-
-    // ScrollTrigger.create({
-    //     trigger: '.main',
-    //     start: 'top top',
-    //     end: 'bottom bottom',
-    //     animation: tl,
-    //     scrub: 0,
-    // })
     gsap.from('.progress-bar', {
         height: 0,
         scrollTrigger: {
@@ -30,15 +20,21 @@ $(document).ready(() => {
         }
     })
 
+    gsap.set('.sc-design .sc-01 .txt', { yPercent: 100})
+        
+    let design01Txt = gsap.timeline({ paused: true })
+    .to('.sc-design .sc-01 .txt', { yPercent: 0, stagger: { each: 0.2}})
+
     ScrollTrigger.create({
         trigger: '.sc-hero',
         start: '10% 10%',
         end: 'bottom bottom',
         animation: gsap.to('.sc-hero .sticky', {'--inset': 100}),
-        // pin: true,
-        // pinSpacing: false,
         // markers: true,
         scrub: 0,
+        onLeave: () => {
+            design01Txt.play();
+        },
     })
 
     const designTl01 = gsap.timeline()
@@ -48,28 +44,38 @@ $(document).ready(() => {
 
     ScrollTrigger.create({
         trigger: '.sc-design .sc-01',
-        start: '10% 10%',
-        end: 'bottom bottom',
+        start: '50% 50%',
+        end: 'bottom 90%',
         animation: designTl01,
-        // pin: true,
-        // pinSpacing: false,
-        // markers: true,
+        markers: true,
         scrub: 0,
     })
+    
     const designTl02 = gsap.timeline()
-    .to('.sc-degin .sc-02 .sc-left', { scale: 0})
-    .to('')
-
+    .to('.sc-design .sc-02 .sc-left', { scale: 0})
+    .to('.sc-design .sc-02 .sc-right', {'--left': -100, '--right': 100}, '<')
+    
     ScrollTrigger.create({
         trigger: '.sc-design .sc-02',
         start: 'top top',
         end: 'bottom bottom',
         animation: designTl02,
-        // pin: true,
-        // pinSpacing: false,
-        markers: true,
-        // scrub: 0,
+        onEnter: () => {
+            gsap.to('.sc-design .sc-02 .sc-right', { autoAlpha: 0})
+        },
+        // markers: true,
+        scrub: 0,
     })
+
+    ScrollTrigger.create({
+        trigger: '.sc-design .sc-03',
+        start: 'top top',
+        end: 'bottom bottom',
+        // animation: ,
+        // markers: true,
+        scrub: true,
+    })
+
     // const designTl = gsap.timeline()
     // .to('.sc-hero .sticky', {'--inset': 100})
 

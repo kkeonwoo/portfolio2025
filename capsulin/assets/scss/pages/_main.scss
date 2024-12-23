@@ -220,49 +220,41 @@
     }
 }
 
-.sticky-wrap {
-    position: relative;
+// .sticky-wrap {
+//     position: relative;
 
-    // display: grid;
-
-    // > *:not(.sticky-area) {
-    //     grid-column: 1;
-    //     grid-row: 1;
-    //     display: grid;
-    //     .section {
-    //         --insset: 0;
-    //         clip-path: inset(calc(var(--inset) * 1%) 0 0 0);
-    //         grid-column: 1;
-    //         grid-row: 1;
-    //     }
-    // }
-    .sticky-area {
-        position: absolute;
-        top: 0;
-        left: 5.714284999999997vw;
-        height: 100%;
-        z-index: 100;
+//     .sticky-area {
+//         position: absolute;
+//         top: 0;
+//         left: 5.714284999999997vw;
+//         height: 100%;
+//         z-index: 100;
         
-        .sticky {
-            margin-top: -300vh;
-            display: flex;
-            align-items: end;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            padding-bottom: 80px;
-            font-weight: 600;
-            font-size: 12px;
-            line-height: 18px;
-            letter-spacing: .06em;
-        }
-    }
-}
+//         .sticky {
+//             margin-top: -300vh;
+//             display: flex;
+//             align-items: end;
+//             top: 0;
+//             left: 0;
+//             height: 100vh;
+//             padding-bottom: 80px;
+//             font-weight: 600;
+//             font-size: 12px;
+//             line-height: 18px;
+//             letter-spacing: .06em;
+//         }
+//     }
+// }
 
 .pagination {
     position: absolute;
     transform: rotate(-90deg);
     transform-origin: 0 00;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: .06em;
+
     .page-list {
         overflow: hidden;
         height: 18px;
@@ -332,11 +324,16 @@
             height: 300vh;
 
             .sc-left {
+                position: relative;
+                z-index: 15;
                 transform-origin: 50% 50%;
             }
             .sc-right {
+                --left: 0;
+                --right: 0;
                 position: relative;
                 z-index: 10;
+
                 &::before, 
                 &::after {
                     top: 0;
@@ -348,9 +345,11 @@
                 }
                 &::before {
                     left: 0;
+                    transform: translateX(calc(var(--left) * 1%));
                 }
                 &::after {
                     right: 0;
+                    transform: translateX(calc(var(--right) * 1%));
                 }
                 .inner {
                     position: relative;
@@ -373,6 +372,7 @@
         }
 
         &.sc-img {
+            margin-top: -300vh;
             .inner {
                 padding: 0 10.46875vw;
                 .img-box {

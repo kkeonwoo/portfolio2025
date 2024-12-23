@@ -10,7 +10,6 @@ Capsulin = {
         this.handleModal();
     },
     introAni: function() {
-        // 질문 : 인트로 처리 방법
         $('#wrap').imagesLoaded()
         .done( function( instance ) {
             const introTl = gsap.timeline()

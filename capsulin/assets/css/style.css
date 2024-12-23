@@ -638,34 +638,14 @@ section {
   display: block;
 }
 
-.sticky-wrap {
-  position: relative;
-}
-.sticky-wrap .sticky-area {
-  position: absolute;
-  top: 0;
-  left: 5.714285vw;
-  height: 100%;
-  z-index: 100;
-}
-.sticky-wrap .sticky-area .sticky {
-  margin-top: -300vh;
-  display: flex;
-  align-items: end;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  padding-bottom: 80px;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 18px;
-  letter-spacing: 0.06em;
-}
-
 .pagination {
   position: absolute;
   transform: rotate(-90deg);
   transform-origin: 0 0;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.06em;
 }
 .pagination .page-list {
   overflow: hidden;
@@ -713,9 +693,13 @@ section {
   height: 300vh;
 }
 .sc-design .section.sc-02 .sc-left {
+  position: relative;
+  z-index: 15;
   transform-origin: 50% 50%;
 }
 .sc-design .section.sc-02 .sc-right {
+  --left: 0;
+  --right: 0;
   position: relative;
   z-index: 10;
 }
@@ -731,9 +715,11 @@ section {
 }
 .sc-design .section.sc-02 .sc-right::before {
   left: 0;
+  transform: translateX(calc(var(--left) * 1%));
 }
 .sc-design .section.sc-02 .sc-right::after {
   right: 0;
+  transform: translateX(calc(var(--right) * 1%));
 }
 .sc-design .section.sc-02 .sc-right .inner {
   position: relative;
@@ -744,6 +730,9 @@ section {
   transform-origin: 100% 100%;
   top: calc(var(--top) * 1vh);
   margin-top: -200vh;
+}
+.sc-design .section.sc-img {
+  margin-top: -300vh;
 }
 .sc-design .section.sc-img .inner {
   padding: 0 10.46875vw;
