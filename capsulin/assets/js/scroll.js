@@ -8,6 +8,8 @@ $(document).ready(() => {
         $(line).wrap('<div class="txt-wrap"></div>');
     })
 
+    gsap.set('.txt-wrap .txt, .txt-wrap .line', { yPercent: 100})
+
     // full scroll
     gsap.from('.progress-bar', {
         height: 0,
@@ -16,14 +18,9 @@ $(document).ready(() => {
             start: 'top top',
             end: 'bottom bottom',
             scrub: 0,
-            // markers: true
+            // markers: true,
         }
     })
-
-    gsap.set('.sc-design .sc-01 .txt', { yPercent: 100})
-        
-    let design01Txt = gsap.timeline({ paused: true })
-    .to('.sc-design .sc-01 .txt', { yPercent: 0, stagger: { each: 0.2}})
 
     ScrollTrigger.create({
         trigger: '.sc-hero',
@@ -32,11 +29,10 @@ $(document).ready(() => {
         animation: gsap.to('.sc-hero .sticky', {'--inset': 100}),
         // markers: true,
         scrub: 0,
-        onLeave: () => {
-            design01Txt.play();
-        },
+        onLeave: () => Capsulin.fadeUp('.sc-design .sc-01 .txt', 0.1),
+        onEnterBack: () => Capsulin.fadeOut('.sc-design .sc-01 .txt', -1, 0.1),
     })
-
+    
     const designTl01 = gsap.timeline()
     .to('.sc-design .sc-01 .sticky', {'--inset': 100})
     .from('.sc-design .sc-02 .sticky', {'--top': 100, height: 0}, '<')
@@ -49,6 +45,8 @@ $(document).ready(() => {
         animation: designTl01,
         markers: true,
         scrub: 0,
+        onEnter: () => Capsulin.fadeOut('.sc-design .sc-01 .txt', 1, 0.1),
+        onLeaveBack: () => Capsulin.fadeUp('.sc-design .sc-01 .txt', 0.1),
     })
     
     const designTl02 = gsap.timeline()
