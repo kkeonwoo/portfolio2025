@@ -43,10 +43,12 @@ $(document).ready(() => {
         start: '50% 50%',
         end: 'bottom 90%',
         animation: designTl01,
-        markers: true,
+        // markers: true,
         scrub: 0,
         onEnter: () => Capsulin.fadeOut('.sc-design .sc-01 .txt', 1, 0.1),
         onLeaveBack: () => Capsulin.fadeUp('.sc-design .sc-01 .txt', 0.1),
+        onLeave: () => Capsulin.fadeUp('.sc-design .sc-02 .line', 0.2),
+        onEnterBack: () => Capsulin.fadeOut('.sc-design .sc-02 .line', -1, 0.2),
     })
     
     const designTl02 = gsap.timeline()
@@ -58,11 +60,10 @@ $(document).ready(() => {
         start: 'top top',
         end: 'bottom bottom',
         animation: designTl02,
-        onEnter: () => {
-            gsap.to('.sc-design .sc-02 .sc-right', { autoAlpha: 0})
-        },
-        // markers: true,
+        markers: true,
         scrub: 0,
+        onEnter: () => Capsulin.fadeOut('.sc-design .sc-02 .line', 1, 0.1),
+        onLeaveBack: () => Capsulin.fadeUp('.sc-design .sc-02 .line', 0.1),
     })
 
     ScrollTrigger.create({

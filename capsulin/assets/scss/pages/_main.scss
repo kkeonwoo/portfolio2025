@@ -275,10 +275,6 @@
                     color: #fff;
                 }
             }
-
-            .txt {
-
-            }
         }
     }
 }
@@ -288,7 +284,7 @@
 
         &.sc-01 {
             z-index: 90;
-            margin-top: -100vh;
+            // margin-top: -100vh;
             height: 300vh;
 
             .sticky {
@@ -321,13 +317,14 @@
 
         &.sc-02 {
             position: relative;
-            height: 300vh;
+            height: 400vh;
 
             .sc-left {
                 position: relative;
                 z-index: 15;
                 transform-origin: 50% 50%;
             }
+
             .sc-right {
                 --left: 0;
                 --right: 0;
@@ -372,13 +369,25 @@
         }
 
         &.sc-img {
+            position: relative;
+            height: 300vh;
             margin-top: -300vh;
+            .sticky {
+            }
             .inner {
                 padding: 0 10.46875vw;
                 .img-box {
                     max-width: 402px;
                     margin: 0 auto;
                 }
+            }
+        }
+
+        &.sc-04 {
+            position: relative;
+            height: 300vh;
+            margin-top: -300vh;
+            .sticky {
             }
         }
 
@@ -820,8 +829,6 @@
                         &:nth-child(2) {
                             display: block;
                             padding-left: 6.54762vw;
-                        }
-                        &:nth-child(3) {
                         }
                         &:nth-child(4) {
                             position: absolute;

@@ -485,7 +485,7 @@ section {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.btn-hamburger .ico-box .line {
+.btn-hamburger .ico-box .ico-line {
   display: block;
   width: 16px;
   height: 1px;
@@ -498,20 +498,20 @@ section {
   transition: transform 0.3s, -webkit-transform 0.3s;
   will-change: transform;
 }
-.btn-hamburger .ico-box .line:first-child {
+.btn-hamburger .ico-box .ico-line:first-child {
   -webkit-transform: translateY(-1.5px);
           transform: translateY(-1.5px);
 }
-.open .btn-hamburger .ico-box .line:first-child {
+.open .btn-hamburger .ico-box .ico-line:first-child {
   -webkit-transform: translateY(0.5px) rotate(45deg);
           transform: translateY(0.5px) rotate(45deg);
 }
 
-.btn-hamburger .ico-box .line:last-child {
+.btn-hamburger .ico-box .ico-line:last-child {
   -webkit-transform: translateY(1.5px);
           transform: translateY(1.5px);
 }
-.open .btn-hamburger .ico-box .line:last-child {
+.open .btn-hamburger .ico-box .ico-line:last-child {
   -webkit-transform: translateY(-0.5px) rotate(-45deg);
           transform: translateY(-0.5px) rotate(-45deg);
 }
@@ -776,9 +776,9 @@ section {
   width: 16px;
   color: #fff;
 }
+
 .sc-design .section.sc-01 {
   z-index: 90;
-  margin-top: -100vh;
   height: 300vh;
 }
 .sc-design .section.sc-01 .sticky {
@@ -801,7 +801,7 @@ section {
 }
 .sc-design .section.sc-02 {
   position: relative;
-  height: 300vh;
+  height: 400vh;
 }
 .sc-design .section.sc-02 .sc-left {
   position: relative;
@@ -847,6 +847,8 @@ section {
   margin-top: -200vh;
 }
 .sc-design .section.sc-img {
+  position: relative;
+  height: 300vh;
   margin-top: -300vh;
 }
 .sc-design .section.sc-img .inner {
@@ -855,6 +857,11 @@ section {
 .sc-design .section.sc-img .inner .img-box {
   max-width: 402px;
   margin: 0 auto;
+}
+.sc-design .section.sc-04 {
+  position: relative;
+  height: 300vh;
+  margin-top: -300vh;
 }
 .sc-design .section .tab-list {
   margin-top: 100px;
