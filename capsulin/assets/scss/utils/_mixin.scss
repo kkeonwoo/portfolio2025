@@ -92,3 +92,9 @@
         @content;
     }
 }
+
+@mixin ratio {
+    @media (orientation: landscape) and (min-aspect-ratio: 1680 / 945) {
+        @content;
+    }
+}

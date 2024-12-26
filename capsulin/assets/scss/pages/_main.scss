@@ -2,38 +2,60 @@
     position: relative;
 
     .title-area {
-        // position: relative;
-
         .title {
+            position: relative;
             margin-top: 2.5vw;
-            @include absCenter(true, true);
-
+            @include ratio() {
+                margin-top: 4.44444vh;
+            }
+            // @include absCenter(true, true);
+            
             .txt-wrap {
                 display: inline-block;
                 width: fit-content;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 8.5119vw;
+                text-transform: uppercase;
+                perspective: 250px;
+                
+                @include ratio() {
+                    line-height: 15.13228vh;
+                }
+
+                &.font-e,
+                &.txt-stroke {
+                    display: block;
+                }
+                
+                &.txt-stroke {
+                    padding-right: .29762vw;
+                    font-size: 8.92857vw;
+                    line-height: 8.5119vw;
+                    letter-spacing: -.06em;
+                    @include ratio() {
+                        padding-right: .5291vh;
+                        font-size: 15.87302vh;
+                        line-height: 15.13228vh;
+                    }
+                }
+
+                &.font-e {
+                    font-weight: 300;
+                    font-size: 9.88095vw;
+                    line-height: 8.03571vw;
+                    @include ratio() {
+                        font-size: 17.56614vh;
+                        line-height: 14.28571vh;
+                    }
+                }
+
+                &.txt-sm {
+                    position: absolute;
+                }
 
                 .txt {
-                    font-weight: 300;
-                    font-size: 18px;
-                    line-height: 8.5119vw;
-                    text-transform: uppercase;
-                    
-                    &.font-e,
-                    &.txt-stroke {
-                        padding-right: .29762vw;
-                    }
-
-                    &.txt-stroke {
-                        font-size: 8.92857vw;
-                        line-height: 8.5119vw;
-                        // 질문 letter-spacing 넣으면 글자가 짤림
-                        letter-spacing: -.06em;
-                    }
-
-                    &.font-e {
-                        font-size: 9.88095vw;
-                        line-height: 8.03571vw;
-                    }
+                    display: block;
                 }
             }
         }
@@ -60,10 +82,10 @@
                 line-height: 3.21429vw;
 
                 &:nth-child(1) {
+                    margin-bottom: .83333vw;
                     font-family: 'm', sans-serif;
                     font-size: 2.38095vw;
                     line-height: 2.2619vw;
-                    margin-bottom: .83333vw;
                 }
             }
         }
@@ -155,9 +177,9 @@
 }
 
 .bg-area {
+    position: absolute;
     width: 100%;
     height: 100%;
-    position: absolute;
     .bg {
         display: block;
         height: 100%;
@@ -220,40 +242,14 @@
     }
 }
 
-// .sticky-wrap {
-//     position: relative;
-
-//     .sticky-area {
-//         position: absolute;
-//         top: 0;
-//         left: 5.714284999999997vw;
-//         height: 100%;
-//         z-index: 100;
-        
-//         .sticky {
-//             margin-top: -300vh;
-//             display: flex;
-//             align-items: end;
-//             top: 0;
-//             left: 0;
-//             height: 100vh;
-//             padding-bottom: 80px;
-//             font-weight: 600;
-//             font-size: 12px;
-//             line-height: 18px;
-//             letter-spacing: .06em;
-//         }
-//     }
-// }
-
 .pagination {
     position: absolute;
-    transform: rotate(-90deg);
-    transform-origin: 0 00;
     font-weight: 600;
     font-size: 12px;
     line-height: 18px;
     letter-spacing: .06em;
+    transform: rotate(-90deg);
+    transform-origin: 0 00;
 
     .page-list {
         overflow: hidden;
@@ -280,11 +276,12 @@
 }
 
 .sc-design {
-    .section {
+    position: relative;
+    z-index: 90;
 
+    .section {
         &.sc-01 {
             z-index: 90;
-            // margin-top: -100vh;
             height: 300vh;
 
             .sticky {
@@ -300,11 +297,16 @@
             .title-area {
 
                 .txt-wrap {
-                    .txt {
-                        display: block;
-                    }
                     &:nth-child(1) .txt {
                         padding-left: 11.19048vw;
+                    }
+
+                    &:nth-child(2) {
+                        top: 0;
+                        right: 18.21429vw;
+                        @include ratio() {
+                            right: 32.38095vh;
+                        }
                     }
 
                     &:nth-child(4) .txt {
@@ -316,8 +318,14 @@
         }
 
         &.sc-02 {
+            --inset: 0;
             position: relative;
-            height: 400vh;
+            height: 300vh;
+
+            .sticky {
+                margin-top: -300vh;
+                transform-origin: 100% 100%;
+            }
 
             .sc-left {
                 position: relative;
@@ -326,60 +334,37 @@
             }
 
             .sc-right {
-                --left: 0;
-                --right: 0;
                 position: relative;
                 z-index: 10;
 
-                &::before, 
-                &::after {
-                    top: 0;
-                    width: 50%;
-                    height: 100%;
-                    background: #0a1b37;
-                    z-index: 5;
-                    @include pseudo();
-                }
-                &::before {
-                    left: 0;
-                    transform: translateX(calc(var(--left) * 1%));
-                }
-                &::after {
-                    right: 0;
-                    transform: translateX(calc(var(--right) * 1%));
-                }
                 .inner {
                     position: relative;
                     z-index: 10;
                 }
             }
 
-            .sticky {
-                --top: 0;
-                transform-origin: 100% 100%;
-                top: calc(var(--top) * 1vh);
-                margin-top: -200vh;
-            }
-
-            // .img-box {
-            //     .img {
-            //         @include absCenter(false, true);
-            //     }
-            // }
         }
 
         &.sc-img {
+            --inset: 50;
             position: relative;
             height: 300vh;
-            margin-top: -300vh;
+
             .sticky {
+                margin-top: -400vh;
             }
+
             .inner {
                 padding: 0 10.46875vw;
+                
                 .img-box {
                     max-width: 402px;
                     margin: 0 auto;
                 }
+            }
+            
+            .sc-right {
+                position: relative;
             }
         }
 
@@ -388,6 +373,10 @@
             height: 300vh;
             margin-top: -300vh;
             .sticky {
+                --inset: 0;
+                margin-top: -300vh;
+                background: #0a1c36;
+                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
             }
         }
 
@@ -406,6 +395,7 @@
                         @include flex(_, center);
         
                         .num {
+                            display: block;
                             font-weight: 600;
                             font-size: 18px;
                             line-height: 18px;
@@ -413,6 +403,7 @@
                         }
                         
                         .txt {
+                            display: block;
                             font-weight: 300;
                             font-family: "e";
                             font-size: 32px;
@@ -426,31 +417,75 @@
 }
 
 .sc-engine {
+    position: relative;
+    z-index: 80;
+
     .section {
         &.sc-01 {
-            @include bg('bg-engine.webp', $size: cover);
-            
+            height: 300vh;
+
+            .sticky {
+                margin-top: -300vh;
+            }
+
+            .bg {
+                @include bg('bg-engine.webp', $size: cover);
+            }
+
             .title {
                 .txt-wrap {
-                    &:nth-child(1) .txt {
+                    &:nth-child(1) {
+                        position: relative;
                         margin-left: .71429vw;
                         line-height: 30px;
+                        @include ratio() {
+                            margin-left: 1.26984vh;
+                        }
+                    }
+                    &:nth-child(2) {
+                        margin-top: .59524vw;
+                        @include ratio() {
+                            margin-top: 1.0582vh;
+                        }
                     }
                     &:nth-child(3) {
+                        top: calc(.59524vw + 30px);
+                        left: 48.80952vw;
                         padding: 1.07143vw 0;
+                        @include ratio() {
+                            top: calc(1.0582vh + 30px);
+                            left: 86.77249vh;
+                            padding: 1.90476vh 0;
+                        }
+                        
                         .ico {
                             display: block;
                             width: 6.36905vw;
                             height: 6.36905vw;
+                            @include ratio() {
+                                width: 11.32275vh;
+                                height: 11.32275vh;
+                            }
                         }
                     }
                     &:nth-child(4) {
                         position: absolute;
                         top: calc(9.10714vw + 30px);
                         left: 6.42857vw;
+                        @include ratio() {
+                            top: calc(16.19048vh + 30px);
+                            left: 11.42857vh;
+                        }
                     }
-                    &:nth-child(5) .txt {
+                    &:nth-child(5) {
                         padding-left: 13.92857vw;
+                        @include ratio() {
+                            padding-left: 24.7619vh;
+                        }
+
+                        .txt {
+                            padding-top: .84656vh;
+                        }
                     }
                 }
             }

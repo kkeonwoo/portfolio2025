@@ -110,10 +110,10 @@
     height: 100%;
 
     .con {
-        height: 0;
-        transition: height .8s cubic-bezier(.13,.97,1,1);
+        // height: 0;
+        height: 100%;
+        // transition: height .8s cubic-bezier(.13,.97,1,1);
         &.active {
-            height: 100%;
         }
     }
 }

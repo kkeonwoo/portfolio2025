@@ -148,9 +148,19 @@ Capsulin = {
 
         $tabItem.on('click', function() {
             let tabName = $(this).data('tab');
+
             $(this).addClass('active').siblings().removeClass('active');
-            $(tabName).addClass('active').siblings().removeClass('active');
+            // $(tabName).addClass('active').siblings().removeClass('active');
+            slideUp($(tabName));
         })
+
+        function slideUp(t) {
+            let siblings = $(t).siblings();
+
+            gsap.to(t, { height: '100%'});
+            gsap.to(siblings, { height: 0});
+        }
+
     },
     handleCustomTab: function() {
         const $tabItem = $('.color .tab-item');
@@ -174,10 +184,10 @@ Capsulin = {
         })
     },
     fadeUp: function(t, each) {
-        let tween = gsap.fromTo(t, { yPercent: 100, stagger: { each: each ? each : 0}}, { yPercent: 0})
+        let tween = gsap.fromTo(t, { yPercent: 120, stagger: { each: each ? each : 0}}, { yPercent: 0})
     },
     fadeOut: function(t, dir, each) {
-        let tween = gsap.fromTo(t, { yPercent: 0, stagger: { each: each ? each : 0}}, { yPercent: () => {return dir < 0 ? 100 : -100}})
+        let tween = gsap.fromTo(t, { yPercent: 0, stagger: { each: each ? each : 0}}, { yPercent: () => {return dir < 0 ? 120 : -120}})
     },
     aniHeroEnter: function() {
         const tl = gsap.timeline()
