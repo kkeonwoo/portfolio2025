@@ -321,6 +321,7 @@
             --inset: 0;
             position: relative;
             height: 300vh;
+            z-index: 80;
 
             .sticky {
                 margin-top: -300vh;
@@ -349,6 +350,7 @@
             --inset: 50;
             position: relative;
             height: 300vh;
+            z-index: 70;
 
             .sticky {
                 margin-top: -400vh;
@@ -372,6 +374,8 @@
             position: relative;
             height: 300vh;
             margin-top: -300vh;
+            z-index: 60;
+
             .sticky {
                 --inset: 0;
                 margin-top: -300vh;
@@ -423,9 +427,12 @@
     .section {
         &.sc-01 {
             height: 300vh;
+            z-index: 80;
 
             .sticky {
+                --inset: 0;
                 margin-top: -300vh;
+                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
             }
 
             .bg {
@@ -492,34 +499,56 @@
         }
 
         &.sc-02 {
-            position: relative;
-            @include bg('bg-engine2.webp', $size: cover);
+            height: 300vh;
+            z-index: 70;
+
+            .sticky {
+                --inset: 0;
+                margin-top: -300vh;
+                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
+            }
+
+            .bg {
+                @include bg('bg-engine2.webp', $size: cover);
+            }
+
             .title-area {
-                position: absolute;
-                left: 0;
+                width: 100%;
                 margin-left: 25.71429vw;
 
                 .title {
-                    left: 0;
-                    transform: translate(0, -50%);
-    
                     .txt-wrap {
                         &:nth-child(1) {
                             position: absolute;
                             top: 0;
                             left: 0;
                             line-height: 8.5119vw;
+                            @include ratio() {
+                                line-height: 15.13228vh;
+                            }
                         }
-                        &:nth-child(2) .txt {
+                        &:nth-child(2) {
                             padding-left: 8.92857vw;
+                            @include ratio() {
+                                padding-left: 15.87302vh;
+                            }
                         }
-                        &:nth-child(3) .txt {
+                        &:nth-child(3) {
                             margin-left: -.29762vw;
+                            @include ratio() {
+                                margin-left: -.5291vh;
+                            }
                         }
                         &:nth-child(4) {
                             position: absolute;
                             top: 8.5119vw;
                             left: 25vw;
+                            line-height: 8.03571vw;
+                            @include ratio() {
+                                top: 15.13228vh;
+                                left: 44.44444vh;
+                                line-height: 14.28571vh;
+                            }
                         }
                     }
                 }
@@ -535,9 +564,20 @@
         }
 
         &.sc-03 {
+            position: relative;
+            height: 300vh;
+            z-index: 60;
+            
+            .sticky {
+                --inset: 0;
+                margin-top: -300vh;
+                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
+            }
+            
             .sc-right {
                 display: flex;
                 align-items: end;
+                background: #0a1b37;
 
                 .btn {
                     &.btn-engine {
@@ -545,30 +585,48 @@
                         padding: 22px 0 24px;
                         text-align: left;
 
-                        .txt {
-                            display: block;
+                        .txt-wrap {
                             font-size: 36px;
                             line-height: 44px;
 
                             &.font-e {
                                 margin-top: -10px;
                             }
+
+                            .txt {
+                                display: block;
+                            }
                         }
+                        
                     }
                 }
             }
         }
 
         &.sc-04 {
-            @include bg('bg-engine3.webp', $size: cover);
+            position: relative;
+            height: 300vh;
+            z-index: 50;
+            
+            .sticky {
+                --inset: 0;
+                margin-top: -300vh;
+                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
+                justify-content: flex-start;
+            }
+
+            .bg {
+                @include bg('bg-engine3.webp', $size: cover);
+            }
 
             .title-area {
                 .title {
-                    left: 0;
-                    width: auto;
                     margin-top: .17857vw;
                     margin-left: 13.33333vw;
-                    transform: translate(0, -50%);
+                    @include ratio() {
+                        margin-top: .31746vh;
+                        margin-left: 13.33333vw;
+                    }
     
                     .txt-wrap {
                         &:nth-child(1) {
@@ -576,25 +634,45 @@
                             top: 0;
                             left: 0;
                             line-height: 8.5119vw;
+                            @include ratio() {
+                                line-height: 15.13228vh;
+                            }
                         }
-                        &:nth-child(2) .txt {
+                        &:nth-child(2) {
                             padding-left: 8.92857vw;
+                            @include ratio() {
+                                padding-left: 15.87302vh;
+                            }
                         }
                         &:nth-child(3) {
                             position: absolute;
                             top: 8.5119vw;
                             right: 40.47619vw;
                             left: auto;
+                            @include ratio() {
+                                top: 15.13228vh;
+                                right: 71.95767vh;
+                                line-height: 14.28571vh;
+                            }
                         }
                         &:nth-child(4) {
                             display: block;
                             margin-left: 23.39286vw;
+                            @include ratio() {
+                                margin-left: 41.5873vh;
+                            }
                         }
                         &:nth-child(5) {
                             display: block;
                             margin-left: -.29762vw;
                         }
                     }
+                }
+            }
+
+            .txt-area {
+                .line {
+                    display: block;
                 }
             }
         }
@@ -608,42 +686,62 @@
 }
 
 .sc-custom {
+    z-index: 70;
     .section {
-
         &.sc-01 {
-            .bg-area {
+            position: relative;
+            height: 300vh;
+            
+            .sticky {
+                --inset: 0;
+                margin-top: -300vh;
+                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
+            }
+
+            .bg-gradient {
+                --top: 100;
                 position: absolute;
-                top: 0;
-                left: 0;
+                top: calc(var(--top) * 1%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 z-index: -1;
                 width: 100%;
                 height: 100%;
-        
-                .bg-gradient {
+                
+                .bg {
                     z-index: 5;
                     width: 83vw;
                     height: 70vh;
                     background: linear-gradient(125deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%);
                     opacity: .15;
-                    @include absCenter(true, true);
                 }
-        
-                .bg-capsule {
-                    position: relative;
-                    z-index: 10;
+            }
+
+            .bg-capsule {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+    
+                .img {
+                    width: 100%;
                     height: 100%;
-        
-                    .img {
-                        height: 100%;
-                    }
                 }
-        
-        
             }
 
             .title-area {
                 .title {
+                    position: static;
+                    margin-top: 2.38095vw;
+                    @include ratio() {
+                        margin-top: 4.2328vh;
+                    }
                     .txt-wrap {
+                        &.txt-sm { 
+                            position: static;
+                        }
                         &:nth-child(1)  {
                             display: block;
                             margin: 0 auto 7.40741vh;
@@ -655,11 +753,21 @@
                         &:nth-child(3) {
                             margin-left: 10.47619vw;
                             padding-top: .47619vw;
+                            @include ratio() {
+                                margin-left: 18.62434vh;
+                            }
                         }
                         &:nth-child(4) {
+                            position: absolute;
+                            top: calc(50% + 7.14286vw);
+                            left: calc(50% + 8.92857vw);
+                            transform: translate(-50%, - 50%);
+                            width: 7.7381vw;
+                        }
+                        &:nth-child(5) {
                             display: block;
                             margin: 11.64021vh auto 0;
-
+                            
                             .txt {
                                 line-height: 30px;
                             }
@@ -671,10 +779,17 @@
 
         &.sc-02 {
             position: relative;
-            overflow: hidden;
+            height: 300vh;
+            
+            .sticky {
+                --inset: 0;
+                margin-top: -200vh;
+                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
+            }
 
             .sc-left {
                 position: relative;
+
                 .bg-area {
                     position: absolute;
                     width: 100%;
