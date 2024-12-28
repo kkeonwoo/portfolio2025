@@ -9,7 +9,7 @@ $(document).ready(() => {
         $(line).wrap('<div class="txt-wrap"></div>');
     })
     gsap.set('.tab-list .line', { width: 0})
-    gsap.set('.main .txt-wrap .txt, .main .txt-wrap .line, .main .txt-wrap .num, .main .txt-wrap .ico, .sc-custom .sc-01 .title .img, .title-box .char', { yPercent: 120})
+    gsap.set('.main .txt-wrap .txt, .main .txt-wrap .line, .main .txt-wrap .num, .main .txt-wrap .ico, .title .img, .title-box .char', { yPercent: 120})
     gsap.set('.title-box .line', { yPercent: 0})
 
     // full scroll
@@ -137,7 +137,7 @@ $(document).ready(() => {
         trigger: '.sc-engine .sc-02',
         start: 'top top',
         end: 'bottom bottom',
-        markers: true,
+        // markers: true,
         animation: engineTl02,
         scrub: 0,
         onEnter: () => Capsulin.fadeOut('.sc-engine .sc-02 .title .txt, .sc-engine .sc-02 .line', 1, 0.1),
@@ -161,7 +161,7 @@ $(document).ready(() => {
         trigger: '.sc-engine .sc-03',
         start: 'top top',
         end: 'bottom bottom',
-        markers: true,
+        // markers: true,
         animation: engineTl03,
         scrub: 0,
         onEnter: () => {
@@ -185,7 +185,7 @@ $(document).ready(() => {
         trigger: '.sc-engine .sc-04',
         start: 'top top',
         end: 'bottom bottom',
-        markers: true,
+        // markers: true,
         animation: engineTl04,
         scrub: 0,
         onEnter: () => Capsulin.fadeOut('.sc-engine .sc-04 .title .txt, .sc-engine .sc-04 .line', 1, 1),
@@ -260,12 +260,126 @@ $(document).ready(() => {
         trigger: '.sc-custom .sc-03',
         start: 'top top',
         end: 'bottom bottom',
-        markers: true,
+        // markers: true,
         animation: customTl03,
         scrub: 0,
         onEnter: () => Capsulin.fadeOut('.sc-custom .sc-03 .line', 1, .2),
         onLeaveBack: () => Capsulin.fadeUp('.sc-custom .sc-03 .line', .2),
         onLeave: () => Capsulin.fadeUp('.sc-experience .sc-01 .txt', .2),
         onEnterBack: () => Capsulin.fadeOut('.sc-experience .sc-01 .txt', 1, .2),
+    })
+
+    const experienceTl01 = gsap.timeline()
+    .to('.sc-experience .sc-01 .sticky', {'--inset': 100})
+    .fromTo('.sc-experience .sc-01 .bg', { yPercent: 0}, { yPercent: -30}, '<')
+    .from('.sc-experience .sc-02', { '--top': 100}, '<')
+    .from('.sc-experience .sc-02 .sc-right .img-box', { clipPath: 'inset(50% 50% 50% 50%)'}, '<')
+    .to('.sc-experience .sc-02 .sc-right .img-box', { clipPath: 'inset(50% 50% 50% 50%)'})
+    .to('.sc-experience .sc-02 .sc-left', {'--inset': 100}, '<')
+    .from('.sc-experience .sc-03', { '--top': 100}, '<')
+    
+    ScrollTrigger.create({
+        trigger: '.sc-experience .sc-01',
+        start: 'top top',
+        end: 'bottom bottom',
+        // markers: true,
+        animation: experienceTl01,
+        scrub: 0,
+        onEnter: () => Capsulin.fadeOut('.sc-experience .sc-01 .txt', 1, .2),
+        onLeaveBack: () => Capsulin.fadeUp('.sc-experience .sc-01 .txt', .2),
+        onLeave: () => Capsulin.fadeUp('.sc-experience .sc-03 .line', .2),
+        onEnterBack: () => Capsulin.fadeOut('.sc-experience .sc-03 .line', 1, .2),
+    })
+    
+    const experienceTl02 = gsap.timeline()
+    .to('.sc-experience .sc-03 .sticky', {'--inset': 100})
+    .from('.sc-spec .sc-01 .bg', {yPercent: 30}, '<')
+
+    ScrollTrigger.create({
+        trigger: '.sc-experience .sc-03',
+        start: 'top top',
+        end: 'bottom bottom',
+        markers: true,
+        animation: experienceTl02,
+        scrub: 0,
+        onEnter: () => Capsulin.fadeOut('.sc-experience .sc-03 .line', 1, .2),
+        onLeaveBack: () => Capsulin.fadeUp('.sc-experience .sc-03 .line', .2),
+        onLeave: () => Capsulin.fadeUp('.sc-spec .sc-01 .txt', .2),
+        onEnterBack: () => Capsulin.fadeOut('.sc-spec .sc-01 .txt', 1, .2),
+    })
+
+    const specTl01 = gsap.timeline()
+    .to('.sc-spec .sc-01 .sticky', {'--inset': 100})
+    .fromTo('.sc-spec .sc-01 .bg',{yPercent: 0}, {yPercent: -30}, '<')
+    .from('.sc-spec .sc-02 .sc-left', { '--top': 100}, '<')
+
+    ScrollTrigger.create({
+        trigger: '.sc-spec .sc-01',
+        start: 'top top',
+        end: 'bottom bottom',
+        // markers: true,
+        animation: specTl01,
+        scrub: 0,
+        onEnter: () => Capsulin.fadeOut('.sc-spec .sc-01 .txt', 1, .2),
+        onLeaveBack: () => Capsulin.fadeUp('.sc-spec .sc-01 .txt', .2),
+        onLeave: () => Capsulin.fadeUp('.sc-spec .sc-02 .line', .2),
+        onEnterBack: () => Capsulin.fadeOut('.sc-spec .sc-02 .line', 1, .2),
+    })
+
+    const specTl02 = gsap.timeline()
+    .to('.sc-spec .sc-02 .sticky', {'--inset': 100})
+    .fromTo('.sc-spec .sc-02 .sc-left', { '--top': 0}, {'--top': -10}, '<')
+    .from('.sc-spec .sc-03 .bg',{yPercent: 10}, '<')
+
+    ScrollTrigger.create({
+        trigger: '.sc-spec .sc-02',
+        start: 'top top',
+        end: 'bottom bottom',
+        // markers: true,
+        animation: specTl02,
+        scrub: 0,
+        onEnter: () => Capsulin.fadeOut('.sc-spec .sc-02 .line', 1, .2),
+        onLeaveBack: () => Capsulin.fadeUp('.sc-spec .sc-02 .line', .2),
+        onLeave: () => Capsulin.fadeUp('.sc-spec .sc-03 .txt, .sc-spec .sc-03 .img', .2),
+        onEnterBack: () => Capsulin.fadeOut('.sc-spec .sc-03 .txt, .sc-spec .sc-03 .img', 1, .2),
+    })
+
+    const specTl03 = gsap.timeline()
+    .to('.sc-spec .sc-03 .sticky', {'--inset': 100})
+    .fromTo('.sc-spec .sc-03 .bg',{yPercent: 0}, {yPercent: -10}, '<')
+    .from('.sc-spec .sc-04 .bg',{yPercent: 10}, '<')
+
+    ScrollTrigger.create({
+        trigger: '.sc-spec .sc-03',
+        start: 'top top',
+        end: 'bottom bottom',
+        markers: true,
+        animation: specTl03,
+        scrub: 0,
+        onEnter: () => Capsulin.fadeOut('.sc-spec .sc-03 .txt, .sc-spec .sc-03 .img', 1, .2),
+        onLeaveBack: () => Capsulin.fadeUp('.sc-spec .sc-03 .txt, .sc-spec .sc-03 .img', .2),
+    })
+
+    const specTl04 = gsap.timeline()
+    .to('.sc-spec .sc-04 .sticky', {'--inset': 100})
+    .fromTo('.sc-spec .sc-04 .bg',{yPercent: 0}, {yPercent: -10}, '<')
+    .from('.sc-contact .bg',{yPercent: 10}, '<')
+
+    ScrollTrigger.create({
+        trigger: '.sc-spec .sc-04',
+        start: 'top top',
+        endTrigger: '.sc-contact',
+        end: 'top bottom',
+        markers: true,
+        animation: specTl04,
+        scrub: 0,
+        onLeave: () => {
+            Capsulin.fadeUp('.sc-contact .txt, .sc-contact .line', .2)
+            gsap.to('.sc-contact .btn', {'--scale': 1})
+        },
+        onEnterBack: () => {
+            Capsulin.fadeOut('.sc-contact .txt, .sc-contact .line', 1, .2)
+            gsap.to('.sc-contact .btn', {'--scale': 0})
+        },
     })
 })
