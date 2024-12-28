@@ -61,7 +61,7 @@ Capsulin = {
 
         colors.forEach((color, idx) => {
             const titleHtml = `
-                <strong class="title ${idx === 0 && 'active'}"><span class="txt-wrap"><span class="txt font-e">${color.text}</span></span></strong>
+                <strong class="title-box ${idx === 0 && 'active'}"><span class="txt-area"><span class="txt font-e">${color.text}</span></span></strong>
             `
             const bgHtml = `
                 <div class="bg ${idx === 0 && 'active'}" style="--bg-color: ${color.rgb}"></div>
@@ -75,7 +75,7 @@ Capsulin = {
                     </div>
                     <div id="color${idx+1}-2" class="con">
                         <div class="img-box">
-                            <img src="./assets/images/custom/custom${idx + 1}/img-capsule3.webp" alt="">
+                            <img src="./assets/images/custom/custom${idx + 1}/img-capsule2.webp" alt="">
                         </div>
                     </div>
                     <div id="color${idx+1}-3" class="con">
@@ -95,6 +95,38 @@ Capsulin = {
             $bgArea.append(bgHtml);
             $imgArea.append(imgHtml);
             $colorList.append(colorHtml);
+
+            let activeIdx = 0;
+            let flag = false;
+
+            const $colorItem = $(document).find('.color-item');
+            const $bgItem = $(document).find('.color .sc-left .bg');
+            const $bgItem2 = $(document).find('.color .sc-right .bg');
+            const $conItem1 = $(document).find('.color .sc-left .tab-cont-wrap');
+            const $titleItem = $(document).find('.color .title-box');
+
+            $colorItem.on('click', function() {
+                // let tabName = $(this).data('tab');
+                // let siblings = $(tabName).siblings();
+                let idx = $(this).index();
+                const dir = idx > activeIdx ? "up" : "down";
+    
+                if (idx === activeIdx || flag) return;
+    
+                flag = true;
+                $(this).addClass('active').siblings().removeClass('active');
+                // $bgItem.addClass('active').siblings().removeClass('active');
+                // $bgItem2.addClass('active').siblings().removeClass('active');
+                // $titleItem.addClass('active').siblings().removeClass('active');
+                // gsap.fromTo([$bgItem, $bgItem2], { clipPath: dir === "up" ? "inset(0 0 0 0)" : "inset(0 0 0 0)"}, { clipPath: dir === "up" ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)"});
+                gsap.fromTo([$bgItem.eq(idx), $bgItem2.eq(idx), $conItem1.eq(idx)],{ clipPath: dir === "up" ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" }, { clipPath: 'inset(0% 0% 0% 0%)',
+                    onComplete: () => {
+                        return flag = false;
+                    }
+                });
+    
+                activeIdx = idx;
+            })
         })
     },
     handleMenu: function() {
@@ -145,22 +177,30 @@ Capsulin = {
     handleTab: function() {
         const $tabItem = $('.tab-list .tab-item');
         const $tabCont = $('.tab-cont');
+        let activeIdx = 0;
+        let flag = false;
 
         $tabItem.on('click', function() {
             let tabName = $(this).data('tab');
+            let siblings = $(tabName).siblings();
+            let idx = $(this).index();
+            const dir = idx > activeIdx ? "up" : "down";
 
+            if (idx === activeIdx || flag) return;
+
+            flag = true;
+            
             $(this).addClass('active').siblings().removeClass('active');
-            // $(tabName).addClass('active').siblings().removeClass('active');
-            slideUp($(tabName));
+
+            gsap.to(siblings,{ clipPath: dir === "up" ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)"});
+            gsap.fromTo($(tabName),{ clipPath: dir === "up" ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" }, { clipPath: 'inset(0% 0% 0% 0%)',
+                onComplete: () => {
+                    return flag = false;
+                }
+            });
+
+            activeIdx = idx;
         })
-
-        function slideUp(t) {
-            let siblings = $(t).siblings();
-
-            gsap.to(t, { height: '100%'});
-            gsap.to(siblings, { height: 0});
-        }
-
     },
     handleCustomTab: function() {
         const $tabItem = $('.color .tab-item');
@@ -183,11 +223,11 @@ Capsulin = {
             $('.modal').addClass('modal-closed');
         })
     },
-    fadeUp: function(t, each) {
-        let tween = gsap.fromTo(t, { yPercent: 120, stagger: { each: each ? each : 0}}, { yPercent: 0})
+    fadeUp: function(t, amount) {
+        let tween = gsap.fromTo(t, { yPercent: 120}, { yPercent: 0, stagger: { amount: amount ? amount : 0}})
     },
-    fadeOut: function(t, dir, each) {
-        let tween = gsap.fromTo(t, { yPercent: 0, stagger: { each: each ? each : 0}}, { yPercent: () => {return dir < 0 ? 120 : -120}})
+    fadeOut: function(t, dir, amount) {
+        let tween = gsap.fromTo(t, { yPercent: 0}, { yPercent: () => {return dir < 0 ? 120 : -120}, stagger: { amount: amount ? amount : 0}})
     },
     aniHeroEnter: function() {
         const tl = gsap.timeline()

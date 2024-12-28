@@ -780,6 +780,7 @@
         &.sc-02 {
             position: relative;
             height: 300vh;
+            z-index: 60;
             
             .sticky {
                 --inset: 0;
@@ -796,7 +797,15 @@
                     height: 100%;
 
                     .bg {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
                         height: 100%;
+                        clip-path: inset(0% 100% 0% 0%);
+                        &.active {
+                            clip-path: inset(0% 0% 0% 0%);
+                        }
                         @for $i from 1 through 20 {
                             &:nth-child(#{$i}) {
                                 background: var(--bg-color);
@@ -813,6 +822,7 @@
                         aspect-ratio: 0.7 / 1;
                         
                         .tab-cont-wrap {
+                            position: relative;
                             height: 100%;
                         }
                     }
@@ -821,34 +831,55 @@
 
             .sc-right {
                 position: relative;
+                background: #0a1b37;
 
                 .bg-area {
                     position: absolute;
                     width: 100%;
                     height: 100%;
+
                     .bg {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
                         height: 100%;
+                        clip-path: inset(100% 0% 0% 0%);
                         @for $i from 1 through 20 {
                             &:nth-child(#{$i}) {
-                                background: url('../images/custom/custom#{$i}/bg1.webp') no-repeat center center / cover;
+                                background: url('../images/custom/custom#{$i}/bg1.webp') no-repeat center top / 100%;
                             }
                         } 
+                        &.active {
+                            clip-path: inset(0% 0% 0% 0%);
+                        }
                     }
                 }
 
                 .title-area {
-                    position: absolute;
+                    position: relative;
                     width: 100%;
                     height: 100%;
 
-                    .title { 
+                    .title-box { 
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                         top: 27.51323vh;
+                        width: 100%;
                         height: 38.09524vh;
                         @include absCenter(true, false);
+                        // .line {
+                            //     overflow: hidden;
+                            // }
+                            // .char {
+                        //     font-size: 17.56614vh;
+                        //     line-height: 19.04762vh;
+                        // }
                         .txt-wrap {
                             font-size: 17.56614vh;
                             line-height: 19.04762vh;
-                        }      
+                        }
                     }
                 }
 
@@ -877,6 +908,7 @@
                         }
                         
                         .txt {
+                            display: block;
                             font-size: 18px;
                             line-height: 44px;
                             transition: opacity 300ms;
@@ -948,6 +980,17 @@
         }
 
         &.sc-03 {
+            position: relative;
+            height: 300vh;
+            z-index: 50;
+            
+            .sticky {
+                --inset: 0;
+                margin-top: -300vh;
+                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
+                background: #0a1c36;
+            }
+
             .inner {
                 width: 27.61905vw;
                 margin-left: 13.33333vw;
@@ -964,9 +1007,22 @@
 }
 
 .sc-experience {
+    z-index: 60;
     .section {
         &.sc-01 {
-            @include bg('bg-experience1.webp', $size: cover);
+            height: 300vh;
+            
+            .sticky {
+                --inset: 0;
+                margin-top: -300vh;
+                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
+            }
+
+            .bg-area {
+                .bg {
+                    @include bg('bg-experience1.webp', $size: cover);
+                }
+            }
 
             .title-area {
                 .title {

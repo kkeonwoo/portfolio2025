@@ -105,12 +105,24 @@
 }
 
 .tab-cont {
+  position: relative;
   overflow: hidden;
   height: 100%;
 }
 .tab-cont .con {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
+  -webkit-clip-path: inset(100% 0% 0% 0%);
+          clip-path: inset(100% 0% 0% 0%);
 }
+.tab-cont .con.active {
+  -webkit-clip-path: inset(0% 0% 0% 0%);
+          clip-path: inset(0% 0% 0% 0%);
+}
+
 .dimmed {
   position: fixed;
   top: 0;
@@ -1279,6 +1291,7 @@ section {
 .sc-custom .section.sc-02 {
   position: relative;
   height: 300vh;
+  z-index: 60;
 }
 .sc-custom .section.sc-02 .sticky {
   --inset: 0;
@@ -1295,7 +1308,17 @@ section {
   height: 100%;
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
+  -webkit-clip-path: inset(0% 100% 0% 0%);
+          clip-path: inset(0% 100% 0% 0%);
+}
+.sc-custom .section.sc-02 .sc-left .bg-area .bg.active {
+  -webkit-clip-path: inset(0% 0% 0% 0%);
+          clip-path: inset(0% 0% 0% 0%);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(1) {
   background: var(--bg-color);
@@ -1365,10 +1388,12 @@ section {
   aspect-ratio: 0.7/1;
 }
 .sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap {
+  position: relative;
   height: 100%;
 }
 .sc-custom .section.sc-02 .sc-right {
   position: relative;
+  background: #0a1b37;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area {
   position: absolute;
@@ -1376,82 +1401,102 @@ section {
   height: 100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
+  -webkit-clip-path: inset(100% 0% 0% 0%);
+          clip-path: inset(100% 0% 0% 0%);
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(1) {
-  background: url("../images/custom/custom1/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom1/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(2) {
-  background: url("../images/custom/custom2/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom2/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(3) {
-  background: url("../images/custom/custom3/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom3/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(4) {
-  background: url("../images/custom/custom4/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom4/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(5) {
-  background: url("../images/custom/custom5/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom5/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(6) {
-  background: url("../images/custom/custom6/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom6/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(7) {
-  background: url("../images/custom/custom7/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom7/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(8) {
-  background: url("../images/custom/custom8/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom8/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(9) {
-  background: url("../images/custom/custom9/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom9/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(10) {
-  background: url("../images/custom/custom10/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom10/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(11) {
-  background: url("../images/custom/custom11/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom11/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(12) {
-  background: url("../images/custom/custom12/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom12/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(13) {
-  background: url("../images/custom/custom13/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom13/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(14) {
-  background: url("../images/custom/custom14/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom14/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(15) {
-  background: url("../images/custom/custom15/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom15/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(16) {
-  background: url("../images/custom/custom16/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom16/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(17) {
-  background: url("../images/custom/custom17/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom17/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(18) {
-  background: url("../images/custom/custom18/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom18/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(19) {
-  background: url("../images/custom/custom19/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom19/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(20) {
-  background: url("../images/custom/custom20/bg1.webp") no-repeat center center/cover;
+  background: url("../images/custom/custom20/bg1.webp") no-repeat center top/100%;
+}
+.sc-custom .section.sc-02 .sc-right .bg-area .bg.active {
+  -webkit-clip-path: inset(0% 0% 0% 0%);
+          clip-path: inset(0% 0% 0% 0%);
 }
 .sc-custom .section.sc-02 .sc-right .title-area {
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
 }
-.sc-custom .section.sc-02 .sc-right .title-area .title {
+.sc-custom .section.sc-02 .sc-right .title-area .title-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   top: 27.51323vh;
+  width: 100%;
   height: 38.09524vh;
   position: absolute;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
-.sc-custom .section.sc-02 .sc-right .title-area .title .txt-wrap {
+.sc-custom .section.sc-02 .sc-right .title-area .title-box .txt-wrap {
   font-size: 17.56614vh;
   line-height: 19.04762vh;
 }
@@ -1484,6 +1529,7 @@ section {
           transform: scaleX(1);
 }
 .sc-custom .section.sc-02 .sc-right .tab-list .tab-item .txt {
+  display: block;
   font-size: 18px;
   line-height: 44px;
   -webkit-transition: opacity 300ms;
@@ -1563,6 +1609,18 @@ section {
   background-color: var(--bg-color);
   border-radius: 50%;
 }
+.sc-custom .section.sc-03 {
+  position: relative;
+  height: 300vh;
+  z-index: 50;
+}
+.sc-custom .section.sc-03 .sticky {
+  --inset: 0;
+  margin-top: -300vh;
+  -webkit-clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
+          clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
+  background: #0a1c36;
+}
 .sc-custom .section.sc-03 .inner {
   width: 27.61905vw;
   margin-left: 13.33333vw;
@@ -1572,7 +1630,19 @@ section {
   margin-left: 7.61905vw;
 }
 
+.sc-experience {
+  z-index: 60;
+}
 .sc-experience .section.sc-01 {
+  height: 300vh;
+}
+.sc-experience .section.sc-01 .sticky {
+  --inset: 0;
+  margin-top: -300vh;
+  -webkit-clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
+          clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
+}
+.sc-experience .section.sc-01 .bg-area .bg {
   background: url("../images/bg-experience1.webp") no-repeat center center/cover;
 }
 .sc-experience .section.sc-01 .title-area .title .txt-wrap:nth-child(1) {

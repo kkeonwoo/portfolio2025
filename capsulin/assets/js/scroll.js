@@ -3,12 +3,14 @@ gsap.defaults({ease: 'none'});
 
 $(document).ready(() => {
     const text = new SplitType('.half .title, .txt-area .txt', { types: 'lines' })
+    const text2 = new SplitType('.title-box .line', { types: 'chars' })
     const lines = $('.half .title .line, .txt-area .txt .line');
     lines.each((idx, line) => {
         $(line).wrap('<div class="txt-wrap"></div>');
     })
     gsap.set('.tab-list .line', { width: 0})
-    gsap.set('.main .txt-wrap .txt, .main .txt-wrap .line, .main .txt-wrap .num, .main .txt-wrap .ico, .sc-custom .sc-01 .title .img', { yPercent: 120})
+    gsap.set('.main .txt-wrap .txt, .main .txt-wrap .line, .main .txt-wrap .num, .main .txt-wrap .ico, .sc-custom .sc-01 .title .img, .title-box .char', { yPercent: 120})
+    gsap.set('.title-box .line', { yPercent: 0})
 
     // full scroll
     gsap.from('.progress-bar', {
@@ -104,8 +106,8 @@ $(document).ready(() => {
             Capsulin.fadeUp('.sc-design .sc-04 .line, .sc-design .sc-04 .txt, .sc-design .sc-04 .num', 0.1)
             gsap.to('.sc-design .sc-04 .tab-item .line', { width: '100%', stagger: { each: 0.2}})
         },
-        onLeave: () => Capsulin.fadeUp('.sc-engine .sc-01 .txt, .sc-engine .sc-01 .ico', 0.2),
-        onEnterBack: () => Capsulin.fadeOut('.sc-engine .sc-01 .txt, .sc-engine .sc-01 .ico', 1, 0.2),
+        onLeave: () => Capsulin.fadeUp('.sc-engine .sc-01 .txt, .sc-engine .sc-01 .ico', 0.1),
+        onEnterBack: () => Capsulin.fadeOut('.sc-engine .sc-01 .txt, .sc-engine .sc-01 .ico', 1, 0.1),
     })
 
     const engineTl01 = gsap.timeline()
@@ -122,8 +124,8 @@ $(document).ready(() => {
         scrub: 0,
         onEnter: () => Capsulin.fadeOut('.sc-engine .sc-01 .txt, .sc-engine .sc-01 .ico', 1, 0.1),
         onLeaveBack: () => Capsulin.fadeUp('.sc-engine .sc-01 .txt, .sc-engine .sc-01 .ico', 0.1),
-        onLeave: () => Capsulin.fadeUp('.sc-engine .sc-02 .title .txt, .sc-engine .sc-02 .line', 10),
-        onEnterBack: () => Capsulin.fadeOut('.sc-engine .sc-02 .title .txt, .sc-engine .sc-02 .line', 1, 10),
+        onLeave: () => Capsulin.fadeUp('.sc-engine .sc-02 .title .txt, .sc-engine .sc-02 .line', .2),
+        onEnterBack: () => Capsulin.fadeOut('.sc-engine .sc-02 .title .txt, .sc-engine .sc-02 .line', 1, .2),
     })
 
     const engineTl02 = gsap.timeline()
@@ -170,8 +172,8 @@ $(document).ready(() => {
             Capsulin.fadeUp('.sc-engine .sc-03 .txt', .2)
             gsap.to('.sc-engine .sc-03 .tab-item .line', { width: '100%', stagger: { each: 0.2}})
         },
-        onLeave: () => Capsulin.fadeUp('.sc-engine .sc-04 .title .txt, .sc-engine .sc-04 .line', 1),
-        onEnterBack: () => Capsulin.fadeOut('.sc-engine .sc-04 .title .txt, .sc-engine .sc-04 .line', 1, 1),
+        onLeave: () => Capsulin.fadeUp('.sc-engine .sc-04 .title .txt, .sc-engine .sc-04 .line', .2),
+        onEnterBack: () => Capsulin.fadeOut('.sc-engine .sc-04 .title .txt, .sc-engine .sc-04 .line', 1, .2),
     })
 
     const engineTl04 = gsap.timeline()
@@ -188,26 +190,82 @@ $(document).ready(() => {
         scrub: 0,
         onEnter: () => Capsulin.fadeOut('.sc-engine .sc-04 .title .txt, .sc-engine .sc-04 .line', 1, 1),
         onLeaveBack: () => Capsulin.fadeUp('.sc-engine .sc-04 .title .txt, .sc-engine .sc-04 .line', 1),
-        onLeave: () => Capsulin.fadeUp('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', .1),
-        onEnterBack: () => Capsulin.fadeOut('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', 1, .1),
+        onLeave: () => Capsulin.fadeUp('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', .2),
+        onEnterBack: () => Capsulin.fadeOut('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', 1, .2),
     })
 
     const customTl01 = gsap.timeline()
-    .to('.sc-custom .sc-01 .sticky', {'--inset': 100})
     .fromTo('.sc-custom .sc-01 .bg-gradient', {'--top': 0}, {'--top': -100}, '<')
     .fromTo('.sc-custom .sc-01 .bg-capsule', {yPercent: 0}, {yPercent: -10}, '<')
-    .from('.sc-custom .sc-02 .sc-left .img-area', { clipPath: 'inset(50% 50% 50% 50%)'}, '<')
+    .from('.sc-custom .sc-02 .sc-left .img-area', { clipPath: 'inset(30% 30% 30% 30%)'}, '<')
+    .from('.sc-custom .sc-02 .sc-right .bg-area', { clipPath: 'inset(0% 50% 0% 50%)'}, '<')
+    .from('.sc-custom .sc-02 .sc-right .bg-area .bg', { backgroundSize: '30%'}, '<')
 
     ScrollTrigger.create({
         trigger: '.sc-custom .sc-01',
         start: 'top top',
+        endTrigger: '.sc-custom .sc-02 .sticky',
         end: 'bottom bottom',
-        markers: true,
+        // markers: true,
         animation: customTl01,
         scrub: 0,
-        onEnter: () => Capsulin.fadeOut('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', 1, .1),
-        onLeaveBack: () => Capsulin.fadeUp('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', .1),
-        // onLeave: () => Capsulin.fadeUp('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', .1),
-        // onEnterBack: () => Capsulin.fadeOut('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', 1, .1),
+        onEnter: () => Capsulin.fadeOut('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', 1, .2),
+        onLeaveBack: () => Capsulin.fadeUp('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', .2),
+        onLeave: () => {
+            Capsulin.fadeUp('.sc-custom .sc-02 .title-box.active .char', .2)
+            Capsulin.fadeUp('.sc-custom .sc-02 .tab-item .txt', .2)
+            gsap.fromTo('.sc-custom .sc-02 .color-item', { scale: 0 }, { scale: 1, stagger: { amount: 0.3}})
+        },
+        onEnterBack: () => {
+            Capsulin.fadeOut('.sc-custom .sc-02 .title-box.active .char', 1, .2)
+            Capsulin.fadeOut('.sc-custom .sc-02 .tab-item .txt', 1, .2)
+            gsap.fromTo('.sc-custom .sc-02 .color-item', { scale: 1 }, { scale: 0, stagger: { amount: 0.3}})
+        },
+    })
+
+    const customTl02 = gsap.timeline()
+    .to('.sc-custom .sc-02 .sticky', {'--inset': 100})
+    .to('.sc-custom .sc-02 .sc-left', { yPercent: -100}, '<')
+    .fromTo('.sc-custom .sc-02 .sc-left .img-area', { clipPath: 'inset(0 0 0 0)'}, { clipPath: 'inset(30% 30% 30% 30%)'}, '<')
+    .to('.sc-custom .sc-02 .sc-right .bg-area .bg', { yPercent: -30}, '<')
+    .from('.sc-custom .sc-03 .sc-right .img-box .img', { yPercent: 10}, '<')
+
+    ScrollTrigger.create({
+        trigger: '.sc-custom .sc-02',
+        start: 'top top',
+        end: 'bottom bottom',
+        // markers: true,
+        animation: customTl02,
+        scrub: 0,
+        onEnter: () => {
+            Capsulin.fadeOut('.sc-custom .sc-02 .title-box.active .char', 1, .2)
+            Capsulin.fadeOut('.sc-custom .sc-02 .tab-item .txt', 1, .2)
+            gsap.fromTo('.sc-custom .sc-02 .color-item', { scale: 1 }, { scale: 0, stagger: { amount: 0.3}})
+        },
+        onLeaveBack: () => {
+            Capsulin.fadeUp('.sc-custom .sc-02 .title-box.active .char', .2)
+            Capsulin.fadeUp('.sc-custom .sc-02 .tab-item .txt', .2)
+            gsap.fromTo('.sc-custom .sc-02 .color-item', { scale: 0 }, { scale: 1, stagger: { amount: 0.3}})
+        },
+        onLeave: () => Capsulin.fadeUp('.sc-custom .sc-03 .line', .2),
+        onEnterBack: () => Capsulin.fadeOut('.sc-custom .sc-03 .line', 1, .2),
+    })
+
+    const customTl03 = gsap.timeline()
+    .to('.sc-custom .sc-03 .sticky', {'--inset': 100})
+    .fromTo('.sc-custom .sc-03 .sc-right .img-box .img', { yPercent: 0}, { yPercent: -30}, '<')
+    .from('.sc-experience .sc-01 .bg', { yPercent: 10}, '<')
+
+    ScrollTrigger.create({
+        trigger: '.sc-custom .sc-03',
+        start: 'top top',
+        end: 'bottom bottom',
+        markers: true,
+        animation: customTl03,
+        scrub: 0,
+        onEnter: () => Capsulin.fadeOut('.sc-custom .sc-03 .line', 1, .2),
+        onLeaveBack: () => Capsulin.fadeUp('.sc-custom .sc-03 .line', .2),
+        onLeave: () => Capsulin.fadeUp('.sc-experience .sc-01 .txt', .2),
+        onEnterBack: () => Capsulin.fadeOut('.sc-experience .sc-01 .txt', 1, .2),
     })
 })
