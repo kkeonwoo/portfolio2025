@@ -2,9 +2,9 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.defaults({ease: 'none'});
 
 $(document).ready(() => {
-    const text = new SplitType('.half .title, .txt-area .txt', { types: 'lines' })
+    const text = new SplitType('.half .title, .txt-area .txt, .sc-spec .sc-04 .txt-wrap, .sc-04 .sc-right .title', { types: 'lines' })
     const text2 = new SplitType('.title-box .line', { types: 'chars' })
-    const lines = $('.half .title .line, .txt-area .txt .line');
+    const lines = $('.half .title .line, .txt-area .txt .line, .sc-spec .sc-04 .sc-right .line');
     lines.each((idx, line) => {
         $(line).wrap('<div class="txt-wrap"></div>');
     })
@@ -344,6 +344,16 @@ $(document).ready(() => {
         onEnterBack: () => Capsulin.fadeOut('.sc-spec .sc-03 .txt, .sc-spec .sc-03 .img', 1, .2),
     })
 
+    const specTl04 = gsap.timeline()
+    .to('.sc-spec .sc-04 .sticky', {'--inset': 100})
+    .fromTo('.sc-spec .sc-04 .bg',{yPercent: 0}, {yPercent: -10}, '<')
+    .from('.sc-contact .bg',{yPercent: 10}, '<')
+
+    const $circle = $('.ico .circle');
+    $circle.each((idx, cir) => {
+        let circleLength = $(cir)[0].getTotalLength();
+        gsap.set(cir, { strokeDashoffset: circleLength, strokeDasharray: circleLength, opacity: 0})
+    })
     const specTl03 = gsap.timeline()
     .to('.sc-spec .sc-03 .sticky', {'--inset': 100})
     .fromTo('.sc-spec .sc-03 .bg',{yPercent: 0}, {yPercent: -10}, '<')
@@ -358,12 +368,21 @@ $(document).ready(() => {
         scrub: 0,
         onEnter: () => Capsulin.fadeOut('.sc-spec .sc-03 .txt, .sc-spec .sc-03 .img', 1, .2),
         onLeaveBack: () => Capsulin.fadeUp('.sc-spec .sc-03 .txt, .sc-spec .sc-03 .img', .2),
+        onLeave: () => {
+            $circle.each((idx, cir) => {
+                let circleLength = $(cir)[0].getTotalLength();
+                gsap.to(cir, { strokeDashoffset: 0, strokeDasharray: circleLength, opacity: 1})
+            })
+            Capsulin.fadeUp('.sc-spec .sc-04 .txt, .sc-spec .sc-04 .line', .2)
+        },
+        onEnterBack: () => {
+            $circle.each((idx, cir) => {
+                let circleLength = $(cir)[0].getTotalLength();
+                gsap.to(cir, { strokeDashoffset: circleLength, strokeDasharray: circleLength, opacity: 0})
+            })
+            Capsulin.fadeOut('.sc-spec .sc-04 .txt, .sc-spec .sc-04 .line', 1,.2)
+        }
     })
-
-    const specTl04 = gsap.timeline()
-    .to('.sc-spec .sc-04 .sticky', {'--inset': 100})
-    .fromTo('.sc-spec .sc-04 .bg',{yPercent: 0}, {yPercent: -10}, '<')
-    .from('.sc-contact .bg',{yPercent: 10}, '<')
 
     ScrollTrigger.create({
         trigger: '.sc-spec .sc-04',
@@ -373,6 +392,20 @@ $(document).ready(() => {
         markers: true,
         animation: specTl04,
         scrub: 0,
+        onEnter: () => {
+            $circle.each((idx, cir) => {
+                let circleLength = $(cir)[0].getTotalLength();
+                gsap.to(cir, { strokeDashoffset: circleLength, strokeDasharray: circleLength, opacity: 0})
+            })
+            Capsulin.fadeOut('.sc-spec .sc-04 .txt, .sc-spec .sc-04 .line', 1,.2)
+        },
+        onLeaveBack: () => {
+            $circle.each((idx, cir) => {
+                let circleLength = $(cir)[0].getTotalLength();
+                gsap.to(cir, { strokeDashoffset: 0, strokeDasharray: circleLength, opacity: 1})
+            })
+            Capsulin.fadeUp('.sc-spec .sc-04 .txt, .sc-spec .sc-04 .line', .2)
+        },
         onLeave: () => {
             Capsulin.fadeUp('.sc-contact .txt, .sc-contact .line', .2)
             gsap.to('.sc-contact .btn', {'--scale': 1})

@@ -808,10 +808,10 @@
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        clip-path: inset(0% 100% 0% 0%);
-                        &.active {
-                            clip-path: inset(0% 0% 0% 0%);
-                        }
+                        z-index: 1;
+                            &.active {
+                                z-index: 5;
+                            }
                         @for $i from 1 through 20 {
                             &:nth-child(#{$i}) {
                                 background: var(--bg-color);
@@ -828,8 +828,13 @@
                         aspect-ratio: 0.7 / 1;
                         
                         .tab-cont-wrap {
-                            position: relative;
+                            position: absolute;
+                            width: 100%;
                             height: 100%;
+                            z-index: 1;
+                            &.active {
+                                z-index: 5;
+                            }
                         }
                     }
                 }
@@ -850,15 +855,15 @@
                         left: 0;
                         width: 100%;
                         height: 100%;
-                        clip-path: inset(100% 0% 0% 0%);
+                        z-index: 1;
+                        &.active {
+                            z-index: 5;
+                        }
                         @for $i from 1 through 20 {
                             &:nth-child(#{$i}) {
                                 background: url('../images/custom/custom#{$i}/bg1.webp') no-repeat center top / 100%;
                             }
                         } 
-                        &.active {
-                            clip-path: inset(0% 0% 0% 0%);
-                        }
                     }
                 }
 
@@ -866,6 +871,7 @@
                     position: relative;
                     width: 100%;
                     height: 100%;
+                    z-index: 20;
 
                     .title-box { 
                         display: flex;
@@ -899,6 +905,7 @@
                     width: 100%;
                     margin: 0 16px;
                     gap: 32px;
+                    z-index: 20;
 
                     .tab-item {
                         position: relative;
@@ -943,6 +950,7 @@
                 left: 8.69048vw;
                 width: 82.61905vw;
                 height: 3.57143vw;
+                z-index: 20;
                 @include absCenter(true, false);
 
                 .color-item {
@@ -1282,19 +1290,48 @@
                 margin: 0 auto;
 
                 .sc-left {
-                    width: 27.61905vw;
+                    width: 30.47619vw;
 
                     .title-area {
                         .title {
                             position: static;
                             margin: 0;
                             transform: translate(0);
+                            .line:nth-child(1) {
+                                padding-bottom: .83333vw;
+                                @include ratio() {
+                                    padding-bottom: 1.48148vh;
+                                }
+                            }
+                            .txt-wrap {
+                                font-size: 2.38095vw;
+                                line-height: 2.2619vw;
+                                @include ratio() {
+                                    font-size: 4.2328vh;
+                                    line-height: 4.02116vh;
+                                }
+                                &.font-e {
+                                    font-size: 2.61905vw;
+                                    line-height: 3.21429vw;
+                                    @include ratio() {
+                                        font-size: 4.65608vh;
+                                        line-height: 5.71429vh;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
 
                 .sc-right {
                     flex: 1;
+                    .ico {
+                        position: relative;
+                    }
+                    .circle {
+                        stroke: #fff;
+                        stroke-width: 1;
+                    }
                 }
             }
 

@@ -61,13 +61,13 @@ Capsulin = {
 
         colors.forEach((color, idx) => {
             const titleHtml = `
-                <strong class="title-box ${idx === 0 && 'active'}"><span class="txt-area"><span class="txt font-e">${color.text}</span></span></strong>
+                <strong class="title-box${idx === 0 ? ' active' : ''}"><span class="txt-area"><span class="txt font-e">${color.text}</span></span></strong>
             `
             const bgHtml = `
-                <div class="bg ${idx === 0 && 'active'}" style="--bg-color: ${color.rgb}"></div>
+                <div class="bg${idx === 0 ? ' active' : ''}" style="--bg-color: ${color.rgb}"></div>
             `
             const imgHtml = `
-                <div class="tab-cont-wrap tab-cont${idx+1}">
+                <div class="tab-cont-wrap tab-cont${idx+1}${idx === 0 ? ' active' : ''}">
                     <div id="color${idx+1}-1" class="con active">
                         <div class="img-box">
                             <img src="./assets/images/custom/custom${idx + 1}/img-capsule1.webp" alt="">
@@ -86,7 +86,7 @@ Capsulin = {
                 </div>
             `
             const colorHtml = `
-                <li class="color-item ${idx === 0 && 'active'}" style="--bg-color: ${color.rgb}">
+                <li class="color-item${idx === 0 ? ' active' : ''}" style="--bg-color: ${color.rgb}">
                     <button class="btn btn-color" aria-label="color${idx + 1}"></button>
                 </li>
             `
@@ -115,15 +115,28 @@ Capsulin = {
     
                 flag = true;
                 $(this).addClass('active').siblings().removeClass('active');
-                // $bgItem.addClass('active').siblings().removeClass('active');
-                // $bgItem2.addClass('active').siblings().removeClass('active');
-                // $titleItem.addClass('active').siblings().removeClass('active');
-                // gsap.fromTo([$bgItem, $bgItem2], { clipPath: dir === "up" ? "inset(0 0 0 0)" : "inset(0 0 0 0)"}, { clipPath: dir === "up" ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)"});
-                gsap.fromTo([$bgItem.eq(idx), $bgItem2.eq(idx), $conItem1.eq(idx)],{ clipPath: dir === "up" ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" }, { clipPath: 'inset(0% 0% 0% 0%)',
+                $bgItem.eq(idx).addClass('active').siblings().removeClass('active');
+                $bgItem2.eq(idx).addClass('active').siblings().removeClass('active');
+                const titleTl = gsap.timeline()
+                .fromTo($('.color .title-box.active .char'), { yPercent: 0}, { yPercent: -120, duration: 0.3, stagger: {amount: 0.2}, onComplete: () => {
+                    $titleItem.eq(idx).addClass('active').siblings().removeClass('active');
+                }})
+                .fromTo($titleItem.eq(idx).find('.char'), { yPercent: 120}, { yPercent: 0, duration: 0.3, stagger: {amount: 0.2}}, '-=0.2')
+                // const contTl = gsap.timeline()
+                // .fromTo('.color .sc-left .tab-cont-wrap.active', { yPercent: 0}, { yPercent: -100, onComplete: () => {
+                    $conItem1.eq(idx).addClass('active').siblings().removeClass('active');
+                // }})
+                // .fromTo($conItem1.eq(idx), { yPercent: 100}, { yPercent: 0}, '<')
+                const bgTl = gsap.timeline()
+                // .fromTo(['.color .sc-left .bg.active', '.color .sc-right .bg.active'], { clipPath: dir === "up" ? "inset(0 0 0 0)" : "inset(0 0 0 0)"}, { clipPath: dir === "up" ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)", onComplete:() => {
+                //     $bgItem.eq(idx).addClass('active').siblings().removeClass('active');
+                //     $bgItem2.eq(idx).addClass('active').siblings().removeClass('active');
+                // }},)
+                .fromTo([$bgItem.eq(idx), $bgItem2.eq(idx), $conItem1.eq(idx)],{ clipPath: dir === "up" ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" }, { clipPath: 'inset(0% 0% 0% 0%)',
                     onComplete: () => {
                         return flag = false;
                     }
-                });
+                },'<');
     
                 activeIdx = idx;
             })
