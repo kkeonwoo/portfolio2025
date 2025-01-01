@@ -10,7 +10,7 @@ $(document).ready(() => {
     })
     gsap.set('.tab-list .line', { width: 0})
     gsap.set('.main .txt-wrap .txt, .main .txt-wrap .line, .main .txt-wrap .num, .main .txt-wrap .ico, .title .img, .title-box .char', { yPercent: 120})
-    gsap.set('.title-box .line', { yPercent: 0})
+    gsap.set('.sc-hero .txt-wrap .txt, .title-box .line', { yPercent: 0})
 
     // full scroll
     gsap.from('.progress-bar', {
@@ -27,7 +27,8 @@ $(document).ready(() => {
     const heroTl = gsap.timeline()
     .to('.sc-hero .sticky', {'--inset': 100})
     .to('.sc-hero .bg', {yPercent: -40}, '<')
-
+    
+    gsap.set('.pagination .page-item', { yPercent: 100})
     ScrollTrigger.create({
         trigger: '.sc-hero',
         start: '10% 10%',
@@ -35,8 +36,14 @@ $(document).ready(() => {
         animation: heroTl,
         // markers: true,
         scrub: 0,
-        onLeave: () => Capsulin.fadeUp('.sc-design .sc-01 .txt', 0.1),
-        onEnterBack: () => Capsulin.fadeOut('.sc-design .sc-01 .txt', -1, 0.1),
+        onLeave: () => {
+            Capsulin.fadeUp('.sc-design .sc-01 .txt', 0.1)
+            gsap.to('.pagination .page-item', { yPercent: 0})
+        },
+        onEnterBack: () => {
+            Capsulin.fadeOut('.sc-design .sc-01 .txt', -1, 0.1)  
+            gsap.to('.pagination .page-item', { yPercent: 100})
+        },
     })
     
 
@@ -106,8 +113,14 @@ $(document).ready(() => {
             Capsulin.fadeUp('.sc-design .sc-04 .line, .sc-design .sc-04 .txt, .sc-design .sc-04 .num', 0.1)
             gsap.to('.sc-design .sc-04 .tab-item .line', { width: '100%', stagger: { each: 0.2}})
         },
-        onLeave: () => Capsulin.fadeUp('.sc-engine .sc-01 .txt, .sc-engine .sc-01 .ico', 0.1),
-        onEnterBack: () => Capsulin.fadeOut('.sc-engine .sc-01 .txt, .sc-engine .sc-01 .ico', 1, 0.1),
+        onLeave: () => {
+            Capsulin.fadeUp('.sc-engine .sc-01 .txt, .sc-engine .sc-01 .ico', 0.1)
+            gsap.to('.pagination .page-item', { yPercent: -100})   
+        },
+        onEnterBack: () => {
+            Capsulin.fadeOut('.sc-engine .sc-01 .txt, .sc-engine .sc-01 .ico', 1, 0.1)
+            gsap.to('.pagination .page-item', { yPercent: 0})   
+        },
     })
 
     const engineTl01 = gsap.timeline()
@@ -190,8 +203,14 @@ $(document).ready(() => {
         scrub: 0,
         onEnter: () => Capsulin.fadeOut('.sc-engine .sc-04 .title .txt, .sc-engine .sc-04 .line', 1, 1),
         onLeaveBack: () => Capsulin.fadeUp('.sc-engine .sc-04 .title .txt, .sc-engine .sc-04 .line', 1),
-        onLeave: () => Capsulin.fadeUp('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', .2),
-        onEnterBack: () => Capsulin.fadeOut('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', 1, .2),
+        onLeave: () => {
+            Capsulin.fadeUp('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', .2)
+            gsap.to('.pagination .page-item', { yPercent: -200})
+        },
+        onEnterBack: () => {
+            Capsulin.fadeOut('.sc-custom .sc-01 .txt, .sc-custom .sc-01 .title .img', 1, .2)
+            gsap.to('.pagination .page-item', { yPercent: -100})
+        },
     })
 
     const customTl01 = gsap.timeline()
@@ -265,8 +284,14 @@ $(document).ready(() => {
         scrub: 0,
         onEnter: () => Capsulin.fadeOut('.sc-custom .sc-03 .line', 1, .2),
         onLeaveBack: () => Capsulin.fadeUp('.sc-custom .sc-03 .line', .2),
-        onLeave: () => Capsulin.fadeUp('.sc-experience .sc-01 .txt', .2),
-        onEnterBack: () => Capsulin.fadeOut('.sc-experience .sc-01 .txt', 1, .2),
+        onLeave: () => {
+            Capsulin.fadeUp('.sc-experience .sc-01 .txt', .2)
+            gsap.to('.pagination .page-item', { yPercent: -300})
+        },
+        onEnterBack: () => {
+            Capsulin.fadeOut('.sc-experience .sc-01 .txt', 1, .2)
+            gsap.to('.pagination .page-item', { yPercent: -200})
+        },
     })
 
     const experienceTl01 = gsap.timeline()
@@ -304,8 +329,14 @@ $(document).ready(() => {
         scrub: 0,
         onEnter: () => Capsulin.fadeOut('.sc-experience .sc-03 .line', 1, .2),
         onLeaveBack: () => Capsulin.fadeUp('.sc-experience .sc-03 .line', .2),
-        onLeave: () => Capsulin.fadeUp('.sc-spec .sc-01 .txt', .2),
-        onEnterBack: () => Capsulin.fadeOut('.sc-spec .sc-01 .txt', 1, .2),
+        onLeave: () => {
+            Capsulin.fadeUp('.sc-spec .sc-01 .txt', .2)
+            gsap.to('.pagination .page-item', { yPercent: -400})
+        },
+        onEnterBack: () => {
+            Capsulin.fadeOut('.sc-spec .sc-01 .txt', 1, .2)
+            gsap.to('.pagination .page-item', { yPercent: -300})
+        },
     })
 
     const specTl01 = gsap.timeline()
@@ -409,10 +440,12 @@ $(document).ready(() => {
         onLeave: () => {
             Capsulin.fadeUp('.sc-contact .txt, .sc-contact .line', .2)
             gsap.to('.sc-contact .btn', {'--scale': 1})
+            gsap.to('.pagination .page-item', { yPercent: -500})
         },
         onEnterBack: () => {
             Capsulin.fadeOut('.sc-contact .txt, .sc-contact .line', 1, .2)
             gsap.to('.sc-contact .btn', {'--scale': 0})
+            gsap.to('.pagination .page-item', { yPercent: -400})
         },
     })
 })

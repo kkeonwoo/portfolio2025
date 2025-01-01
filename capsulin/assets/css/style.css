@@ -682,7 +682,10 @@ section {
 }
 
 .pagination {
-  position: absolute;
+  position: fixed;
+  bottom: 80px;
+  left: calc(5.71429vw - 4px);
+  z-index: 100;
   font-weight: 600;
   font-size: 12px;
   line-height: 18px;
@@ -696,6 +699,7 @@ section {
 }
 .pagination .page-list .page-item {
   display: flex;
+  text-transform: uppercase;
   gap: 20px;
 }
 .pagination .page-list .page-item .num {
@@ -744,8 +748,8 @@ section {
 .sc-design .section.sc-02 {
   --inset: 0;
   position: relative;
-  height: 300vh;
   z-index: 80;
+  height: 300vh;
 }
 .sc-design .section.sc-02 .sticky {
   margin-top: -300vh;
@@ -767,8 +771,8 @@ section {
 .sc-design .section.sc-img {
   --inset: 50;
   position: relative;
-  height: 300vh;
   z-index: 70;
+  height: 300vh;
 }
 .sc-design .section.sc-img .sticky {
   margin-top: -400vh;
@@ -785,9 +789,9 @@ section {
 }
 .sc-design .section.sc-04 {
   position: relative;
+  z-index: 60;
   height: 300vh;
   margin-top: -300vh;
-  z-index: 60;
 }
 .sc-design .section.sc-04 .sticky {
   --inset: 0;
@@ -829,8 +833,8 @@ section {
   z-index: 80;
 }
 .sc-engine .section.sc-01 {
-  height: 300vh;
   z-index: 80;
+  height: 300vh;
 }
 .sc-engine .section.sc-01 .sticky {
   --inset: 0;
@@ -841,6 +845,7 @@ section {
   background: url("../images/bg-engine.webp") no-repeat center center/cover;
 }
 .sc-engine .section.sc-01 .title .txt-wrap:nth-child(1) {
+  top: 0;
   position: relative;
   margin-left: 0.71429vw;
   line-height: 30px;
@@ -904,8 +909,8 @@ section {
   padding-top: 0.84656vh;
 }
 .sc-engine .section.sc-02 {
-  height: 300vh;
   z-index: 70;
+  height: 300vh;
 }
 .sc-engine .section.sc-02 .sticky {
   --inset: 0;
@@ -968,8 +973,8 @@ section {
 }
 .sc-engine .section.sc-03 {
   position: relative;
-  height: 300vh;
   z-index: 60;
+  height: 300vh;
 }
 .sc-engine .section.sc-03 .sticky {
   --inset: 0;
@@ -998,14 +1003,14 @@ section {
 }
 .sc-engine .section.sc-04 {
   position: relative;
-  height: 300vh;
   z-index: 50;
+  height: 300vh;
 }
 .sc-engine .section.sc-04 .sticky {
   --inset: 0;
+  justify-content: flex-start;
   margin-top: -300vh;
   clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
-  justify-content: flex-start;
 }
 .sc-engine .section.sc-04 .bg {
   background: url("../images/bg-engine3.webp") no-repeat center center/cover;
@@ -1087,11 +1092,11 @@ section {
 }
 .sc-custom .section.sc-01 .bg-gradient {
   --top: 100;
-  position: absolute;
-  top: calc(var(--top) * 1%);
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: calc(var(--top) * 1%);
   z-index: -1;
   width: 100%;
   height: 100%;
@@ -1146,8 +1151,8 @@ section {
   position: absolute;
   top: calc(50% + 7.14286vw);
   left: calc(50% + 8.92857vw);
-  transform: translate(-50%, -50%);
   width: 7.7381vw;
+  transform: translate(-50%, -50%);
 }
 .sc-custom .section.sc-01 .title-area .title .txt-wrap:nth-child(5) {
   display: block;
@@ -1158,8 +1163,8 @@ section {
 }
 .sc-custom .section.sc-02 {
   position: relative;
-  height: 300vh;
   z-index: 60;
+  height: 300vh;
 }
 .sc-custom .section.sc-02 .sticky {
   --inset: 0;
@@ -1180,70 +1185,89 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
-}
-.sc-custom .section.sc-02 .sc-left .bg-area .bg.active {
-  z-index: 5;
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(1) {
+  z-index: calc(21 - 1);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(2) {
+  z-index: calc(21 - 2);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(3) {
+  z-index: calc(21 - 3);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(4) {
+  z-index: calc(21 - 4);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(5) {
+  z-index: calc(21 - 5);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(6) {
+  z-index: calc(21 - 6);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(7) {
+  z-index: calc(21 - 7);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(8) {
+  z-index: calc(21 - 8);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(9) {
+  z-index: calc(21 - 9);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(10) {
+  z-index: calc(21 - 10);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(11) {
+  z-index: calc(21 - 11);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(12) {
+  z-index: calc(21 - 12);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(13) {
+  z-index: calc(21 - 13);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(14) {
+  z-index: calc(21 - 14);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(15) {
+  z-index: calc(21 - 15);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(16) {
+  z-index: calc(21 - 16);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(17) {
+  z-index: calc(21 - 17);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(18) {
+  z-index: calc(21 - 18);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(19) {
+  z-index: calc(21 - 19);
   background: var(--bg-color);
 }
 .sc-custom .section.sc-02 .sc-left .bg-area .bg:nth-child(20) {
+  z-index: calc(21 - 20);
   background: var(--bg-color);
+}
+.sc-custom .section.sc-02 .sc-left .bg-area .bg.active {
+  z-index: 25;
 }
 .sc-custom .section.sc-02 .sc-left .inner {
   padding: 0 13.59375vw;
@@ -1256,10 +1280,69 @@ section {
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 1;
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(1) {
+  z-index: calc(21 - 1);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(2) {
+  z-index: calc(21 - 2);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(3) {
+  z-index: calc(21 - 3);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(4) {
+  z-index: calc(21 - 4);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(5) {
+  z-index: calc(21 - 5);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(6) {
+  z-index: calc(21 - 6);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(7) {
+  z-index: calc(21 - 7);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(8) {
+  z-index: calc(21 - 8);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(9) {
+  z-index: calc(21 - 9);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(10) {
+  z-index: calc(21 - 10);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(11) {
+  z-index: calc(21 - 11);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(12) {
+  z-index: calc(21 - 12);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(13) {
+  z-index: calc(21 - 13);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(14) {
+  z-index: calc(21 - 14);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(15) {
+  z-index: calc(21 - 15);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(16) {
+  z-index: calc(21 - 16);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(17) {
+  z-index: calc(21 - 17);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(18) {
+  z-index: calc(21 - 18);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(19) {
+  z-index: calc(21 - 19);
+}
+.sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap:nth-child(20) {
+  z-index: calc(21 - 20);
 }
 .sc-custom .section.sc-02 .sc-left .inner .tab-cont .tab-cont-wrap.active {
-  z-index: 5;
+  z-index: 25;
 }
 .sc-custom .section.sc-02 .sc-right {
   position: relative;
@@ -1276,76 +1359,95 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
-}
-.sc-custom .section.sc-02 .sc-right .bg-area .bg.active {
-  z-index: 5;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(1) {
+  z-index: calc(21 - 1);
   background: url("../images/custom/custom1/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(2) {
+  z-index: calc(21 - 2);
   background: url("../images/custom/custom2/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(3) {
+  z-index: calc(21 - 3);
   background: url("../images/custom/custom3/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(4) {
+  z-index: calc(21 - 4);
   background: url("../images/custom/custom4/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(5) {
+  z-index: calc(21 - 5);
   background: url("../images/custom/custom5/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(6) {
+  z-index: calc(21 - 6);
   background: url("../images/custom/custom6/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(7) {
+  z-index: calc(21 - 7);
   background: url("../images/custom/custom7/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(8) {
+  z-index: calc(21 - 8);
   background: url("../images/custom/custom8/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(9) {
+  z-index: calc(21 - 9);
   background: url("../images/custom/custom9/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(10) {
+  z-index: calc(21 - 10);
   background: url("../images/custom/custom10/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(11) {
+  z-index: calc(21 - 11);
   background: url("../images/custom/custom11/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(12) {
+  z-index: calc(21 - 12);
   background: url("../images/custom/custom12/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(13) {
+  z-index: calc(21 - 13);
   background: url("../images/custom/custom13/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(14) {
+  z-index: calc(21 - 14);
   background: url("../images/custom/custom14/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(15) {
+  z-index: calc(21 - 15);
   background: url("../images/custom/custom15/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(16) {
+  z-index: calc(21 - 16);
   background: url("../images/custom/custom16/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(17) {
+  z-index: calc(21 - 17);
   background: url("../images/custom/custom17/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(18) {
+  z-index: calc(21 - 18);
   background: url("../images/custom/custom18/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(19) {
+  z-index: calc(21 - 19);
   background: url("../images/custom/custom19/bg1.webp") no-repeat center top/100%;
 }
 .sc-custom .section.sc-02 .sc-right .bg-area .bg:nth-child(20) {
+  z-index: calc(21 - 20);
   background: url("../images/custom/custom20/bg1.webp") no-repeat center top/100%;
+}
+.sc-custom .section.sc-02 .sc-right .bg-area .bg.active {
+  z-index: 25;
 }
 .sc-custom .section.sc-02 .sc-right .title-area {
   position: relative;
+  z-index: 30;
   width: 100%;
   height: 100%;
-  z-index: 20;
 }
 .sc-custom .section.sc-02 .sc-right .title-area .title-box {
   display: flex;
@@ -1369,10 +1471,10 @@ section {
   position: absolute;
   bottom: 22.75132vh;
   left: 0;
+  z-index: 30;
   width: 100%;
   margin: 0 16px;
   gap: 32px;
-  z-index: 20;
 }
 .sc-custom .section.sc-02 .sc-right .tab-list .tab-item {
   position: relative;
@@ -1409,9 +1511,9 @@ section {
   align-items: center;
   bottom: calc(100px - 1.78571vw);
   left: 8.69048vw;
+  z-index: 30;
   width: 82.61905vw;
   height: 3.57143vw;
-  z-index: 20;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -1451,14 +1553,14 @@ section {
 }
 .sc-custom .section.sc-03 {
   position: relative;
-  height: 300vh;
   z-index: 50;
+  height: 300vh;
 }
 .sc-custom .section.sc-03 .sticky {
   --inset: 0;
   margin-top: -300vh;
-  clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
   background: #0a1c36;
+  clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
 }
 .sc-custom .section.sc-03 .inner {
   width: 27.61905vw;
@@ -1508,8 +1610,8 @@ section {
 @media (orientation: landscape) and (min-aspect-ratio: 1680/945) {
   .sc-experience .section.sc-01 .title-area .title .txt-wrap:nth-child(4) {
     top: 15.13228vh;
-    line-height: 14.28571vh;
     left: 44.44444vh;
+    line-height: 14.28571vh;
   }
 }
 .sc-experience .section.sc-01 .title-area .title .txt-wrap:nth-child(5) {
@@ -1528,8 +1630,8 @@ section {
 .sc-experience .section.sc-02 {
   --top: 0;
   position: relative;
-  height: 100vh;
   z-index: 50;
+  height: 100vh;
 }
 .sc-experience .section.sc-02 .sticky {
   margin-top: -300vh;
@@ -1548,14 +1650,14 @@ section {
 .sc-experience .section.sc-03 {
   --top: 0;
   position: relative;
-  height: 300vh;
   z-index: 40;
+  height: 300vh;
 }
 .sc-experience .section.sc-03 .sticky {
   --inset: 0;
   margin-top: -300vh;
-  clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
   background: #0a1c36;
+  clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
 }
 .sc-experience .section.sc-03 .sc-left {
   transform: translateY(calc(var(--top) * 1% / 2));
@@ -1566,8 +1668,8 @@ section {
   z-index: 50;
 }
 .sc-spec .section.sc-01 {
-  z-index: 50;
   position: relative;
+  z-index: 50;
   height: 300vh;
 }
 .sc-spec .section.sc-01 .sticky {
@@ -1608,36 +1710,36 @@ section {
 }
 .sc-spec .section.sc-02 {
   position: relative;
-  height: 300vh;
   z-index: 40;
+  height: 300vh;
 }
 .sc-spec .section.sc-02 .sticky {
   --inset: 0;
   margin-top: -300vh;
-  clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
   background: #0a1c36;
+  clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
 }
 .sc-spec .section.sc-02 .sc-left {
   transform: translateY(calc(var(--top) * 1% / 2));
 }
 .sc-spec .section.sc-03 {
   position: relative;
-  height: 300vh;
   z-index: 30;
+  height: 300vh;
 }
 .sc-spec .section.sc-03 .sticky {
   --inset: 0;
+  justify-content: flex-start;
   margin-top: -300vh;
   clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
-  justify-content: flex-start;
 }
 .sc-spec .section.sc-03 .bg {
   background: url("../images/bg-spec2.webp") no-repeat center center/cover;
 }
 .sc-spec .section.sc-03 .title-area .title {
+  width: 76.19048vw;
   margin-top: 0.59524vw;
   margin-left: 18.09524vw;
-  width: 76.19048vw;
 }
 @media (orientation: landscape) and (min-aspect-ratio: 1680/945) {
   .sc-spec .section.sc-03 .title-area .title {
@@ -1659,10 +1761,10 @@ section {
   }
 }
 .sc-spec .section.sc-03 .title-area .title .txt-wrap:nth-child(3) {
-  width: 9.46429vw;
   position: fixed;
   top: 50%;
   left: 50%;
+  width: 9.46429vw;
   transform: translate(-50%, -50%);
 }
 .sc-spec .section.sc-03 .title-area .title .txt-wrap:nth-child(4) {
@@ -1687,8 +1789,8 @@ section {
 }
 .sc-spec .section.sc-04 {
   position: relative;
-  height: 300vh;
   z-index: 20;
+  height: 300vh;
 }
 .sc-spec .section.sc-04 .sticky {
   --inset: 0;
@@ -1818,8 +1920,8 @@ section {
 }
 @media (orientation: landscape) and (min-aspect-ratio: 1680/945) {
   .sc-contact .section .content .txt-area {
-    margin-top: -6.77249vh;
     max-width: 42.32804vh;
+    margin-top: -6.77249vh;
   }
 }
 .sc-contact .section .content .btn {

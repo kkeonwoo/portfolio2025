@@ -68,17 +68,17 @@ Capsulin = {
             `
             const imgHtml = `
                 <div class="tab-cont-wrap tab-cont${idx+1}${idx === 0 ? ' active' : ''}">
-                    <div id="color${idx+1}-1" class="con active">
+                    <div class="con color-con1 active">
                         <div class="img-box">
                             <img src="./assets/images/custom/custom${idx + 1}/img-capsule1.webp" alt="">
                         </div>
                     </div>
-                    <div id="color${idx+1}-2" class="con">
+                    <div class="con color-con2">
                         <div class="img-box">
                             <img src="./assets/images/custom/custom${idx + 1}/img-capsule2.webp" alt="">
                         </div>
                     </div>
-                    <div id="color${idx+1}-3" class="con">
+                    <div class="con color-con3">
                         <div class="img-box">
                             <img src="./assets/images/custom/custom${idx + 1}/img-capsule3.webp" alt="">
                         </div>
@@ -106,8 +106,6 @@ Capsulin = {
             const $titleItem = $(document).find('.color .title-box');
 
             $colorItem.on('click', function() {
-                // let tabName = $(this).data('tab');
-                // let siblings = $(tabName).siblings();
                 let idx = $(this).index();
                 const dir = idx > activeIdx ? "up" : "down";
     
@@ -115,24 +113,24 @@ Capsulin = {
     
                 flag = true;
                 $(this).addClass('active').siblings().removeClass('active');
-                $bgItem.eq(idx).addClass('active').siblings().removeClass('active');
-                $bgItem2.eq(idx).addClass('active').siblings().removeClass('active');
+                
                 const titleTl = gsap.timeline()
                 .fromTo($('.color .title-box.active .char'), { yPercent: 0}, { yPercent: -120, duration: 0.3, stagger: {amount: 0.2}, onComplete: () => {
                     $titleItem.eq(idx).addClass('active').siblings().removeClass('active');
                 }})
                 .fromTo($titleItem.eq(idx).find('.char'), { yPercent: 120}, { yPercent: 0, duration: 0.3, stagger: {amount: 0.2}}, '-=0.2')
-                // const contTl = gsap.timeline()
-                // .fromTo('.color .sc-left .tab-cont-wrap.active', { yPercent: 0}, { yPercent: -100, onComplete: () => {
-                    $conItem1.eq(idx).addClass('active').siblings().removeClass('active');
-                // }})
-                // .fromTo($conItem1.eq(idx), { yPercent: 100}, { yPercent: 0}, '<')
+                
+                $bgItem.eq(idx).addClass('active').siblings().removeClass('active');
+                $bgItem2.eq(idx).addClass('active').siblings().removeClass('active');
+                $conItem1.eq(idx).addClass('active').siblings().removeClass('active');
+
                 const bgTl = gsap.timeline()
-                // .fromTo(['.color .sc-left .bg.active', '.color .sc-right .bg.active'], { clipPath: dir === "up" ? "inset(0 0 0 0)" : "inset(0 0 0 0)"}, { clipPath: dir === "up" ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)", onComplete:() => {
-                //     $bgItem.eq(idx).addClass('active').siblings().removeClass('active');
-                //     $bgItem2.eq(idx).addClass('active').siblings().removeClass('active');
-                // }},)
-                .fromTo([$bgItem.eq(idx), $bgItem2.eq(idx), $conItem1.eq(idx)],{ clipPath: dir === "up" ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" }, { clipPath: 'inset(0% 0% 0% 0%)',
+                .fromTo([$bgItem.eq(activeIdx), $bgItem2.eq(activeIdx), $conItem1.eq(activeIdx)], 
+                { clipPath: "inset(0 0 0 0)"}, 
+                { clipPath: dir === "up" ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)"})
+                .fromTo([$bgItem.eq(idx), $bgItem2.eq(idx), $conItem1.eq(idx)],
+                { clipPath: dir === "up" ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" }, 
+                { clipPath: 'inset(0% 0% 0% 0%)',
                     onComplete: () => {
                         return flag = false;
                     }
