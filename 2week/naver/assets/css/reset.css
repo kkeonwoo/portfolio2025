@@ -154,23 +154,29 @@ table {border-collapse:collapse;border-spacing:0}
 ul,ol {list-style: none;}
 fieldset, input {border: 0;}
 
-/* 세팅 */
-
-/* 
-    rem - r(root = html) 기준상대단위 16px = 1rem
-    px - 고정값
-*/
+html {
+    font-size: 10.5px;
+    line-height: 10.5px;
+}
+html.font-sm {
+    font-size: 10px;
+    line-height: 10px;
+}
+html.font-lg {
+    font-size: 12px;
+    line-height: 12px;
+}
 
 body {
     color: #101010;
     color: var(--color_body);
-    font-size: 12px;
-    line-height: 16px;
-    /* 보험
-        sans-serif
-        serif
-    */
+    font-size: 1.4rem;
+    line-height: 1.7rem;
     font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif;
     font-weight: 500;
     letter-spacing: -0.4px;
+}
+
+html[data-dark=true] body {
+    background-image: linear-gradient(to bottom, #1e1e20 5%, #1e1f21 38%);
 }
