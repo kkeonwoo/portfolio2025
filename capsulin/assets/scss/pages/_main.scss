@@ -1,6 +1,4 @@
 .txt-type1 {
-    position: relative;
-
     .title-area {
         .title {
             position: relative;
@@ -8,35 +6,24 @@
             @include ratio() {
                 margin-top: 4.44444vh;
             }
-            // @include absCenter(true, true);
             
             .txt-wrap {
-                display: inline-block;
-                width: fit-content;
                 font-weight: 600;
                 font-size: 18px;
                 line-height: 8.5119vw;
                 text-transform: uppercase;
                 perspective: 250px;
-                
                 @include ratio() {
                     line-height: 15.13228vh;
-                }
-
-                &.font-e,
-                &.txt-stroke {
-                    display: block;
                 }
                 
                 &.txt-stroke {
                     padding-right: .29762vw;
                     font-size: 8.92857vw;
-                    line-height: 8.5119vw;
                     letter-spacing: -.06em;
                     @include ratio() {
                         padding-right: .5291vh;
                         font-size: 15.87302vh;
-                        line-height: 15.13228vh;
                     }
                 }
 
@@ -53,15 +40,9 @@
                 &.txt-sm {
                     position: absolute;
                     top: 8.5119vw;
-                    line-height: 8.03571vw;
                     @include ratio() {
                         top: 15.13228vh;
-                        line-height: 14.28571vh;
                     }
-                }
-
-                .txt {
-                    display: block;
                 }
             }
         }
@@ -82,7 +63,6 @@
             width: 27.61905vw;
 
             .txt-wrap {
-                font-weight: 300;
                 font-family: 'e', serif;
                 font-size: 2.61905vw;
                 line-height: 3.21429vw;
@@ -102,10 +82,6 @@
         margin-left: 15.2381vw;
         .txt {
             margin-top: 2.55952vw;
-
-            & + .txt {
-                margin-top: 2.55952vw;
-            }
         }
     }
 }
@@ -174,8 +150,7 @@
     @include flex(center, center);
 
     .num {
-        font-weight: 300;
-        font-family: "e";
+        font-family: "e", serif;
         font-size: 40px;
         color: #fff;
         line-height: 38px;
@@ -186,6 +161,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
+
     .bg {
         display: block;
         height: 100%;
@@ -194,15 +170,9 @@
 
 .sc-hero {
     z-index: 100;
-    // height: 300vh;
-    
-    .section {
-        height: 300vh;
-    }
+    height: 300vh;
     
     .sticky {
-        --inset: 0;
-        clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
         @include flex(center, center);
     }
 
@@ -217,7 +187,6 @@
         }
 
         .title {
-            font-weight: 300;
             font-family: "e";
             font-size: 12.5vw;
             line-height: 11.90476vw;
@@ -230,7 +199,6 @@
         @include absCenter(true, false);
 
         .txt {
-            display: block;
             font-size: 12px;
             line-height: 18px;
             text-transform: uppercase;
@@ -292,20 +260,12 @@
     .section {
         &.sc-01 {
             z-index: 90;
-            height: 300vh;
-
-            .sticky {
-                --inset: 0;
-                margin-top: -300vh;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
-            }
 
             .bg {
                 @include bg('bg-design1.webp', $size: cover);
             }
 
             .title-area {
-
                 .txt-wrap {
                     &:nth-child(1) .txt {
                         padding-left: 11.19048vw;
@@ -329,38 +289,12 @@
 
         &.sc-02 {
             --inset: 0;
-            position: relative;
             z-index: 80;
-            height: 300vh;
-
-            .sticky {
-                margin-top: -300vh;
-                transform-origin: 100% 100%;
-            }
-
-            .sc-left {
-                position: relative;
-                z-index: 15;
-                transform-origin: 50% 50%;
-            }
-
-            .sc-right {
-                position: relative;
-                z-index: 10;
-
-                .inner {
-                    position: relative;
-                    z-index: 10;
-                }
-            }
-
         }
 
         &.sc-img {
             --inset: 50;
-            position: relative;
             z-index: 70;
-            height: 300vh;
 
             .sticky {
                 margin-top: -400vh;
@@ -374,23 +308,14 @@
                     margin: 0 auto;
                 }
             }
-            
-            .sc-right {
-                position: relative;
-            }
         }
 
         &.sc-04 {
-            position: relative;
             z-index: 60;
-            height: 300vh;
             margin-top: -300vh;
 
             .sticky {
-                --inset: 0;
-                margin-top: -300vh;
                 background: #0a1c36;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
             }
         }
 
@@ -409,7 +334,6 @@
                         @include flex(_, center);
         
                         .num {
-                            display: block;
                             font-weight: 600;
                             font-size: 18px;
                             line-height: 18px;
@@ -417,8 +341,6 @@
                         }
                         
                         .txt {
-                            display: block;
-                            font-weight: 300;
                             font-family: "e";
                             font-size: 32px;
                             line-height: 32px;
@@ -437,13 +359,6 @@
     .section {
         &.sc-01 {
             z-index: 80;
-            height: 300vh;
-
-            .sticky {
-                --inset: 0;
-                margin-top: -300vh;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
-            }
 
             .bg {
                 @include bg('bg-engine.webp', $size: cover);
@@ -511,13 +426,6 @@
 
         &.sc-02 {
             z-index: 70;
-            height: 300vh;
-
-            .sticky {
-                --inset: 0;
-                margin-top: -300vh;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
-            }
 
             .bg {
                 @include bg('bg-engine2.webp', $size: cover);
@@ -533,10 +441,6 @@
                             position: absolute;
                             top: 0;
                             left: 0;
-                            line-height: 8.5119vw;
-                            @include ratio() {
-                                line-height: 15.13228vh;
-                            }
                         }
                         &:nth-child(2) {
                             padding-left: 8.92857vw;
@@ -564,35 +468,17 @@
                     }
                 }
             }
-
-            .txt-area {
-                position: absolute;
-                top: 55.2381vh;
-                right: 13.33333vw;
-                width: 20vw;
-                max-width: 336px;
-            }
         }
 
         &.sc-03 {
-            position: relative;
             z-index: 60;
-            height: 300vh;
-            
-            .sticky {
-                --inset: 0;
-                margin-top: -300vh;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
-            }
             
             .sc-right {
-                display: flex;
-                align-items: end;
                 background: #0a1b37;
+                @include flex(_, end);
 
                 .btn {
                     &.btn-engine {
-                        width: 100%;
                         padding: 22px 0 24px;
                         text-align: left;
 
@@ -603,10 +489,6 @@
                             &.font-e {
                                 margin-top: -10px;
                             }
-
-                            .txt {
-                                display: block;
-                            }
                         }
                         
                     }
@@ -615,15 +497,10 @@
         }
 
         &.sc-04 {
-            position: relative;
             z-index: 50;
-            height: 300vh;
             
             .sticky {
-                --inset: 0;
                 justify-content: flex-start;
-                margin-top: -300vh;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
             }
 
             .bg {
@@ -641,13 +518,7 @@
     
                     .txt-wrap {
                         &:nth-child(1) {
-                            position: absolute;
                             top: 0;
-                            left: 0;
-                            line-height: 8.5119vw;
-                            @include ratio() {
-                                line-height: 15.13228vh;
-                            }
                         }
                         &:nth-child(2) {
                             padding-left: 8.92857vw;
@@ -656,7 +527,6 @@
                             }
                         }
                         &:nth-child(3) {
-                            position: absolute;
                             top: 8.5119vw;
                             right: 40.47619vw;
                             left: auto;
@@ -667,23 +537,15 @@
                             }
                         }
                         &:nth-child(4) {
-                            display: block;
                             margin-left: 23.39286vw;
                             @include ratio() {
                                 margin-left: 41.5873vh;
                             }
                         }
                         &:nth-child(5) {
-                            display: block;
                             margin-left: -.29762vw;
                         }
                     }
-                }
-            }
-
-            .txt-area {
-                .line {
-                    display: block;
                 }
             }
         }
@@ -698,27 +560,17 @@
 
 .sc-custom {
     z-index: 70;
+
     .section {
         &.sc-01 {
-            position: relative;
-            height: 300vh;
-            
-            .sticky {
-                --inset: 0;
-                margin-top: -300vh;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
-            }
-
             .bg-gradient {
                 --top: 100;
-                display: flex;
-                justify-content: center;
-                align-items: center;
                 position: absolute;
                 top: calc(var(--top) * 1%);
                 z-index: -1;
                 width: 100%;
                 height: 100%;
+                @include flex(center, center);
                 
                 .bg {
                     z-index: 5;
@@ -749,12 +601,13 @@
                     @include ratio() {
                         margin-top: 4.2328vh;
                     }
+
                     .txt-wrap {
                         &.txt-sm { 
                             position: static;
+                            text-align: center;
                         }
                         &:nth-child(1)  {
-                            display: block;
                             margin: 0 auto 7.40741vh;
 
                             .txt {
@@ -776,7 +629,6 @@
                             transform: translate(-50%, - 50%);
                         }
                         &:nth-child(5) {
-                            display: block;
                             margin: 11.64021vh auto 0;
                             
                             .txt {
@@ -789,14 +641,10 @@
         }
 
         &.sc-02 {
-            position: relative;
             z-index: 60;
-            height: 300vh;
             
             .sticky {
-                --inset: 0;
                 margin-top: -200vh;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
             }
 
             .sc-left {
@@ -867,7 +715,7 @@
                         @for $i from 1 through 20 {
                             &:nth-child(#{$i}) {
                                 z-index: calc(21 - #{$i});
-                                background: url('../images/custom/custom#{$i}/bg1.webp') no-repeat center top / 100%;
+                                background: url('../images/custom/custom#{$i}/bg1.webp') no-repeat center top / cover;
                             }
                         } 
                         &.active {
@@ -883,12 +731,10 @@
                     height: 100%;
 
                     .title-box { 
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
                         top: 27.51323vh;
                         width: 100%;
                         height: 38.09524vh;
+                        @include flex(center, center);
                         @include absCenter(true, false);
                         .txt-wrap {
                             font-size: 17.56614vh;
@@ -923,7 +769,6 @@
                         }
                         
                         .txt {
-                            display: block;
                             font-size: 18px;
                             line-height: 44px;
                             transition: opacity 300ms;
@@ -996,15 +841,10 @@
         }
 
         &.sc-03 {
-            position: relative;
             z-index: 50;
-            height: 300vh;
             
             .sticky {
-                --inset: 0;
-                margin-top: -300vh;
                 background: #0a1c36;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
             }
 
             .inner {
@@ -1012,6 +852,7 @@
                 margin-left: 13.33333vw;
                 padding: 0;
             }
+
             .sc-left {
                 .txt-area {
                     margin-left: 7.61905vw;
@@ -1024,29 +865,19 @@
 
 .sc-experience {
     z-index: 60;
+
     .section {
         &.sc-01 {
-            position: relative;
             z-index: 60;
-            height: 300vh;
-            
-            .sticky {
-                --inset: 0;
-                margin-top: -300vh;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
-            }
 
-            .bg-area {
-                .bg {
-                    @include bg('bg-experience1.webp', $size: cover);
-                }
+            .bg {
+                @include bg('bg-experience1.webp', $size: cover);
             }
 
             .title-area {
                 .title {
                     .txt-wrap {
                         &:nth-child(1) {
-                            position: absolute;
                             top: 0;
                             left: 0;
                         }
@@ -1058,7 +889,6 @@
                             }
                         }
                         &:nth-child(4) {
-                            position: absolute;
                             top: 8.5119vw;
                             left: 25vw;
                             line-height: 8.03571vw;
@@ -1087,19 +917,15 @@
 
         &.sc-02 {
             --top: 0;
-            position: relative;
             z-index: 50;
             height: 100vh;
-            
-            .sticky {
-                margin-top: -300vh;
-            }
             
             .sc-left {
                 --inset: 0;
                 transform: translateY(calc(var(--top) * 1% / 2));
                 clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
             }
+
             .sc-right {
                 transform: translateY(calc(var(--top) * 1% / 3 * 2));
             }
@@ -1111,15 +937,10 @@
         
         &.sc-03 {
             --top: 0;
-            position: relative;
             z-index: 40;
-            height: 300vh;
             
             .sticky {
-                --inset: 0;
-                margin-top: -300vh;
                 background: #0a1c36;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
             }
 
             .sc-left {
@@ -1136,27 +957,16 @@
 
     .section {
         &.sc-01 {
-            position: relative;
             z-index: 50;
-            height: 300vh;
-            
-            .sticky {
-                --inset: 0;
-                margin-top: -300vh;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
-            }
 
-            .bg-area {
-                .bg {
-                    @include bg('bg-spec1.webp', $size: cover);
-                }
+            .bg {
+                @include bg('bg-spec1.webp', $size: cover);
             }
 
             .title-area {
                 .title {
                     .txt-wrap {
                         &:nth-child(1) {
-                            display: block;
                             margin-left: -.71429vw;
                             @include ratio() {
                                 margin-left: -1.26984vh;
@@ -1164,7 +974,6 @@
                         }
 
                         &:nth-child(2) {
-                            position: absolute;
                             top: 8.5119vw;
                             line-height: 8.03571vw;
                             @include ratio() {
@@ -1185,15 +994,10 @@
         }
 
         &.sc-02 {
-            position: relative;
             z-index: 40;
-            height: 300vh;
             
             .sticky {
-                --inset: 0;
-                margin-top: -300vh;
                 background: #0a1c36;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
             }
 
             .sc-left {
@@ -1202,15 +1006,10 @@
         }
 
         &.sc-03 {
-            position: relative;
             z-index: 30;
-            height: 300vh;
             
             .sticky {
-                --inset: 0;
                 justify-content: flex-start;
-                margin-top: -300vh;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
             }
             
             .bg {
@@ -1232,7 +1031,6 @@
                         }
 
                         &:nth-child(2) {
-                            position: absolute;
                             top: 0;
                             left: 40.47619vw;
                             width: 100%;
@@ -1272,15 +1070,7 @@
         }
 
         &.sc-04 {
-            position: relative;
             z-index: 20;
-            height: 300vh;
-            
-            .sticky {
-                --inset: 0;
-                margin-top: -300vh;
-                clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
-            }
 
             .bg {
                 @include bg('bg-spec3.webp', $size: cover);
@@ -1327,9 +1117,11 @@
 
                 .sc-right {
                     flex: 1;
+
                     .ico {
                         position: relative;
                     }
+
                     .circle {
                         stroke: #fff;
                         stroke-width: 1;
@@ -1370,15 +1162,8 @@
 
 .sc-contact {
     .section {
-        position: relative;
         z-index: 40;
         height: 100vh;
-        
-        .sticky {
-            --inset: 0;
-            margin-top: -300vh;
-            clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
-        }
 
         .bg {
             @include bg('bg-contact.webp', $size: cover);
@@ -1439,12 +1224,7 @@
                     transform-origin: 50% 50%;
                     @include pseudo();
                 }
-
-                .txt {
-                    display: block;
-                }
             }
-
         }
     }
 }
