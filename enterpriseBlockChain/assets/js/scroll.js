@@ -1,5 +1,7 @@
 gsap.defaults({ease: 'none'})
 
+// gsap animation
+// 1번째 섹션 애니메이션
 const sc01Tl = gsap.timeline({
     scrollTrigger: {
         trigger: '.sc-01',
@@ -7,57 +9,58 @@ const sc01Tl = gsap.timeline({
         end: 'bottom 100%',
         scrub: 0,
         toggleClass: {
-            targets: ".sc-01 .sroll-down",
-            className: "show"
+            targets: ".sc-01 .scroll-down",
+            className: "show",
         }
     }
 })
 .to(".sc-01", { '--opacity': 1 })
-.from('.sc-01 .txt-box:nth-child(1)', { opacity: 0}, '<')
-.to('.sc-01 .txt-box:nth-child(1)', { opacity: 0,
-    onStart: function() {
+.from('.sc-01 .txt-box1', { opacity: 0}, '<')
+.to('.sc-01 .txt-box1', { 
+    opacity: 0,
+    onStart: () => {
         $('#header').addClass('show')
     },
-    onReverseComplete: function() {
+    onReverseComplete: () => {
         $('#header').removeClass('show')
     }
 })
-.from('.sc-01 .txt-box:nth-child(2)', { opacity: 0})
-.to('.sc-01 .txt-box:nth-child(2)', { opacity: 0})
-.from('.sc-01 .txt-box:nth-child(3)', { opacity: 0})
-.to('.sc-01 .txt-box:nth-child(3)', { opacity: 0})
-.from('.sc-01 .txt-box:nth-child(4)', { opacity: 0})
+.from('.sc-01 .txt-box2', { opacity: 0})
+.to('.sc-01 .txt-box2', { opacity: 0})
+.from('.sc-01 .txt-box3', { opacity: 0})
+.to('.sc-01 .txt-box3', { opacity: 0})
+.from('.sc-01 .txt-box4', { opacity: 0})
 
+// 2번째 섹션 애니메이션
 const sc02Tl = gsap.timeline({
     scrollTrigger: {
         trigger: '.sc-02',
         start: 'top top',
         end: 'bottom bottom',
         scrub: 0,
+        markers: true,
     }
 })
-// .to((".sc-02 .img-area .img-cover:nth-child(1) .bg"), { duration: 1, opacity: 0.6})
 .to(".sc-02", { '--opacity': 1 })
 .from('.sc-02 .txt-box .txt-move', { duration: 1, opacity: 0}, '<')
-.to('.sc-02 .txt-box:nth-child(1) .txt-move', { xPercent: 100})
-.to('.sc-02 .txt-box:nth-child(3) .txt-move', { xPercent: -100}, '<')
+.to('.sc-02 .txt-box1 .txt-move', { xPercent: 100})
+.to('.sc-02 .txt-box3 .txt-move', { xPercent: -100}, '<')
 .to('.sc-02 .txt-box .txt-move', { opacity: 0})
 .to(".sc-02", { '--opacity': 0 }, "<")
-.to('.sc-02 .img-cover:nth-child(3)', {height: 0})
-.to('.sc-02 .img-cover:nth-child(2)', {height: 0})
-// .to((".sc-02 .img-area .img-cover:nth-child(3) .bg"), { duration: 1, opacity: 0.6})
+.to('.sc-02 .img-cover3', {height: 0})
+.to('.sc-02 .img-cover2', {height: 0})
 .from('.sc-02 .txt-area.fade-in .txt-move', { duration: 1, opacity: 0})
 .to(".sc-02", { '--opacity': 1 }, "<")
 
-const header = $('#header');
+// 3번째 섹션 애니메이션
 ScrollTrigger.create({
     trigger: '.sc-03',
-    start: `top ${header.outerHeight() / 2}`,
+    start: `top ${$('#header').outerHeight() / 2}`,
     endTrigger: '.sc-06',
-    markers: true,
+    // markers: true,
     end: 'top 50%',
     onToggle: ({ isActive, animation }) => {
-        isActive ? header.addClass('theme-white') : header.removeClass('theme-white')
+        isActive ? $('#header').addClass('theme-dark') : $('#header').removeClass('theme-dark')
     }
 })
 
@@ -96,7 +99,7 @@ ScrollTrigger.create({
     trigger: '.sc-06',
     start: `top 50%`,
     endTrigger: '.sc-10',
-    markers: true,
+    // markers: true,
     end: 'top 50%',
     toggleClass: {
         targets:'body',
@@ -261,11 +264,11 @@ ScrollTrigger.create({
     id: 'sc10',
     scrub: true,
     onEnter: () => {
-        $('#header').addClass('theme-white')
+        $('#header').addClass('theme-dark')
         gsap.to('.sc-09, .sc-10', { color: '#000', backgroundColor: '#fff'})
     },
     onLeaveBack: () => {
-        $('#header').removeClass('theme-white')
+        $('#header').removeClass('theme-dark')
         gsap.to('.sc-09, .sc-10', { color: '#fff', backgroundColor: '#000'})
     }
 })
@@ -366,5 +369,3 @@ ScrollTrigger.create({
         gsap.to('.btn-top', { opacity: 0})
     }
 })
-
-markers()

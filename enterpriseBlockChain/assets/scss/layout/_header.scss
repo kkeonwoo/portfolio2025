@@ -12,7 +12,7 @@
         transform: translateY(0);
     }
 
-    &.theme-white  {
+    &.theme-dark  {
         color: $color-black;
         .logo svg * {
             fill: black;
@@ -80,33 +80,6 @@
                     }
                 }
             }
-        }
-    }
-}
-
-#footer {
-    position: relative;
-    z-index: 1;
-    background-color: #000;
-    color: #fff;
-    
-    .inner {
-        display: flex;
-        justify-content: space-between;
-        padding: 58px 100px;
-
-        .txt-area {
-            font-size: 14px;
-            .address{ 
-
-            }
-            .copyright {
-
-            }
-        }
-
-        .f-logo {
-            width: 193px;
         }
     }
 }

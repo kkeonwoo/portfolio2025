@@ -1,51 +1,16 @@
-// gsap.registerPlugin(ScrollTrigger);
+const lenis = new Lenis();
 
-// class DisableScroll extends Scrollbar.ScrollbarPlugin{
-//     static pluginName = 'DisableScroll'
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
 
-//     transformDelta(delta){
-//         delta['x'] = 0;
+requestAnimationFrame(raf);
 
-//         return delta;
-//     }
-// }
+lenis.on('scroll', ScrollTrigger.update);
 
-// Scrollbar.use(DisableScroll)
+gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+});
 
-// const container = document.querySelector('#main');
-// const options = {
-//     damping: 0.1,
-//     alwaysShowTracks: true,
-//     delegateTo: document,
-// };
-// const scrollbar = Scrollbar.init(container, {
-//     ...options,
-// });
-
-// scrollbar.track.xAxis.element.remove();
-
-// ScrollTrigger.scrollerProxy(container, {
-//     scrollTop(value) {
-//         if (arguments.length) {
-//         scrollbar.scrollTop = value; // setter
-//         }
-//         return scrollbar.scrollTop; // getter
-//     },
-// });
-
-// scrollbar.addListener(ScrollTrigger.update);
-// ScrollTrigger.defaults({ scroller: container });
-
-// // 스크롤 위치 저장
-// window.addEventListener('beforeunload', () => {
-//     const scrollPosition = scrollbar.offset.y;
-//     sessionStorage.setItem('scrollPosition', scrollPosition);
-// });
-
-// // 스크롤 위치 복원
-// window.addEventListener('load', () => {
-//     const savedPosition = sessionStorage.getItem('scrollPosition');
-//     if (savedPosition) {
-//         scrollbar.scrollTo(0, parseFloat(savedPosition), 0); // 애니메이션 없이 이동
-//     }
-// });
+gsap.ticker.lagSmoothing(0);
