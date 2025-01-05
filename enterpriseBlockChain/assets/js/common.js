@@ -1,7 +1,6 @@
 Enterprise = {
     init: function () {
         this.handleLang();
-        this.swiper.init();
         this.scrollTop();
     },
     handleLang: function () {
@@ -35,21 +34,11 @@ Enterprise = {
             }
         })
     },
-    swiper: {
-        init: function() {
-            this.serviceSwiper();
-        },
-        serviceSwiper: function() {
-            let swiperService = new Swiper('.service-swiper', {
-                slidesPerView: 'auto'
-            })
-        }
-    },
     scrollTop: () => {
         $('.btn-top').on('click', function() {
-            scrollbar.scrollTo(0, 0, 1000, {
+            lenis.scrollTo(0, {
                 callback: () => {
-                    $('#header').removeClass('theme-white');
+                    $('#header').removeClass('theme-dark');
                     ScrollTrigger.refresh(); 
                 }
             });
@@ -60,6 +49,6 @@ Enterprise = {
 $(() => {
     Enterprise.init();
     $(window).on('refresh', () => {
-        $('#header').removeClass('theme-white')
+        $('#header').removeClass('theme-dark')
     })
 });

@@ -14,12 +14,14 @@
 
     &.theme-dark  {
         color: $color-black;
-        .logo svg * {
-            fill: black;
+        svg {
+            filter: brightness(0) invert(0);
         }
-        .lang svg * {
-            stroke: black;
-        }
+    }
+
+    svg {
+        filter: none;
+        transition: all .3s;
     }
 
     .header-inner {

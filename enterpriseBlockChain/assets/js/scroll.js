@@ -38,7 +38,6 @@ const sc02Tl = gsap.timeline({
         start: 'top top',
         end: 'bottom bottom',
         scrub: 0,
-        markers: true,
     }
 })
 .to(".sc-02", { '--opacity': 1 })
@@ -55,51 +54,21 @@ const sc02Tl = gsap.timeline({
 // 3번째 섹션 애니메이션
 ScrollTrigger.create({
     trigger: '.sc-03',
-    start: `top ${$('#header').outerHeight() / 2}`,
+    start: `top top`,
     endTrigger: '.sc-06',
-    // markers: true,
     end: 'top 50%',
-    onToggle: ({ isActive, animation }) => {
-        isActive ? $('#header').addClass('theme-dark') : $('#header').removeClass('theme-dark')
+    toggleClass: {
+        targets: "#header",
+        className: "theme-dark",
     }
 })
 
-function crossTxtAni (target) {
-    // let txt01With = gsap.getProperty(`${target} .txt-box:nth-child(1) .title`, 'width');
-    // let txt02With = gsap.getProperty(`${target} .txt-box:nth-child(2) .title`, 'width');
-    // let txt03With = gsap.getProperty(`${target} .txt-box:nth-child(3) .title`, 'width');
-    // let txt01X = (txt01With + txt02With) / 2;
-    // let txt03X = (txt03With + txt02With) / 2;
-    
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: target,
-            start: '0 90%',
-            end: 'bottom bottom',
-            scrub: 1,
-        }
-    })
-    .to(`${target}`, { '--progress': 1})
-    
-    // .from(`${target} .bg1`, { x: innerWidth })
-    // .from(`${target} .bg2`, { x: -innerWidth }, '<')
-    // .to(`${target} .txt-box:nth-child(1) .txt-move`, { x: -`${txt01X}`}, '<')
-    // .to(`${target} .txt-box:nth-child(3) .txt-move`, { x: `${txt03X}`}, '<')
-}
-crossTxtAni('.sc-04')
-
-// ScrollTrigger.create({
-//     trigger: '.sc-05',
-//     start: 'top top',
-//     end: 'bottom top',
-//     pin: '.sc-05 .txt-box',
-// })
-
+// 6번째 섹션 애니메이션
+// body theme 변경 애니메이션
 ScrollTrigger.create({
     trigger: '.sc-06',
     start: `top 50%`,
     endTrigger: '.sc-10',
-    // markers: true,
     end: 'top 50%',
     toggleClass: {
         targets:'body',
@@ -107,9 +76,7 @@ ScrollTrigger.create({
     }
 })
 
-let horizonWidth = gsap.getProperty(`.sc-06 .move-horizon`, 'width');
-let moveX = $('.sc-06 .last').offset().left;
-
+// 가로 스크롤 애니메이션
 gsap.to('.sc-06 .move-horizon', {
     xPercent: -100,
     x: () => {
@@ -124,218 +91,196 @@ gsap.to('.sc-06 .move-horizon', {
     }
 })
 
+// 8번째 섹션 애니메이션
 const sc08Tl = gsap.timeline()
 .from('.sc-08 .move-left', { duration:2, xPercent: -50})
 .from('.sc-08 .move-right', { duration:2, xPercent: 50}, '<')
-.from('.sc-08 .title', { opacity: 0, 
+.from('.sc-08 .title', { 
+    opacity: 0, 
     delay: 1,
     onStart: function() {
-
+        $('.sc-08 .bg-area').addClass('blur');
     },
     onReverseComplete: function() {
-
+        $('.sc-08 .bg-area').removeClass('blur');
     }
 })
-// .from('.sc-08 .filter', { opacity: 0},'<')
 
 ScrollTrigger.create({
     trigger: '.sc-08',
-    start: '0% bottom',
-    end: '100% bottom',
+    start: "0% 40%",
+    end: "100% 30%",
     animation: sc08Tl,
     scrub: 0,
 }) 
 
-const sc09HorizonWidth = gsap.getProperty('.sc-09 .horizon1 .move-horizon', 'width')
-const sc09HorizonHeight = gsap.getProperty('.sc-09 .horizon1 .move-horizon', 'height')
-const sc09TxtWidth = gsap.getProperty('.sc-09 .horizon1 .move-horizon > .txt-area', 'width')
-const cardListWidth = gsap.getProperty('.sc-09 .horizon1 .move-horizon .card-list', 'width')
-const cardWidth = gsap.getProperty('.sc-09 .horizon1 .move-horizon .card-item', 'width')
-
-// const sc09ContainerAni = gsap.timeline()
-// .to('.sc-09 .horizon1 .move-horizon', { x: -(sc09TxtWidth)})
-// .add(cardTl('.sc-09 .horizon1 .move-horizon .card-item'))
-// .to('.unlock', { opacity: 0}, '<')
-// .from('.lock', { opacity: 0})
-// .to('.lock', { opacity: 0})
-// .set('.sc-09 .horizon1', { opacity: 0})
-
+// 9번째 섹션 애니메이션
+// 카드 애니메이션
 function cardTl(target) {
-    const tl = gsap.timeline()
+    const cardWidth = gsap.getProperty(target, 'width');
+    const tl = gsap.timeline();
+    
     gsap.utils.toArray(target).forEach((card, idx) => {
         tl.to(card, { x: -(cardWidth * idx)}, '<')
     })
+    
     return tl;
 }
 
+// 첫번째 가로 스크롤 애니메이션
+const horizonTl01 = gsap.timeline()
+.to('.sc-09 .horizon1 .move-horizon', { 
+    x: () => {
+        const sc09TxtWidth = gsap.getProperty('.sc-09 .horizon1 .txt-area', 'width')
+
+        return -sc09TxtWidth;
+    } ,
+})
+.add(cardTl('.sc-09 .horizon1 .move-horizon .card-item'))
+.to('.unlock', { opacity: 0}, '<')
+.to('.lock', { opacity: 1})
+.to('.lock', { opacity: 0})
+
 ScrollTrigger.create({
-    trigger: '.sc-09 .horizon1',
-    start: 'top top',
-    // end: `+=${sc09HorizonWidth + sc09HorizonWidth}`,
+    trigger: '.sc-09 .horizon-wrap',
+    start: '0% 0%',
     end: '100% 100%',
-    // animation: sc09ContainerAni,
-    scrub: true,
-    // pin:true,
+    animation: horizonTl01,
+    scrub: 0,
+    invalidateOnRefresh: true,
+    onLeave: () => {
+        gsap.set('.horizon1', { opacity: 0})
+        gsap.set('.vertical1', { opacity: 1})
+    },
+    onEnterBack: () => {
+        gsap.set('.horizon1', { opacity: 1})
+        gsap.set('.vertical1', { opacity: 0})
+    },
 })
 
-// ScrollTrigger.create({
-//     trigger: '.sc-09 .vertical1',
-//     start: `top top`,
-//     end: `top bottom`,
-//     endTrigger: '.sc-10',
-//     pin: '.sc-09 .service-left',
-//     scrub: true,
-//     id: 'vertical',
-//     onEnter: () => {
-//         gsap.set('.sc-09 .service-left', {opacity: 1})
-//     },
-//     onLeaveBack: () => {
-//         gsap.set('.sc-09 .service-left', {opacity: 0})
-//     },
-//     onLeave: () => {
-//         gsap.set('.sc-09 .vertical1', {opacity: 0})
-//     },
-//     onEnterBack: () => {
-//         gsap.set('.sc-09 .vertical1', {opacity: 1})
-//     }
-// })
-
-gsap.from('.sc-09 .vertical1 .border-gradient .title', {
-    opacity: 0,
-    scrollTrigger: ({
-        trigger: '.sc-09 .vertical1 .move-vertical',
-        start: 'top top',
-        end: '+=1000',
-        scrub: true,
-    })
+// 첫번째 세로 애니메이션
+ScrollTrigger.create({
+    trigger: '.sc-09 .vertical1 .border-gradient',
+    start: '0% 0%',
+    end: '100% 10%',
+    scrub: 0,
+    animation: gsap.from('.sc-09 .vertical1 .border-gradient .title', { opacity: 0})
 })
 
-const sc09Horizon2Width = gsap.getProperty('.sc-09 .horizon2 .move-horizon', 'width')
-const cardListWidth2 = gsap.getProperty('.sc-09 .horizon2 .move-horizon .card-list', 'width')
-
-const sc09HorizonAni2 = gsap.timeline()
-.set('.sc-09 .horizon2 .card.border-gradient', { opacity: 1})
+// 두번째 가로 스크롤 애니메이션
+const horizonTl02 = gsap.timeline()
 .add(cardTl('.sc-09 .horizon2 .move-horizon .card-item'))
 
-// ScrollTrigger.create({
-//     trigger: '.sc-09 .horizon2',
-//     start: 'top top',
-//     end: `+=${sc09Horizon2Width}`,
-//     animation: sc09HorizonAni2,
-//     scrub: true,
-//     pin:true,
-//     id: 'horizontal2',
-//     onEnter: () => {
-//         gsap.set('.sc-09 .vertical1 .service-left', {opacity: 0})
-//         gsap.set('.sc-09 .horizon2 .card-item:first-child', {opacity: 1})
-//     },
-//     onLeaveBack: () => {
-//         gsap.set('.sc-09 .vertical1 .service-left', {opacity: 1})
-//         gsap.set('.sc-09 .horizon2 .card-item:first-child', {opacity: 0})
-//     },
-//     onLeave: () => {
-//         gsap.set('.sc-09 .horizon2', {opacity: 0})
-//         gsap.set('.sc-09 .vertical2', {opacity: 1})
-//     },
-//     onEnterBack: () => {
-//         gsap.set('.sc-09 .horizon2', {opacity: 1})
-//         gsap.set('.sc-09 .vertical2', {opacity: 0})
-//     }
-// })
+ScrollTrigger.create({
+    trigger: '.sc-09 .horizon-wrap2',
+    start: '0% 0%',
+    end: '100% 100%',
+    animation: horizonTl02,
+    scrub: 0,
+    invalidateOnRefresh: true,
+    onEnter: () => {
+        gsap.set('.vertical1', { opacity: 0})
+        gsap.set('.sc-09 .horizon2 .border-gradient', { opacity: 1})
+    },
+    onLeaveBack: () => {
+        gsap.set('.vertical1', { opacity: 1})
+        gsap.set('.sc-09 .horizon2 .border-gradient', { opacity: 0})
+    },
+    onLeave: () => {
+        gsap.set('.vertical2', { opacity: 1})
+        gsap.set('.sc-09 .horizon2', { opacity: 0})
+    },
+    onEnterBack: () => {
+        gsap.set('.vertical2', { opacity: 0})
+        gsap.set('.sc-09 .horizon2', { opacity: 1})
+    },
+})
 
-const sc09Vertical02 = gsap.timeline()
+// 두번째 세로 애니메이션
+const verticalTl02 = gsap.timeline()
 .from('.sc-09 .vertical2 .service-left .bg-glow', { opacity: 0})
 .from('.sc-09 .vertical2 .service-right .title', { opacity: 0}, '<')
 
 ScrollTrigger.create({
-    trigger: '.sc-09 .vertical2',
-    start: `top top`,
-    end: `+=1000`,
-    pin: true,
-    animation: sc09Vertical02,
-    scrub: true,
-    id: 'vertical2',
+    trigger: '.sc-09 .vertical-wrap2',
+    start: '0% 0%',
+    end: '100% 100%',
+    animation: verticalTl02,
+    scrub: 0,
 })
 
+// 10번째 섹션 애니메이션
 ScrollTrigger.create({
     trigger: '.sc-10',
-    start: '-=50% top',
-    // end: 'bottom bottom',
-    id: 'sc10',
-    scrub: true,
+    start: '0% 50%',
+    endTriger: '#footer',
+    end: '100% 100%',
     onEnter: () => {
-        $('#header').addClass('theme-dark')
-        gsap.to('.sc-09, .sc-10', { color: '#000', backgroundColor: '#fff'})
+        $('#header').addClass('theme-dark');
     },
     onLeaveBack: () => {
-        $('#header').removeClass('theme-dark')
-        gsap.to('.sc-09, .sc-10', { color: '#fff', backgroundColor: '#000'})
+        $('#header').removeClass('theme-dark');
     }
 })
 
-crossTxtAni('.sc-11');
-
-let horizonWidth2 = gsap.getProperty(`.sc-12 .move-horizon`, 'width')
-let lastWidth2 = gsap.getProperty('.sc-12 .last', 'width')
-let moveX2 = $('.sc-12 .last').offset().left - (innerWidth - lastWidth2);
-
-ScrollTrigger.create({
-    trigger: '.sc-12',
-    // start: 'top top',
-    // end: `bottom`,
-    animation: gsap.to(`.sc-12 .move-horizon`, { x: -moveX2}),
-    scrub: true,
-    // pin:true,
-    // onEnter: () => {
-    //     gsap.to(`.down-area`, { autoAlpha: 1})
-    // },
-    // onLeave: () => {
-    //     gsap.to(`.down-area`, { autoAlpha: 0})
-    // },
-    // onLeaveBack: () => {
-    //     gsap.to(`.down-area`, { autoAlpha: 0})
-    // },
-    // onEnterBack: () => {
-    //     gsap.to(`.down-area`, { autoAlpha: 1})
-    // },
-    onUpdate: (self) => {
-        if(self.progress.toFixed(2) > 0.5) {
-            gsap.to('.down-area .txt1', { opacity: 0})
-            gsap.to('.down-area .txt2', { delay: 0.5, opacity: 1})
-        } else {
-            gsap.to('.down-area .txt1', { delay: 0.5, opacity: 1})
-            gsap.to('.down-area .txt2', { opacity: 0})
+// 12번째 섹션 애니메이션
+// 가로 스크롤 애니메이션
+gsap.to('.sc-12 .move-horizon', {
+    xPercent: -100,
+    x: () => {
+        return window.innerWidth;
+    },
+    scrollTrigger: {
+        trigger: '.sc-12',
+        start: '0% 0%',
+        end: '100% 100%',
+        scrub: 0,
+        invalidateOnRefresh: true,
+        toggleClass: {
+            targets: '.down-area',
+            className: 'show'
+        },
+        onUpdate: (self) => {
+            if(self.progress.toFixed(2) > 0.5) {
+                gsap.to('.down-area .txt1', { duration: .3, opacity: 0})
+                gsap.to('.down-area .txt2', { duration: .3, opacity: 1})
+            } else {
+                gsap.to('.down-area .txt1', { duration: .3, opacity: 1})
+                gsap.to('.down-area .txt2', { duration: .3, opacity: 0})
+            }
         }
     }
 })
 
+// 13번째 섹션 애니메이션
 const sc13Tl = gsap.timeline()
 .from('.sc-13 .txt-area', { opacity: 0})
 .to('.sc-13 .txt-area', { opacity: 0})
 
 ScrollTrigger.create({
     trigger: '.sc-13',
-    start: 'top top',
-    end: 'bottom top',
+    start: '0% 0%',
+    end: '100% 100%',
     animation: sc13Tl,
-    pin: true,
-    scrub: true,
+    scrub: 0,
 })
 
-let horizonWidth3 = gsap.getProperty(`.sc-14 .move-horizon`, 'width')
-let lastWidth3 = gsap.getProperty('.sc-14 .last', 'width')
-let moveX3 = $('.sc-14 .last').offset().left - (innerWidth - lastWidth3);
-
-ScrollTrigger.create({
-    trigger: '.sc-14',
-    start: 'top top',
-    end: `bottom`,
-    animation: gsap.to(`.sc-14 .move-horizon`, { x: -moveX3}),
-    scrub: true,
-    pin:true,
-    id: 'sc14',
+// 14번째 섹션 애니메이션
+gsap.to('.sc-14 .move-horizon', {
+    xPercent: -100,
+    x: () => {
+        return window.innerWidth;
+    },
+    scrollTrigger: {
+        trigger: '.sc-14',
+        start: '0% 0%',
+        end: '100% 100%',
+        scrub: 0,
+        invalidateOnRefresh: true,
+    }
 })
 
+// footer 영역 애니메이션
 const joinWidth = gsap.getProperty('.join-item', 'width')
 const sc15Tl = gsap.timeline()
 .from('.join', { yPercent: 100})
@@ -349,6 +294,7 @@ ScrollTrigger.create({
     toggleActions: 'restart none reverse none',
 })
 
+// 상단으로 이동하기 버튼 애니메이션
 ScrollTrigger.create({
     trigger: '.sc-02',
     start: 'top top',
@@ -368,4 +314,17 @@ ScrollTrigger.create({
     onLeaveBack: () => {
         gsap.to('.btn-top', { opacity: 0})
     }
+})
+
+// 4번째, 11번째 섹션 애니메이션
+gsap.utils.toArray('.sc-04, .sc-11').forEach((section, idx) => {
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: '0 90%',
+            end: 'bottom bottom',
+            scrub: 1,
+        }
+    })
+    .to(section, { '--progress': 1})
 })
