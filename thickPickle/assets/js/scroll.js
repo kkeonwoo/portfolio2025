@@ -80,13 +80,13 @@ gsap.utils.toArray('.rotate-title').forEach((title, idx) => {
 })
 
 // marquee 애니메이션
-const infoWidth = gsap.getProperty('.sc-fact .info-item', 'width');
 const infoTl = gsap.timeline()
 .to('.sc-fact .info-item', { 
-    x: -infoWidth * 7, 
+    xPercent: -700, 
     repeat: -1, 
-    duration: 60 
+    duration: 30 
 })
+
 // marquee roate 애니메이션
 const circleTl = gsap.timeline()
 .to('.sc-fact .circle', { 
@@ -94,32 +94,26 @@ const circleTl = gsap.timeline()
         return (i + 1) * 360
     },
     repeat: -1, 
-    duration: 30, 
+    duration: 10, 
     stagger: { each: 0.2}
 })
-// 돌아가는 건 돌아가는걸 두고 그 부모요소를 제어하기
-// 선생님 노션에 있는 마퀴 코드 보고 하기
 
 ScrollTrigger.create({
     trigger: '.sc-fact',
     start: 'top top',
     end: 'bottom bottom',
     onUpdate: (self) => {
-        let factor = 2.5;
+        let dir = (self.direction == 1) ? 1 : -1;
         
-        if (self.direction < 0) {
-            factor *= -1;
-        }
-        
-        // handle marquee timeScale
+        // handle text marquee timeScale
         gsap.timeline()
-        .to(infoTl, { timeScale: factor * 2.5, duration:  0.2})
-        .to(infoTl, { timeScale: factor / 2.5, duration: 1}, "+=0.3")
+        .to(infoTl, { timeScale: dir * 2.5, duration:  0.2})
+        .to(infoTl, { timeScale: dir / 2.5})
 
         // handle circle marquee timeScale
         gsap.timeline()
-        .to(circleTl, { timeScale: factor * 3, duration:  0.2})
-        .to(circleTl, { timeScale: factor / 2.5}, "+=0.3")
+        .to(circleTl, { timeScale: dir * 2.5, duration:  0.2})
+        .to(circleTl, { timeScale: dir / 2.5,})
     },
     scrub: 0,
 })
