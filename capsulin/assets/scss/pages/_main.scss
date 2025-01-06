@@ -334,6 +334,7 @@
                         @include flex(_, center);
         
                         .num {
+                            display: block;
                             font-weight: 600;
                             font-size: 18px;
                             line-height: 18px;

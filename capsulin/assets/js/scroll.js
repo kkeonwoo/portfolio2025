@@ -2,15 +2,19 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.defaults({ease: 'none'});
 
 $(document).ready(() => {
+    // split text
     const text = new SplitType('.half .title, .txt-area .txt, .sc-spec .sc-04 .txt-wrap, .sc-04 .sc-right .title', { types: 'lines' })
     const text2 = new SplitType('.title-box .line', { types: 'chars' })
     const lines = $('.half .title .line, .txt-area .txt .line, .sc-spec .sc-04 .sc-right .line');
     lines.each((idx, line) => {
         $(line).wrap('<div class="txt-wrap"></div>');
     })
+
+    // default
     gsap.set('.tab-list .line', { width: 0})
     gsap.set('.main .txt-wrap .txt, .main .txt-wrap .line, .main .txt-wrap .num, .main .txt-wrap .ico, .title .img, .title-box .char', { yPercent: 120})
     gsap.set('.sc-hero .txt-wrap .txt, .title-box .line', { yPercent: 0})
+    gsap.set('.pagination .page-item', { yPercent: 100})
 
     // full scroll
     gsap.from('.progress-bar', {
@@ -20,15 +24,13 @@ $(document).ready(() => {
             start: 'top top',
             end: 'bottom bottom',
             scrub: 0,
-            // markers: true,
         }
     })
 
     const heroTl = gsap.timeline()
     .to('.sc-hero .sticky', {'--inset': 100})
     .to('.sc-hero .bg', {yPercent: -40}, '<')
-    
-    gsap.set('.pagination .page-item', { yPercent: 100})
+
     ScrollTrigger.create({
         trigger: '.sc-hero',
         start: '10% 10%',
@@ -45,7 +47,6 @@ $(document).ready(() => {
             gsap.to('.pagination .page-item', { yPercent: 100})
         },
     })
-    
 
     // 질문: 애니메이션 마지막에 배경과 이미지 사이 틈 발생
     const designTl01 = gsap.timeline()
@@ -160,7 +161,7 @@ $(document).ready(() => {
             gsap.to('.sc-engine .sc-03 .tab-item .line', { width: '100%', stagger: { each: 0.2}})
         },
         onEnterBack: () => {
-            Capsulin.fadeOut('.sc-engine .sc-03 .txt', 1, 10)
+            Capsulin.fadeOut('.sc-engine .sc-03 .txt', 1, .2)
             gsap.to('.sc-engine .sc-03 .tab-item .line', { width: 0, stagger: { each: 0.2}})
         },
     })
@@ -178,7 +179,7 @@ $(document).ready(() => {
         animation: engineTl03,
         scrub: 0,
         onEnter: () => {
-            Capsulin.fadeOut('.sc-engine .sc-03 .txt', 1, 10)
+            Capsulin.fadeOut('.sc-engine .sc-03 .txt', 1, .2)
             gsap.to('.sc-engine .sc-03 .tab-item .line', { width: 0, stagger: { each: 0.2}})
         },
         onLeaveBack: () => {

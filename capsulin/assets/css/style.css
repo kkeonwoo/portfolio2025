@@ -878,6 +878,7 @@ section {
           align-items: center;
 }
 .sc-design .section .tab-list .tab-item .btn.btn-design .num {
+  display: block;
   font-weight: 600;
   font-size: 18px;
   line-height: 18px;
