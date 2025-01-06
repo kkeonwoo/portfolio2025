@@ -15,6 +15,12 @@
     clip: rect(0, 0, 0, 0);
 }
 
+.sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
 .btn-top {
     position: fixed;
     display: flex;
@@ -50,8 +56,162 @@
     text-fill-color: transparent;
 }
 
-.sticky {
-    position: sticky;
-    top: 0;
-    height: 100vh;
+.horizon-wrap {
+    height: 500vh;
+    
+    .horizon {
+        position: sticky;
+        height: 100vh;
+        top: 0;
+    }
+}
+
+.section {
+    position: relative;
+    font-weight: 600;
+
+    .inner {
+        padding: 0 100px;
+    }
+
+    .title {
+        font-size: 72px;
+        line-height: 1.28;
+    }
+}
+
+.txt {
+    font-size: 24px;
+    line-height: 1.67;
+}
+
+.move-horizon {
+    width: fit-content;
+    height: 100%;
+    @include flex(_, center);
+
+    .txt-area {
+        flex-shrink: 0;
+        padding-right: 160px;
+    }
+    
+    .group-card {
+        flex-shrink: 0;
+        
+        .card-item {
+            padding-right: 40px;
+            
+            &:last-child {
+                padding-right: 0;
+            }
+        }
+    }
+}
+
+.card-list {
+    @include flex(_, center);
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    width: 400px;
+    height: 540px;
+    padding: 34px;
+    color: #fff;
+    border-radius: 20px;
+    @include column-flex(_, _);
+
+    .card-bg {
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        @include absCenter();
+        
+        &::before {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: hsla(0, 0%, 42%, .3);
+            background-blend-mode: multiply;
+            @include pseudo();
+        }
+
+        img {
+            position: relative;
+            z-index: -1;
+            filter: url(#sharpBlur);
+        }
+    }
+
+    .card-header {
+        height: 110px;
+        @include flex(between, start);
+
+        .title {
+            font-size: 50px;
+            line-height: 1;
+        }
+        .star {
+            font-size: 30px;
+            line-height: .67;
+        }
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        margin-top: 56px;
+        flex: 1;
+
+        .img-area {
+            max-width: 280px;
+        }
+
+        .txt {
+            font-size: 16px;
+            line-height: 1.63;
+        }
+    }
+
+    .card-footer {
+        @include flex(between, center);
+
+        .profile {
+            gap: 9px;
+            @include flex(_,center);
+
+            .ico {
+                display: block;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+
+                &.ico-profile1 {
+                    background-color: #ff009d;
+                }
+                &.ico-profile2 {
+                    background-color: #0049ff;
+                }
+                &.ico-profile3 {
+                    background-color: #26ff00;
+                }
+            }
+            .profile-name {
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 1.63;
+            }
+        }
+
+        .ico {
+            &.ico-card {
+                display: block;
+                width: 40px;
+                height: 40px;
+                @include bg('icon-contract.png');
+            }
+        }
+    }
 }

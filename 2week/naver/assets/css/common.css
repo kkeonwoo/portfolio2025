@@ -1,20 +1,8 @@
 .blind { position: absolute; overflow: hidden; width: 1px; height: 1px; margin: -1px; clip: rect(0, 0, 0, 0);}
-
-#skipNav {
-    position: absolute;
-}
-#skipNav a{
-    position: absolute;
-    top: -50px;
-    padding: 10px;
-    background-color: #000;
-    color: #fff;
-    white-space: nowrap;
-}
+#skipNav { position: absolute;}
+#skipNav a{ position: absolute; top: -50px; padding: 10px; background-color: #000; color: #fff; white-space: nowrap;}
 #skipNav a:focus,
-#skipNav a:active{
-    top: 0;
-}
+#skipNav a:active{ top: 0;}
 
 /* sp1 */
 #header .util-area > *::after,
@@ -38,23 +26,26 @@
 .sc-widget .group-papago .icon.ic-papago::after,
 .sc-widget .download-area .link-download::before,
 .sc-widget .download-area .link-download::after,
-#footer .group-notice .link-all::after {
+#footer .group-notice .link-all::after,
+.floating-area .btn.btn-top::before,
+.floating-area .btn.btn-setting::before,
+.modal-setting .link .ico::before,
+.modal-setting .group-setting.theme .title-area .btn,
+.modal-setting .btn.btn-option .thumbnail .ico::before,
+.modal-setting .link .mac::before {
     background-image: url(../images/sp-bg1.png);
     background-repeat: no-repeat;
     background-size: 463px auto;
 }
-
 #header .group-nav .icon.ic-stream::after {
     background-image: url(../images/icon_stream.png);
     background-size: 44px 44px;
 }
-
 .sc-shop .member-area .icon::before {
     background-image: url(../images/sp-bg2.png);
     background-repeat: no-repeat;
     background-size: 158px 137px;
 }
-
 .sc-weather .info-left .info-total .icon.ic-weather,
 .sc-weather .info-right .icon.ic-cloud {
     background-image: url(../images/sp-bg3.png);

@@ -3,124 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>NAVER</title>
+    <meta property="og:title" content="네이버">
+    <meta property="og:url" content="https://www.naver.com/">
+    <meta property="og:image" content="https://s.pstatic.net/static/www/mobile/edit/2016/0705/mobile_212852414260.png">
+    <meta property="og:description" content="네이버 메인에서 다양한 정보와 유용한 컨텐츠를 만나 보세요">
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/images/favicon/site.webmanifest">
+    <!-- link:css -->
     <link rel="stylesheet" href="./assets/css/layout.css">
     <link rel="stylesheet" href="./assets/css/main.css">
+    <!-- script -->
+    <script src="./assets/js/jquery-3.7.1.min.js"></script>
+    <script src="./assets/js/common.js"></script>
 </head>
 <body>
     <div id="skipNav">
         <a href="#conntainer">본문내용바로가기</a>
     </div>
     <div id="wrap">
-        <header id="header">
 
+        <header id="header">
             <div class="header-inner">
+
                 <div class="group-search">
+
                     <h1 class="logo">
-                        <a href="" class="link">
+                        <a href="#" class="link">
                             <!-- svg -->
                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"></path></svg>
                             <span class="blind">네이버로고</span>
                         </a>
                     </h1>
+
                     <div class="search-area">
                         <form action="" method="get" class="search-form">
                             <fieldset class="search-inner">
                                 <legend class="blind">검색</legend>
+
                                 <input type="text" class="input-text">
+
                                 <button class="btn-keyboard" aria-pressed="false">
                                     <span class="blind">가상키보드</span>
                                 </button>
+
                                 <button class="btn-auto" aria-pressed="false">
                                     <span class="blind">자동완성</span>
                                 </button>
+
                                 <button type="submit" class="btn-submit">
                                     <!-- svg -->
                                     <svg id="search-btn" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="fill: #03c75a"> <path d="M22.13.5c11.378 0 20.632 9.256 20.632 20.63 0 4.699-1.566 9.155-4.439 12.782l10.164 10.165a2.41 2.41 0 0 1-1.706 4.115 2.412 2.412 0 0 1-1.706-.705L33.31 35.719a2.41 2.41 0 0 1 0-3.41 15.71 15.71 0 0 0 4.628-11.178c0-8.718-7.09-15.808-15.807-15.808-8.718 0-15.808 7.09-15.808 15.808 0 7.15 4.817 13.43 11.714 15.273a2.41 2.41 0 0 1 1.705 2.954 2.41 2.41 0 0 1-2.95 1.705C7.788 38.658 1.5 30.46 1.5 21.131 1.5 9.756 10.756.5 22.13.5zm4.716 34.746a3.483 3.483 0 1 1 0 6.966 3.483 3.483 0 0 1 0-6.966z"></path> </svg>
                                     <span class="blind">전송</span>
                                 </button>
+
                             </fieldset>
                         </form>
                     </div>
+
                 </div>
+
                 <nav class="group-nav">
                     <ul class="nav-list">
+
                         <li class="nav-item">
-                            <a href="" class="link">
+                            <a href="#" class="link">
                                 <i class="icon ic-mail"></i>
                                 <span class="name">메일</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="" class="link">
+                            <a href="#" class="link">
                                 <i class="icon ic-cafe"></i>
                                 <span class="name">카페</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="" class="link">
+                            <a href="#" class="link">
                                 <i class="icon ic-blog"></i>
                                 <span class="name">블로그</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="" class="link">
+                            <a href="#" class="link">
                                 <i class="icon ic-store"></i>
                                 <i class="icon ic-new"></i>
                                 <span class="name">스토어</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="" class="link">
+                            <a href="#" class="link">
                                 <i class="icon ic-news"></i>
                                 <span class="name">뉴스</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="" class="link">
+                            <a href="#" class="link">
                                 <i class="icon ic-finance"></i>
                                 <span class="name">증권</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="" class="link">
+                            <a href="#" class="link">
                                 <i class="icon ic-home"></i>
                                 <span class="name">부동산</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="" class="link">
+                            <a href="#" class="link">
                                 <i class="icon ic-map"></i>
                                 <span class="name">지도</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="" class="link">
+                            <a href="#" class="link">
                                 <i class="icon ic-cartoon"></i>
                                 <span class="name">웹툰</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="" class="link">
+                            <a href="#" class="link">
                                 <i class="icon ic-stream"></i>
                                 <span class="name">치지직</span>
                             </a>
                         </li>
+
                         <li class="nav-item">
-                            <a href="" class="link">
+                            <a href="#" class="link">
                                 <i class="icon ic-more"></i>
                             </a>
                         </li>
+
                     </ul>
                 </nav>
+
                 <div class="util-area left">
                     <button class="btn-menu" aria-expanded="false" aria-haspopup="menu">
                         <span class="blind">확장메뉴</span>
                     </button>
-                    <a href="" class="link-pay">
+                    <a href="#" class="link-pay">
                         <span class="blind">네이버페이</span>
                     </a>
                 </div>
+
                 <div class="util-area right">
                     <button class="btn-talk">
                         <span class="blind">네이버톡</span>
@@ -128,21 +165,21 @@
                     <button class="btn-alert">
                         <span class="blind">알림혜택</span>
                     </button>
-                    <a href="" class="link-cart">
+                    <a href="#" class="link-cart">
                         <span class="blind">장바구니</span>
                     </a>
                 </div>
             </div>
-
         </header>
-        <main id="container">
 
+        <main id="container">
             <div class="main">
+
                 <div class="main-left">
 
                     <aside class="frame ad-banner">
-                        <a href="">
-                            <img src="./assets/images/ad1.jpg" alt="">
+                        <a href="#">
+                            <img src="./assets/images/ad1.jpg" alt>
                         </a>
                     </aside>
 
@@ -169,91 +206,93 @@
                                 </li>
                             </ul>
                         </div>
+
                         <div class="group-issue">
                             <div class="issue-area">
                                 <a href="#" role="button" class="btn-all">전체언론사</a>
-                                <a href="" class="link-media">연합뉴스</a>
-                                <a href="" class="link-issue">뉴욕증시, 트럼프 랠리 지속…다우지수 장중 첫 44,000선 돌파</a>
+                                <a href="#" class="link-media">연합뉴스</a>
+                                <a href="#" class="link-issue">뉴욕증시, 트럼프 랠리 지속…다우지수 장중 첫 44,000선 돌파</a>
                             </div>
                             <div class="news-area">
-                                <a href="" class="link-news">뉴스스탠드</a>
-                                <a href="" class="link-news">뉴스홈</a>
+                                <a href="#" class="link-news">뉴스스탠드</a>
+                                <a href="#" class="link-news">뉴스홈</a>
                             </div>
                         </div>
+
                         <div class="group-media">
                             <div class="content">
                                 <ul class="media-list">
                                     <li class="media-item">
-                                        <img src="./assets/images/news.png" alt="">
+                                        <img src="./assets/images/news.png" alt="매일경제">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news2.png" alt="">
+                                        <img src="./assets/images/news2.png" alt="국민일보">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news3.png" alt="">
+                                        <img src="./assets/images/news3.png" alt="korea joongang daily">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news4.png" alt="">
+                                        <img src="./assets/images/news4.png" alt="아시아경제">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news5.png" alt="">
+                                        <img src="./assets/images/news5.png" alt="kbs">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news6.png" alt="">
+                                        <img src="./assets/images/news6.png" alt="스포츠서울">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news7.png" alt="">
+                                        <img src="./assets/images/news7.png" alt="동아일보">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news8.png" alt="">
+                                        <img src="./assets/images/news8.png" alt="스포츠조선">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news9.png" alt="">
+                                        <img src="./assets/images/news9.png" alt="the korea herald">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news10.png" alt="">
+                                        <img src="./assets/images/news10.png" alt="시사 in">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news11.png" alt="">
+                                        <img src="./assets/images/news11.png" alt="파이낸셜 뉴스">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news12.png" alt="">
+                                        <img src="./assets/images/news12.png" alt="머니투데이">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news13.png" alt="">
+                                        <img src="./assets/images/news13.png" alt="서울경제">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news14.png" alt="">
+                                        <img src="./assets/images/news14.png" alt="헤럴드경제">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news15.png" alt="">
+                                        <img src="./assets/images/news15.png" alt="서울신문">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news16.png" alt="">
+                                        <img src="./assets/images/news16.png" alt="경인일보">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news17.png" alt="">
+                                        <img src="./assets/images/news17.png" alt="인천일보">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news18.png" alt="">
+                                        <img src="./assets/images/news18.png" alt="중부일보">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news19.png" alt="">
+                                        <img src="./assets/images/news19.png" alt="ebn">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news20.png" alt="">
+                                        <img src="./assets/images/news20.png" alt="일요신문">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news21.png" alt="">
+                                        <img src="./assets/images/news21.png" alt="스포츠춘추">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news22.png" alt="">
+                                        <img src="./assets/images/news22.png" alt="obs">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news23.png" alt="">
+                                        <img src="./assets/images/news23.png" alt="tv chosun">
                                     </li>
                                     <li class="media-item">
-                                        <img src="./assets/images/news24.png" alt="">
+                                        <img src="./assets/images/news24.png" alt="the korea times">
                                     </li>
                                 </ul>
                                 <i class="vt-line vt1"></i><i class="vt-line vt2"></i><i class="vt-line vt3"></i><i class="vt-line vt4"></i><i class="vt-line vt5"></i>
@@ -315,52 +354,52 @@
 
                                 <div class="frame2 brand-area">
                                     <div class="brand-box">
-                                        <a href="" class="link-brand">쿠팡</a>
+                                        <a href="#" class="link-brand">쿠팡</a>
                                         <i class="ic-dot"></i>
-                                        <a href="" class="link-brand">G마켓</a>
+                                        <a href="#" class="link-brand">G마켓</a>
                                         <i class="ic-dot"></i>
-                                        <a href="" class="link-brand">옥션</a>
+                                        <a href="#" class="link-brand">옥션</a>
                                         <i class="ic-dot"></i>
-                                        <a href="" class="link-brand"><strong>SSG닷컴</strong></a>
+                                        <a href="#" class="link-brand"><strong>SSG닷컴</strong></a>
                                     </div>
                                     <ul class="brand-box">
-                                        <a href="" class="link-brand"><strong>11번가</strong></a>
+                                        <a href="#" class="link-brand"><strong>11번가</strong></a>
                                         <i class="ic-dot"></i>
-                                        <a href="" class="link-brand">올리브영</a>
+                                        <a href="#" class="link-brand">올리브영</a>
                                         <i class="ic-dot"></i>
-                                        <a href="" class="link-brand">하프클럽</a>
+                                        <a href="#" class="link-brand">하프클럽</a>
                                     </ul>
                                     <ul class="brand-box">
-                                        <a href="" class="link-brand"><strong>GS SHOP</strong></a>
+                                        <a href="#" class="link-brand"><strong>GS SHOP</strong></a>
                                         <i class="ic-dot"></i>
-                                        <a href="" class="link-brand">CJ온스타일</a>
+                                        <a href="#" class="link-brand">CJ온스타일</a>
                                         <i class="ic-dot"></i>
-                                        <a href="" class="link-brand">패션플러스</a>
+                                        <a href="#" class="link-brand">패션플러스</a>
                                     </ul>
                                 </div>
 
                                 <div class="frame2 member-area">
                                     <ul class="member-list">
                                         <li class="member-item">
-                                            <a href="" class="link">
+                                            <a href="#" class="link">
                                                 <i class="icon ic-my"></i>
                                                 <span class="name">쇼핑MY</span>
                                             </a>
                                         </li>
                                         <li class="member-item">
-                                            <a href="" class="link">
+                                            <a href="#" class="link">
                                                 <i class="icon ic-review"></i>
                                                 <span class="name">리뷰적립</span>
                                             </a>
                                         </li>
                                         <li class="member-item">
-                                            <a href="" class="link">
+                                            <a href="#" class="link">
                                                 <i class="icon ic-order"></i>
                                                 <span class="name">주문</span>
                                             </a>
                                         </li>
                                         <li class="member-item">
-                                            <a href="" class="link">
+                                            <a href="#" class="link">
                                                 <i class="icon ic-cart"></i>
                                                 <span class="name">장바구니</span>
                                             </a>
@@ -369,7 +408,7 @@
                                 </div>
 
                                 <aside class="shop-banner">
-                                    <a href="" class="link-banner">
+                                    <a href="#" class="link-banner">
                                         <div class="frame ad-banner">
                                             <img src="./assets/images/ad3.jpg" alt="단 7일! 특별한혜택 가득한 제이위크">
                                         </div>
@@ -383,8 +422,8 @@
                                 <div class="content">
                                     <ul class="shop-list">
                                         <li class="shop-item">
-                                            <a href="" class="link-shop">
-                                                <img src="./assets/images/shop1.jpg" alt="" class="frame">
+                                            <a href="#" class="link-shop">
+                                                <img src="./assets/images/shop1.jpg" alt class="frame">
                                                 <p class="txt">
                                                     그냥 끼고있으면<br/>
                                                     옆구리살 소멸
@@ -392,8 +431,8 @@
                                             </a>
                                         </li>
                                         <li class="shop-item">
-                                            <a href="" class="link-shop">
-                                                <img src="./assets/images/shop2.jpg" alt="" class="frame">
+                                            <a href="#" class="link-shop">
+                                                <img src="./assets/images/shop2.jpg" alt class="frame">
                                                 <p class="txt">
                                                     블프 최대 ~80%<br/>
                                                     겨울BEST아이템
@@ -401,8 +440,8 @@
                                             </a>
                                         </li>
                                         <li class="shop-item">
-                                            <a href="" class="link-shop">
-                                                <img src="./assets/images/shop3.jpg" alt="" class="frame">
+                                            <a href="#" class="link-shop">
+                                                <img src="./assets/images/shop3.jpg" alt class="frame">
                                                 <p class="txt">
                                                     예쁘게~입어요~<br/>
                                                     F/W 데일리 코디
@@ -410,8 +449,8 @@
                                             </a>
                                         </li>
                                         <li class="shop-item">
-                                            <a href="" class="link-shop">
-                                                <img src="./assets/images/shop4.jpg" alt="" class="frame">
+                                            <a href="#" class="link-shop">
+                                                <img src="./assets/images/shop4.jpg" alt class="frame">
                                                 <p class="txt">
                                                     도로시 45%OFF<br/>
                                                     투어멀린 반지
@@ -419,7 +458,7 @@
                                             </a>
                                         </li>
                                         <li class="shop-item">
-                                            <a href="" class="link-shop">
+                                            <a href="#" class="link-shop">
                                                 <video loop="" src="https://b01-kr-naver-vod.pstatic.net/shopping-box/c/read/v2/VOD_ALPHA/shopping-box_2024_11_05_43/67abdca6-9b2b-11ef-bde7-80615f0bcc8a.mp4?_lsu_sa_=6b55aefd914262762ed725ab643570be4e4d3b98ca036f0a3197c3cca7ce3f35cc2aba4a6ed5660550b230d20938eb9ab7be2b4e0dee034195caac92644cbb617c2c6e85970a098add333d74e0a3c805" width="100%" autoplay="" class="frame"></video>
                                                 <p class="txt">
                                                     곧 끝날 블프!<br/>
@@ -428,8 +467,8 @@
                                             </a>
                                         </li>
                                         <li class="shop-item">
-                                            <a href="" class="link-shop">
-                                                <img src="./assets/images/shop6.jpg" alt="" class="frame">
+                                            <a href="#" class="link-shop">
+                                                <img src="./assets/images/shop6.jpg" alt class="frame">
                                                 <p class="txt">
                                                     이수지 추천<br/>
                                                     인기 겨울템~
@@ -437,8 +476,8 @@
                                             </a>
                                         </li>
                                         <li class="shop-item">
-                                            <a href="" class="link-shop">
-                                                <img src="./assets/images/shop7.jpg" alt="" class="frame">
+                                            <a href="#" class="link-shop">
+                                                <img src="./assets/images/shop7.jpg" alt class="frame">
                                                 <p class="txt">
                                                     깔끔~데일리핏~<br/>
                                                     올세일 최대90%
@@ -446,8 +485,8 @@
                                             </a>
                                         </li>
                                         <li class="shop-item">
-                                            <a href="" class="link-shop">
-                                                <img src="./assets/images/shop8.jpg" alt="" class="frame">
+                                            <a href="#" class="link-shop">
+                                                <img src="./assets/images/shop8.jpg" alt class="frame">
                                                 <p class="txt">
                                                     어깨찜질 뜨끈해<br/>
                                                     한방찜질팩 40%
@@ -455,8 +494,8 @@
                                             </a>
                                         </li>
                                         <li class="shop-item">
-                                            <a href="" class="link-shop">
-                                                <img src="./assets/images/shop9.jpg" alt="" class="frame">
+                                            <a href="#" class="link-shop">
+                                                <img src="./assets/images/shop9.jpg" alt class="frame">
                                                 <p class="txt">
                                                     하반기결산SALE<br/>
                                                     BEST 50% 특가
@@ -464,8 +503,8 @@
                                             </a>
                                         </li>
                                         <li class="shop-item">
-                                            <a href="" class="link-shop">
-                                                <img src="./assets/images/shop10.jpg" alt="" class="frame">
+                                            <a href="#" class="link-shop">
+                                                <img src="./assets/images/shop10.jpg" alt class="frame">
                                                 <p class="txt">
                                                     Handmade 20%<br/>
                                                     브랜드 그이상~
@@ -480,7 +519,7 @@
                         <div class="group-today">
                             <div class="today-area">
                                 <span class="today-title">오늘의 혜택</span>
-                                <a href="" class="link-today"><i class="icon ic-auction"><span class="blind">옥션</span></i>단 3일! 빅스마일데이 히트상품 <span class="point">10% 선착순 쿠폰</span> 받고 구매해!</a>
+                                <a href="#" class="link-today"><i class="icon ic-auction"><span class="blind">옥션</span></i>단 3일! 빅스마일데이 히트상품 <span class="point">10% 선착순 쿠폰</span> 받고 구매해!</a>
                             </div>
                         </div>
 
@@ -544,7 +583,7 @@
                             <div class="feed-area">
                                 <ul class="feed-list">
                                     <li class="feed-item">
-                                        <a href="" class="link-feed">
+                                        <a href="#" class="link-feed">
                                             <img src="./assets/images/feed1.jpg" alt="계란빵" class="frame">
                                             <div class="txt-area">
                                                 <p class="name">레시피 집중탐구</p>
@@ -557,7 +596,7 @@
                                         </a>
                                     </li>
                                     <li class="feed-item">
-                                        <a href="" class="link-feed">
+                                        <a href="#" class="link-feed">
                                             <img src="./assets/images/feed2.jpg" alt="목숨과도 같은 휴가도 아깝지 않을 특별한 식당 6" class="frame">
                                             <div class="txt-area">
                                                 <p class="name">푸드스토리</p>
@@ -570,7 +609,7 @@
                                         </a>
                                     </li>
                                     <li class="feed-item">
-                                        <a href="" class="link-feed">
+                                        <a href="#" class="link-feed">
                                             <img src="./assets/images/feed3.jpg" alt="톡 쏘는 맛이 일품! 지금 꼭 담아야 하는 갓김치" class="frame">
                                             <div class="txt-area">
                                                 <p class="name">오늘의 푸드TV</p>
@@ -590,7 +629,7 @@
                             <div class="feed-area">
                                 <ul class="feed-list">
                                     <li class="feed-item">
-                                        <a href="" class="link-feed">
+                                        <a href="#" class="link-feed">
                                             <div class="feed-left">
                                                 <img src="./assets/images/feed4.jpg" alt="염정아 김치콩나물죽 끓이는법 콩나물김치죽 갱시기죽" class="frame">
                                             </div>
@@ -608,7 +647,7 @@
                                         </a>
                                     </li>
                                     <li class="feed-item">
-                                        <a href="" class="link-feed">
+                                        <a href="#" class="link-feed">
                                             <div class="feed-left">
                                                 <img src="./assets/images/feed5.jpg" alt="상추겉절이 양념 만드는 법 상추무침 레시피" class="frame">
                                             </div>
@@ -626,7 +665,7 @@
                                         </a>
                                     </li>
                                     <li class="feed-item">
-                                        <a href="" class="link-feed">
+                                        <a href="#" class="link-feed">
                                             <div class="feed-left">
                                                 <img src="./assets/images/feed6.jpg" alt="콩나물김치죽 대구 갱시기죽 김치콩나물죽 끓이는 법" class="frame">
                                             </div>
@@ -644,7 +683,7 @@
                                         </a>
                                     </li>
                                     <li class="feed-item">
-                                        <a href="" class="link-feed ad-feed">
+                                        <a href="#" class="link-feed ad-feed">
                                             <div class="feed-left">
                                                 <img src="./assets/images/feed7.jpg" alt="일렉트로룩스 x 강세일, 60%할인!" class="frame">
                                             </div>
@@ -662,7 +701,7 @@
                                         </a>
                                     </li>
                                     <li class="feed-item">
-                                        <a href="" class="link-feed">
+                                        <a href="#" class="link-feed">
                                             <div class="feed-left">
                                                 <img src="./assets/images/feed8.jpg" alt="하얀 콩나물무침 레시피 삶는시간" class="frame">
                                             </div>
@@ -680,7 +719,7 @@
                                         </a>
                                     </li>
                                     <li class="feed-item">
-                                        <a href="" class="link-feed">
+                                        <a href="#" class="link-feed">
                                             <div class="feed-left">
                                                 <img src="./assets/images/feed9.jpg" alt="간단한 국요리 오징어 달걀국 만드는 법 계란탕 파계란국 맑은 오징어국 레시피" class="frame">
                                             </div>
@@ -698,7 +737,7 @@
                                         </a>
                                     </li>
                                     <li class="feed-item">
-                                        <a href="" class="link-feed">
+                                        <a href="#" class="link-feed">
                                             <div class="feed-left">
                                                 <img src="./assets/images/feed10.jpg" alt="동파육 만들기 동파육 소스 레시피 삼겹살요리" class="frame">
                                             </div>
@@ -716,7 +755,7 @@
                                         </a>
                                     </li>
                                     <li class="feed-item">
-                                        <a href="" class="link-feed">
+                                        <a href="#" class="link-feed">
                                             <div class="feed-left">
                                                 <img src="./assets/images/feed11.png" alt="간단한 에그인헬 레시피 샥슈카 만들기 에그인헬 뜻" class="frame">
                                             </div>
@@ -741,7 +780,7 @@
                             <h3 class="group-title">테마별 레시피</h3>
                             <ul class="feed-list">
                                 <li class="feed-item">
-                                    <a href="" class="link-feed">
+                                    <a href="#" class="link-feed">
                                         <img src="./assets/images/recipe1.jpg" alt="토마토 계란볶음 만드는법 토달볶 레시피 간단한 아침식사 메뉴" class="frame">
                                         <div class="txt-area">
                                             <p class="name">#간단한아침메뉴</p>
@@ -756,7 +795,7 @@
                                     </a>
                                 </li>
                                 <li class="feed-item">
-                                    <a href="" class="link-feed">
+                                    <a href="#" class="link-feed">
                                         <img src="./assets/images/recipe2.jpg" alt="식빵팝콘 만들기 캬라멜식빵팝콘 식빵 러스크 간단간식만드는법" class="frame">
                                         <div class="txt-area">
                                             <p class="name">#간단간식</p>
@@ -771,7 +810,7 @@
                                     </a>
                                 </li>
                                 <li class="feed-item">
-                                    <a href="" class="link-feed">
+                                    <a href="#" class="link-feed">
                                         <img src="./assets/images/recipe3.jpg" alt="직장인 간단한 점심도시락 다이어트 도시락 메뉴 만들기" class="frame">
                                         <div class="txt-area">
                                             <p class="name">#다이어트도시락</p>
@@ -786,7 +825,7 @@
                                     </a>
                                 </li>
                                 <li class="feed-item">
-                                    <a href="" class="link-feed">
+                                    <a href="#" class="link-feed">
                                         <img src="./assets/images/recipe4.jpg" alt="일주일 밑반찬 만들기 가정식반찬 6종류 집밥 반찬 메뉴 추천" class="frame">
                                         <div class="txt-area">
                                             <p class="name">#일주일밑반찬</p>
@@ -812,23 +851,24 @@
                     </section>
 
                 </div>
+
                 <div class="main-right">
 
                     <section class="frame sc-login">
                         <h2 class="blind">로그인</h2>
 
                         <p class="login-msg">네이버를 더 안전하고 편리하게 이용하세요</p>
-                        <a href="" class="link-login"><i class="icon ic-login"><span class="blind">NAVER</span></i>로그인</a>
+                        <a href="#" class="link-login"><i class="icon ic-login"><span class="blind">NAVER</span></i>로그인</a>
                         <div class="login-more">
-                            <a href="" class="link-more">아이디 찾기</a>
-                            <a href="" class="link-more">비밀번호 찾기</a>
-                            <a href="" class="link-more">회원가입</a>
+                            <a href="#" class="link-more">아이디 찾기</a>
+                            <a href="#" class="link-more">비밀번호 찾기</a>
+                            <a href="#" class="link-more">회원가입</a>
                         </div>
                     </section>
 
                     <aside class="frame ad-banner">
-                        <a href="">
-                            <img src="./assets/images/ad2.jpg" alt="">
+                        <a href="#">
+                            <img src="./assets/images/ad2.jpg" alt>
                         </a>
                     </aside>
 
@@ -840,20 +880,20 @@
                         <div class="rcmd-right">
                             <ul class="rcmd-list">
                                 <li class="rcmd-item">
-                                    <a href="" class="link-rcmd">
-                                        <img src="./assets/images/rcmd1.jpg" alt="" class="frame">
+                                    <a href="#" class="link-rcmd">
+                                        <img src="./assets/images/rcmd1.jpg" alt class="frame">
                                         <p class="txt">달항아리 그림 풍수 다복 집들이 개업선물 액자</p>
                                     </a>
                                 </li>
                                 <li class="rcmd-item">
-                                    <a href="" class="link-rcmd">
-                                        <img src="./assets/images/rcmd2.jpg" alt="" class="frame">
+                                    <a href="#" class="link-rcmd">
+                                        <img src="./assets/images/rcmd2.jpg" alt class="frame">
                                         <p class="txt">[수면밀도] 허리 환자가 직접 만든 매트리스 허리에 좋은 침대 메트리스 미디엄 하드 싱글(S)</p>
                                     </a>
                                 </li>
                                 <li class="rcmd-item">
-                                    <a href="" class="link-rcmd">
-                                        <img src="./assets/images/rcmd3.jpg" alt="" class="frame">
+                                    <a href="#" class="link-rcmd">
+                                        <img src="./assets/images/rcmd3.jpg" alt class="frame">
                                         <p class="txt">아망떼 플란넬 극세사토퍼 SS Q K</p>
                                     </a>
                                 </li>
@@ -868,14 +908,14 @@
                     <section class="frame sc-weather">
                         <div class="group-head">
                             <h3 class="title">
-                                <a href="" class="link-title">날씨</a>
+                                <a href="#" class="link-title">날씨</a>
                             </h3>
-                            <a href="" class="link-compare">예보 비교</a>
+                            <a href="#" class="link-compare">예보 비교</a>
                             <span class="txt">파주시 야당동</span>
                         </div>
                         <div class="group-info">
                             <div class="info-left">
-                                <a href="" class="link-now">
+                                <a href="#" class="link-now">
                                     <div class="info-total">
                                         <i class="icon ic-weather"></i>
                                         <div class="total">
@@ -895,7 +935,7 @@
                                 </a>
                             </div>
                             <div class="info-right">
-                                <a href="" class="link-daily">
+                                <a href="#" class="link-daily">
                                     <ol class="weather-list">
                                         <li class="weather-item">
                                             <span class="txt">11°</span>
@@ -931,7 +971,7 @@
                     <section class="frame sc-stock">
                         <div class="group-head">
                             <h3 class="title">
-                                <a href="" class="link-title">증시</a>
+                                <a href="#" class="link-title">증시</a>
                             </h3>
                             <button class="link-more"><span class="blind">정보 더보기</span></button>
                             <span class="txt">11.13. 20:54</span>
@@ -939,7 +979,7 @@
                         </div>
                         <div class="group-info">
                             <div class="info-left">
-                                <a href="">
+                                <a href="#">
                                     <div class="txt-box">
                                         <h4 class="title">환율 USD</h4>
                                         <div class="num-area"><span class="num">4,745.64</span></div>
@@ -949,13 +989,13 @@
                                             <span class="percent">+0.02%</span>
                                         </div>
                                     </div>
-                                    <img src="./assets/images/stock1.png" alt="">
+                                    <img src="./assets/images/stock1.png" alt>
                                 </a>
                             </div>
                             <div class="info-right">
                                 <ul class="stock-list">
                                     <li class="stock-item">
-                                        <a href="" class="link-stock">
+                                        <a href="#" class="link-stock">
                                             <span class="txt">삼성전자</span>
                                             <i class="icon ic-down"><span class="blind">하락</span></i>
                                             <span class="percent">4.53%</span>
@@ -963,7 +1003,7 @@
                                         </a>
                                     </li>
                                     <li class="stock-item">
-                                        <a href="" class="link-stock">
+                                        <a href="#" class="link-stock">
                                             <span class="txt">한화오션</span>
                                             <i class="icon ic-down"><span class="blind">하락</span></i>
                                             <span class="percent">8.15%</span>
@@ -971,7 +1011,7 @@
                                         </a>
                                     </li>
                                     <li class="stock-item">
-                                        <a href="" class="link-stock">
+                                        <a href="#" class="link-stock">
                                             <span class="txt">고려아연</span>
                                             <i class="icon ic-down"><span class="blind">하락</span></i>
                                             <span class="percent">14.10%</span>
@@ -979,7 +1019,7 @@
                                         </a>
                                     </li>
                                     <li class="stock-item more">
-                                        <a href="" class="link-stock">
+                                        <a href="#" class="link-stock">
                                             <span class="txt">인기종목 더보기</span>
                                         </a>
                                     </li>
@@ -991,24 +1031,24 @@
                     <section class="frame sc-widget">
                         <h3 class="title">위젯 보드</h3>
                         <div class="group-dictionary">
-                            <a href="">
+                            <a href="#">
                                 <p class="title">영어사전</p>
                             </a>
-                            <a href="">
+                            <a href="#">
                                 <div class="txt">I’m feeling under the weather today.</div>
                             </a>
-                            <a href="" class="btn-search" role="button"><span class="blind">단어 검색하기</span></a>
+                            <a href="#" class="btn-search" role="button"><span class="blind">단어 검색하기</span></a>
                         </div>
 
                         <div class="frame group-papago">
-                            <a href="" class="link-papago">
+                            <a href="#" class="link-papago">
                                 <i class="icon ic-papago"><span class="blind">papago</span></i>
                                 <button class="btn-txt">번역하기</button>
                             </a>
                         </div>
 
                         <div class="frame group-memo">
-                            <a href="" class="link-memo">
+                            <a href="#" class="link-memo">
                                 <div class="memo-header">
                                     <span class="title">메모</span>
                                 </div>
@@ -1027,26 +1067,127 @@
                         </div>
 
                         <div class="download-area">
-                            <a href="" class="link-download">
+                            <a href="#" class="link-download">
                                 <strong>모바일 네이버 메인</strong> 열기
                             </a>
                         </div>
                     </section>
 
                 </div>
-            </div>
 
+                <div class="floating-area">
+
+                    <button class="btn btn-round btn-top" aria-pressed="false">
+                        <span class="blind">최상단으로 이동</span>
+                    </button>
+
+                    <button class="btn btn-round btn-setting" aria-haspopup="true" aria-expanded="false" aria-pressed="false">
+                        <span class="blind">홈 설정</span>
+                    </button>
+
+                    <div class="modal modal-setting">
+                        <div class="modal-centered">
+                            <div class="modal-box">
+
+                                <div class="group-setting font">
+                                    <strong class="setting-title">글자크기</strong>
+
+                                    <div role="radiogroup" class="btn-wrap">
+
+                                        <button role="radio" aria-checked="false" class="btn btn-option font-sm">
+                                            <div class="thumbnail">
+                                                <span class="txt txt-sm">가</span>
+                                                <span class="txt txt-sm">Aa</span>
+                                                <i class="ico ico-checked"></i>
+                                            </div>
+                                            <span class="txt">축소</span>
+                                        </button>
+
+                                        <button role="radio" aria-checked="true" class="btn btn-option font-md active">
+                                            <div class="thumbnail">
+                                                <span class="txt txt-md">가</span>
+                                                <span class="txt txt-md">Aa</span>
+                                                <i class="ico ico-checked"></i>
+                                            </div>
+                                            <span class="txt">기본</span>
+                                        </button>
+
+                                        <button role="radio" aria-checked="false" class="btn btn-option font-lg">
+                                            <div class="thumbnail">
+                                                <span class="txt txt-lg">가</span>
+                                                <span class="txt txt-lg">Aa</span>
+                                                <i class="ico ico-checked"></i>
+                                            </div>
+                                            <span class="txt">확대</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="group-setting theme">
+                                    <div class="title-area">
+                                        <strong class="setting-title">화면스타일</strong>
+                                        <button type="button" class="btn btn-more" aria-expanded="false" aria-pressed="false"><span class="blind">정보 더보기</span></button>
+                                    </div>
+
+                                    <div role="radiogroup" class="btn-wrap">
+
+                                        <button role="radio" aria-checked="true" class="btn btn-option theme-light active">
+                                            <div class="thumbnail">
+                                                <span class="line line1"></span>
+                                                <span class="line line2"></span>
+                                                <span class="line line3"></span>
+                                                <i class="ico ico-checked"></i>
+                                            </div>
+                                            <span class="txt">라이트 모드</span>
+                                        </button>
+
+                                        <button role="radio" aria-checked="false" class="btn btn-option theme-dark">
+                                            <div class="thumbnail">
+                                                <span class="line line1"></span>
+                                                <span class="line line2"></span>
+                                                <span class="line line3"></span>
+                                                <i class="ico ico-checked"></i>
+                                            </div>
+                                            <span class="txt">다크 모드</span>
+                                        </button>
+
+                                        <button role="radio" aria-checked="false" class="btn btn-option theme-system">
+                                            <div class="thumbnail">
+                                                <span class="line line1"></span>
+                                                <span class="line line2"></span>
+                                                <span class="line line3"></span>
+                                                <i class="ico ico-checked"></i>
+                                            </div>
+                                            <span class="txt">기기 설정</span>
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                                <div class="group-setting">
+                                    <strong class="setting-title">더 많은 기능</strong>
+                                    <a href="https://apps.apple.com/kr/app/%EB%84%A4%EC%9D%B4%EB%B2%84-naver/id393499958" class="link link-app" target="_blank">
+                                        <i class="ico ico-naver"></i>
+                                        <strong>PC 네이버앱</strong> 설치하기<span class="mac">Mac전용</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </main>
 
         <footer id="footer">
-
             <div class="footer-inner">
+
                 <aside class="group-banner">
                     <ul class="banner-list">
                         <li class="banner-item">
-                            <a href="" class="link-banner">
+                            <a href="#" class="link-banner">
                                 <div class="img-area frame">
-                                    <img src="./assets/images/ft-banner1.jpg" alt="">
+                                    <img src="./assets/images/ft-banner1.jpg" alt>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="16" viewBox="0 0 25 16" fill="none"><rect width="25" height="16" rx="3" fill="white" fill-opacity="0.7"/><rect x="0.5" y="0.5" width="24" height="15" rx="2.5" stroke="black" stroke-opacity="0.12"/><path d="M7.89097 4.146H9.35397L12.379 12H10.905L10.168 9.921H7.03297L6.29597 12H4.87697L7.89097 4.146ZM7.40697 8.876H9.80497L8.62797 5.499H8.59497L7.40697 8.876ZM12.9436 4.146H16.1996C16.8009 4.146 17.3216 4.24867 17.7616 4.454C18.2016 4.65933 18.5609 4.94167 18.8396 5.301C19.1182 5.653 19.3236 6.06733 19.4556 6.544C19.5949 7.02067 19.6646 7.53033 19.6646 8.073C19.6646 8.61567 19.5949 9.12533 19.4556 9.602C19.3236 10.0787 19.1182 10.4967 18.8396 10.856C18.5609 11.208 18.2016 11.4867 17.7616 11.692C17.3216 11.8973 16.8009 12 16.1996 12H12.9436V4.146ZM14.3186 10.878H15.6716C16.2069 10.878 16.6432 10.8083 16.9806 10.669C17.3252 10.5223 17.5929 10.3243 17.7836 10.075C17.9816 9.81833 18.1136 9.52133 18.1796 9.184C18.2529 8.83933 18.2896 8.469 18.2896 8.073C18.2896 7.677 18.2529 7.31033 18.1796 6.973C18.1136 6.62833 17.9816 6.33133 17.7836 6.082C17.5929 5.82533 17.3252 5.62733 16.9806 5.488C16.6432 5.34133 16.2069 5.268 15.6716 5.268H14.3186V10.878Z" fill="#5D5D5D"/></svg>
                                 </div>
                                 <div class="txt-area">
@@ -1057,9 +1198,9 @@
                             </a>
                         </li>
                         <li class="banner-item">
-                            <a href="" class="link-banner">
+                            <a href="#" class="link-banner">
                                 <div class="img-area frame">
-                                    <img src="./assets/images/ft-banner2.jpg" alt="">
+                                    <img src="./assets/images/ft-banner2.jpg" alt>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="16" viewBox="0 0 25 16" fill="none"><rect width="25" height="16" rx="3" fill="white" fill-opacity="0.7"/><rect x="0.5" y="0.5" width="24" height="15" rx="2.5" stroke="black" stroke-opacity="0.12"/><path d="M7.89097 4.146H9.35397L12.379 12H10.905L10.168 9.921H7.03297L6.29597 12H4.87697L7.89097 4.146ZM7.40697 8.876H9.80497L8.62797 5.499H8.59497L7.40697 8.876ZM12.9436 4.146H16.1996C16.8009 4.146 17.3216 4.24867 17.7616 4.454C18.2016 4.65933 18.5609 4.94167 18.8396 5.301C19.1182 5.653 19.3236 6.06733 19.4556 6.544C19.5949 7.02067 19.6646 7.53033 19.6646 8.073C19.6646 8.61567 19.5949 9.12533 19.4556 9.602C19.3236 10.0787 19.1182 10.4967 18.8396 10.856C18.5609 11.208 18.2016 11.4867 17.7616 11.692C17.3216 11.8973 16.8009 12 16.1996 12H12.9436V4.146ZM14.3186 10.878H15.6716C16.2069 10.878 16.6432 10.8083 16.9806 10.669C17.3252 10.5223 17.5929 10.3243 17.7836 10.075C17.9816 9.81833 18.1136 9.52133 18.1796 9.184C18.2529 8.83933 18.2896 8.469 18.2896 8.073C18.2896 7.677 18.2529 7.31033 18.1796 6.973C18.1136 6.62833 17.9816 6.33133 17.7836 6.082C17.5929 5.82533 17.3252 5.62733 16.9806 5.488C16.6432 5.34133 16.2069 5.268 15.6716 5.268H14.3186V10.878Z" fill="#5D5D5D"/></svg>
                                 </div>
                                 <div class="txt-area">
@@ -1070,9 +1211,9 @@
                             </a>
                         </li>
                         <li class="banner-item">
-                            <a href="" class="link-banner">
+                            <a href="#" class="link-banner">
                                 <div class="img-area frame">
-                                    <img src="./assets/images/ft-banner3.png" alt="">
+                                    <img src="./assets/images/ft-banner3.png" alt>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="16" viewBox="0 0 25 16" fill="none"><rect width="25" height="16" rx="3" fill="white" fill-opacity="0.7"/><rect x="0.5" y="0.5" width="24" height="15" rx="2.5" stroke="black" stroke-opacity="0.12"/><path d="M7.89097 4.146H9.35397L12.379 12H10.905L10.168 9.921H7.03297L6.29597 12H4.87697L7.89097 4.146ZM7.40697 8.876H9.80497L8.62797 5.499H8.59497L7.40697 8.876ZM12.9436 4.146H16.1996C16.8009 4.146 17.3216 4.24867 17.7616 4.454C18.2016 4.65933 18.5609 4.94167 18.8396 5.301C19.1182 5.653 19.3236 6.06733 19.4556 6.544C19.5949 7.02067 19.6646 7.53033 19.6646 8.073C19.6646 8.61567 19.5949 9.12533 19.4556 9.602C19.3236 10.0787 19.1182 10.4967 18.8396 10.856C18.5609 11.208 18.2016 11.4867 17.7616 11.692C17.3216 11.8973 16.8009 12 16.1996 12H12.9436V4.146ZM14.3186 10.878H15.6716C16.2069 10.878 16.6432 10.8083 16.9806 10.669C17.3252 10.5223 17.5929 10.3243 17.7836 10.075C17.9816 9.81833 18.1136 9.52133 18.1796 9.184C18.2529 8.83933 18.2896 8.469 18.2896 8.073C18.2896 7.677 18.2529 7.31033 18.1796 6.973C18.1136 6.62833 17.9816 6.33133 17.7836 6.082C17.5929 5.82533 17.3252 5.62733 16.9806 5.488C16.6432 5.34133 16.2069 5.268 15.6716 5.268H14.3186V10.878Z" fill="#5D5D5D"/></svg>
                                 </div>
                                 <div class="txt-area">
@@ -1084,33 +1225,35 @@
                         </li>
                     </ul>
                 </aside>
+
                 <div class="group-notice">
-                    <h3 class="title"><a href="">공지사항</a></h3>
-                    <a href="" class="link-all">서비스 전체보기</a>
+                    <h3 class="title"><a href="#">공지사항</a></h3>
+                    <a href="#" class="link-all">서비스 전체보기</a>
                 </div>
+
                 <div class="group-aside">
                     <div class="aside-left">
                         <div class="partner-area">
                             <h3 class="title">Partner</h3>
                             <ul class="partner-list">
-                                <li class="partner-item"><a href="" class="link-partner">프로젝트 꽃</a></li>
-                                <li class="partner-item"><a href="" class="link-partner">네이버 비즈니스</a></li>
-                                <li class="partner-item"><a href="" class="link-partner">네이버 비즈니스 스쿨</a></li>
-                                <li class="partner-item"><a href="" class="link-partner">네이버 광고</a></li>
-                                <li class="partner-item"><a href="" class="link-partner">스토어 개설</a></li>
-                                <li class="partner-item"><a href="" class="link-partner">지역업체 등록</a></li>
-                                <li class="partner-item"><a href="" class="link-partner">엑스퍼트 등록</a></li>
+                                <li class="partner-item"><a href="#" class="link-partner">프로젝트 꽃</a></li>
+                                <li class="partner-item"><a href="#" class="link-partner">네이버 비즈니스</a></li>
+                                <li class="partner-item"><a href="#" class="link-partner">네이버 비즈니스 스쿨</a></li>
+                                <li class="partner-item"><a href="#" class="link-partner">네이버 광고</a></li>
+                                <li class="partner-item"><a href="#" class="link-partner">스토어 개설</a></li>
+                                <li class="partner-item"><a href="#" class="link-partner">지역업체 등록</a></li>
+                                <li class="partner-item"><a href="#" class="link-partner">엑스퍼트 등록</a></li>
                             </ul>
                         </div>
                         <div class="dev-area">
                             <h3 class="title">Developers</h3>
                             <ul class="dev-list">
-                                <li class="dev-item"><a href="" class="link-dev">네이버 개발자 센터</a></li>
-                                <li class="dev-item"><a href="" class="link-dev">오픈 API</a></li>
-                                <li class="dev-item"><a href="" class="link-dev">오픈소스</a></li>
-                                <li class="dev-item"><a href="" class="link-dev">네이버 D2</a></li>
-                                <li class="dev-item"><a href="" class="link-dev">네이버 D2SF</a></li>
-                                <li class="dev-item"><a href="" class="link-dev">네이버 랩스</a></li>
+                                <li class="dev-item"><a href="#" class="link-dev">네이버 개발자 센터</a></li>
+                                <li class="dev-item"><a href="#" class="link-dev">오픈 API</a></li>
+                                <li class="dev-item"><a href="#" class="link-dev">오픈소스</a></li>
+                                <li class="dev-item"><a href="#" class="link-dev">네이버 D2</a></li>
+                                <li class="dev-item"><a href="#" class="link-dev">네이버 D2SF</a></li>
+                                <li class="dev-item"><a href="#" class="link-dev">네이버 랩스</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1119,42 +1262,44 @@
                             <li class="service-item">
                                 <div class="txt-box">
                                     <h3 class="title">웨일 브라우저</h3>
-                                    <a href="" class="link-service">이용안내</a>
+                                    <a href="#" class="link-service">이용안내</a>
                                 </div>
-                                <a href="" class="link-logo">
-                                    <img src="./assets/images/ic-whale.png" alt="">
+                                <a href="#" class="link-logo">
+                                    <img src="./assets/images/ic-whale.png" alt="웨일">
                                 </a>
                             </li>
                             <li class="service-item">
                                 <div class="txt-box">
                                     <h3 class="title">기업사이트</h3>
-                                    <a href="" class="link-service">바로가기</a>
+                                    <a href="#" class="link-service">바로가기</a>
                                 </div>
-                                <a href="" class="link-logo">
-                                    <img src="./assets/images/ic-naver.png" alt="">
+                                <a href="#" class="link-logo">
+                                    <img src="./assets/images/ic-naver.png" alt="네이버 기업사이트">
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
+
                 <div class="group-corp">
                     <ul class="corp-list">
-                        <li class="corp-item"><a href="" class="link-corp">회사소개</a></li>
-                        <li class="corp-item"><a href="" class="link-corp">인재채용</a></li>
-                        <li class="corp-item"><a href="" class="link-corp">제휴제안</a></li>
-                        <li class="corp-item"><a href="" class="link-corp">이용약관</a></li>
-                        <li class="corp-item"><a href="" class="link-corp">개인정보처리방침</a></li>
-                        <li class="corp-item"><a href="" class="link-corp">청소년보호정책</a></li>
-                        <li class="corp-item"><a href="" class="link-corp">네이버 정책</a></li>
-                        <li class="corp-item"><a href="" class="link-corp">고객센터</a></li>
+                        <li class="corp-item"><a href="#" class="link-corp">회사소개</a></li>
+                        <li class="corp-item"><a href="#" class="link-corp">인재채용</a></li>
+                        <li class="corp-item"><a href="#" class="link-corp">제휴제안</a></li>
+                        <li class="corp-item"><a href="#" class="link-corp">이용약관</a></li>
+                        <li class="corp-item"><a href="#" class="link-corp">개인정보처리방침</a></li>
+                        <li class="corp-item"><a href="#" class="link-corp">청소년보호정책</a></li>
+                        <li class="corp-item"><a href="#" class="link-corp">네이버 정책</a></li>
+                        <li class="corp-item"><a href="#" class="link-corp">고객센터</a></li>
                     </ul>
                     <address class="addr">
-                        <a href="" class="link-corp">ⓒ NAVER Corp.</a>
+                        <a href="#" class="link-corp">ⓒ NAVER Corp.</a>
                     </address>
                 </div>
-            </div>
 
+            </div>
         </footer>
+
     </div>
 </body>
 </html>
