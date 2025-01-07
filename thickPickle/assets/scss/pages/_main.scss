@@ -584,16 +584,16 @@
         }
     }
 
-    &.first {
-        .swiper-slide {
-            .swiper-left{
-                .txt {
-                    transform: translateY(120%);
-                    animation: m1 1s;
-                }
-            }
-        }
-    }
+    // &.first {
+    //     .swiper-slide {
+    //         .swiper-left{
+    //             .txt {
+    //                 transform: translateY(120%);
+    //                 animation: m1 1s;
+    //             }
+    //         }
+    //     }
+    // }
 
     .dot {
         background-color: #8eff00;
@@ -681,8 +681,8 @@
     
                 .txt {
                     font-size: clamp(48px, 4.16vw, 80px);
-                    transform: translateY(120%);
-                    transition: transform .5s cubic-bezier(.215, .61, .355, 1);
+                    // transform: translateY(120%);
+                    // transition: transform .5s cubic-bezier(.215, .61, .355, 1);
                 }
             }
     
@@ -700,8 +700,8 @@
     
                 .line {
                     line-height: 1.35;
-                    transform: translateY(120%);
-                    transition: transform .5s cubic-bezier(.215, .61, .355, 1) 0.2s;
+                    // transform: translateY(120%);
+                    // transition: transform .5s cubic-bezier(.215, .61, .355, 1) 0.2s;
                 }
             }
         }
@@ -755,19 +755,19 @@
         }
     
         .swiper-slide-active {
-            .swiper-left {
-                .slide-title {
-                    .txt {
-                        transform: translateY(0);
-                    }
-                }
+            // .swiper-left {
+            //     .slide-title {
+            //         .txt {
+            //             transform: translateY(0);
+            //         }
+            //     }
     
-                .desc {
-                    .line {
-                        transform: translateY(0);
-                    }
-                }
-            }
+            //     .desc {
+            //         .line {
+            //             transform: translateY(0);
+            //         }
+            //     }
+            // }
     
             .swiper-right {
                 transform: scale(1);

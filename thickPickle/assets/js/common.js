@@ -3,8 +3,8 @@ ThickPickle = {
         this.introAni();
         this.scrollHdrAni();
         this.handleCursor();
-        this.handleSwiper();
         this.handleImgMove();
+        this.handleSwiper();
         this.nav();
     },
     introAni: function() {

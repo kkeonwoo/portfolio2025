@@ -875,10 +875,6 @@ html {
     transform: translateY(0%);
   }
 }
-.sc-species.first .swiper-slide .swiper-left .txt {
-  transform: translateY(120%);
-  animation: m1 1s;
-}
 .sc-species .dot {
   background-color: #8eff00;
 }
@@ -974,8 +970,6 @@ html {
 }
 .sc-species .group-swiper .swiper-left .slide-title .txt {
   font-size: clamp(48px, 4.16vw, 80px);
-  transform: translateY(120%);
-  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .sc-species .group-swiper .swiper-left .desc {
   margin-top: 25px;
@@ -995,8 +989,6 @@ html {
 }
 .sc-species .group-swiper .swiper-left .desc .line {
   line-height: 1.35;
-  transform: translateY(120%);
-  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s;
 }
 .sc-species .group-swiper .swiper-right {
   position: relative;
@@ -1041,12 +1033,6 @@ html {
 .sc-species .group-swiper .swiper-right .img-area img:nth-child(4) {
   z-index: 5;
   transform: translate(calc(var(--x) * 1%), calc(var(--y) * 1%));
-}
-.sc-species .group-swiper .swiper-slide-active .swiper-left .slide-title .txt {
-  transform: translateY(0);
-}
-.sc-species .group-swiper .swiper-slide-active .swiper-left .desc .line {
-  transform: translateY(0);
 }
 .sc-species .group-swiper .swiper-slide-active .swiper-right {
   transform: scale(1);

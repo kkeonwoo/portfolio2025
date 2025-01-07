@@ -4,8 +4,8 @@ gsap.defaults({ease: 'none'});
 splitLinesInit = () => {
     const splitLines = new SplitType('.split', { types: 'lines'});
     if (!$('.sc-species .line')) {
-        $('.line').not('.sc-species .line').addClass('ty-txt');
     }
+    $('.line').addClass('ty-txt');
     $('.line').wrap('<div class="txt-ani"></div>')
 }
 
@@ -229,4 +229,16 @@ ScrollTrigger.create({
         targets: '.sc-species',
         className: 'first'
     }
+})
+
+$('.sc-species .swiper-slide').on('click', () => {
+    gsap.timeline()
+    .to('.sc-species .swiper-slide .ty-txt', { 
+        yPercent: 120, 
+        ease: 'power2.inOut'
+    })
+    gsap.to('.sc-species  .swiper-slide-active .ty-txt', { 
+        yPercent: 0, 
+        ease: 'power2.inOut'
+    })
 })
