@@ -2,6 +2,12 @@ Enterprise = {
     init: function () {
         this.handleLang();
         this.scrollTop();
+
+        $(document).ready(function(){
+            $(window).scrollTop(0)
+            // $('html, body').animate({ scrollTop: 0 });
+            $('#header').removeClass('theme-dark');
+        });
     },
     handleLang: function () {
         const navItem = $('#header .lang')
@@ -36,19 +42,11 @@ Enterprise = {
     },
     scrollTop: () => {
         $('.btn-top').on('click', function() {
-            lenis.scrollTo(0, {
-                callback: () => {
-                    $('#header').removeClass('theme-dark');
-                    ScrollTrigger.refresh(); 
-                }
-            });
+            gsap.to(window, { duration: 1, scrollTo: 0 });
         })
     }
 }
 
 $(() => {
     Enterprise.init();
-    $(window).on('refresh', () => {
-        $('#header').removeClass('theme-dark')
-    })
 });

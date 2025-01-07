@@ -51,3 +51,12 @@
         perspective: 700px;
     }
 }
+
+.line {
+    display: block;
+}
+
+.title-box .line {
+    font-family: "SharpGrotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    transform-origin: 50% 0;
+}

@@ -1,5 +1,52 @@
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 gsap.defaults({ease: 'none'});
+
+splitLinesInit = () => {
+    const splitLines = new SplitType('.split', { types: 'lines'});
+    if (!$('.sc-species .line')) {
+        $('.line').not('.sc-species .line').addClass('ty-txt');
+    }
+    $('.line').wrap('<div class="txt-ani"></div>')
+}
+
+splitLinesInit();
+$(window).resize(function() {
+    SplitType.revert('.split');
+    splitLinesInit();
+})
+
+// 텍스트 애니메이션: rotateX
+gsap.utils.toArray('.rotate-title').forEach((title, idx) => {
+    ScrollTrigger.create({
+        trigger: title.parentNode,
+        start: '0% 100%',
+        end: '100% 100%',
+        animation: gsap.from(title, { 
+            opacity: 0, 
+            yPercent: 100, 
+            rotateX: -90, 
+            duration: 1, 
+            delay: 0.1, 
+            stagger: { 
+                each: 0.1, 
+                ease: 'power2.inOut'
+            }
+        }),
+    })
+})
+
+// 텍스트 애니메이션: translateY
+gsap.utils.toArray('.ty-txt').forEach((txt, idx) => {
+    ScrollTrigger.create({
+        trigger: txt.parentNode,
+        start: '0% 80%',
+        end: '100% 80%',
+        animation: gsap.from(txt, { 
+            yPercent: 120, 
+            ease: 'power2.inOut'
+        }),
+    })
+})
 
 // 이미지 애니메이션
 const frameCount = 446;
@@ -26,8 +73,8 @@ const tl = gsap.timeline()
 // character 영역 애니메이션
 ScrollTrigger.create({
     trigger: '.sc-character',
-    start: 'top top',
-    end: 'bottom center',
+    start: '0% 0%',
+    end: '100% 50%',
     animation: tl,
     scrub: 0,
     onUpdate: () => {
@@ -59,134 +106,127 @@ ScrollTrigger.create({
     }
 })
 
-// 텍스트 애니메이션: rotateX
-gsap.utils.toArray('.rotate-title').forEach((title, idx) => {
-    ScrollTrigger.create({
-        trigger: title.parentNode,
-        start: 'top bottom',
-        end: 'bottom bottom',
-        animation: gsap.from(title, { 
-            opacity: 0, 
-            yPercent: 100, 
-            rotateX: -90, 
-            duration: 1, 
-            delay: 0.1, 
-            stagger: { 
-                each: 0.1, 
-                ease: 'power2.inOut'
-            }
-        }),
-    })
-})
-
 // marquee 애니메이션
-const infoTl = gsap.timeline()
-.to('.sc-fact .info-item', { 
-    xPercent: -700, 
-    repeat: -1, 
-    duration: 30 
+const infoItem = $('.sc-fact .info-item');
+const infoLength = 7;
+marqeeMotion1 = gsap.to(infoItem,{
+    repeat: -1,
+    xPercent: -100 * infoLength,
+    duration: 40,
+    paused:true,
+})
+marqeeMotion2 = gsap.to(infoItem,{
+    repeat: -1,
+    xPercent: 100 * infoLength,
+    duration: 40,
+    paused:true,
+})
+marqeeMotion3 = gsap.fromTo('.sc-fact .info-list', {
+    xPercent: -33.33,
+}, {
+    xPercent: -66.66
 })
 
 // marquee roate 애니메이션
-const circleTl = gsap.timeline()
-.to('.sc-fact .circle', { 
-    rotate: (i, t) => {
-        return (i + 1) * 360
-    },
-    repeat: -1, 
-    duration: 10, 
-    stagger: { each: 0.2}
+rotateMotion1 = gsap.to('.sc-fact .circle',{
+    rotate: -360,
+    repeat: -1,
+    duration: 20,
+    paused: true,
 })
+
+rotateMotion2 = gsap.to('.sc-fact .circle',{
+    rotate: 360,
+    repeat: -1,
+    duration: 20,
+    paused: true,
+})
+
+rotateMotion3 = gsap.to('.sc-fact .circle-wrap', {
+    rotate: (i, t) => -(i + 1) * 360,
+})
+
+motion3 = gsap.timeline()
+.add(marqeeMotion3)
+.add(rotateMotion3, '<')
 
 ScrollTrigger.create({
     trigger: '.sc-fact',
-    start: 'top top',
-    end: 'bottom bottom',
+    start: '0% 0%',
+    end: '100% 100%',
+    animation: motion3,
+    scrub: 2,
     onUpdate: (self) => {
-        let dir = (self.direction == 1) ? 1 : -1;
-        
-        // handle text marquee timeScale
-        gsap.timeline()
-        .to(infoTl, { timeScale: dir * 2.5, duration:  0.2})
-        .to(infoTl, { timeScale: dir / 2.5})
+        playMotion = (motion1, motion2) => {
+            if (motion1.isActive()) {
+                motion1.reverse();
+            } else {
+                motion2.play();
+            }
+        }
 
-        // handle circle marquee timeScale
-        gsap.timeline()
-        .to(circleTl, { timeScale: dir * 2.5, duration:  0.2})
-        .to(circleTl, { timeScale: dir / 2.5,})
+        if (self.direction == 1) { // 내릴 때
+            playMotion(marqeeMotion2, marqeeMotion1);
+            playMotion(rotateMotion2, rotateMotion1);
+        }else{ // 올릴 때
+            playMotion(marqeeMotion1, marqeeMotion2);
+            playMotion(rotateMotion1, rotateMotion2);
+        }
     },
-    scrub: 0,
 })
 
+// fact 영역 info 애니메이션
 ScrollTrigger.create({
     trigger: '.sc-fact .group-info',
-    start: 'top bottom',
-    end: 'bottom bottom',
+    start: '0% 100%',
+    end: '100% 100%',
     scrub: 0,
     onEnter: () => {
         $('.sc-fact .group-info').addClass('is-ani');
     }
 })
 
+// fact 영역 배너 애니메이션
 const bannerTl = gsap.timeline({
     defaults: {
         ease: 'power2.inOut'
     }
 })
-.from('.group-banner .txt-area', { scaleX: 0, duration: 2})
-.from('.group-banner .txt', { xPercent: (i, t) => {
-    return i % 2 === 0 ? -10 : 10
-}, duration: 2}, '-=1.5')
-.set('.group-banner .dot', { opacity: 1})
-.to('.group-banner .dot', { '--moveY': 0, ease: 'power2.out'})
+.from('.group-banner .txt-area', { 
+    scaleX: 0, 
+    duration: 2
+})
+.from('.group-banner .txt', { 
+    xPercent: (i, t) => {
+        return i % 2 === 0 ? -10 : 10
+    }, 
+    duration: 2
+}, '-=1.5')
+.set('.group-banner .dot', { 
+    opacity: 1
+})
+.to('.group-banner .dot', { 
+    '--moveY': 0, 
+    ease: 'power2.out'
+})
 
 gsap.utils.toArray('.sc-fact .group-banner').forEach((banner, idx) => {
     ScrollTrigger.create({
         trigger: banner,
-        start: 'top bottom',
-        end: 'bottom bottom',
+        start: '0% 100%',
+        end: '100% 100%',
         animation: bannerTl,
     })
 })
 
-let speciesFlag = false;
+// species 영역 애니메이션
 ScrollTrigger.create({
-    trigger: '.sc-species',
-    start: 'top center',
-    end: 'bottom center',
-    onEnter: () => {
-        if (speciesFlag === false) {
-            $('.sc-species').addClass('first');
-            speciesFlag = true;
-        }
+    trigger: '.sc-species .group-swiper',
+    start: '0% 50%',
+    end: '100% 50%',
+    once: true,
+    toggleClass: {
+        targets: '.sc-species',
+        className: 'first'
     }
-})
-
-gsap.utils.toArray('.group-vinegar .txt, .sc-product .txt, .sc-species .group-title .txt').forEach((txt, idx) => {
-    ScrollTrigger.create({
-        trigger: txt,
-        start: 'top bottom',
-        end: 'bottom bottom',
-        animation: gsap.from(txt, { yPercent: 120, ease: 'power2.inOut'}),
-    })
-})
-
-ScrollTrigger.create({
-    trigger: '.sc-pickle',
-    start: 'top top',
-    end: 'bottom top',
-})
-
-const footerTitle = gsap.utils.toArray('#footer .title');
-footerTitle.forEach((title, idx) => {
-    ScrollTrigger.create({
-        trigger: title.parentNode,
-        start: 'top bottom',
-        end: 'bottom bottom',
-        animation: gsap.from(title, { opacity: 0, yPercent: 100, rotateX: -90, duration: 1, delay: 0.1, stagger: { each: 0.1, ease: 'power2.inOut'}, onComplete: () => {
-            if (idx === footerTitle.length - 1) {
-                gsap.to('#footer', { '--transformX': 0})
-            }
-        }}),
-    })
 })

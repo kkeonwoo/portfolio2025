@@ -8,8 +8,10 @@
     mix-blend-mode: difference;
 
     .header-inner {
-        position: relative;
-        @include flex(between, center);
+        .nav {
+            position: relative;
+            @include flex(between, center);
+        }
 
         .logo {
             position: absolute;

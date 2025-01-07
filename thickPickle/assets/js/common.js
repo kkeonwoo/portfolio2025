@@ -5,23 +5,47 @@ ThickPickle = {
         this.handleCursor();
         this.handleSwiper();
         this.handleImgMove();
+        this.nav();
     },
     introAni: function() {
         const introIcon = $('.intro .ico-loader');
-        $('#wrap').imagesLoaded()
-        .done( function( instance ) {
-            const heroTitle = $('.sc-hero .title');
 
-            gsap.killTweensOf(introIcon, 'opacity');
-
-            const introTl = gsap.timeline()
-            .to(introIcon, { opacity: 0})
-            .to('.intro', { yPercent: -100})
-            .from(heroTitle, { autoAlpha: 0, yPercent: 100, rotateX: -90, scaleX: 0.75, duration: 1, delay: 0.1, stagger: { each: 0.1, ease: 'power4.in'}})
+        $('html').css('overflow', 'hidden');
+        gsap.from(introIcon, { 
+            opacity: 0, 
+            duration: 1,
+            repeat: -1, 
+            yoyo: true,
+            ease: 'power2.inOut'
         })
-        .progress( function() {
-            gsap.from(introIcon, { opacity: 0, duration: 1, repeat: -1, yoyo: true})
-        });
+
+        $(window).on('load', function() {
+            const heroTitle = $('.sc-hero .title');
+            
+            gsap.killTweensOf(introIcon, 'opacity');
+            const introTl = gsap.timeline()
+            .to(introIcon, { 
+                opacity: 0
+            })
+            .to('.intro', { 
+                yPercent: -100
+            })
+            .from(heroTitle, { 
+                autoAlpha: 0, 
+                yPercent: 100, 
+                rotateX: -90, 
+                scaleX: 0.75, 
+                duration: 1, 
+                delay: 0.1,
+                stagger: { 
+                    each: 0.1, 
+                    ease: 'power4.in'
+                },
+                onComplete: () => {
+                    $('html').css('overflow', 'auto');
+                }
+            })
+        })
     },
     scrollHdrAni: function() {
         let lastScroll = 0;
@@ -32,24 +56,43 @@ ThickPickle = {
             const curr = $(this).scrollTop();
 
             if (curr > lastScroll) {
-                gsap.to(utilTxt, { yPercent: -100})
-                gsap.to(logo, { xPercent: -50, scale: 0.75})
+                gsap.to(utilTxt, { 
+                    yPercent: -100
+                })
+                gsap.to(logo, { 
+                    xPercent: -50, 
+                    scale: 0.75
+                })
             } else {
-                gsap.to(utilTxt, { yPercent: 0})
-                gsap.to(logo, { xPercent: -50, scale: 1})
+                gsap.to(utilTxt, { 
+                    yPercent: 0
+                })
+                gsap.to(logo, { 
+                    xPercent: -50, 
+                    scale: 1
+                })
             }
 
             lastScroll = curr;
         });
     },
     handleCursor: function() {
-        // quickTo: 성능최적화 유틸리티
-        // transform: 순서대로 적용되는 변환 함수들의 조합.
         const cursor = $('.cursor');
-        let xTo = gsap.quickTo(cursor, 'x', { duration: 0.4, ease: 'back(3)'})
-        let yTo = gsap.quickTo(cursor, 'y', { duration: 0.4, ease: 'back(3)'})
 
-        gsap.set(cursor, {xPercent: -50, yPercent: -50});
+        let xTo = gsap.quickTo(cursor, 'x', { 
+            duration: 0.4, 
+            ease: 'back(3)'
+        })
+
+        let yTo = gsap.quickTo(cursor, 'y', { 
+            duration: 0.4, 
+            ease: 'back(3)'
+        })
+
+        gsap.set(cursor, {
+            xPercent: -50, 
+            yPercent: -50
+        });
 
         $(window).on('mousemove', function({ clientX: x, clientY: y}) {
             xTo(x);
@@ -71,11 +114,9 @@ ThickPickle = {
                 clickable: true
             },
             on: {
-                // init: function() {
-                //     $('.swiper-slide').removeClass('swiper-slide-active')
-                // },
                 click: function() {
                     let idx = swiperSpecies.realIndex;
+
                     if (idx < $('.species-swiper .swiper-slide').length - 1) {
                         swiperSpecies.slideToLoop(idx + 1);
                     } else {
@@ -87,30 +128,28 @@ ThickPickle = {
     },
     handleImgMove: function() {
         $('.species-swiper').mousemove(function(e) {
-            x = (e.clientX - window.innerWidth / 2) * 0.005
-            y = (e.clientY - window.innerHeight / 2) * 0.005
-            console.log(x+'//'+y);
+            xVal = (1 - (e.clientX / (window.innerWidth / 2)));
+            yVal = (1 - (e.clientY / (window.innerHeight / 2)));
 
-            // gsap.set('.sc', {--x: xVal, --y: yVal})
-            
+            gsap.set('.sc-species', {
+                '--x': xVal, 
+                '--y': yVal
+            })
         })
-        // const images = document.querySelectorAll('.swiper-slide img');
-        // const animators = Array.from(images).map((img, idx) => {
-        //     return {
-        //         xTo: gsap.quickTo(img, 'x'),
-        //         yTo: gsap.quickTo(img, 'y'),
-        //     };
-        // });
-        
-        // $('.species-swiper').on('mousemove', function({ clientX: x, clientY: y }) {
-        //     animators.forEach(({ xTo, yTo }, idx) => {
-        //         const moveAmount = idx % 2 === 0 ? 0.02 : 0.05;
-        //         const multiplier = (idx === 1 || idx === 2) ? -1 : 1;
-                
-        //         xTo(x * moveAmount * multiplier);
-        //         yTo(y * moveAmount * multiplier);
-        //     });
-        // });
+    },
+    nav: function() {
+        const logo = $('#header .logo');
+        const utils = $('#header .link-utils');
+
+        scrollTo = (t1, t2) => {
+            $(t1).on('click', (e) => {
+                e.preventDefault();
+                gsap.to('html, body', { duration: 1, scrollTo: t2})
+            })
+        }
+
+        scrollTo(logo, 0);
+        scrollTo(utils, '.sc-species');
     }
 }
 
