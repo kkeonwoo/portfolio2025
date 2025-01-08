@@ -105,6 +105,10 @@ ThickPickle = {
             slidesPerView: 1,
             allowTouchMove: false,
             effect: "fade",
+            autoplay: {
+                delay: 10000,
+                disableOnInteraction: false,
+            },
             navigation: {
                 nextEl: ".species-swiper .swiper-button-next",
                 prevEl: ".species-swiper .swiper-button-prev",

@@ -209,8 +209,8 @@ html {
   }
 }
 #footer .f-top .f-logo {
-  color: #8eff00;
   position: relative;
+  color: #8eff00;
 }
 #footer .f-top .f-logo .txt-ani .title {
   display: flex;
@@ -225,11 +225,11 @@ html {
   }
 }
 #footer .f-top .f-logo .txt-ani:last-child .title:after {
-  content: "®";
   display: inline;
-  line-height: 1;
   font-size: clamp(15px, 2.7vw, 51px);
+  line-height: 1;
   transform: translateX(calc(var(--transformX) * 1%));
+  content: "®";
 }
 @media (max-width: 767px) {
   #footer .f-top .f-logo .txt-ani:last-child .title:after {
@@ -248,17 +248,18 @@ html {
 }
 @media (max-width: 1023px) {
   #footer .f-bottom {
-    padding: 0 22px 22px;
+    padding: 5vh 22px 22px;
     font-size: 15px;
   }
 }
 @media (max-width: 767px) {
   #footer .f-bottom {
-    text-align: center;
     flex-direction: column-reverse;
+    align-items: center;
     padding: 0 14px 14px;
-    gap: 50px;
     font-size: 14px;
+    text-align: center;
+    gap: 50px;
   }
 }
 #footer .f-bottom .link {
@@ -272,14 +273,14 @@ html {
 }
 @media (max-width: 1023px) {
   #footer .f-bottom .link.link-about {
-    bottom: 22px;
-    order: 1;
+    top: 0;
+    bottom: unset;
+    transform: translate(-50%, -100%);
   }
 }
 @media (max-width: 767px) {
   #footer .f-bottom .link.link-about {
     position: static;
-    bottom: 14px;
     transform: translateX(0);
   }
 }
@@ -970,6 +971,8 @@ html {
 }
 .sc-species .group-swiper .swiper-left .slide-title .txt {
   font-size: clamp(48px, 4.16vw, 80px);
+  transform: translateY(120%);
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .sc-species .group-swiper .swiper-left .desc {
   margin-top: 25px;
@@ -989,6 +992,8 @@ html {
 }
 .sc-species .group-swiper .swiper-left .desc .line {
   line-height: 1.35;
+  transform: translateY(120%);
+  transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s;
 }
 .sc-species .group-swiper .swiper-right {
   position: relative;
@@ -1116,6 +1121,10 @@ html {
   .sc-species .group-swiper .btn-buy {
     margin: 14px auto 0;
   }
+}
+.sc-species.first .group-swiper .swiper-slide-active .swiper-left .desc .line, .sc-species.first .group-swiper .swiper-slide-active .swiper-left .slide-title .txt {
+  transform: translateY(0);
+  animation: m1 1s;
 }
 
 .sc-product {

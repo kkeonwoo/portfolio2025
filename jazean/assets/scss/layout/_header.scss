@@ -19,6 +19,7 @@
         .logo {
             position: relative;
             z-index: 996;
+
             .link {
                 display: block;
                 width: 13em;
@@ -145,10 +146,18 @@
         }
         
         .link {
-            color: var(--light);
-            transition: color .5s cubic-bezier(.22,.61,.36,1);
+            display: block;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-100%);
+
+            .txt, &.link-lang {
+                color: var(--light);
+                transition: color .5s cubic-bezier(.22,.61,.36,1);
+            }
             
-            &:hover {
+            &:hover .txt,
+            &.link-lang:hover {
                 color: hsla(43,78%,98%,.7);
             }
 

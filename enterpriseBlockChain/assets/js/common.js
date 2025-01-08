@@ -2,12 +2,6 @@ Enterprise = {
     init: function () {
         this.handleLang();
         this.scrollTop();
-
-        $(document).ready(function(){
-            $(window).scrollTop(0)
-            // $('html, body').animate({ scrollTop: 0 });
-            $('#header').removeClass('theme-dark');
-        });
     },
     handleLang: function () {
         const navItem = $('#header .lang')
@@ -42,7 +36,7 @@ Enterprise = {
     },
     scrollTop: () => {
         $('.btn-top').on('click', function() {
-            gsap.to(window, { duration: 1, scrollTo: 0 });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         })
     }
 }

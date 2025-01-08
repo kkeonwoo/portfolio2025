@@ -584,17 +584,6 @@
         }
     }
 
-    // &.first {
-    //     .swiper-slide {
-    //         .swiper-left{
-    //             .txt {
-    //                 transform: translateY(120%);
-    //                 animation: m1 1s;
-    //             }
-    //         }
-    //     }
-    // }
-
     .dot {
         background-color: #8eff00;
 
@@ -643,6 +632,7 @@
                 }
             }
         }
+        
         .desc {
             margin-top: 25px;
             font-size: 26px;
@@ -676,13 +666,14 @@
                 text-align: center;
                 grid-row: 2 / 2;
             }
+            
             .slide-title {
                 font-family: "SharpGrotesk", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
     
                 .txt {
                     font-size: clamp(48px, 4.16vw, 80px);
-                    // transform: translateY(120%);
-                    // transition: transform .5s cubic-bezier(.215, .61, .355, 1);
+                    transform: translateY(120%);
+                    transition: transform .5s cubic-bezier(.215, .61, .355, 1);
                 }
             }
     
@@ -700,8 +691,8 @@
     
                 .line {
                     line-height: 1.35;
-                    // transform: translateY(120%);
-                    // transition: transform .5s cubic-bezier(.215, .61, .355, 1) 0.2s;
+                    transform: translateY(120%);
+                    transition: transform .5s cubic-bezier(.215, .61, .355, 1) 0.2s;
                 }
             }
         }
@@ -755,20 +746,6 @@
         }
     
         .swiper-slide-active {
-            // .swiper-left {
-            //     .slide-title {
-            //         .txt {
-            //             transform: translateY(0);
-            //         }
-            //     }
-    
-            //     .desc {
-            //         .line {
-            //             transform: translateY(0);
-            //         }
-            //     }
-            // }
-    
             .swiper-right {
                 transform: scale(1);
                 opacity: 1;
@@ -848,6 +825,12 @@
             }
         }
     }
+
+    &.first .group-swiper .swiper-slide-active .swiper-left .desc .line,
+    &.first .group-swiper .swiper-slide-active .swiper-left .slide-title .txt {
+        transform: translateY(0);
+        animation: m1 1s;
+    }
 }
 
 .sc-product {
@@ -877,6 +860,7 @@
                 left: 28px;
             }
         }
+
         &.dot2 {
             top: 45px;
             right: 45px;
@@ -914,6 +898,7 @@
                 }
             }
         }
+        
         .desc {
             margin-top: 25px;
             font-size: 26px;

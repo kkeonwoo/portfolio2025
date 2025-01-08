@@ -23,6 +23,16 @@
     }
 }
 
+section {
+    position: relative;
+    @include flex(center, center);
+}
+
+.inner {
+    width: 100%;
+    max-width: 75em;
+}
+
 .sticky {
     position: sticky;
     top: 0;
@@ -158,26 +168,19 @@
 }
 
 .marquee {
-    &:hover {
-        .word {
-            // animation: translateY 1s .2s;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    
+    .txt {
+        display: block;
+        
+        &:last-child {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transform: translateY(120%);
         }
     }
-
-    .txt {
-        display: inline-block;
-        overflow: hidden;
-    }
 }
-
-// @keyframes translateY {
-//     0% {
-//         transform: translateY(0);
-//     }
-//     50% {
-//         transform : translateY(-100%);
-//     }
-//     100% {
-//         transform: translateY(0);
-//     }
-// }

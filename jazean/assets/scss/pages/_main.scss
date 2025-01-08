@@ -1,13 +1,3 @@
-section {
-    position: relative;
-    @include flex(center, center);
-}
-
-.inner {
-    width: 100%;
-    max-width: 75em;
-}
-
 .intro {
     display: flex;
     justify-content: center;
@@ -15,12 +5,12 @@ section {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 999;
     width: 100%;
     height: 100%;
     background-color: #311f1d;
-    z-index: 999;
-    opacity: 1;
     transition: opacity .3s;
+    opacity: 1;
     will-change: opacity;
     pointer-events: none;
 
@@ -67,9 +57,9 @@ section {
     align-items: center;
     position: sticky;
     top: 0;
+    z-index: 990;
     max-width: 6em;
     height: 100vh;
-    z-index: 990;
     color: var(--dark);
     mix-blend-mode: exclusion;
 
@@ -78,8 +68,8 @@ section {
             padding: 1em;
 
             @include mobile() {
-                padding: 1em 0;
                 width: 3.5em;
+                padding: 1em 0;
             }
 
             &:hover,
@@ -91,8 +81,8 @@ section {
 }
 
 .sc-visual {
-    height: 100vh;
     position: relative;
+    height: 100vh;
     color: var(--light);
     text-transform: uppercase;
     
@@ -187,8 +177,8 @@ section {
     @include flex(center, center);
 
     .bg-area {
-        width: 100%;
         z-index: -1;
+        width: 100%;
         @include absCenter(true, true);
         
         .bg-bean {
@@ -239,8 +229,8 @@ section {
 .sc-grain {
     position: relative;
     height: 60em;
-    color: var(--light);
     background-color: #341212;
+    color: var(--light);
     @include flex(center, center);
     @include tablet() {
         height: 79.5em;
@@ -264,17 +254,17 @@ section {
             }
 
             &.line-grain2 {
-                height: 6em;
                 top: 47.2em;
                 width: 1.5em;
+                height: 6em;
                 @include absCenter(true, false);
             }
 
             &.line-farmer {
                 bottom: 0;
-                margin-left: 27.63em;
                 width: 11.388em;
                 height: 25em;
+                margin-left: 27.63em;
                 @include absCenter(true, false);
                 @include tablet() {
                     width: unset;
@@ -291,9 +281,9 @@ section {
 
         .cherry-box {
             position: absolute;
+            z-index: 10;
             width: 6em;
             height: 5em;
-            z-index: 10;
             
             &:nth-of-type(1) {
                 top: 5%;
@@ -309,8 +299,8 @@ section {
                 right: 4.6875%;
 
                 .bg2 {
-                    filter: blur(10px);
                     transform: scale(0.5) rotate(54.9446deg);
+                    filter: blur(10px);
                 }
             }
             &:nth-of-type(3) {
@@ -325,9 +315,9 @@ section {
     }
 
     .group-cnt {
-        position: relative;
         display: flex;
         justify-content: space-between;
+        position: relative;
         width: 100%;
 
         @include tablet() {
@@ -375,9 +365,9 @@ section {
         }
 
         .video-area {
+            z-index: 5;
             width: 25.6666em;
             height: 32.5em;
-            z-index: 5;
         }
     }
 }
@@ -394,10 +384,10 @@ section {
     .group-bg {
         .line {
             top: 0;
+            z-index: 10;
             width: auto;
             height: 60em;
             margin-left: 4.76em;
-            z-index: 10;
             @include absCenter(true, false);
             @include tablet() {
                 top: 28.8em;
@@ -441,10 +431,10 @@ section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1em;
-            text-align: center;
-            width: 20em;
             z-index: 10;
+            width: 20em;
+            text-align: center;
+            gap: 1em;
         }
 
         .floating-beans {
@@ -455,86 +445,17 @@ section {
             right: 17em;
             width: 15em;
             @include desktop() {
-                bottom: 10em
+                bottom: 10em;
             }
             @include tablet() {
-                height: 16em;
                 left: 50%;
+                height: 16em;
                 transform: translateX(-50%);
             }
 
             .floating-bean {
                 position: absolute;
                 width: 5em;
-
-                &:first-child {
-                    --yPercent: 360;
-                    transform: translateY(calc(var(--yPercent) * 1%));
-                }
-            
-                &:nth-child(2) {
-                    --yPercent: 220;
-                    transform: translateY(calc(var(--yPercent) * 1%));
-                }
-            
-                &:nth-child(3) {
-                     --yPercent: 290;
-                     transform: translateY(calc(var(--yPercent) * 1%));
-                }
-            
-                &:nth-child(4) {
-                    --yPercent: 340;
-                    transform: translateY(calc(var(--yPercent) * 1%));
-                }
-            
-                &:nth-child(5) {
-                    --yPercent: 230;
-                    transform: translateY(calc(var(--yPercent) * 1%));
-                }
-            
-                &:nth-child(6) {
-                    --yPercent: 310;
-                    transform: translateY(calc(var(--yPercent) * 1%));
-                }
-            
-                &:nth-child(7) {
-                    --yPercent: 290;
-                    transform: translateY(calc(var(--yPercent) * 1%));
-                }
-            
-                &:nth-child(8) {
-                    --yPercent: 190;
-                    transform: translateY(calc(var(--yPercent) * 1%));
-                }
-            
-                &:nth-child(9) {
-                    --yPercent: 310;
-                    transform: translateY(calc(var(--yPercent) * 1%));
-                }
-            
-                &:nth-child(10) {
-                    --yPercent: 240;
-                    transform: translateY(calc(var(--yPercent) * 1%));
-                }
-            
-                &:nth-child(11) {
-                    --yPercent: 230;
-                    transform: translateY(calc(var(--yPercent) * 1%));
-                }
-            
-                &:nth-child(12) {
-                    --yPercent: 210;
-                    transform: translateY(calc(var(--yPercent) * 1%));
-                }
-            
-                &:nth-child(13) {
-                    --yPercent: 290;
-                    transform: translateY(calc(var(--yPercent) * 1%));
-                }
-
-                svg {
-                    position: relative;
-                }
 
                 @include desktop() {
                     &:first-child svg {
@@ -693,13 +614,82 @@ section {
                         transform: rotate(-66deg) scale(.35);
                     }
                 }
+
+                &:first-child {
+                    --yPercent: 360;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(2) {
+                    --yPercent: 220;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(3) {
+                     --yPercent: 290;
+                     transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(4) {
+                    --yPercent: 340;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(5) {
+                    --yPercent: 230;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(6) {
+                    --yPercent: 310;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(7) {
+                    --yPercent: 290;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(8) {
+                    --yPercent: 190;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(9) {
+                    --yPercent: 310;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(10) {
+                    --yPercent: 240;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(11) {
+                    --yPercent: 230;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(12) {
+                    --yPercent: 210;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+            
+                &:nth-child(13) {
+                    --yPercent: 290;
+                    transform: translateY(calc(var(--yPercent) * 1%));
+                }
+
+                svg {
+                    position: relative;
+                }
             }
         }
 
         .bag {
             bottom: -3em;
-            margin-left: 28.8em;
             height: 15.889em;
+            margin-left: 28.8em;
             @include absCenter(true, false);
             @include tablet() {
                 top: 13em;
@@ -716,17 +706,13 @@ section {
 }
 
 .sc-roast {
+    --inset: 100;
     display: block;
     position: relative;
-    // 질문
-    // bottom line이 sc-discover에 가려서 전체 영역을 discover보다 높게 설정
-    // 홈페이지에선 line에 z-index 999 설정
     z-index: 5;
     height: 200vh;
-    --inset: 100;
 
     .sticky {
-        // @include flex(center, center);
 
         .group-bg {
             .bg-wrap {
@@ -735,7 +721,6 @@ section {
                 left: 0;
                 width: 100%;
                 height: 100%;
-                // height: 100vh;
                 pointer-events: none;
                 
                 &#roast {
@@ -744,16 +729,7 @@ section {
 
                 &#flavor {
                     z-index: -1;
-                    // video {
-                    //     z-index: -1;
-                    // }
                 }
-
-                // video {
-                //     position: absolute;
-                //     top: 0;
-                //     left: 0;
-                // }
             }
         }
 
@@ -796,15 +772,15 @@ section {
     position: relative;
     z-index: 1;
     height: 60em;
-    color: var(--light);
     background: #180d0a;
+    color: var(--light);
     @include mobile() {
         height: 100em;
     }
 
     &::before {
-        left: 0;
         bottom: 0;
+        left: 0;
         width: 100%;
         height: 9.044em;
         @include bg('bg-pattern.webp');
@@ -823,16 +799,16 @@ section {
                 padding: 0 2em;
             }
             @include mobile() {
-                top: 14em;
                 flex-direction: column;
+                top: 14em;
             }
     
             .cnt-left,
             .cnt-right {
                 flex-direction: column;
+                position: relative;
                 width: 29.875em;
                 height: 28.433em;
-                position: relative;
                 text-align: center;
                 @include flex(center, center);
                 @include tablet() {
@@ -840,9 +816,9 @@ section {
                     height: 19.875em;
                 }
                 @include mobile() {
-                    margin: 0 auto;
                     width: 24.875em;
                     height: 23.875em;
+                    margin: 0 auto;
                     margin-bottom: 3em;
                 }
 
@@ -863,8 +839,8 @@ section {
                 .link {
                     &.link-discover {
                         display: block;
-                        padding: 1em 1.4em;
                         margin-top: 6em;
+                        padding: 1em 1.4em;
                         background: hsla(0, 0%, 100%, .15);
                         @include tablet() {
                             margin-top: 2em;
@@ -874,8 +850,8 @@ section {
                 
                 .ico {
                     display: block;
-                    margin: 0 auto;
                     width: 2.25em;
+                    margin: 0 auto;
                 }
             }
             
@@ -889,11 +865,9 @@ section {
         }
     
         .group-bg {
-            // 질문
-            // 홈페이지에선 top이 안써져있는데 위치가 잡히는 이유
-            margin-top: -1em;
             width: auto;
             height: 9.113em;
+            margin-top: -1em;
             @include absCenter(true, true);
             @include mobile() {
                 margin-top: -21em;
@@ -917,19 +891,48 @@ section {
     }
     
     .txt {
-        color: hsla(19, 36%, 91%, .8);
-        margin: 1em auto 0;
         max-width: 23em;
+        margin: 1em auto 0;
+        color: hsla(19, 36%, 91%, .8);
+    }
+}
+
+.btn-hover {
+    color: var(--orange) !important;
+                
+    &::before {
+        border-color: var(--orange) !important;
+        transform: scale(0.8);
+    }
+
+    &.btn-prev .ico-arw {
+        transform: translateX(-50%);
+    }
+    &.btn-next .ico-arw {
+        transform: translateX(50%);
+    }
+
+    .line {
+        width: 2.8em;
+        background: var(--orange) !important;
     }
 }
 
 .swiper-controller {
     display: flex;
     
+    .swiper-btn-wrap {
+        &:hover {
+            .btn {
+                @extend .btn-hover;
+            }
+        }
+    }
+
     .btn {
         position: relative;
-        height: 3.813em;
         width: 3.813em;
+        height: 3.813em;
         color: var(--light);
         transition: all .5s cubic-bezier(.22,.61,.36,1);
         @include mobile() {
@@ -942,10 +945,10 @@ section {
             left: 0;
             width: 100%;
             height: 100%;
-            border-radius: 50%;
             border: 1px solid var(--light);
-            transform-origin: 50% 50%;
             transition: all .5s cubic-bezier(.22,.61,.36,1);
+            border-radius: 50%;
+            transform-origin: 50% 50%;
             @include pseudo();
         }
         
@@ -959,11 +962,11 @@ section {
     
             .line {
                 display: block;
-                background: var(--light);
-                height: 1px;
-                margin-top: -1px;
                 position: relative;
                 width: 1em;
+                height: 1px;
+                margin-top: -1px;
+                background: var(--light);
                 transition: all .5s cubic-bezier(.22,.61,.36,1);
             }
         }
@@ -977,36 +980,18 @@ section {
         }
 
         &:hover {
-            color: var(--orange) !important;
-            
-            &::before {
-                transform: scale(0.8);
-                border-color: var(--orange) !important;
-            }
-
-            &.btn-prev .ico-arw {
-                transform: translateX(-50%);
-            }
-            &.btn-next .ico-arw {
-                transform: translateX(50%);
-            }
-
-            .line {
-                width: 2.8em;
-                background: var(--orange) !important;
-            }
+            @extend .btn-hover;
         }
-
     }
 }
 
 .sc-product {
-    color: var(--light);
-    background: #180d0a;
-    padding: 10em 5em;
     display: block;
-    text-align: center;
     overflow: hidden;
+    padding: 10em 5em;
+    background: #180d0a;
+    color: var(--light);
+    text-align: center;
     @include tablet() {
         padding: 5em 3em;
     }
@@ -1019,8 +1004,8 @@ section {
     }
 
     .swiper-product {
-        margin-top: 3em;
         overflow: visible;
+        margin-top: 3em;
 
         .swiper-slide {
             // img {
@@ -1036,23 +1021,30 @@ section {
 
         .swiper-controller {
             justify-content: space-between;
+            z-index: 5;
             width: 100%;
             max-width: 45.625em;
-            z-index: 5;
             @include absCenter(true, true);
             @extend .swiper-controller;
-            // @include 
+        }
+
+        .swiper-btn-wrap {
+            pointer-events: all;
+
+            .swiper-button-disabled {
+                pointer-events: none;
+            }
         }
     }
 }
 
 .sc-center {
-    padding: 15em 0 6em;
-    color: var(--light);
     flex-direction: column;
+    padding: 15em 0 6em;
+    background-size: cover;
+    color: var(--light);
     gap: 10em;
     @include bg('bg-center.webp');
-    background-size: cover;
     @include mobile() {
         padding: 5em 0 6em;
         gap: 0;
@@ -1083,9 +1075,9 @@ section {
                 display: inline-block;
                 margin-top: 3em;
                 padding: 1em 1.4em;
+                background: var(--light);
                 color: var(--dark);
                 text-align: center;
-                background: var(--light);
                 .txt {
                     margin: 0;
                     color: inherit;
@@ -1098,10 +1090,10 @@ section {
     .group-info {
         display: flex;
         justify-content: space-between;
-        width: 100%;
-        max-width: 46.875em;
         position: relative;
         z-index: 5;
+        width: 100%;
+        max-width: 46.875em;
         @include mobile() {
             flex-direction: column;
             justify-content: center;
@@ -1119,16 +1111,16 @@ section {
                 color: var(--orange);
                 
                 &::before {
+                    bottom: -.2em;
+                    left: 0;
+                    z-index: 10;
                     width: 100%;
                     height: 1px;
-                    left: 0;
-                    bottom: -.2em;
                     background-color: var(--orange);
+                    transform: scaleX(0);
                     transition: all .5s cubic-bezier(.22,.61,.36,1);
                     will-change: transform;
                     transform-origin: 0% 50%;
-                    transform: scaleX(0);
-                    z-index: 10;
                     @include pseudo();
                 }
                 &:hover::before {
@@ -1138,8 +1130,8 @@ section {
         }
         
         .info-title {
-            text-align: center;
             font-size: 1.333em;
+            text-align: center;
         }
 
         .info-txt {
@@ -1150,9 +1142,9 @@ section {
 
 .sc-news {
     overflow: hidden;
+    padding: 10em 0;
     background: #180d0a;
     color: var(--light);
-    padding: 10em 0;
     @include tablet() {
         padding: 5em 0;
     }
@@ -1168,8 +1160,8 @@ section {
         }
 
         .title-area {
-            border-bottom: 1px solid hsla(43, 78%, 98%, .1);
             padding-bottom: 1.5em;
+            border-bottom: 1px solid hsla(43, 78%, 98%, .1);
             @include flex(between, center);
 
             .title {
@@ -1180,14 +1172,14 @@ section {
             }
 
             .swiper-controller {
-                @extend .swiper-controller;
                 gap: 1em;
+                @extend .swiper-controller;
             }
         }
 
         .swiper {
-            margin-top: 5.313em;
             overflow: visible;
+            margin-top: 5.313em;
 
             .swiper-slide {
                 width: 33.125em;
@@ -1213,9 +1205,9 @@ section {
 
                 .news-bdy {
 
-                    .img-area { 
+                    .img-area {
+                        height: 33.125em; 
                         margin: 1.5em 0 3em;
-                        height: 33.125em;
                         @include mobile() {
                             height: 27em;
                         }

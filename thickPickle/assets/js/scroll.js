@@ -3,10 +3,8 @@ gsap.defaults({ease: 'none'});
 
 splitLinesInit = () => {
     const splitLines = new SplitType('.split', { types: 'lines'});
-    if (!$('.sc-species .line')) {
-    }
-    $('.line').addClass('ty-txt');
-    $('.line').wrap('<div class="txt-ani"></div>')
+    $('.line').wrap('<div class="txt-ani"></div>');
+    $('.sc-product .line').addClass('ty-txt');
 }
 
 splitLinesInit();
@@ -19,8 +17,8 @@ $(window).resize(function() {
 gsap.utils.toArray('.rotate-title').forEach((title, idx) => {
     ScrollTrigger.create({
         trigger: title.parentNode,
-        start: '0% 100%',
-        end: '100% 100%',
+        start: '0% 80%',
+        end: '100% 80%',
         animation: gsap.from(title, { 
             opacity: 0, 
             yPercent: 100, 
@@ -229,16 +227,4 @@ ScrollTrigger.create({
         targets: '.sc-species',
         className: 'first'
     }
-})
-
-$('.sc-species .swiper-slide').on('click', () => {
-    gsap.timeline()
-    .to('.sc-species .swiper-slide .ty-txt', { 
-        yPercent: 120, 
-        ease: 'power2.inOut'
-    })
-    gsap.to('.sc-species  .swiper-slide-active .ty-txt', { 
-        yPercent: 0, 
-        ease: 'power2.inOut'
-    })
 })

@@ -179,5 +179,4 @@ $(document).ready(function() {
         markers:true,
         onEnter: () => footerTL,
     })
-
 })
