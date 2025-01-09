@@ -3,68 +3,69 @@ $(document).ready(function() {
     gsap.defaults({ease: 'none'});
 
     const isMobile = window.matchMedia("(max-width: 960px)").matches;
-    const svgTl = gsap.timeline()
-    // .to('.sc-visual .line-gradient .path', { duration: .6, strokeDashoffset: 0})
-    // .to('.sc-bean .line-bean .path', { duration: 1, strokeDashoffset: 0})
-    // .to('.sc-grain .line-grain .path', { duration: () => {
-    //     return isMobile ? 1 : 2
-    // }, strokeDashoffset: 0})
-    // .add(pathGrainMobile())
-    // .to('.sc-grain .line-farmer .outline', { duration: .4, strokeDashoffset: 0})
-    // .to('.sc-grain .line-farmer .path:not(.outline)', { duration: .4, strokeDashoffset: 0}, '-=.2')
-    // .to('.sc-tech .line .path', { duration: 1.5, strokeDashoffset: 0}, '-=.1')
-    // .to('.sc-roast .top .path', { duration: .7, strokeDashoffset: 0})
-    // .to('.sc-roast .line-bean .path', { duration: 1, strokeDashoffset: 0})
-    // .to('.sc-roast .bottom .path', { duration: .7, strokeDashoffset: 0})
-    // .to('.sc-discover .group-bg .line .path', { strokeDashoffset: 0})
-    // .from('.sc-discover .line .logo', { opacity: 0}, '<')
-    // function pathGrainMobile() {
-    //     if(isMobile) {
-    //         const tl = gsap.timeline()
-    //         .to('.sc-grain .line-bean .path', { duration: 1, strokeDashoffset: 0})
-    //         .to('.sc-grain .line-grain2 .path', { strokeDashoffset: 0})
-    //         return tl
-    //     }
-    // }
 
-    ScrollTrigger.create({
-        trigger: '.sticky-wrap',
-        start: 'top top',
-        end: 'bottom bottom',
-        animation: svgTl,
-        scrub: true,
+    // 텍스트 기본 위치 세팅
+    gsap.set('.sc-bean .txt-area > *, .ico-bean', { 
+        autoAlpha: 0, 
+        yPercent: 100, 
+    })
+    gsap.set('.sc-grain .txt-area > *', { 
+        autoAlpha: 0, 
+        yPercent: 100, 
+    })
+    gsap.set('.sc-tech .txt-area > *', { 
+        autoAlpha: 0, 
+        yPercent: 100,
+    })
+    gsap.set('.sc-discover .txt-area > *, .sc-discover .link', { 
+        autoAlpha: 0, 
+        yPercent: 100,
     })
 
+    // visual 영역 애니메이션
     ScrollTrigger.create({
         trigger: '.sc-visual',
-        start: 'top 0%',
-        end: () => {
-            return isMobile ? '100% 40%' : '100% 40%';
-        },
-        animation: gsap.to('.sc-visual .line-gradient .path', { duration: .6, strokeDashoffset: 0}),
+        start: '0% 0%',
+        end: '100% 40%',
+        animation: gsap.to('.sc-visual .line-gradient .path', {
+            strokeDashoffset: 0
+        }),
         scrub: 0,
-    })
-    
-    const beanTween = gsap.from('.sc-bean .txt-area > *, .ico-bean', { autoAlpha: 0, yPercent: 100, stagger: { each: 0.2 }})
-    
-    ScrollTrigger.create({
-        trigger: '.sc-bean',
-        start: () => {
-            return isMobile ? '0% 40%' : '0% 40%'
-        },
-        end: 'bottom 65%',
-        scrub: 0,
-        animation: gsap.to('.sc-bean .line-bean .path', { duration: 1, strokeDashoffset: 0}),
-        onEnter: () => beanTween,
     })
 
+    // bean 영역 애니메이션
+    const beanTween = gsap.to('.sc-bean .txt-area > *, .ico-bean', { 
+        autoAlpha: 1, 
+        yPercent: 0, 
+        stagger: { 
+            each: 0.2 
+        },
+        paused: true,
+    })
+    ScrollTrigger.create({
+        trigger: '.sc-bean',
+        start: '0% 40%',
+        end: 'bottom 65%',
+        scrub: 0,
+        animation: gsap.to('.sc-bean .line-bean .path', { 
+            strokeDashoffset: 0
+        }),
+        onEnter: () => beanTween.play(),
+    })
+
+     // grain 영역 커피콩 애니메이션
     const cherryTl = gsap.timeline()
-    .set('.sc-grain .cherry-box', { yPercent: idx => {
-        return (idx + 2) * 100;
-    }})
-    .to('.sc-grain .cherry-box', { yPercent: 0, rotate: idx => {
-        return idx === 0 ? 185 : idx === 1 ? 110 : 202;
-    }})
+    .set('.sc-grain .cherry-box', { 
+        yPercent: idx => {
+            return (idx + 2) * 100;
+        }
+    })
+    .to('.sc-grain .cherry-box', { 
+        yPercent: 0, 
+        rotate: idx => {
+            return idx === 0 ? 185 : idx === 1 ? 110 : 202;
+        }
+    })
     
     ScrollTrigger.create({
         trigger: '.sc-grain .inner',
@@ -74,69 +75,132 @@ $(document).ready(function() {
         scrub: true,
     })
 
-    const grainTween = gsap.from('.sc-grain .txt-area > *', { autoAlpha: 0, yPercent: 100, stagger: { each: 0.2 }})
+    // grain 영역 svg 애니메이션
+    const grainTween = gsap.to('.sc-grain .txt-area > *', { 
+        autoAlpha: 1, 
+        yPercent: 0, 
+        stagger: { 
+            each: 0.2 
+        },
+        paused: true,
+    })
     const grainTl = gsap.timeline()
-    .to('.sc-grain .line-grain .path', { strokeDashoffset: 0})
-    .to('.sc-grain .line-farmer .outline', { duration: .4, strokeDashoffset: 0})
-    .to('.sc-grain .line-farmer .path:not(.outline)', { duration: .4, strokeDashoffset: 0}, '-=.2')
+    .to('.sc-grain .line-grain .path', { 
+        strokeDashoffset: 0
+    })
+    .add(pathGrainMobile())
+    .to('.sc-grain .line-farmer .outline', { 
+        strokeDashoffset: 0
+    })
+    .to('.sc-grain .line-farmer .path:not(.outline)', { 
+        strokeDashoffset: 0
+    }, '-=.2')
+
+    // grain 영역 모바일 svg 애니메이션 추가
+    function pathGrainMobile() {
+        if(isMobile) {
+            const tl = gsap.timeline()
+            .to('.sc-grain .line-bean .path', { duration: 1, strokeDashoffset: 0})
+            .to('.sc-grain .line-grain2 .path', { strokeDashoffset: 0})
+            return tl
+        }
+    }
+
     ScrollTrigger.create({
         trigger: '.sc-grain',
         start: 'top 65%',
-        end: 'bottom 45%',
+        end: () => {
+            return isMobile ? 'bottom 100%' :'bottom 45%'
+        } ,
         animation: grainTl,
         scrub: 0,
-        onEnter: () => grainTween,
+        onEnter: () => grainTween.play(),
     })
     
-    const techTween = gsap.from('.sc-tech .txt-area > *', { autoAlpha: 0, yPercent: 100, stagger: { each: 0.2 }})
-    ScrollTrigger.create({
-        trigger: '.sc-tech',
-        start: 'top 75%',
-        end: 'bottom 75%',
-        scrub: 0,
-        animation: gsap.to('.sc-tech .line .path', { strokeDashoffset: 0}),
-        markers: true,
-        onEnter: () => techTween,
+    // tech 영역 svg 애니메이션
+    const techTween = gsap.to('.sc-tech .txt-area > *', { 
+        autoAlpha: 1, 
+        yPercent: 0, 
+        stagger: { 
+            each: 0.2 
+        },
+        paused: true,
     })
 
+    ScrollTrigger.create({
+        trigger: '.sc-tech',
+        start: () => {
+            return isMobile ? 'top 25%' :'top 75%'
+        } ,
+        end: () => {
+            return isMobile ? 'bottom 35%' :'bottom 75%'
+        } ,
+        scrub: 0,
+        animation: gsap.to('.sc-tech .line .path', { 
+            strokeDashoffset: 0
+        }),
+        onEnter: () => techTween.play(),
+    })
+
+    // tech 영역 비디오, 커피 애니메이션
     const techVideo = document.querySelector(".sc-tech video");
     const techTl = gsap.timeline()
-    .from('.floating-bean', {'--yPercent': 0})
+    .from('.floating-bean', {
+        '--yPercent': 0
+    })
     techVideo.onloadedmetadata = function () {
-        techTl.to(techVideo, { currentTime: techVideo.duration }, '<')
+        techTl.to(techVideo, { 
+            currentTime: techVideo.duration // 영상 길이
+        }, '<')
     };
 
     ScrollTrigger.create({
         trigger: '.sc-tech .inner',
         start: 'top bottom',
-        end: 'bottom top',
+        end: () => {
+            return isMobile ? 'bottom bottom' :'bottom top'
+        },
         animation: techTl,
         scrub: 1,
     })
     
+    // roast 영역 비디오 애니메이션
     const roastVideo = document.querySelector("#flavor video");
     const roastVideoTl = gsap.timeline()
     roastVideo.onloadedmetadata = function () {
-        roastVideoTl.to(roastVideo, { currentTime: roastVideo.duration })
+        roastVideoTl.to(roastVideo, { 
+            currentTime: roastVideo.duration 
+        })
     }
+
     ScrollTrigger.create({
         trigger: '#flavor',
         start: 'top bottom',
         end: 'bottom top',
-        markers: true,
         animation: roastVideoTl,
         scrub: 1,
     })
 
+    // roast 영역 svg 애니메이션
     const roatTl = gsap.timeline()
-    .to('.sc-roast .top .path', { duration: .7, strokeDashoffset: 0})
-    .to('.sc-roast .line-bean .path', { duration: 1, strokeDashoffset: 0})
-    .to('.sc-roast .bottom .path', { duration: .7, strokeDashoffset: 0})
+    .to('.sc-roast .top .path', { 
+        strokeDashoffset: 0
+    })
+    .to('.sc-roast .line-bean .path', { 
+        strokeDashoffset: 0
+    })
+    .to('.sc-roast .bottom .path', { 
+        strokeDashoffset: 0
+    })
 
     ScrollTrigger.create({
         trigger: '.sc-roast',
-        start: 'top 75%',
-        end: 'bottom 35%',
+        start: () => {
+            return isMobile ? 'top 35%' :'top 75%'
+        },
+        end: () => {
+            return isMobile ? 'bottom 10%' :'bottom 35%'
+        },
         animation: roatTl,
         scrub: 0,
     })
@@ -187,46 +251,41 @@ $(document).ready(function() {
         opacity: 0
     }, '<')
 
-    const discoverTl02 = gsap.timeline()
-    .from('.sc-discover .txt-area > *, .sc-discover .link', { 
-        autoAlpha: 0, 
-        yPercent: 100, 
-        stagger: { 
-            each: 0.2 
-        }
-    })
-    .to('.sc-discover .group-cnt .line .path', { 
-        strokeDashoffset: 0
-    }, '<')
-
     ScrollTrigger.create({
         trigger: '.sc-discover',
-        start: 'top 35%',
+        start: () => {
+            return isMobile ? 'top 10%' :'top 35%'
+        },
         end: 'bottom 100%',
-        scrub: 0,
+        scrub: 1,
         animation: discoverTL,
-        onEnter: () => discoverTl02,
+        onEnter: () => {
+            gsap.to('.sc-discover .txt-area > *, .sc-discover .link', { 
+                autoAlpha: 1, 
+                yPercent: 0,
+            })
+            gsap.to('.sc-discover .group-cnt .path', { 
+                strokeDashoffset: 0, 
+            })
+        }
     })
 
     // 타이틀 단어 나누기
     const centerTxt = new SplitType('.sc-center .title-area .title', { types: 'words' });
     // 센터 영역 애니메이션
     const centerTL = gsap.timeline()
-    .from('.sc-center .title-area .word, .sc-center .title-area .link', { 
+    .from('.sc-center .title-area .word, .sc-center .title-area .link, .sc-center .title-area .txt', { 
         autoAlpha: 0, 
         yPercent: 100, 
         stagger: { 
             amount: 0.3 
         }
     })
-    .from('.sc-center .title-area .txt', { 
-        autoAlpha: 0
-    }, '<')
 
     ScrollTrigger.create({
         trigger: '.sc-center',
-        start: 'top top',
-        end: 'bottom top',
+        start: 'top center',
+        end: 'bottom center',
         animation: centerTL,
     })
 
@@ -269,5 +328,12 @@ $(document).ready(function() {
         start: 'top center',
         end: 'bottom center',
         animation: footerTL,
+    })
+
+    $(window).on('resize', () => {
+        clearTimeout(refreshTrigger);
+        refreshTrigger = setTimeout(function () {
+            ScrollTrigger.refresh();
+        }, 300);
     })
 })

@@ -287,7 +287,7 @@
             
             &:nth-of-type(1) {
                 top: 5%;
-                left: 26.25%;
+                left: 28em;
 
                 .bg1 {
                     transform: scale(0.7) rotate(38.2779deg);
@@ -304,7 +304,7 @@
                 }
             }
             &:nth-of-type(3) {
-                bottom: 28.333333333333332%;
+                bottom: 17em;
                 left: 18em;
 
                 .bg3 {
@@ -920,7 +920,7 @@
 
 .swiper-controller {
     display: flex;
-    
+
     .swiper-btn-wrap {
         &:hover {
             .btn {
@@ -1044,7 +1044,7 @@
     background-size: cover;
     color: var(--light);
     gap: 10em;
-    @include bg('bg-center.webp');
+    @include bg('bg-center.webp', $size: cover);
     @include mobile() {
         padding: 5em 0 6em;
         gap: 0;
