@@ -3,6 +3,7 @@ Enterprise = {
         this.handleLang();
         this.scrollTop();
     },
+    // 네비게이션 언어 선택
     handleLang: function () {
         const navItem = $('#header .lang')
         const navLink = $('#header .lang > .link');
@@ -34,6 +35,7 @@ Enterprise = {
             }
         })
     },
+    // 최상단 이동
     scrollTop: () => {
         $('.btn-top').on('click', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -2,38 +2,30 @@ $(document).ready(function() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.defaults({ease: 'none'});
 
-    // 질문
-    // 스크롤을 상단으로 쎄게 하면 튕기는 듯한 느낌
-
-    // line의 타임라인과 개별 섹션의 애니메이션과 잘 안맞는 느낌
-    // line이 너무 빨리 실행됨
-    // 이 경우 tween의 duration을 늘려 scrolltrigger에서 차지하는 비중을 늘려야하는지
-    // dom의 높이를 늘려야하는지 애매함
     const isMobile = window.matchMedia("(max-width: 960px)").matches;
-
     const svgTl = gsap.timeline()
-    .to('.sc-visual .line-gradient .path', { duration: .6, strokeDashoffset: 0})
-    .to('.sc-bean .line-bean .path', { duration: 1, strokeDashoffset: 0})
-    .to('.sc-grain .line-grain .path', { duration: () => {
-        return isMobile ? 1 : 2
-    }, strokeDashoffset: 0})
-    .add(pathGrainMobile())
-    .to('.sc-grain .line-farmer .outline', { duration: .4, strokeDashoffset: 0})
-    .to('.sc-grain .line-farmer .path:not(.outline)', { duration: .4, strokeDashoffset: 0}, '-=.2')
-    .to('.sc-tech .line .path', { duration: 1.5, strokeDashoffset: 0}, '-=.1')
-    .to('.sc-roast .top .path', { duration: .7, strokeDashoffset: 0})
-    .to('.sc-roast .line-bean .path', { duration: 1, strokeDashoffset: 0})
-    .to('.sc-roast .bottom .path', { duration: .7, strokeDashoffset: 0})
-    .to('.sc-discover .group-bg .line .path', { strokeDashoffset: 0})
-    .from('.sc-discover .line .logo', { opacity: 0}, '<')
-    function pathGrainMobile() {
-        if(isMobile) {
-            const tl = gsap.timeline()
-            .to('.sc-grain .line-bean .path', { duration: 1, strokeDashoffset: 0})
-            .to('.sc-grain .line-grain2 .path', { strokeDashoffset: 0})
-            return tl
-        }
-    }
+    // .to('.sc-visual .line-gradient .path', { duration: .6, strokeDashoffset: 0})
+    // .to('.sc-bean .line-bean .path', { duration: 1, strokeDashoffset: 0})
+    // .to('.sc-grain .line-grain .path', { duration: () => {
+    //     return isMobile ? 1 : 2
+    // }, strokeDashoffset: 0})
+    // .add(pathGrainMobile())
+    // .to('.sc-grain .line-farmer .outline', { duration: .4, strokeDashoffset: 0})
+    // .to('.sc-grain .line-farmer .path:not(.outline)', { duration: .4, strokeDashoffset: 0}, '-=.2')
+    // .to('.sc-tech .line .path', { duration: 1.5, strokeDashoffset: 0}, '-=.1')
+    // .to('.sc-roast .top .path', { duration: .7, strokeDashoffset: 0})
+    // .to('.sc-roast .line-bean .path', { duration: 1, strokeDashoffset: 0})
+    // .to('.sc-roast .bottom .path', { duration: .7, strokeDashoffset: 0})
+    // .to('.sc-discover .group-bg .line .path', { strokeDashoffset: 0})
+    // .from('.sc-discover .line .logo', { opacity: 0}, '<')
+    // function pathGrainMobile() {
+    //     if(isMobile) {
+    //         const tl = gsap.timeline()
+    //         .to('.sc-grain .line-bean .path', { duration: 1, strokeDashoffset: 0})
+    //         .to('.sc-grain .line-grain2 .path', { strokeDashoffset: 0})
+    //         return tl
+    //     }
+    // }
 
     ScrollTrigger.create({
         trigger: '.sticky-wrap',
@@ -43,16 +35,30 @@ $(document).ready(function() {
         scrub: true,
     })
 
+    ScrollTrigger.create({
+        trigger: '.sc-visual',
+        start: 'top 0%',
+        end: () => {
+            return isMobile ? '100% 40%' : '100% 40%';
+        },
+        animation: gsap.to('.sc-visual .line-gradient .path', { duration: .6, strokeDashoffset: 0}),
+        scrub: 0,
+    })
+    
     const beanTween = gsap.from('.sc-bean .txt-area > *, .ico-bean', { autoAlpha: 0, yPercent: 100, stagger: { each: 0.2 }})
-
+    
     ScrollTrigger.create({
         trigger: '.sc-bean',
-        start: 'top top',
-        end: 'bottom top',
+        start: () => {
+            return isMobile ? '0% 40%' : '0% 40%'
+        },
+        end: 'bottom 65%',
+        scrub: 0,
+        animation: gsap.to('.sc-bean .line-bean .path', { duration: 1, strokeDashoffset: 0}),
         onEnter: () => beanTween,
     })
 
-    const grainTl = gsap.timeline()
+    const cherryTl = gsap.timeline()
     .set('.sc-grain .cherry-box', { yPercent: idx => {
         return (idx + 2) * 100;
     }})
@@ -64,30 +70,38 @@ $(document).ready(function() {
         trigger: '.sc-grain .inner',
         start: 'top bottom',
         end: 'bottom top',
-        animation: grainTl,
+        animation: cherryTl,
         scrub: true,
     })
 
     const grainTween = gsap.from('.sc-grain .txt-area > *', { autoAlpha: 0, yPercent: 100, stagger: { each: 0.2 }})
+    const grainTl = gsap.timeline()
+    .to('.sc-grain .line-grain .path', { strokeDashoffset: 0})
+    .to('.sc-grain .line-farmer .outline', { duration: .4, strokeDashoffset: 0})
+    .to('.sc-grain .line-farmer .path:not(.outline)', { duration: .4, strokeDashoffset: 0}, '-=.2')
     ScrollTrigger.create({
         trigger: '.sc-grain',
-        start: 'top top',
-        end: 'bottom top',
+        start: 'top 65%',
+        end: 'bottom 45%',
+        animation: grainTl,
+        scrub: 0,
         onEnter: () => grainTween,
     })
-
+    
     const techTween = gsap.from('.sc-tech .txt-area > *', { autoAlpha: 0, yPercent: 100, stagger: { each: 0.2 }})
     ScrollTrigger.create({
         trigger: '.sc-tech',
-        start: 'top top',
-        end: 'bottom top',
+        start: 'top 75%',
+        end: 'bottom 75%',
+        scrub: 0,
+        animation: gsap.to('.sc-tech .line .path', { strokeDashoffset: 0}),
+        markers: true,
         onEnter: () => techTween,
     })
 
     const techVideo = document.querySelector(".sc-tech video");
     const techTl = gsap.timeline()
     .from('.floating-bean', {'--yPercent': 0})
-    // video가 load되고 난 이후 실행해야 druation을 구할 수 있음
     techVideo.onloadedmetadata = function () {
         techTl.to(techVideo, { currentTime: techVideo.duration }, '<')
     };
@@ -97,8 +111,7 @@ $(document).ready(function() {
         start: 'top bottom',
         end: 'bottom top',
         animation: techTl,
-        // markers:true,
-        scrub: 1, // 비디오가 끊겨보인 이유
+        scrub: 1,
     })
     
     const roastVideo = document.querySelector("#flavor video");
@@ -110,39 +123,56 @@ $(document).ready(function() {
         trigger: '#flavor',
         start: 'top bottom',
         end: 'bottom top',
-        animation: roastVideoTl,
         markers: true,
+        animation: roastVideoTl,
         scrub: 1,
     })
 
+    const roatTl = gsap.timeline()
+    .to('.sc-roast .top .path', { duration: .7, strokeDashoffset: 0})
+    .to('.sc-roast .line-bean .path', { duration: 1, strokeDashoffset: 0})
+    .to('.sc-roast .bottom .path', { duration: .7, strokeDashoffset: 0})
+
+    ScrollTrigger.create({
+        trigger: '.sc-roast',
+        start: 'top 75%',
+        end: 'bottom 35%',
+        animation: roatTl,
+        markers: true,
+        scrub: 0,
+    })
+
     const roastTxt = new SplitType('.sc-roast .txt-area .title', { types: 'words' });
-    const roastTl = gsap.timeline()
+    const roastTxtTl = gsap.timeline()
     .to('.sc-roast', { '--inset': 0, duration: 5})
     .to('.sc-roast .txt-area1 .title .word', { autoAlpha: 0, yPercent: -100, stagger: { amount: 0.5}}, '<')
     .to('.sc-roast .txt-area1 .txt', { autoAlpha: 0}, '<')
     .from('.sc-roast .txt-area2 .title .word', { autoAlpha: 0, yPercent: 100, stagger: { amount: 0.5}}, '-=3.6')
     .from('.sc-roast .txt-area2 .txt', { autoAlpha: 0}, '-=2.8')
 
-
     ScrollTrigger.create({
-        trigger: '.sc-roast',
+        trigger: '.sc-roast ,sticky',
         start: 'top top',
         end: 'bottom bottom',
-        animation: roastTl,
-        markers: true,
-        scrub: true,
+        animation: roastTxtTl,
+        scrub: 0,
     })
 
     const discoverTL = gsap.timeline()
+    .to('.sc-discover .group-bg .line .path', { strokeDashoffset: 0})
+    .from('.sc-discover .line .logo', { opacity: 0}, '<')
+
+    const discoverTl02 = gsap.timeline()
     .from('.sc-discover .txt-area > *, .sc-discover .link', { autoAlpha: 0, yPercent: 100, stagger: { each: 0.2 }})
     .to('.sc-discover .group-cnt .line .path', { strokeDashoffset: 0}, '<')
 
     ScrollTrigger.create({
         trigger: '.sc-discover',
-        start: 'top center',
-        end: 'bottom center',
-        markers:true,
-        onEnter: () => discoverTL,
+        start: 'top 35%',
+        end: 'bottom 100%',
+        scrub: 0,
+        animation: discoverTL,
+        onEnter: () => discoverTl02,
     })
 
     const centerTxt = new SplitType('.sc-center .title-area .title', { types: 'words' });
@@ -154,7 +184,6 @@ $(document).ready(function() {
         trigger: '.sc-center',
         start: 'top top',
         end: 'bottom top',
-        markers:true,
         onEnter: () => centerTL,
     })
 
@@ -164,7 +193,6 @@ $(document).ready(function() {
         trigger: '.sc-news',
         start: 'top center',
         end: 'bottom center',
-        markers:true,
         onEnter: () => newsTween,
     })
 
@@ -176,7 +204,6 @@ $(document).ready(function() {
         trigger: '#footer',
         start: 'top center',
         end: 'bottom center',
-        markers:true,
         onEnter: () => footerTL,
     })
 })

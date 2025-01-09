@@ -1,6 +1,7 @@
 Jazean = {
     init: function () {
-        this.openingAni();
+        // this.openingAni();
+        $('body').addClass('is-loaded');
         this.setStrokeAnimation('.path');
         this.setSwiper();
         this.handleCursor();

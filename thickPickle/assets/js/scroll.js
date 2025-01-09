@@ -1,6 +1,7 @@
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 gsap.defaults({ease: 'none'});
 
+// 텍스트 나누기
 splitLinesInit = () => {
     const splitLines = new SplitType('.split', { types: 'lines'});
     $('.line').wrap('<div class="txt-ani"></div>');

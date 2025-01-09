@@ -7,6 +7,9 @@ ThickPickle = {
         this.handleSwiper();
         this.nav();
     },
+    /**
+     * 인트로 애니메이션
+     */
     introAni: function() {
         const introIcon = $('.intro .ico-loader');
 
@@ -47,6 +50,9 @@ ThickPickle = {
             })
         })
     },
+    /**
+     * 헤더 스크롤 상하 애니메이션
+     */
     scrollHdrAni: function() {
         let lastScroll = 0;
         const logo = document.querySelector('#header .logo');
@@ -76,6 +82,9 @@ ThickPickle = {
             lastScroll = curr;
         });
     },
+    /**
+     * 커서 컨트롤 함수
+     */
     handleCursor: function() {
         const cursor = $('.cursor');
 
@@ -99,6 +108,10 @@ ThickPickle = {
             yTo(y);
         })
     },
+    /**
+     * 스와이퍼
+     * swiperSpecies: sc-species 영역 스와이퍼
+     */
     handleSwiper: function() {
         const swiperSpecies = new Swiper('.species-swiper', {
             loop: true,
@@ -130,6 +143,9 @@ ThickPickle = {
             }
         })
     },
+    /**
+     * 마우스 이미지 컨트롤 애니메이션
+     */
     handleImgMove: function() {
         $('.species-swiper').mousemove(function(e) {
             xVal = (1 - (e.clientX / (window.innerWidth / 2)));
@@ -141,6 +157,9 @@ ThickPickle = {
             })
         })
     },
+    /**
+     * 네비게이션 영역 스크롤 이동
+     */
     nav: function() {
         const logo = $('#header .logo');
         const utils = $('#header .link-utils');
