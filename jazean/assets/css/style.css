@@ -1923,6 +1923,9 @@ svg, video {
   color: inherit;
   line-height: 1;
 }
+.sc-center .title-area .txt {
+  display: block;
+}
 .sc-center .group-info {
   display: -webkit-box;
   display: -ms-flexbox;

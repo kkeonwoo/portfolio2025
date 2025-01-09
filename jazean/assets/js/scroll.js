@@ -138,33 +138,66 @@ $(document).ready(function() {
         start: 'top 75%',
         end: 'bottom 35%',
         animation: roatTl,
-        markers: true,
         scrub: 0,
     })
 
+    // roast 영역 텍스트 나누기
     const roastTxt = new SplitType('.sc-roast .txt-area .title', { types: 'words' });
+    // roast 영역 텍스트 애니메이션
     const roastTxtTl = gsap.timeline()
-    .to('.sc-roast', { '--inset': 0, duration: 5})
-    .to('.sc-roast .txt-area1 .title .word', { autoAlpha: 0, yPercent: -100, stagger: { amount: 0.5}}, '<')
-    .to('.sc-roast .txt-area1 .txt', { autoAlpha: 0}, '<')
-    .from('.sc-roast .txt-area2 .title .word', { autoAlpha: 0, yPercent: 100, stagger: { amount: 0.5}}, '-=3.6')
-    .from('.sc-roast .txt-area2 .txt', { autoAlpha: 0}, '-=2.8')
+    .to('.sc-roast', { 
+        '--inset': 0, 
+        duration: 5
+    })
+    .to('.sc-roast .txt-area1 .title .word', { 
+        autoAlpha: 0, 
+        yPercent: -100, 
+        stagger: { 
+            amount: 0.5
+        }
+    }, '<')
+    .to('.sc-roast .txt-area1 .txt', { 
+        autoAlpha: 0
+    }, '<')
+    .from('.sc-roast .txt-area2 .title .word', { 
+        autoAlpha: 0, 
+        yPercent: 100, 
+        stagger: { 
+            amount: 0.5
+        }
+    }, '-=3.6')
+    .from('.sc-roast .txt-area2 .txt', { 
+        autoAlpha: 0
+    }, '-=2.8')
 
     ScrollTrigger.create({
-        trigger: '.sc-roast ,sticky',
+        trigger: '.sc-roast',
         start: 'top top',
         end: 'bottom bottom',
         animation: roastTxtTl,
         scrub: 0,
     })
 
+    // discover 영역 애니메이션
     const discoverTL = gsap.timeline()
-    .to('.sc-discover .group-bg .line .path', { strokeDashoffset: 0})
-    .from('.sc-discover .line .logo', { opacity: 0}, '<')
+    .to('.sc-discover .group-bg .line .path', { 
+        strokeDashoffset: 0
+    })
+    .from('.sc-discover .line .logo', { 
+        opacity: 0
+    }, '<')
 
     const discoverTl02 = gsap.timeline()
-    .from('.sc-discover .txt-area > *, .sc-discover .link', { autoAlpha: 0, yPercent: 100, stagger: { each: 0.2 }})
-    .to('.sc-discover .group-cnt .line .path', { strokeDashoffset: 0}, '<')
+    .from('.sc-discover .txt-area > *, .sc-discover .link', { 
+        autoAlpha: 0, 
+        yPercent: 100, 
+        stagger: { 
+            each: 0.2 
+        }
+    })
+    .to('.sc-discover .group-cnt .line .path', { 
+        strokeDashoffset: 0
+    }, '<')
 
     ScrollTrigger.create({
         trigger: '.sc-discover',
@@ -175,35 +208,66 @@ $(document).ready(function() {
         onEnter: () => discoverTl02,
     })
 
+    // 타이틀 단어 나누기
     const centerTxt = new SplitType('.sc-center .title-area .title', { types: 'words' });
+    // 센터 영역 애니메이션
     const centerTL = gsap.timeline()
-    .from('.sc-center .title .word, .sc-center .link', { autoAlpha: 0, yPercent: 100, stagger: { amount: 0.3 }})
-    .from('.sc-center .txt', { autoAlpha: 0}, '<')
+    .from('.sc-center .title-area .word, .sc-center .title-area .link', { 
+        autoAlpha: 0, 
+        yPercent: 100, 
+        stagger: { 
+            amount: 0.3 
+        }
+    })
+    .from('.sc-center .title-area .txt', { 
+        autoAlpha: 0
+    }, '<')
 
     ScrollTrigger.create({
         trigger: '.sc-center',
         start: 'top top',
         end: 'bottom top',
-        onEnter: () => centerTL,
+        animation: centerTL,
     })
 
-    const newsTween = gsap.from('.sc-news .swiper-slide', { autoAlpha: 0, xPercent: 100, ease: 'sine.out', duration: 1, stagger: { each: 0.3 }})
-
+    // 뉴스 영역 애니메이션
     ScrollTrigger.create({
         trigger: '.sc-news',
         start: 'top center',
         end: 'bottom center',
-        onEnter: () => newsTween,
+        animation: gsap.from('.sc-news .swiper-slide', { 
+            autoAlpha: 0, 
+            xPercent: 100, 
+            ease: 'sine.out', 
+            duration: 1, 
+            stagger: { 
+                each: 0.3
+            }
+        }),
     })
 
+    // footer 영역 애니메이션
     const footerTL = gsap.timeline()
-    .from('#footer .ft-top > *', { autoAlpha: 0, xPercent: 100, ease: 'sine.out', stagger: { each: 0.3 }})
-    .from('#footer .ft-bottom *', { autoAlpha: 0, ease: 'sine.out', stagger: { each: 0.3 }})
+    .from('#footer .ft-top > *', { 
+        autoAlpha: 0, 
+        xPercent: 100, 
+        ease: 'sine.out', 
+        stagger: { 
+            amount: 0.3 
+        }
+    })
+    .from('#footer .ft-bottom *', { 
+        autoAlpha: 0, 
+        ease: 'sine.out', 
+        stagger: { 
+            amount: 0.3 
+        }
+    })
 
     ScrollTrigger.create({
         trigger: '#footer',
         start: 'top center',
         end: 'bottom center',
-        onEnter: () => footerTL,
+        animation: footerTL,
     })
 })
