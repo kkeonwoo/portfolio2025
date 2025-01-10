@@ -2,25 +2,53 @@ $(document).ready(function() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.defaults({ease: 'none'});
 
+    // 단어 쪼개기
+    const roastTxt = new SplitType('.sc-roast .txt-area .title', { types: 'words' });
+    const centerTxt = new SplitType('.sc-center .title-area .title', { types: 'words' });
+    
+    // 모바일 체크
     const isMobile = window.matchMedia("(max-width: 960px)").matches;
 
-    // 텍스트 기본 위치 세팅
-    gsap.set('.sc-bean .txt-area > *, .ico-bean', { 
-        autoAlpha: 0, 
-        yPercent: 100, 
-    })
-    gsap.set('.sc-grain .txt-area > *', { 
-        autoAlpha: 0, 
-        yPercent: 100, 
-    })
-    gsap.set('.sc-tech .txt-area > *', { 
-        autoAlpha: 0, 
-        yPercent: 100,
-    })
-    gsap.set('.sc-discover .txt-area > *, .sc-discover .link', { 
-        autoAlpha: 0, 
-        yPercent: 100,
-    })
+    // gsap matchmedia
+    let mm = gsap.matchMedia();
+    // 텍스트 애니메이션 : translateY, opacity
+    gsap.utils.toArray('.ani-translateY').forEach((target) => {
+        // 기본값 세팅
+        gsap.set(target, { 
+            autoAlpha: 0, 
+            yPercent: 100, 
+        })
+
+        const tween = gsap.to(target, {
+            autoAlpha: 1,
+            yPercent: 0,
+            stagger: { 
+                each: 0.2 
+            },
+            paused: true,
+        })
+
+        // pc
+        mm.add("(min-width: 960px)", () => {
+            ScrollTrigger.create({
+                trigger: target.closest('section'),
+                start: 'top center',
+                end: 'bottom center',
+                onEnter: () => tween.play(),
+            });
+        });
+
+        // mobile
+        mm.add("(max-width: 959px)", () => {
+            ScrollTrigger.create({
+                trigger: target.closest('.group-cnt'),
+                start: 'top 80%',
+                end: 'bottom 80%',
+                markers: true,
+                onEnter: () => tween.play(),
+            })
+        });
+    });
 
     // visual 영역 애니메이션
     ScrollTrigger.create({
@@ -34,14 +62,6 @@ $(document).ready(function() {
     })
 
     // bean 영역 애니메이션
-    const beanTween = gsap.to('.sc-bean .txt-area > *, .ico-bean', { 
-        autoAlpha: 1, 
-        yPercent: 0, 
-        stagger: { 
-            each: 0.2 
-        },
-        paused: true,
-    })
     ScrollTrigger.create({
         trigger: '.sc-bean',
         start: '0% 40%',
@@ -50,7 +70,6 @@ $(document).ready(function() {
         animation: gsap.to('.sc-bean .line-bean .path', { 
             strokeDashoffset: 0
         }),
-        onEnter: () => beanTween.play(),
     })
 
      // grain 영역 커피콩 애니메이션
@@ -76,14 +95,6 @@ $(document).ready(function() {
     })
 
     // grain 영역 svg 애니메이션
-    const grainTween = gsap.to('.sc-grain .txt-area > *', { 
-        autoAlpha: 1, 
-        yPercent: 0, 
-        stagger: { 
-            each: 0.2 
-        },
-        paused: true,
-    })
     const grainTl = gsap.timeline()
     .to('.sc-grain .line-grain .path', { 
         strokeDashoffset: 0
@@ -114,19 +125,9 @@ $(document).ready(function() {
         } ,
         animation: grainTl,
         scrub: 0,
-        onEnter: () => grainTween.play(),
     })
     
     // tech 영역 svg 애니메이션
-    const techTween = gsap.to('.sc-tech .txt-area > *', { 
-        autoAlpha: 1, 
-        yPercent: 0, 
-        stagger: { 
-            each: 0.2 
-        },
-        paused: true,
-    })
-
     ScrollTrigger.create({
         trigger: '.sc-tech',
         start: () => {
@@ -139,7 +140,6 @@ $(document).ready(function() {
         animation: gsap.to('.sc-tech .line .path', { 
             strokeDashoffset: 0
         }),
-        onEnter: () => techTween.play(),
     })
 
     // tech 영역 비디오, 커피 애니메이션
@@ -205,8 +205,6 @@ $(document).ready(function() {
         scrub: 0,
     })
 
-    // roast 영역 텍스트 나누기
-    const roastTxt = new SplitType('.sc-roast .txt-area .title', { types: 'words' });
     // roast 영역 텍스트 애니메이션
     const roastTxtTl = gsap.timeline()
     .to('.sc-roast', { 
@@ -270,8 +268,6 @@ $(document).ready(function() {
         }
     })
 
-    // 타이틀 단어 나누기
-    const centerTxt = new SplitType('.sc-center .title-area .title', { types: 'words' });
     // 센터 영역 애니메이션
     const centerTL = gsap.timeline()
     .from('.sc-center .title-area .word, .sc-center .title-area .link, .sc-center .title-area .txt', { 
@@ -331,9 +327,9 @@ $(document).ready(function() {
     })
 
     $(window).on('resize', () => {
-        clearTimeout(refreshTrigger);
         refreshTrigger = setTimeout(function () {
             ScrollTrigger.refresh();
         }, 300);
+        clearTimeout(refreshTrigger);
     })
 })

@@ -9,6 +9,9 @@ Jazean = {
         this.textSplit();
         this.mobileHdr();
     },
+    /**
+     * 인트로 애니메이션
+     */
     openingAni: function() {
         lenis.stop();
 
@@ -67,6 +70,11 @@ Jazean = {
             }
         })
     },
+    /**
+     * 스와이퍼
+     * product section swiper
+     * news section swiper
+     */
     setSwiper: function() {
         const swiperProduct = new Swiper('.sc-product .swiper-product', {
             initialSlide: 1,
@@ -152,6 +160,9 @@ Jazean = {
             },
         })
     },
+    /**
+     * 마우스 이벤트
+     */
     handleCursor: function() {
         // quickTo: 성능최적화 유틸리티
         const cursor = $('.cursor');
@@ -201,6 +212,9 @@ Jazean = {
             })
         })
     },
+    /**
+     * 사이드 네비게이션
+     */
     handleSnb: function() {
         const $linkSnb = $('.snb .link-snb');
 
@@ -222,27 +236,30 @@ Jazean = {
             })
         })
     },
+    /**
+     * 텍스트 marquee 효과 구현
+     */
     textSplit: function() {
         const splitTxt = new SplitType('.marquee .txt', { types: 'words' });
 
         gsap.utils.toArray('.marquee').forEach((marquee, idx) => {
             $(marquee).hover(function() {
-                gsap.to($(this).find('.txt .word'), { 
+                gsap.to($(this).find('.txt .word, svg'), { 
                     yPercent: -100, 
                     stagger: { 
                         amount: 0.3
                     }
                 })
             }, function() {
-                gsap.to($(this).find('.txt .word'), { 
-                    yPercent: 0, 
-                    stagger: { 
-                        amount: 0.3
-                    }
+                gsap.set($(this).find('.txt .word, svg'), { 
+                    yPercent: 0,
                 })
             })
         })
     },
+    /**
+     * 모바일 햄버거 메뉴, 애니메이션
+     */
     mobileHdr: function() {
         const hamburger = $('.btn-hamburger');
         let frag = false;
@@ -293,9 +310,18 @@ Jazean = {
             }
         })
     },
+    /**
+     * svg 길이
+     * @param {*} t svg class path 
+     * @returns path length
+     */
     getPathLength: function(t) {
         return $(t)[0].getTotalLength();
     },
+    /**
+     * svg 초기값 세팅
+     * @param {*} t svg class path 
+     */
     setStrokeAnimation: function(t) {
         $(t).each((_, path) => {
             const pathLength = this.getPathLength(path);

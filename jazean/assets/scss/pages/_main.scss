@@ -1,7 +1,4 @@
 .intro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -13,6 +10,7 @@
     opacity: 1;
     will-change: opacity;
     pointer-events: none;
+    @include flex(center, center);
 
     .is-loaded & {
         opacity: 0;
@@ -53,8 +51,6 @@
 }
 
 .snb {
-    display: flex;
-    align-items: center;
     position: sticky;
     top: 0;
     z-index: 990;
@@ -62,6 +58,7 @@
     height: 100vh;
     color: var(--dark);
     mix-blend-mode: exclusion;
+    @include flex(_, center);
 
     .snb-list {
         .snb-item {
@@ -119,6 +116,7 @@
                     width: unset;
                     max-width: unset;
                 }
+
                 .logo-roots {
                     opacity: 0;
                     visibility: hidden;
@@ -161,6 +159,7 @@
 
         .ico {
             position: absolute;
+            
             &.ico-rotate {
                 animation: rotateSpinner 7s linear infinite;
             }
@@ -913,7 +912,7 @@
     }
 
     .line {
-        width: 2.8em;
+        width: 2.8em !important;
         background: var(--orange) !important;
     }
 }

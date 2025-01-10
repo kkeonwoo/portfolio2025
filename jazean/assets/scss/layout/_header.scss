@@ -2,8 +2,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
     z-index: 999;
+    width: 100%;
     text-transform: uppercase;
 
     .header-inner {
@@ -33,16 +33,16 @@
                 flex-direction: column;
                 position: fixed;
                 top: 0;
-                left: 0;
-                bottom: 0;
                 right: 0;
+                bottom: 0;
+                left: 0;
                 z-index: 995;
                 width: 100vw;
                 height: 100vh;
                 background: #180d0a;
+                transform: translate(0);
                 opacity: 0;
                 visibility: hidden;
-                transform: translate(0);
                 @include flex(center, center);
 
                 &::before {
@@ -59,8 +59,8 @@
                 gap: 2.8em;
                 @include flex(center, center);
                 @include tablet() {
-                    align-items: flex-start;
                     flex-direction: column;
+                    align-items: flex-start;
                     gap: 2em;
 
                     .nav-item {
@@ -84,8 +84,8 @@
                 
                 .sns-list {
                     display: flex;
-                    gap: 1em;
                     margin-top: 1.5em;
+                    gap: 1em;
     
                     .link {
                         width: 2.25em;
@@ -94,7 +94,29 @@
                         border-radius: 50%;
                         @include flex(center, center);
     
+                        &::before {
+                            top: 0;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            background: var(--orange);
+                            transform: scale(0);
+                            border-radius: 50%;
+                            transition: transform .5s cubic-bezier(.22,.61,.36,1);
+                            will-change: transform;
+                            @include pseudo();
+                        }
+                        
+                        &:hover {
+                            border-color: transparent;
+
+                            &::before {
+                                transform: scale(1);
+                            }
+                        }
+
                         .ico {
+                            overflow: hidden;
                             width: 1em;
                             height: 1em;
                         }
@@ -117,28 +139,27 @@
                     justify-content: space-between;
                     position: relative;
                     z-index: 996;
-                    gap: 2.5px;
                     height: 21px;
+                    gap: 2.5px;
                 }
     
                 span {
                     width: 17px;
                     height: 2px;
                     background: var(--light);
-                    transform-origin: 50% 50%;
                     transition: all .5s cubic-bezier(.22,.61,.36,1);
-                    // 질문
+                    transform-origin: 50% 50%;
                     @at-root #header.on .header-inner .utils span {
                         background: var(--gold);
 
                         &:nth-child(1) {
-                            transform: rotate(45deg) translate(5px, 50%);
-                        }
-                        &:nth-child(2) {
                             opacity: 0;
                         }
+                        &:nth-child(2) {
+                            transform: rotate(45deg);
+                        }
                         &:nth-child(3) {
-                            transform: rotate(-45deg) translate(5px, -50%);;
+                            transform: rotate(-45deg) translate(7px, -7px);
                         }
                     }
                 }
@@ -147,9 +168,9 @@
         
         .link {
             display: block;
+            transform: translateY(-100%);
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-100%);
 
             .txt, &.link-lang {
                 color: var(--light);
@@ -164,8 +185,8 @@
             &.link-lang {
                 position: relative;
                 top: .1em;
-                width: 2.3em;
                 z-index: 996;
+                width: 2.3em;
             }
         }
     }
