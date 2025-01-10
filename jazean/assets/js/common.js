@@ -78,7 +78,7 @@ Jazean = {
     setSwiper: function() {
         const swiperProduct = new Swiper('.sc-product .swiper-product', {
             initialSlide: 1,
-            slidesPerView: 1.2,
+            slidesPerView: 1.4,
             centeredSlides: true,
             navigation: {
                 nextEl: ".swiper-product .btn-next",
@@ -102,6 +102,7 @@ Jazean = {
         function slidePosition(swiper) {
             const slides = $('.sc-product .swiper-slide');
             let img = slides.find('img');
+
             gsap.utils.toArray('.sc-product .swiper-slide').forEach((slide, idx) => {
                 if (idx < swiper.activeIndex) {
                     gsap.set(img[idx], { x: (idx, slide) => {

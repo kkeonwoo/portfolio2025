@@ -1931,6 +1931,18 @@ svg, video {
   overflow: visible;
   margin-top: 3em;
 }
+.sc-product .swiper-product .swiper-slide {
+  opacity: 0.8;
+  -webkit-filter: blur(4px);
+          filter: blur(4px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.sc-product .swiper-product .swiper-slide.swiper-slide-active {
+  opacity: 1;
+  -webkit-filter: blur(0);
+          filter: blur(0);
+}
 .sc-product .swiper-product .swiper-controller, .sc-product .swiper-product .sc-news .inner .title-area .swiper-controller, .sc-news .inner .title-area .sc-product .swiper-product .swiper-controller {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;

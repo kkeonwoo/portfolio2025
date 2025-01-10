@@ -1007,15 +1007,13 @@
         margin-top: 3em;
 
         .swiper-slide {
-            // img {
-            //     transform: scale(1);
-            //     transform-origin: 50% 50%;
-            //     transition: all .5s cubic-bezier(.22,.61,.36,1);
-            // }
-
-            // &:not(.swiper-slide-active) img {
-            //     transform: scale(0.46);
-            // }
+            opacity: 0.8;
+            filter: blur(4px);
+            transition: all .3s;
+            &.swiper-slide-active {
+                opacity: 1;
+                filter: blur(0);
+            }
         }
 
         .swiper-controller {
