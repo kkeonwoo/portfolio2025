@@ -898,11 +898,6 @@
 
 .btn-hover {
     color: var(--orange) !important;
-                
-    &::before {
-        border-color: var(--orange) !important;
-        transform: scale(0.8);
-    }
 
     &.btn-prev .ico-arw {
         transform: translateX(-50%);
@@ -929,6 +924,8 @@
     }
 
     .btn {
+        --x: 0;
+        --y: 0;
         position: relative;
         width: 3.813em;
         height: 3.813em;
@@ -945,10 +942,16 @@
             width: 100%;
             height: 100%;
             border: 1px solid var(--light);
+            transform: translate(var(--x), var(--y));
             transition: all .5s cubic-bezier(.22,.61,.36,1);
             border-radius: 50%;
             transform-origin: 50% 50%;
             @include pseudo();
+        }
+
+        &.btn-hover::before {
+            border-color: var(--orange) !important;
+            transform: translate(var(--x), var(--y)) scale(0.8);
         }
         
         .ico-arw {

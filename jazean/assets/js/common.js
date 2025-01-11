@@ -177,6 +177,43 @@ Jazean = {
             yTo(y);
         })
 
+        const $moveBtn = $('.btn-move');
+        $moveBtn.each((idx, btn) => {
+            $(window).on('mousemove', function(e) {
+                const cursorRect = cursor[0].getBoundingClientRect(); /* 커서 사이즈 */
+                const btnRect = $(btn)[0].getBoundingClientRect(); /* 버튼 사이즈 */
+                const isHover = /* 겹치는 영역 */
+                cursorRect.right > btnRect.left &&
+                cursorRect.left < btnRect.right &&
+                cursorRect.bottom > btnRect.top &&
+                cursorRect.top < btnRect.bottom;
+                
+                if (isHover) {
+                    // 버튼 중앙값
+                    const btnCenterX = btnRect.left + btnRect.width / 2;
+                    const btnCenterY = btnRect.top + btnRect.height / 2;
+                    // 버튼 기준 커서 위치
+                    const offsetX = (e.clientX - btnCenterX);
+                    const offsetY = (e.clientY - btnCenterY);
+                    // x, y 최대값
+                    const rangeX = Math.max(-btnRect.width / 2, Math.min(btnRect.width / 2, offsetX));
+                    const rangeY = Math.max(-btnRect.height / 2, Math.min(btnRect.height / 2, offsetY));
+                    
+                    gsap.to(btn, {
+                        '--x': `${rangeX}px`,
+                        '--y': `${rangeY}px`,
+                        ease: 'none',
+                    });
+                } else {
+                    gsap.to(btn, { 
+                        '--x': 0, 
+                        '--y': 0,
+                        ease: 'none' 
+                    });
+                }
+            })
+        })
+
         $('a, button').hover(function() {
             $(cursor).addClass('hover');
         }, function() {

@@ -56,8 +56,6 @@ section {
   --x: 0;
   --y: 0;
   --opacity: 1;
-  --xBefore: 0;
-  --yBefore: 0;
   position: fixed;
   top: calc(var(--y) * 1px);
   left: calc(var(--x) * 1px);
@@ -508,6 +506,8 @@ svg, video {
 
 @media (max-width: 960px) {
   #header .header-inner .utils .btn-hamburger {
+    --x: 0;
+    --y: 0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -519,6 +519,8 @@ svg, video {
         -ms-flex-pack: justify;
             justify-content: space-between;
     position: relative;
+    top: var(--y);
+    left: var(--x);
     z-index: 996;
     height: 21px;
     gap: 2.5px;
@@ -1825,11 +1827,6 @@ svg, video {
 .btn-hover, .swiper-controller .btn:hover, .sc-news .inner .title-area .swiper-controller .btn:hover, .swiper-controller .swiper-btn-wrap:hover .btn {
   color: var(--orange) !important;
 }
-.btn-hover::before, .swiper-controller .btn:hover::before, .sc-news .inner .title-area .swiper-controller .btn:hover::before, .swiper-controller .swiper-btn-wrap:hover .btn::before {
-  border-color: var(--orange) !important;
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8);
-}
 .btn-hover.btn-prev .ico-arw, .swiper-controller .btn-prev.btn:hover .ico-arw, .swiper-controller .swiper-btn-wrap:hover .btn-prev.btn .ico-arw {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -1849,6 +1846,8 @@ svg, video {
   display: flex;
 }
 .swiper-controller .btn, .sc-news .inner .title-area .swiper-controller .btn, .sc-product .swiper-product .swiper-controller .btn {
+  --x: 0;
+  --y: 0;
   position: relative;
   width: 3.813em;
   height: 3.813em;
@@ -1868,6 +1867,8 @@ svg, video {
   width: 100%;
   height: 100%;
   border: 1px solid var(--light);
+  -webkit-transform: translate(var(--x), var(--y));
+          transform: translate(var(--x), var(--y));
   -webkit-transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
   transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
   border-radius: 50%;
@@ -1876,6 +1877,11 @@ svg, video {
   display: block;
   position: absolute;
   content: "";
+}
+.swiper-controller .btn.btn-hover::before, .sc-news .inner .title-area .swiper-controller .btn.btn-hover::before, .swiper-controller .btn:hover::before, .sc-news .inner .title-area .swiper-controller .btn:hover::before, .swiper-controller .swiper-btn-wrap:hover .btn::before {
+  border-color: var(--orange) !important;
+  -webkit-transform: translate(var(--x), var(--y)) scale(0.8);
+          transform: translate(var(--x), var(--y)) scale(0.8);
 }
 .swiper-controller .btn .ico-arw, .sc-news .inner .title-area .swiper-controller .btn .ico-arw {
   -webkit-transition: all 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
