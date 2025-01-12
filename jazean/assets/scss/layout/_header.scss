@@ -130,6 +130,9 @@
             gap: 2em;
 
             .btn-hamburger {
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-100%);
                 @at-root #header.on .header-inner .btn-hamburger {
                     justify-content: center;
                 }

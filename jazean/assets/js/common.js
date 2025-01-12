@@ -1,7 +1,6 @@
 Jazean = {
     init: function () {
-        // this.openingAni();
-        $('body').addClass('is-loaded');
+        this.openingAni();
         this.setStrokeAnimation('.path');
         this.setSwiper();
         this.handleCursor();
@@ -14,7 +13,7 @@ Jazean = {
      */
     openingAni: function() {
         lenis.stop();
-
+        
         $(window).on('load', function() {
             $('body').addClass('is-loaded');
 
@@ -35,7 +34,7 @@ Jazean = {
                     ease: 'power2.in'
                 }
             })
-            .to('#header .link', { 
+            .to('#header .link, #header .btn-hamburger', { 
                 y: 0, 
                 autoAlpha: 1,
                 stagger: { 

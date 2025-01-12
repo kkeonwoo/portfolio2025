@@ -1,6 +1,5 @@
 $(document).ready(function() {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.defaults({ease: 'none'});
+    gsap.registerPlugin(ScrollTrigger)
 
     // 단어 쪼개기
     const roastTxt = new SplitType('.sc-roast .txt-area .title', { types: 'words' });
@@ -44,7 +43,6 @@ $(document).ready(function() {
                 trigger: target.closest('.group-cnt'),
                 start: 'top 80%',
                 end: 'bottom 80%',
-                markers: true,
                 onEnter: () => tween.play(),
             })
         });
@@ -300,7 +298,7 @@ $(document).ready(function() {
             }
         }),
     })
-
+    
     // footer 영역 애니메이션
     const footerTL = gsap.timeline()
     .from('#footer .ft-top > *', { 
@@ -324,12 +322,5 @@ $(document).ready(function() {
         start: 'top center',
         end: 'bottom center',
         animation: footerTL,
-    })
-
-    $(window).on('resize', () => {
-        refreshTrigger = setTimeout(function () {
-            ScrollTrigger.refresh();
-        }, 300);
-        clearTimeout(refreshTrigger);
     })
 })
