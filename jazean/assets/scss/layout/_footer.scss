@@ -1,5 +1,6 @@
 #footer {
     background-color: #180d0a;
+
     .inner {
         max-width: unset;
         padding: 0 5em;
@@ -44,13 +45,9 @@
                 }
             }
 
-            .f-nav {
-                ul {
-                    li {
-                        & + li {
-                            margin-top: .8em;
-                        }
-                    }
+            .about-item {
+                & + .about-item {
+                    margin-top: .8em;
                 }
             }
 
@@ -61,6 +58,7 @@
                 .sns-list {
                     display: flex;
                     gap: 1em;
+                    
                     .link {
                         position: relative;
                         width: 2.25em;

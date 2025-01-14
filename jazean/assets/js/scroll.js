@@ -319,8 +319,8 @@ $(document).ready(function() {
 
     ScrollTrigger.create({
         trigger: '#footer',
-        start: 'top center',
-        end: 'bottom center',
+        start: 'top bottom',
+        end: 'bottom bottom',
         animation: footerTL,
     })
 })

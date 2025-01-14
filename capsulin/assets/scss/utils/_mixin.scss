@@ -93,8 +93,33 @@
     }
 }
 
+@mixin portToMob {
+    @media (orientation: portrait) and (max-width:700px) {
+        @content;
+    }
+}
+
+@mixin portToTablet {
+    @media (orientation: portrait) and (min-width:700px) {
+        @content;
+    }
+}
+
+@mixin pcToLand {
+    @media (orientation: landscape) and (max-width:1680px) {
+        @content;
+    }
+}
+
 @mixin ratio {
     @media (orientation: landscape) and (min-aspect-ratio: 1680 / 945) {
+        @content;
+    }
+}
+
+// 모바일
+@mixin mob {
+    @media (max-width: 700px) {
         @content;
     }
 }

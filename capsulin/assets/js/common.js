@@ -2,35 +2,44 @@ Capsulin = {
     init: function () {
         this.introAni();
         this.customHTML();
+        this.handleSwiper();
         this.handleMenu();
         this.handleMenuItem();
         this.textMarquee();
         this.handleTab();
-        this.handleCustomTab();
         this.handleModal();
     },
+    /**
+     * 인트로 애니메이션
+     */
     introAni: function() {
         $('#wrap').imagesLoaded()
-        .done( function( instance ) {
-            const introTl = gsap.timeline()
-            .to('.intro', { yPercent: -100})
-            .add(Capsulin.aniHeroEnter())
-            .call(() => lenis.start())
-        })
         .progress( function( instance, image ) {
             const num = $(".intro .num");
             const obj = { value: 0 };
             const ratio = instance.progressedCount / instance.images.length;
+
             gsap.to(obj, {
                 value: ratio * 100,
-                duration: 3,
                 ease: "none",
                 onUpdate: () => {
                     num.text(`${Math.round(obj.value)}`);
                 },
+                onComplete: () => {
+                    const introTl = gsap.timeline()
+                    .to('.intro', { 
+                        delay: .5, 
+                        yPercent: -100
+                    })
+                    .add(Capsulin.aniHeroEnter())
+                    .call(() => lenis.start())
+                }
             });
-        });
+        })
     },
+    /**
+     * custom 영역 DOM
+     */
     customHTML: function() {
         const $titleArea = $('.color .title-area');
         const $bgArea = $('.color .bg-area');
@@ -61,11 +70,11 @@ Capsulin = {
 
         colors.forEach((color, idx) => {
             const titleHtml = `
-                <strong class="title-box${idx === 0 ? ' active' : ''}"><span class="txt-area"><span class="txt font-e">${color.text}</span></span></strong>
-            `
+                <strong class="split-txt title-box${idx === 0 ? ' active' : ''}"><span class="txt-area"><span class="split-line txt font-e">${color.text}</span></span></strong>
+            `/* 제목 */
             const bgHtml = `
                 <div class="bg${idx === 0 ? ' active' : ''}" style="--bg-color: ${color.rgb}"></div>
-            `
+            `/* 배경 */
             const imgHtml = `
                 <div class="tab-cont-wrap tab-cont${idx+1}${idx === 0 ? ' active' : ''}">
                     <div class="con color-con1 active">
@@ -84,19 +93,20 @@ Capsulin = {
                         </div>
                     </div>
                 </div>
-            `
+            `/* 이미지 컨텐츠 */
             const colorHtml = `
-                <li class="color-item${idx === 0 ? ' active' : ''}" style="--bg-color: ${color.rgb}">
+                <li class="swiper-slide color-item${idx === 0 ? ' active' : ''}" style="--bg-color: ${color.rgb}">
                     <button class="btn btn-color" aria-label="color${idx + 1}"></button>
                 </li>
-            `
+            `/* 색상 아이템 */
 
+            // HTML 업데이트
             $titleArea.append(titleHtml);
             $bgArea.append(bgHtml);
             $imgArea.append(imgHtml);
             $colorList.append(colorHtml);
 
-            let activeIdx = 0;
+            let activeIdx = 0; /* 현재 active 요소 인덱스 */
             let flag = false;
 
             const $colorItem = $(document).find('.color-item');
@@ -115,31 +125,91 @@ Capsulin = {
                 $(this).addClass('active').siblings().removeClass('active');
                 
                 const titleTl = gsap.timeline()
-                .fromTo($('.color .title-box.active .char'), { yPercent: 0}, { yPercent: -120, duration: 0.3, stagger: {amount: 0.2}, onComplete: () => {
-                    $titleItem.eq(idx).addClass('active').siblings().removeClass('active');
-                }})
-                .fromTo($titleItem.eq(idx).find('.char'), { yPercent: 120}, { yPercent: 0, duration: 0.3, stagger: {amount: 0.2}}, '-=0.2')
+                .fromTo($('.color .title-box.active .char'), { 
+                    yPercent: 0
+                }, { 
+                    yPercent: -120, 
+                    duration: 0.3, 
+                    stagger: {
+                        amount: 0.2
+                    }, 
+                    onComplete: () => {
+                        $titleItem.eq(idx).addClass('active').siblings().removeClass('active');
+                    }
+                })
+                .fromTo($titleItem.eq(idx).find('.char'), { 
+                    yPercent: 120
+                }, { 
+                    yPercent: 0, 
+                    duration: 0.3, 
+                    stagger: {
+                        amount: 0.2
+                    }
+                }, '-=0.2')
                 
                 $bgItem.eq(idx).addClass('active').siblings().removeClass('active');
                 $bgItem2.eq(idx).addClass('active').siblings().removeClass('active');
                 $conItem1.eq(idx).addClass('active').siblings().removeClass('active');
 
                 const bgTl = gsap.timeline()
-                .fromTo([$bgItem.eq(activeIdx), $bgItem2.eq(activeIdx), $conItem1.eq(activeIdx)], 
-                { clipPath: "inset(0 0 0 0)"}, 
-                { clipPath: dir === "up" ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)"})
-                .fromTo([$bgItem.eq(idx), $bgItem2.eq(idx), $conItem1.eq(idx)],
-                { clipPath: dir === "up" ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" }, 
-                { clipPath: 'inset(0% 0% 0% 0%)',
+                .fromTo([$bgItem.eq(activeIdx), $bgItem2.eq(activeIdx), $conItem1.eq(activeIdx)], { 
+                    clipPath: "inset(0 0 0 0)"
+                }, { 
+                    clipPath: dir === "up" ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)"
+                })
+                .fromTo([$bgItem.eq(idx), $bgItem2.eq(idx), $conItem1.eq(idx)], { 
+                    clipPath: dir === "up" ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" 
+                }, { 
+                    clipPath: 'inset(0% 0% 0% 0%)',
                     onComplete: () => {
                         return flag = false;
                     }
                 },'<');
     
-                activeIdx = idx;
+                activeIdx = idx; /* 클릭 요소로 activeIdx 업데이트 */
             })
         })
     },
+    /**
+     * swiper 관련 함수
+     * color-swiper
+     * process-swiper
+     */
+    handleSwiper: function() {
+        // 모바일 컬러 리스트 스와이퍼
+        let colorSwiper, processSwiper;
+        let isPortrait = window.matchMedia("(orientation: portrait)");
+
+        function initColorSwiper() {
+            if (isPortrait) {
+                colorSwiper = new Swiper(".color-swiper", {
+                    slidesPerView: 'auto',
+                });
+                processSwiper = new Swiper('.process-swiper', {
+                    slidesPerView: 'auto',
+                    pagination: {
+                        el: ".swiper-pagination",
+                        type: "progressbar",
+                    }
+                })
+            } else {
+                colorSwiper.destroy();
+                colorSwiper = undefined
+                processSwiper.destroy();
+                processSwiper = undefined
+            }
+        }
+
+        initColorSwiper()
+        $(window).on('resize', () => {
+            initColorSwiper()
+        })
+
+    },
+    /**
+     * 메뉴
+     * 햄버거 버튼 클릭 이벤트 관련 애니메이션
+     */
     handleMenu: function() {
         const $btnMenu = $('.btn-hamburger');
         const $navNum = $('.nav-item .num');
@@ -159,32 +229,83 @@ Capsulin = {
                 .add(Capsulin.fadeOut($navNum), '<')
                 .add(Capsulin.fadeOut($navTxt), '<')
                 .add(Capsulin.fadeOut($credit), '<')
-                .to('.menu', { autoAlpha: 0})
+                .to('.menu', { 
+                    autoAlpha: 0
+                })
             }
         })
     },
+    /**
+     * 메뉴 리스트
+     * 메뉴 아이템 호버, 클릭 이벤트
+     */
     handleMenuItem: function() {
         const $menuItem = $('.menu .nav-item');
+
         $menuItem.hover(function(e) {
             let t = e.currentTarget;
-            gsap.to($menuItem, { duration: .3, opacity: 0.3})
-            gsap.to(t, { duration: .3, opacity: 1})
+            gsap.to($menuItem, { 
+                duration: .3, 
+                opacity: 0.3})
+            gsap.to(t, { 
+                duration: .3, 
+                opacity: 1})
         }, function() {
-            gsap.to($menuItem, { duration: .3, opacity: 1})
+            gsap.to($menuItem, { 
+                duration: .3, 
+                opacity: 1
+            })
+        })
+
+        const $navNum = $('.nav-item .num');
+        const $navTxt = $('.nav-item .txt');
+        const $credit = $('.link-credit .txt:nth-child(1)');
+
+        $menuItem.each((idx, item) => {
+            $(item).click(function() {
+                let target = $(item).find('.link').attr('href');
+                const tl = gsap.timeline()
+                .add(Capsulin.fadeOut($navNum), '<')
+                .add(Capsulin.fadeOut($navTxt), '<')
+                .add(Capsulin.fadeOut($credit), '<')
+                .to('.menu', { 
+                    autoAlpha: 0,
+                    onComplete: () => {
+                        $('#header').removeClass('open')
+                        lenis.scrollTo(`${target}`)
+                    }
+                })
+            })
         })
     },
+    /**
+     * 텍스트 마퀴 애니메이션
+     */
     textMarquee: function() {
         const $marquee = $('.ani-marquee');
         const text = new SplitType('.ani-marquee .txt', { types: 'chars' })
 
         $marquee.each((idx, m) => {
             $(m).hover(function() {
-                gsap.to($(this).find('.txt .char'), { yPercent: -100, stagger: { amount: 0.3} })
+                gsap.to($(this).find('.txt .char'), { 
+                    yPercent: -100,
+                    stagger: { 
+                        amount: 0.3
+                    }
+                })
             }, function() {
-                gsap.to($(this).find('.txt .char'), { yPercent: 0, stagger: { amount: 0.3} })
+                gsap.to($(this).find('.txt .char'), { 
+                    yPercent: 0,
+                    stagger: { 
+                        amount: 0.3
+                    }
+                })
             })
         })
     },
+    /**
+     * 탭 요소 클릭 이벤트
+     */
     handleTab: function() {
         const $tabItem = $('.tab-list .tab-item');
         const $tabCont = $('.tab-cont');
@@ -203,8 +324,13 @@ Capsulin = {
             
             $(this).addClass('active').siblings().removeClass('active');
 
-            gsap.to(siblings,{ clipPath: dir === "up" ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)"});
-            gsap.fromTo($(tabName),{ clipPath: dir === "up" ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" }, { clipPath: 'inset(0% 0% 0% 0%)',
+            gsap.to(siblings,{ 
+                clipPath: dir === "up" ? "inset(0 0 100% 0)" : "inset(100% 0 0 0)"
+            });
+            gsap.fromTo($(tabName),{ 
+                clipPath: dir === "up" ? "inset(100% 0 0 0)" : "inset(0 0 100% 0)" 
+            }, { 
+                clipPath: 'inset(0% 0% 0% 0%)',
                 onComplete: () => {
                     return flag = false;
                 }
@@ -213,39 +339,92 @@ Capsulin = {
             activeIdx = idx;
         })
     },
-    handleCustomTab: function() {
-        const $tabItem = $('.color .tab-item');
-        const $colorItem = $('.color .color-item');
-
-        $colorItem.on('click', function() {
-
-        })
-    },
+    /**
+     * 모달 컨트롤
+     */
     handleModal: function() {
         const btnModal = $('.btn-modal');
 
         btnModal.on('click', function() {
             $('.dimmed').addClass('active');
             $('.modal').toggleClass('modal-closed');
+            if ($('.modal').hasClass('modal-closed')) {
+                lenis.start();
+            } else {
+                lenis.stop();
+            }
         });
         
         $('.dimmed').on('click', function() {
             $('.dimmed').removeClass('active');
             $('.modal').addClass('modal-closed');
+            lenis.start();
         })
     },
+    /**
+     * 아래서 위로 나타나는 애니메이션
+     * @param {*} t 애니메이션 타겟 
+     * @param {*} amount 애니메이션 총 시간
+     */
     fadeUp: function(t, amount) {
-        let tween = gsap.fromTo(t, { yPercent: 120}, { yPercent: 0, stagger: { amount: amount ? amount : 0}})
+        let tween = gsap.fromTo(t, { 
+            yPercent: 130
+        }, { 
+            yPercent: 0, 
+            stagger: { 
+                amount: amount ? amount : 0
+            }
+        })
     },
+    /**
+     * 아래서 위로 사라지는 애니메이션
+     * @param {*} t 애니메이션 타겟
+     * @param {*} dir 스크롤 방향
+     * @param {*} amount 애니메이션 총 시간
+     */
     fadeOut: function(t, dir, amount) {
-        let tween = gsap.fromTo(t, { yPercent: 0}, { yPercent: () => {return dir < 0 ? 120 : -120}, stagger: { amount: amount ? amount : 0}})
+        let tween = gsap.fromTo(t, { 
+            yPercent: 0
+        }, { 
+            yPercent: () => {
+                return dir < 0 ? 120 : -120
+            }, 
+            stagger: {
+                amount: amount ? amount : 0
+            }
+        })
     },
+    /**
+     * hero 영역 애니메이션
+     * @returns timeline 반환
+     */
     aniHeroEnter: function() {
         const tl = gsap.timeline()
-        .fromTo('.sc-hero .img-box', { autoAlpha: 0, yPercent: -100}, { autoAlpha: 1, yPercent: 0})
-        .fromTo('.sc-hero .title .char', { yPercent: 100}, { yPercent: 0, stagger: { amount: .3}}, '<')
-        .fromTo('.sc-hero .scroll-down-area .txt', { yPercent: -100}, { yPercent: 0}, '<')
-        .fromTo('.sc-hero .scroll-down-area .ico', { yPercent: -100}, { yPercent: 0}, '<')
+        .fromTo('.sc-hero .img-box', { 
+            autoAlpha: 0,
+            yPercent: -100
+        }, { 
+            autoAlpha: 1, 
+            yPercent: 0
+        })
+        .fromTo('.sc-hero .title .char', { 
+            yPercent: 100
+        }, { 
+            yPercent: 0, 
+            stagger: { 
+                amount: .3
+            }
+        }, '<')
+        .fromTo('.sc-hero .scroll-down-area .txt', { 
+            yPercent: -100
+        }, { 
+            yPercent: 0
+        }, '<')
+        .fromTo('.sc-hero .scroll-down-area .ico', { 
+            yPercent: -100
+        }, { 
+            yPercent: 0
+        }, '<')
 
         return tl;
     },

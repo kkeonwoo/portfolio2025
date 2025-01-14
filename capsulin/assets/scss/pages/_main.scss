@@ -16,6 +16,9 @@
                 @include ratio() {
                     line-height: 15.13228vh;
                 }
+                @include portrait() {
+                    line-height: 14.14894vw;
+                }
                 
                 &.txt-stroke {
                     padding-right: .29762vw;
@@ -24,6 +27,9 @@
                     @include ratio() {
                         padding-right: .5291vh;
                         font-size: 15.87302vh;
+                    }
+                    @include portrait() {
+                        font-size: 10.6383vw;
                     }
                 }
 
@@ -35,6 +41,10 @@
                         font-size: 17.56614vh;
                         line-height: 14.28571vh;
                     }
+                    @include portrait() {
+                        font-size: 11.17021vw;
+                        line-height: 12.65957vw;
+                    }
                 }
 
                 &.txt-sm {
@@ -42,6 +52,9 @@
                     top: 8.5119vw;
                     @include ratio() {
                         top: 15.13228vh;
+                    }
+                    @include portrait() {
+                        font-size: 12px;
                     }
                 }
             }
@@ -54,6 +67,15 @@
         right: 13.33333vw;
         width: 20vw;
         max-width: 336px;
+        @include portToTablet() {
+            width: 58.09524vw;
+            max-width: 100%;
+            margin-left: 13.33333vw;
+            position: static;
+        }
+        @include portrait() {
+            margin-top: 3.1746vh;
+        }
     }
 }
 
@@ -61,17 +83,38 @@
     .title-area {
         .title {
             width: 27.61905vw;
+            @include portrait() {
+                width: 100%;
+            }
 
             .txt-wrap {
                 font-family: 'e', serif;
                 font-size: 2.61905vw;
                 line-height: 3.21429vw;
+                @include portrait() {
+                    margin-top: -1.66667vw;
+                    font-size: 7.33333vw;
+                    line-height: 8.33333vw;
+                }
 
-                &:nth-child(1) {
-                    margin-bottom: .83333vw;
-                    font-family: 'm', sans-serif;
-                    font-size: 2.38095vw;
-                    line-height: 2.2619vw;
+                &:nth-child(1){
+                    @include portrait() {
+                        margin-top: 0;
+                    }
+
+                    .line {
+                        padding-bottom: .83333vw;
+                        font-family: 'm', sans-serif;
+                        font-size: 2.38095vw;
+                        line-height: 2.2619vw;
+                        font-weight: 600;
+                        @include portrait() {
+                            margin-top: 0;
+                            font-size: 6.66667vw;
+                            line-height: 6.33333vw;
+                            padding-bottom: 2.33333vw;
+                        }
+                    }
                 }
             }
         }
@@ -80,8 +123,15 @@
     .txt-area {
         max-width: 336px;
         margin-left: 15.2381vw;
+        @include portrait() {
+            max-width: 100%;
+            margin-left: 0;
+        }
         .txt {
             margin-top: 2.55952vw;
+            @include portrait() {
+                margin-top: 3.33333vh;
+            }
         }
     }
 }
@@ -184,6 +234,12 @@
         .img-box {
             width: 9.28571vw;
             margin: 0 auto;
+            @include ratio() {
+                width: 16.50794vh;
+            }
+            @include portrait() {
+                width: 27.39362vw;
+            }
         }
 
         .title {
@@ -191,12 +247,25 @@
             font-size: 12.5vw;
             line-height: 11.90476vw;
             perspective: 250px;
+            @include ratio() {
+                font-size: 22.22222vh;
+                line-height: 21.16402vh;
+            }
+            @include portrait() {
+                margin-top: 5.29101vh;
+                margin-bottom: 5.29101vh;
+                font-size: 18.61702vw;
+                line-height: 17.28723vw;
+            }
         }
     }
 
     .scroll-down-area {
         bottom: 64px;
         @include absCenter(true, false);
+        @include mob() {
+            bottom: 54px;
+        }
 
         .txt {
             font-size: 12px;
@@ -225,8 +294,13 @@
     font-size: 12px;
     line-height: 18px;
     letter-spacing: .06em;
-    transform: rotate(-90deg);
-    transform-origin: 0 00;
+    transform: translateY(100%) rotate(-90deg);
+    transform-origin: left top;
+    overflow: hidden;
+    @include mob() {
+        bottom: 48px;
+        left: calc(8.51064vw - 4px);
+    }
 
     .page-list {
         overflow: hidden;
@@ -269,6 +343,9 @@
                 .txt-wrap {
                     &:nth-child(1) .txt {
                         padding-left: 11.19048vw;
+                        @include portrait() {
+                            padding-left: 0;
+                        }
                     }
 
                     &:nth-child(2) {
@@ -277,10 +354,18 @@
                         @include ratio() {
                             right: 32.38095vh;
                         }
+                        @include portrait() {
+                            left: 53.98936vw;
+                            right: unset;
+                        }
                     }
 
                     &:nth-child(4) .txt {
                         padding-left: 34.04762vw;
+                        @include portrait() {
+                            text-align: right;
+                            padding-left: 0;
+                        }
                     }
                 }
 
@@ -290,22 +375,54 @@
         &.sc-02 {
             --inset: 0;
             z-index: 80;
+            .sc-right {
+                @include portrait() {
+                    align-items: flex-start;
+                }
+            }
         }
 
         &.sc-img {
             --inset: 50;
             z-index: 70;
+            @include portrait() {
+                z-index: 85;
+            }
 
             .sticky {
                 margin-top: -400vh;
+                @include portrait() {
+                    flex-direction: column-reverse;
+                }
+            }
+
+            .sc-left {
+                @include portrait() {
+                    height: 56%;
+                }
+            }
+
+            .sc-right {
+                @include portrait() {
+                    height: 44%;
+                }
             }
 
             .inner {
                 padding: 0 10.46875vw;
+                @include portrait() {
+                    height: 100%;
+                    padding: 8vh 0;
+                }
                 
                 .img-box {
                     max-width: 402px;
                     margin: 0 auto;
+
+                    img {
+                        width: auto;
+                        margin: 0 auto;
+                    }
                 }
             }
         }
@@ -313,25 +430,64 @@
         &.sc-04 {
             z-index: 60;
             margin-top: -300vh;
+            pointer-events: all;
+            @include portrait() {
+                z-index: 90;
+            }
 
             .sticky {
                 background: #0a1c36;
+                @include portrait() {
+                    background: transparent;
+
+                    .title-area .title .txt-wrap {
+                        line-height: 4vh;
+        
+                        &:nth-child(1) .line {
+                            font-size: 3.07692vh;
+                            padding-bottom: 0;
+                        }
+        
+                        &:nth-child(2) .line {
+                            font-size: 3.38462vh;
+                        }
+                    }
+                }
+            }
+
+            @include portrait() {
+                & .sc-right {
+                    margin-left: 20.95238vw;
+                    width: 58.09524vw;
+                    .inner {
+                        padding: 0;
+                    }
+                }
             }
         }
 
         .tab-list {
             margin-top: 100px;
             @extend .tab-line;
+            @include portrait() {
+                margin-top: 7.69231vh;
+            }
 
             .tab-item {
                 height: 88px;
                 @include flex(_, center);
+                @include portrait() {
+                    height: 6.76923vh;
+                }
 
                 .btn {
                     &.btn-design {
                         flex: 1;
                         gap: 37px;
                         @include flex(_, center);
+                        @include portrait() {
+                            gap: 4.38462vh;
+                        }
         
                         .num {
                             display: block;
@@ -339,12 +495,20 @@
                             font-size: 18px;
                             line-height: 18px;
                             letter-spacing: .06em;
+                            @include portrait() {
+                                line-height: 1.38462vh;
+                                font-size: 1.38462vh;
+                            }
                         }
                         
                         .txt {
                             font-family: "e";
                             font-size: 32px;
                             line-height: 32px;
+                            @include portrait() {
+                                line-height: 2.46154vh;
+                                font-size: 2.46154vh;
+                            }
                         }
                     }
                 }
@@ -375,33 +539,57 @@
                         @include ratio() {
                             margin-left: 1.26984vh;
                         }
+                        @include portrait() {
+                            max-width: 170px;
+                            margin-bottom: 1.06383vw;
+                            line-height: 22px;
+                        }
                     }
+
                     &:nth-child(2) {
                         margin-top: .59524vw;
                         @include ratio() {
                             margin-top: 1.0582vh;
                         }
                     }
+
                     &:nth-child(3) {
                         top: calc(.59524vw + 30px);
                         left: 48.80952vw;
-                        padding: 1.07143vw 0;
                         @include ratio() {
                             top: calc(1.0582vh + 30px);
                             left: 86.77249vh;
-                            padding: 1.90476vh 0;
+                        }
+                        @include portrait() {
+                            top: calc(1.06383vw + 44px);
+                            left: 58.51064vw;
                         }
                         
                         .ico {
                             display: block;
-                            width: 6.36905vw;
-                            height: 6.36905vw;
+                            padding: 1.07143vw 0;
                             @include ratio() {
-                                width: 11.32275vh;
-                                height: 11.32275vh;
+                                padding: 1.90476vh 0;
+                            }
+                            @include portrait() {
+                                padding: 3.21809vw 0;
+                            }
+
+                            svg {
+                                width: 6.36905vw;
+                                height: 6.36905vw;
+                                @include ratio() {
+                                    width: 11.32275vh;
+                                    height: 11.32275vh;
+                                }
+                                @include portrait() {
+                                    width: 7.71277vw;
+                                    height: 7.71277vw;
+                                }
                             }
                         }
                     }
+
                     &:nth-child(4) {
                         position: absolute;
                         top: calc(9.10714vw + 30px);
@@ -410,15 +598,26 @@
                             top: calc(16.19048vh + 30px);
                             left: 11.42857vh;
                         }
+                        @include portrait() {
+                            top: calc(15.21277vw + 44px);
+                            left: 0;
+                        }
                     }
+
                     &:nth-child(5) {
                         padding-left: 13.92857vw;
                         @include ratio() {
                             padding-left: 24.7619vh;
                         }
+                        @include portrait {
+                            padding-left: 9.30851vw;
+                        }
 
                         .txt {
                             padding-top: .84656vh;
+                            @include portrait() {
+                                padding-top: .53191vw;
+                            }
                         }
                     }
                 }
@@ -432,9 +631,21 @@
                 @include bg('bg-engine2.webp', $size: cover);
             }
 
+            .sticky {
+                @include portToTablet() {
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                }
+            }
+
             .title-area {
                 width: 100%;
                 margin-left: 25.71429vw;
+                @include portToTablet() {
+                    width: 73.33333vw;
+                    margin-left: 13.33333vw;
+                }
 
                 .title {
                     .txt-wrap {
@@ -443,18 +654,24 @@
                             top: 0;
                             left: 0;
                         }
+
                         &:nth-child(2) {
                             padding-left: 8.92857vw;
                             @include ratio() {
                                 padding-left: 15.87302vh;
                             }
+                            @include portrait() {
+                                padding-left: 80px;
+                            }
                         }
+
                         &:nth-child(3) {
                             margin-left: -.29762vw;
                             @include ratio() {
                                 margin-left: -.5291vh;
                             }
                         }
+
                         &:nth-child(4) {
                             position: absolute;
                             top: 8.5119vw;
@@ -465,30 +682,55 @@
                                 left: 44.44444vh;
                                 line-height: 14.28571vh;
                             }
+                            @include portrait() {
+                                top: 14.14894vw;
+                                left: 29.25532vw;
+                                line-height: 12.65957vw;
+                            }
                         }
                     }
                 }
+
             }
         }
 
         &.sc-03 {
             z-index: 60;
+            pointer-events: all;
+
+            .sticky {
+                margin-top: -400vh;
+            }
             
             .sc-right {
                 background: #0a1b37;
                 @include flex(_, end);
+                @include portrait() {
+                    background: transparent;
+                }
 
                 .btn {
                     &.btn-engine {
+                        width: 100%;
                         padding: 22px 0 24px;
                         text-align: left;
+                        @include portrait() {
+                            padding: 1.69231vh 0 1.84615vh;
+                        }
 
                         .txt-wrap {
                             font-size: 36px;
                             line-height: 44px;
+                            @include portrait() {
+                                font-size: 2.76923vh;
+                                line-height: 3.38462vh;
+                            }
 
                             &.font-e {
                                 margin-top: -10px;
+                                @include portrait() {
+                                    margin-top: -.76923vh;
+                                }
                             }
                         }
                         
@@ -502,6 +744,11 @@
             
             .sticky {
                 justify-content: flex-start;
+                @include portToTablet() {
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                }
             }
 
             .bg {
@@ -514,6 +761,10 @@
                     margin-left: 13.33333vw;
                     @include ratio() {
                         margin-top: .31746vh;
+                        margin-left: 13.33333vw;
+                    }
+                    @include portToTablet() {
+                        width: 73.33333vw;
                         margin-left: 13.33333vw;
                     }
     
@@ -536,11 +787,20 @@
                                 right: 71.95767vh;
                                 line-height: 14.28571vh;
                             }
+                            @include portrait() {
+                                top: 14.14894vw;
+                                right: auto;
+                                left: 16.2234vw;
+                                line-height: 12.65957vw;
+                            }
                         }
                         &:nth-child(4) {
                             margin-left: 23.39286vw;
                             @include ratio() {
                                 margin-left: 41.5873vh;
+                            }
+                            @include portrait() {
+                                margin-left: 38.82979vw;
                             }
                         }
                         &:nth-child(5) {
@@ -555,15 +815,32 @@
             width: 35.2381vw;
             padding-bottom: 100px;
             @extend .tab-line;
+            @include portrait() {
+                width: 58.09524vw;
+                margin: 0 auto;
+                padding-bottom: 10.76923vh;
+            }
+            
+            .inner {
+                padding: 0 20.95238vw;
+
+            }
         }
     }
 }
 
 .sc-custom {
     z-index: 70;
+    @include portrait() {
+        pointer-events: all;
+    }
 
     .section {
         &.sc-01 {
+            @include portrait() {
+                z-index: 50;
+            }
+
             .bg-gradient {
                 --top: 100;
                 position: absolute;
@@ -602,6 +879,9 @@
                     @include ratio() {
                         margin-top: 4.2328vh;
                     }
+                    @include portrait() {
+                        margin-top: 0;
+                    }
 
                     .txt-wrap {
                         &.txt-sm { 
@@ -610,9 +890,15 @@
                         }
                         &:nth-child(1)  {
                             margin: 0 auto 7.40741vh;
+                            @include portrait() {
+                                margin-bottom: 18.61702vw;
+                            }
 
                             .txt {
                                 line-height: 30px;
+                                @include portrait() {
+                                    line-height: 22px;
+                                }
                             }
                         }
                         &:nth-child(3) {
@@ -628,9 +914,17 @@
                             left: calc(50% + 8.92857vw);
                             width: 7.7381vw;
                             transform: translate(-50%, - 50%);
+                            @include portrait() {
+                                top: calc(50% + 10.6383vw);
+                                left: calc(50% + 18.61702vw);
+                                width: 13.03191vw;
+                            }
                         }
                         &:nth-child(5) {
                             margin: 11.64021vh auto 0;
+                            @include portrait() {
+                                margin-top: 29.25532vw;
+                            }
                             
                             .txt {
                                 line-height: 30px;
@@ -643,9 +937,13 @@
 
         &.sc-02 {
             z-index: 60;
+            pointer-events: all;
             
             .sticky {
                 margin-top: -200vh;
+                @include portrait() {
+                    margin-top: -300vh;
+                }
             }
 
             .sc-left {
@@ -676,13 +974,27 @@
                 
                 .inner {
                     padding: 0 13.59375vw;
+                    @include portrait() {
+                        padding: 4vh 0;
+                        height: 100%;
+                    }
                     
                     .tab-cont {
                         position: relative;
                         aspect-ratio: 0.7 / 1;
+                        padding-top: calc(1242 / 876 * 100%);
+                        height: unset;
+                        @include portrait() {
+                            height: 100%;
+                            margin: 0 auto;
+                            padding-top: 0;
+                            z-index: 30;
+                        }
                         
                         .tab-cont-wrap {
                             position: absolute;
+                            top: 0;
+                            left: 0;
                             width: 100%;
                             height: 100%;
                             @for $i from 1 through 20 {
@@ -701,11 +1013,17 @@
             .sc-right {
                 position: relative;
                 background: #0a1b37;
+                @include portrait() {
+                    display: block;
+                    height: 56%;
+                    background: transparent;
+                }
 
                 .bg-area {
                     position: absolute;
                     width: 100%;
                     height: 100%;
+                    overflow: hidden;
 
                     .bg {
                         position: absolute;
@@ -713,10 +1031,11 @@
                         left: 0;
                         width: 100%;
                         height: 100%;
+                        transform-origin: 50% 0%;
                         @for $i from 1 through 20 {
                             &:nth-child(#{$i}) {
                                 z-index: calc(21 - #{$i});
-                                background: url('../images/custom/custom#{$i}/bg1.webp') no-repeat center top / cover;
+                                background: url('../images/custom/custom#{$i}/bg1.webp') no-repeat center center / cover;
                             }
                         } 
                         &.active {
@@ -730,6 +1049,10 @@
                     z-index: 30;
                     width: 100%;
                     height: 100%;
+                    @include portrait() {
+                        height: 45%;
+                        margin-top: 9%;
+                    }
 
                     .title-box { 
                         top: 27.51323vh;
@@ -737,9 +1060,19 @@
                         height: 38.09524vh;
                         @include flex(center, center);
                         @include absCenter(true, false);
+                        @include portrait() {
+                            top: 0;
+                            left: 50%;
+                            height: 100%;
+                            transform: translateX(-50%);
+                        }
                         .txt-wrap {
                             font-size: 17.56614vh;
                             line-height: 19.04762vh;
+                            @include portrait() {
+                                font-size: 10.58201vh;
+                                line-height: 12.69841vh;
+                            }
                         }
                     }
                 }
@@ -755,10 +1088,20 @@
                     width: 100%;
                     margin: 0 16px;
                     gap: 32px;
+                    @include portrait() {
+                        position: relative;
+                        left: unset;
+                        bottom: unset;
+                        margin: 1.5% 0 0;
+                        gap: 0;
+                    }
 
                     .tab-item {
                         position: relative;
                         padding: 10px 0;
+                        @include portrait() {
+                            padding: 16px;
+                        }
 
                         &.active {
                             .txt {
@@ -775,6 +1118,10 @@
                             transition: opacity 300ms;
                             text-transform: uppercase;
                             opacity: .4;
+                            @include portrait() {
+                                line-height: 36px;
+                                font-size: 12px;
+                            }
 
                             &::before {
                                 bottom: 0;
@@ -791,50 +1138,75 @@
                 }
             }
 
-            .color-list {
-                display: flex;
-                align-items: center;
+            .color-swiper {
                 bottom: calc(100px - 1.78571vw);
                 left: 8.69048vw;
+                width:  82.61905vw;
                 z-index: 30;
-                width: 82.61905vw;
-                height: 3.57143vw;
                 @include absCenter(true, false);
-
-                .color-item {
-                    height: 100%;
-                    flex: 1;
-
-                    &.active {
-                        .btn-color::before {
-                            transform: scale(1);
-                        }
+                @include portrait() {
+                    left: 0;
+                    bottom: 30px;
+                    width: 100%;
+                    padding: 20px 0;
+                    transform: translate(0);
+                    padding-left: calc(5.71429vw - 18px);
+                }
+                .color-list {
+                    justify-content: space-between;
+                    height: 3.57143vw;
+                    @include portrait() {
+                        height: 60px;
                     }
-
-                    .btn-color {
-                        position: relative;
-                        width: 100%;
+    
+                    .color-item {
                         height: 100%;
-                        @include flex(center, center);
-                        
-                        &::before,
-                        &::after {
-                            @include pseudo();
+                        // min-width: 0;
+                        // flex: 1;
+                        width: 3.57143vw;
+                        @include portrait() {
+                            width: 60px;
                         }
-                        
-                        &::before {
-                            width: 1.25vw;
-                            height: 1.25vw;
-                            background-color: #fff;
-                            transform: scale(0);
-                            border-radius: 50%;
+    
+                        &.active {
+                            .btn-color::before {
+                                transform: scale(1);
+                            }
                         }
-                        
-                        &::after {
-                            width: .83333vw;
-                            height: .83333vw;
-                            background-color: var(--bg-color);
-                            border-radius: 50%;
+    
+                        .btn-color {
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+                            @include flex(center, center);
+                            
+                            &::before,
+                            &::after {
+                                @include pseudo();
+                            }
+                            
+                            &::before {
+                                width: 1.25vw;
+                                height: 1.25vw;
+                                background-color: #fff;
+                                transform: scale(0);
+                                border-radius: 50%;
+                                @include portrait() {
+                                    width: 22px;
+                                    height: 22px;
+                                }
+                            }
+                            
+                            &::after {
+                                width: .83333vw;
+                                height: .83333vw;
+                                background-color: var(--bg-color);
+                                border-radius: 50%;
+                                @include portrait() {
+                                    width: 14px;
+                                    height: 14px;
+                                }
+                            }
                         }
                     }
                 }
@@ -846,17 +1218,39 @@
             
             .sticky {
                 background: #0a1c36;
+                @include portrait() {
+                    flex-direction: column-reverse;
+                }
             }
 
             .inner {
                 width: 27.61905vw;
                 margin-left: 13.33333vw;
                 padding: 0;
+                @include portToTablet() {
+                    width: 73.33333vw;
+                }
             }
 
             .sc-left {
+                @include portrait() {
+                    padding-top: 4.61538vh;
+                    align-items: flex-start;
+                    height: 56%;
+                }
                 .txt-area {
                     margin-left: 7.61905vw;
+                    @include portrait() {
+                        width: 58.09524vw;
+                        margin-left: 0;
+                    }
+                }
+            }
+
+            .sc-right {
+                @include portrait() {
+                    padding-top: 0;
+                    height: 44%;
                 }
             }
         }
@@ -888,6 +1282,9 @@
                             @include ratio() {
                                 padding-left: 11.64021vh;
                             }
+                            @include portrait() {
+                                padding-left: 45px;
+                            }
                         }
                         &:nth-child(4) {
                             top: 8.5119vw;
@@ -898,6 +1295,11 @@
                                 left: 44.44444vh;
                                 line-height: 14.28571vh;
                             }
+                            @include portrait() {
+                                top: 14.14894vw;
+                                left: 27.92553vw;
+                                line-height: 12.65957vw;
+                            }
                         }
                         &:nth-child(5) {
                             position: absolute;
@@ -906,9 +1308,16 @@
                             @include ratio() {
                                 top: 15.13228vh;
                             }
+                            @include portrait() {
+                                position: static;
+                                padding-left: 27.65957vw;
+                            }
                         }
                         &:nth-child(6) {
                             padding-left: 13.69048vw;
+                            @include portrait() {
+                                padding-left: 6.38298vw;
+                            }
                         }
 
                     }
@@ -920,6 +1329,9 @@
             --top: 0;
             z-index: 50;
             height: 100vh;
+            @include portrait() {
+                z-index: 65;
+            }
             
             .sc-left {
                 --inset: 0;
@@ -929,10 +1341,28 @@
 
             .sc-right {
                 transform: translateY(calc(var(--top) * 1% / 3 * 2));
+                @include portrait() {
+                    background: #0a1c36;
+                }
             }
             
             .sc-right .inner {
                 padding: 0 16.666666666666668vw;
+                @include portrait() {
+                    height: 100%;
+                    padding: 10vh 0;
+                }
+                .img-box {
+                    @include portrait() {
+                        overflow: visible;
+                    }
+                    img {
+                        @include portrait() {
+                            width: unset;
+                            margin: 0 auto;
+                        }
+                    }
+                }
             }
         }
         
@@ -942,6 +1372,9 @@
             
             .sticky {
                 background: #0a1c36;
+                @include portrait() {
+                    margin-top: -400vh;
+                }
             }
 
             .sc-left {
@@ -981,12 +1414,20 @@
                                 top: 15.13228vh;
                                 line-height: 14.28571vh;
                             }
+                            @include portrait() {
+                                top: 0;
+                                left: 53.19149vw;
+                                line-height: 14.14894vw;
+                            }
                         }
 
                         &:nth-child(3) {
                             margin-left: 8.92857vw;
                             @include ratio() {
                                 margin-left: 15.87302vh;
+                            }
+                            @include portrait() {
+                                margin-left: 0;
                             }
                         }
                     }
@@ -996,13 +1437,28 @@
 
         &.sc-02 {
             z-index: 40;
-            
-            .sticky {
-                background: #0a1c36;
+            @include portrait() {
+                z-index: 55;
             }
-
+            
             .sc-left {
                 transform: translateY(calc(var(--top) * 1% / 2));
+            }
+            
+            .sc-right {
+                background: #0a1c36;
+                @include portrait() {
+                    padding-top: 4.61538vh;
+                    align-items: flex-start;
+                }
+            }
+
+            .txt-area {
+                .txt:nth-child(2) {
+                    @include portrait() {
+                        display: none;
+                    }
+                }
             }
         }
 
@@ -1025,6 +1481,15 @@
                     @include ratio() {
                         margin-top: 1.0582vh;
                     }
+                    @include portrait() {
+                        width: 80.95238vw;
+                        margin-left: 13.33333vw;
+                    }
+                    @include mob() {
+                        width: 82.97872vw;
+                        margin-top: 0;
+                        margin-left: 8.51064vw;
+                    }
 
                     .txt-wrap {
                         &:nth-child(1) {
@@ -1038,6 +1503,9 @@
                             @include ratio() {
                                 left: 71.95767vh;
                             }
+                            @include portrait() {
+                                left: 47.87234vw;
+                            }
                         }
                         
                         &:nth-child(3) {
@@ -1046,14 +1514,20 @@
                             left: 50%;
                             width: 9.46429vw;
                             transform: translate(-50%, -50%);
+                            @include portrait() {
+                                width: 15.95745vw;
+                            }
                         }
-
+                        
                         &:nth-child(4) {
                             position: relative;
                             z-index: 2;
                             margin-left: 7.38095vw;
                             @include ratio() {
                                 margin-left: 13.12169vh;
+                            }
+                            @include portrait() {
+                                margin-left: 7.97872vw;
                             }
                         }
 
@@ -1064,6 +1538,11 @@
                             @include ratio() {
                                 left: 93.12169vh;
                             }
+                            @include portrait() {
+                                left: 59.04255vw;
+                                top: 14.14894vw;
+                                line-height: 12.65957vw;
+                            }
                         }
                     }
                 }
@@ -1072,6 +1551,9 @@
 
         &.sc-04 {
             z-index: 20;
+            @include portrait() {
+                pointer-events: all;
+            }
 
             .bg {
                 @include bg('bg-spec3.webp', $size: cover);
@@ -1081,9 +1563,20 @@
                 display: flex;
                 width: 88.57143vw;
                 margin: 0 auto;
+                @include portrait() {
+                    padding-left: 8.51064vw;
+                }
+                @include mob() {
+                    flex-direction: column;
+                    width: 100%;
+                    margin-top: 8.33333vh;
+                }
 
                 .sc-left {
                     width: 30.47619vw;
+                    @include portrait() {
+                        width: 100%;
+                    }
 
                     .title-area {
                         .title {
@@ -1096,6 +1589,11 @@
                                     padding-bottom: 1.48148vh;
                                 }
                             }
+                            .line:nth-child(2) {
+                                @include portrait() {
+                                    margin-top: -1.66667vw;
+                                }
+                            }
                             .txt-wrap {
                                 font-size: 2.38095vw;
                                 line-height: 2.2619vw;
@@ -1103,12 +1601,20 @@
                                     font-size: 4.2328vh;
                                     line-height: 4.02116vh;
                                 }
+                                @include portrait() {
+                                    font-size: 6.66667vw;
+                                    line-height: 6.33333vw;
+                                }
                                 &.font-e {
                                     font-size: 2.61905vw;
                                     line-height: 3.21429vw;
                                     @include ratio() {
                                         font-size: 4.65608vh;
                                         line-height: 5.71429vh;
+                                    }
+                                    @include portrait() {
+                                        font-size: 7.33333vw;
+                                        line-height: 8.33333vw;
                                     }
                                 }
                             }
@@ -1118,6 +1624,9 @@
 
                 .sc-right {
                     flex: 1;
+                    @include portrait() {
+                        margin-top: 8.33333vh;
+                    }
 
                     .ico {
                         position: relative;
@@ -1135,17 +1644,28 @@
                 grid-template-columns: repeat(3, 1fr);
                 grid-template-rows: repeat(2, auto);
                 row-gap: 7.7381vh;
+                @include portrait() {
+                    display: flex;
+                }
 
                 .process-item {
                     display: flex;
                     flex-direction: column;
                     gap: 28px;
+                    @include portrait() {
+                        width: 200px;
+                    }
 
                     .ico {
                         display: block;
                         width: 42px;
                         height: 28px;
                         margin-left: -1px;
+                        @include portrait() {
+                            width: 33px;
+                            height: 22px;
+                            margin-left: -1px;
+                        }
 
                         .circle {
                             fill: none;
@@ -1154,7 +1674,27 @@
                     }
                     .title {
                         font-size: 20px;
+                        @include portrait() {
+                            font-size: inherit;
+                        }
                     }
+                }
+            }
+
+            .swiper-pagination {
+                @include mob() {
+                    display: block;
+                    position: relative;
+                    margin-top: 5.71429vh;
+                    width: 82.97872vw;
+                    height: 2px;
+                    overflow: hidden;
+                    background: #444b61;
+                    transform: scaleX(0);
+                    transform-origin: 0 50%;
+                }
+                .swiper-pagination-progressbar-fill {
+                    background: #fff;
                 }
             }
         }
@@ -1165,6 +1705,7 @@
     .section {
         z-index: 40;
         height: 100vh;
+        pointer-events: all;
 
         .bg {
             @include bg('bg-contact.webp', $size: cover);
@@ -1176,6 +1717,10 @@
             flex: 1;
             @include ratio() {
                 margin-top: 1.0582vh;
+            }
+            @include portrait() {
+                margin-left: 8.51064vw;
+                width: 82.97872vw;
             }
 
             .title-area {
@@ -1189,6 +1734,9 @@
                             margin-left: 28.9881vw;
                             @include ratio() {
                                 margin-left: 51.53439vh;
+                            }
+                            @include portrait() {
+                                margin-left: 0;
                             }
                         }
                     }
@@ -1204,6 +1752,12 @@
                     max-width: 42.32804vh;
                     margin-top: -6.77249vh;
                 }
+                @include portrait() {
+                    width: 100%;
+                    max-width: 100%;
+                    margin-top: 7.97872vw;
+                    margin-left: 14.89362vw;
+                }
             }
 
             .btn {
@@ -1212,8 +1766,14 @@
                 position: relative;
                 margin-top: 4.7619vw;
                 font-size: 18px;
+                cursor: pointer;
                 @include ratio() {
                     margin-top: 8.46561vh;
+                }
+                @include portrait() {
+                    margin-top: 7.97872vw;
+                    margin-left: 14.89362vw;
+                    font-size: 14px;
                 }
                 &::before {
                     bottom: 0;

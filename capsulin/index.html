@@ -5,17 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capsulin — Aluminium</title>
-
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/images/favicon/site.webmanifest">
     <!-- link:css -->
     <link rel="stylesheet" href="./assets/css/swiper.min.css">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
     <link rel="stylesheet" href="./assets/css/splitting.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-
     <!-- script -->
     <script src="./assets/js/lib/jquery-3.7.1.min.js"></script>
     <script src="https://unpkg.com/split-type"></script>
-    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script> 
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="./assets/js/lib/imagesloaded.pkgd.min.js"></script>
     <script src="./assets/js/lib/swiper/swiper.min.js"></script>
     <script src="./assets/js/lib/gsap/gsap.min.js"></script>
@@ -25,10 +28,10 @@
     <script src="./assets/js/settting.js" defer></script>
     <script src="./assets/js/scroll.js" defer></script>
 </head>
+
 <body>
 
     <div id="wrap">
-
         <div class="intro">
             <span class="num">0</span>
         </div>
@@ -39,40 +42,40 @@
 
                     <div class="menu">
                         <div class="inner">
-                            
+
                             <ul class="nav-list">
                                 <li class="nav-item">
-                                    <a href="#" data-index="01" class="link font-e">
+                                    <a href="#design" data-index="01" class="link">
                                         <span class="txt-wrap"><span class="num">01</span></span>
                                         <span class="txt-wrap"><span class="txt">design</span></span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" data-index="02" class="link font-e">
+                                    <a href="#engine" data-index="02" class="link">
                                         <span class="txt-wrap"><span class="num">02</span></span>
                                         <span class="txt-wrap"><span class="txt">engineering</span></span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" data-index="03" class="link font-e">
+                                    <a href="#custom" data-index="03" class="link">
                                         <span class="txt-wrap"><span class="num">03</span></span>
                                         <span class="txt-wrap"><span class="txt">customization</span></span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" data-index="04" class="link txt-stroke">
+                                    <a href="#experience" data-index="04" class="link">
                                         <span class="txt-wrap"><span class="num">04</span></span>
                                         <span class="txt-wrap"><span class="txt">experience</span></span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" data-index="05" class="link txt-stroke">
+                                    <a href="#spec" data-index="05" class="link">
                                         <span class="txt-wrap"><span class="num">05</span></span>
                                         <span class="txt-wrap"><span class="txt">specifications</span></span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" data-index="06" class="link txt-stroke">
+                                    <a href="#contact" data-index="06" class="link">
                                         <span class="txt-wrap"><span class="num">06</span></span>
                                         <span class="txt-wrap"><span class="txt">contact</span></span>
                                     </a>
@@ -94,7 +97,7 @@
                             <span class="ico-line"></span>
                             <span class="ico-line"></span>
                         </div>
-                        <div class="txt-wrap">
+                        <div class="txt-wrap pc">
                             <span class="txt">menu</span>
                             <span class="txt">menu</span>
                         </div>
@@ -103,13 +106,19 @@
                     <a href="#" class="logo">
                         <!-- svg -->
                         <svg viewBox="0 0 47 56">
-                            <path d="M45.9,23.4C45.9,11,35.9,1,23.5,1S1.1,11,1.1,23.4s10,22.4,22.4,22.4V55L39,39.5l0,0C43.2,35.5,45.9,29.7,45.9,23.4z" fill="#fff"></path>
-                            <path d="M32.2,13.6c-0.1-0.8-0.8-1.3-1.4-1c-0.4,0.2-0.5,0.5-0.6,1.1c-0.1,0.6-0.1,19.1,0,19.6c0.2,1.4,1.5,1.6,2,0.4C32.2,33.4,32.3,14.2,32.2,13.6z"></path>
-                            <path d="M17.7,16.4c1.1-0.4,0.9-0.3,5-0.4c3.3,0,3.7,0,3.9-0.1c1.1-0.4,1.1-1.6,0-1.9c-0.2-0.1-5.8-0.1-6.9-0.1c-5.7,0.4-9.8,5.3-9,11c0.6,4.2,4.4,7.8,8.7,8.1c0.7,0.1,6.5,0.1,6.9,0c1.4-0.2,1.5-1.6,0.2-2c-0.1,0-1-0.1-3.9-0.1c-4.4,0-4.4,0-5.8-0.7C10.9,27.3,11.5,18.5,17.7,16.4z"></path>
+                            <path
+                                d="M45.9,23.4C45.9,11,35.9,1,23.5,1S1.1,11,1.1,23.4s10,22.4,22.4,22.4V55L39,39.5l0,0C43.2,35.5,45.9,29.7,45.9,23.4z"
+                                fill="#fff"></path>
+                            <path
+                                d="M32.2,13.6c-0.1-0.8-0.8-1.3-1.4-1c-0.4,0.2-0.5,0.5-0.6,1.1c-0.1,0.6-0.1,19.1,0,19.6c0.2,1.4,1.5,1.6,2,0.4C32.2,33.4,32.3,14.2,32.2,13.6z">
+                            </path>
+                            <path
+                                d="M17.7,16.4c1.1-0.4,0.9-0.3,5-0.4c3.3,0,3.7,0,3.9-0.1c1.1-0.4,1.1-1.6,0-1.9c-0.2-0.1-5.8-0.1-6.9-0.1c-5.7,0.4-9.8,5.3-9,11c0.6,4.2,4.4,7.8,8.7,8.1c0.7,0.1,6.5,0.1,6.9,0c1.4-0.2,1.5-1.6,0.2-2c-0.1,0-1-0.1-3.9-0.1c-4.4,0-4.4,0-5.8-0.7C10.9,27.3,11.5,18.5,17.7,16.4z">
+                            </path>
                         </svg>
                     </a>
 
-                    <button class="btn btn-modal ani-marquee">
+                    <button class="btn btn-modal ani-marquee pc">
                         <span class="txt-wrap">
                             <span class="txt">contact us</span>
                             <span class="txt">contact us</span>
@@ -118,7 +127,7 @@
                 </nav>
             </div>
         </header>
-        
+
         <div class="progress">
             <div class="progress-bar"></div>
         </div>
@@ -147,7 +156,11 @@
                                     </div>
                                     <div class="ico-box">
                                         <i class="ico ico-arw-down">
-                                            <svg viewBox="0 0 16 10"><path d="M2.5,2.3L8,7.8l5.5-5.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                            <svg viewBox="0 0 16 10">
+                                                <path d="M2.5,2.3L8,7.8l5.5-5.5" fill="none" stroke="#fff"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                </path>
+                                            </svg>
                                         </i>
                                     </div>
                                 </div>
@@ -204,7 +217,7 @@
                     </ol>
                 </div>
 
-                <section class="sc-design">
+                <section id="design" class="sc-design">
 
                     <div class="section sc-01 full-w">
                         <div class="absolute">
@@ -216,7 +229,8 @@
                                     <h2 class="title">
                                         <span class="txt-wrap txt-stroke"><span class="txt">elegant</span></span>
                                         <span class="txt-wrap txt-sm"><span class="txt">and</span></span>
-                                        <span class="txt-wrap font-e"><span class="txt">differentiating</span></span>
+                                        <span class="txt-wrap font-e"><span
+                                                class="txt">differentiating</span></span>
                                         <span class="txt-wrap txt-stroke"><span class="txt">design</span></span>
                                     </h2>
                                 </div>
@@ -233,19 +247,21 @@
                                         <img src="./assets/images/img-design-capsule1.webp" alt="" class="img">
                                     </div>
                                 </div>
-                                
+
                                 <div class="sc-right ai-center">
                                     <div class="inner">
                                         <div class="title-area">
-                                            <h3 class="title">
-                                                Elegant<br/>
-                                                &#38; differentiating<br/>
+                                            <h3 class="title split-line">
+                                                Elegant<br />
+                                                &#38; differentiating<br />
                                                 design
                                             </h3>
                                         </div>
                                         <div class="txt-area">
-                                            <p class="txt">
-                                                Each of our customers is unique. We develop capsules at their image. Capsul'in capsule design will make your brand stand out from the crowd.
+                                            <p class="txt split-line">
+                                                Each of our customers is unique. We develop capsules at their image.
+                                                Capsul'in capsule design will make your brand stand out from the
+                                                crowd.
                                             </p>
                                         </div>
                                     </div>
@@ -280,17 +296,20 @@
                                     <div class="tab-cont">
                                         <div id="dTab1" class="con active">
                                             <div class="img-box">
-                                                <img src="./assets/images/img-design-capsule2.webp" alt="" class="img">
+                                                <img src="./assets/images/img-design-capsule2.webp" alt=""
+                                                    class="img">
                                             </div>
                                         </div>
                                         <div id="dTab2" class="con">
                                             <div class="img-box">
-                                                <img src="./assets/images/img-design-capsule3.webp" alt="" class="img">
+                                                <img src="./assets/images/img-design-capsule3.webp" alt=""
+                                                    class="img">
                                             </div>
                                         </div>
                                         <div id="dTab3" class="con">
                                             <div class="img-box">
-                                                <img src="./assets/images/img-design-capsule4.webp" alt="" class="img">
+                                                <img src="./assets/images/img-design-capsule4.webp" alt=""
+                                                    class="img">
                                             </div>
                                         </div>
                                     </div>
@@ -298,8 +317,8 @@
                                 <div class="sc-right ai-center">
                                     <div class="inner">
                                         <div class="title-area">
-                                            <h3 class="title">
-                                                3 exclusive<br/>
+                                            <h3 class="title split-line">
+                                                3 exclusive<br />
                                                 capsules designs
                                             </h3>
                                         </div>
@@ -337,10 +356,10 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </section>
 
-                <section class="sc-engine">
+                <section id="engine" class="sc-engine">
 
                     <div class="section sc-01 full-w">
                         <div class="absolute">
@@ -350,13 +369,21 @@
                                 </div>
                                 <div class="title-area">
                                     <h2 class="title">
-                                        <span class="txt-wrap txt-sm"><span class="txt">THE BEST FABRICATION PROCESS IN THE WORLD.</span></span>
+                                        <span class="txt-wrap txt-sm"><span class="txt">THE BEST FABRICATION PROCESS
+                                                IN THE WORLD.</span></span>
                                         <span class="txt-wrap txt-stroke"><span class="txt">PRODUCED</span></span>
                                         <span class="txt-wrap txt-sm">
                                             <i class="ico ico-produce">
                                                 <svg viewBox="0 0 107 107">
-                                                    <rect x="1.5" y="1.5" width="104" height="104" fill="none" stroke="#fff" stroke-miterlimit="10" vector-effect="non-scaling-stroke" stroke-width="1.34px"></rect>
-                                                    <polygon points="44,21 63,21 63,44 86,44 86,63 63,63 63,86 44,86 44,63 21,63 21,44 44,44" fill="none" stroke="#fff" stroke-miterlimit="10" vector-effect="non-scaling-stroke" stroke-width="1.34px"></polygon>
+                                                    <rect x="1.5" y="1.5" width="104" height="104" fill="none"
+                                                        stroke="#fff" stroke-miterlimit="10"
+                                                        vector-effect="non-scaling-stroke" stroke-width="1.34px">
+                                                    </rect>
+                                                    <polygon
+                                                        points="44,21 63,21 63,44 86,44 86,63 63,63 63,86 44,86 44,63 21,63 21,44 44,44"
+                                                        fill="none" stroke="#fff" stroke-miterlimit="10"
+                                                        vector-effect="non-scaling-stroke" stroke-width="1.34px">
+                                                    </polygon>
                                                 </svg>
                                             </i>
                                         </span>
@@ -383,8 +410,9 @@
                                     </h2>
                                 </div>
                                 <div class="txt-area">
-                                    <p class="txt">
-                                        Within the framework of our research and future development process, we are working on the realization of PVC-free capsules.
+                                    <p class="txt split-line">
+                                        Within the framework of our research and future development process, we are
+                                        working on the realization of PVC-free capsules.
                                     </p>
                                 </div>
                             </div>
@@ -494,8 +522,11 @@
                                     </h2>
                                 </div>
                                 <div class="txt-area">
-                                    <p class="txt">
-                                        As part of our research and development process, we are working to integrate 100% recycled aluminum into our capsule production in the short term. This advance will allow us to create a production cycle from renewable material while guaranteeing optimal capsule quality.
+                                    <p class="txt split-line">
+                                        As part of our research and development process, we are working to integrate
+                                        100% recycled aluminum into our capsule production in the short term. This
+                                        advance will allow us to create a production cycle from renewable material
+                                        while guaranteeing optimal capsule quality.
                                     </p>
                                 </div>
                             </div>
@@ -504,7 +535,7 @@
 
                 </section>
 
-                <section class="sc-custom">
+                <section id="custom" class="sc-custom">
 
                     <div class="section sc-01 full-w">
                         <div class="absolute">
@@ -523,7 +554,8 @@
                                         <span class="txt-wrap txt-sm">
                                             <img src="./assets/images/img-custom-capsule1.webp" alt class="img">
                                         </span>
-                                        <span class="txt-wrap txt-sm"><span class="txt">20 UNIQUE COLORS</span></span>
+                                        <span class="txt-wrap txt-sm"><span class="txt">20 UNIQUE
+                                                COLORS</span></span>
                                     </h2>
                                 </div>
                             </div>
@@ -561,7 +593,9 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <ul class="color-list"></ul>
+                                <div class="swiper color-swiper">
+                                    <ul class="color-list swiper-wrapper"></ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -572,14 +606,16 @@
                                 <div class="sc-left ai-center">
                                     <div class="inner">
                                         <div class="title-area">
-                                            <h3 class="title">
-                                                Make<br/>
+                                            <h3 class="title split-line">
+                                                Make<br />
                                                 your mark
                                             </h3>
                                         </div>
                                         <div class="txt-area">
-                                            <p class="txt">
-                                                We offer the possibility to make each capsule unique by applying an embossing of your logo or emblem on the top of the capsule for a unique and distinctive signature.
+                                            <p class="txt split-line">
+                                                We offer the possibility to make each capsule unique by applying an
+                                                embossing of your logo or emblem on the top of the capsule for a
+                                                unique and distinctive signature.
                                             </p>
                                         </div>
                                     </div>
@@ -595,7 +631,7 @@
 
                 </section>
 
-                <section class="sc-experience">
+                <section id="experience" class="sc-experience">
 
                     <div class="section sc-01 full-w">
                         <div class="absolute">
@@ -647,15 +683,17 @@
                                 <div class="sc-right ai-center">
                                     <div class="inner">
                                         <div class="title-area">
-                                            <h3 class="title">
-                                                Looking<br/>
-                                                for the perfect<br/>
+                                            <h3 class="title split-line">
+                                                Looking<br />
+                                                for the perfect<br />
                                                 extraction
                                             </h3>
                                         </div>
                                         <div class="txt-area">
-                                            <p class="txt">
-                                                Capsul’in Aluminium ensures a perfect result in cup which has never been achieved before, thanks to a high barrier to oxygen level, a wide internal volume and a perfect sealing.
+                                            <p class="txt split-line">
+                                                Capsul’in Aluminium ensures a perfect result in cup which has never
+                                                been achieved before, thanks to a high barrier to oxygen level, a
+                                                wide internal volume and a perfect sealing.
                                             </p>
                                         </div>
                                     </div>
@@ -666,7 +704,7 @@
 
                 </section>
 
-                <section class="sc-spec">
+                <section id="spec" class="sc-spec">
 
                     <div class="section sc-01 full-w">
                         <div class="absolute">
@@ -696,17 +734,24 @@
                                 <div class="sc-right ai-center">
                                     <div class="inner">
                                         <div class="title-area">
-                                            <h3 class="title">
-                                                Who<br/>
+                                            <h3 class="title split-line">
+                                                Who<br />
                                                 we are
                                             </h3>
                                         </div>
                                         <div class="txt-area">
-                                            <p class="txt">
-                                                Capsul’in Pro is an empty coffee capsules specialist with strong focus on result in cup. We do only coffee capsules.Our innovation strategy is driven by the market and our client’s need.We have a large portfolio of clients in 33 countries.
+                                            <p class="txt split-line">
+                                                Capsul’in Pro is an empty coffee capsules specialist with strong
+                                                focus on result in cup. We do only coffee capsules.Our innovation
+                                                strategy is driven by the market and our client’s need.We have a
+                                                large portfolio of clients in 33 countries.
                                             </p>
-                                            <p class="txt">
-                                                Our coffee capsules are suitable for large scale, high volume and high-speed production processes in our client’s factory during coffee filling, lid sealing and packaging processes.We are be able to produce millions of our innovative capsules every day with the same level of quality.
+                                            <p class="txt split-line">
+                                                Our coffee capsules are suitable for large scale, high volume and
+                                                high-speed production processes in our client’s factory during
+                                                coffee filling, lid sealing and packaging processes.We are be able
+                                                to produce millions of our innovative capsules every day with the
+                                                same level of quality.
                                             </p>
                                         </div>
                                     </div>
@@ -718,7 +763,9 @@
                     <div class="section sc-03 full-w">
                         <div class="absolute">
                             <div class="sticky">
-                                <div class="bg-area"><div class="bg"></div></div>
+                                <div class="bg-area">
+                                    <div class="bg"></div>
+                                </div>
                                 <div class="title-area">
                                     <h2 class="title">
                                         <span class="txt-wrap txt-stroke"><span class="txt">10 YEARS</span></span>
@@ -727,7 +774,10 @@
                                             <img src="./assets/images/img-spec-capsule1.webp" alt class="img">
                                         </span>
                                         <span class="txt-wrap font-e"><span class="txt">1,8 BILLION</span></span>
-                                        <span class="txt-wrap txt-sm"><span class="txt">OF CAPSULES PER YEAR</span></span>
+                                        <span class="txt-wrap txt-sm">
+                                            <span class="txt pc">OF CAPSULES PER YEAR</span>
+                                            <span class="txt mob">PER YEAR</span>
+                                        </span>
                                     </h2>
                                 </div>
                             </div>
@@ -737,115 +787,141 @@
                     <div class="section sc-04 full-w">
                         <div class="absolute">
                             <div class="sticky">
-                                <div class="bg-area"><div class="bg"></div></div>
+                                <div class="bg-area">
+                                    <div class="bg"></div>
+                                </div>
                                 <div class="inner">
                                     <div class="sc-left">
                                         <div class="title-area">
                                             <h3 class="title">
-                                                <span class="txt-wrap"><span class="txt">Process</span></span>
-                                                <span class="txt-wrap font-e"><span class="txt">and certifications</span></span>
+                                                <span class="txt-wrap split-line"><span
+                                                        class="txt">Process</span></span>
+                                                <span class="txt-wrap font-e split-line"><span class="txt">and
+                                                        certifications</span></span>
                                             </h3>
                                         </div>
                                     </div>
                                     <div class="sc-right">
-                                        <ul class="process-list">
-                                            <li class="process-item">
-                                                <i class="ico ico1">
-                                                    <svg viewBox="0 0 42 28">
-                                                        <circle class="circle" cx="14" cy="14" r="12.5" style="stroke:#fff; stroke-width:1; fill:none; opacity:1"></circle>
-                                                        <circle class="circle" cx="28.196" cy="14" r="12.5" style="stroke:#fff; stroke-width:1; fill:none; opacity:1"></circle>
-                                                    </svg>
-                                                </i>
-                                                <strong class="title">
-                                                    Food contact safety<br/>
-                                                    compliance
-                                                </strong>
-                                                <ul class="crf-list">
-                                                    <li class="crf-item">
-                                                        <p><span class="txt-wrap"><span class="txt">EC1935-2004</span></span></p>
-                                                        <p><span class="txt-wrap"><span class="txt">EC 10-2011</span></span></p>
-                                                        <p><span class="txt-wrap"><span class="txt">EC 2023-2006</span></span></p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="process-item">
-                                                <i class="ico ico2">
-                                                    <svg viewBox="0 0 42 28">
-                                                        <circle class="circle" cx="14" cy="14" r="10"></circle>
-                                                        <circle class="circle" cx="21.5" cy="6.5" r="5"></circle>
-                                                        <circle class="circle" cx="21.5" cy="21.5" r="5"></circle>
-                                                        <circle class="circle" cx="6.5" cy="21.5" r="5"></circle>
-                                                        <circle class="circle" cx="6.5" cy="6.5" r="5"></circle>
-                                                    </svg>
-                                                </i>
-                                                <strong class="title">
-                                                    Quality<br/>
-                                                    Management System
-                                                </strong>
-                                                <ul class="crf-list">
-                                                    <li class="crf-item">
-                                                        <p><span class="txt-wrap"><span class="txt">ISO 9001</span></span></p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="process-item">
-                                                <i class="ico ico3">
-                                                    <svg viewBox="0 0 42 28">
-                                                        <circle class="circle" cx="14" cy="8.5" r="7"></circle>
-                                                        <circle class="circle" cx="14" cy="14" r="5"></circle>
-                                                        <circle class="circle" cx="14" cy="14" r="12.5"></circle>
-                                                    </svg>
-                                                </i>
-                                                <strong class="title">
-                                                    Safety<br/>
-                                                    Management System
-                                                </strong>
-                                                <ul class="crf-list">
-                                                    <li class="crf-item">
-                                                        <p><span class="txt-wrap"><span class="txt">OHSAS 18001:2007</span></span></p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="process-item">
-                                                <i class="ico ico4">
-                                                    <svg viewBox="0 0 42 28">
-                                                        <circle class="circle" cx="21.75" cy="6.25" r="4.75"></circle>
-                                                        <circle class="circle" cx="3.75" cy="3.75" r="2.25"></circle>
-                                                        <circle class="circle" cx="24.25" cy="24.25" r="2.25"></circle>
-                                                        <circle class="circle" cx="9.75" cy="18.25" r="8.25"></circle>
-                                                    </svg>
-                                                </i>
-                                                <strong class="title">
-                                                    Food Safety System<br/>
-                                                    Certification
-                                                </strong>
-                                                <ul class="crf-list">
-                                                    <li class="crf-item">
-                                                        <p><span class="txt-wrap"><span class="txt">ISO22000</span></span></p>
-                                                        <p><span class="txt-wrap"><span class="txt">FSSC22000</span></span></p>
-                                                        <p><span class="txt-wrap"><span class="txt">ISO22002-4</span></span></p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="process-item">
-                                                <i class="ico ico1">
-                                                    <svg viewBox="0 0 42 28">
-                                                        <circle class="circle" cx="14" cy="14" r="12.5"></circle>
-                                                        <circle class="circle" cx="8.75" cy="19.25" r="7.25"></circle>
-                                                        <circle class="circle" cx="5.25" cy="22.75" r="3.75"></circle>
-                                                    </svg>
-                                                </i>
-                                                <strong class="title">
-                                                    Complete traceability<br/>
-                                                    and control plan
-                                                </strong>
-                                                <ul class="crf-list">
-                                                    <li class="crf-item">
-                                                        <p><span class="txt-wrap"><span class="txt">HACCP procedures</span></span></p>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                        <div class="swiper process-swiper">
+                                            <ul class="process-list swiper-wrapper">
+                                                <li class="process-item swiper-slide">
+                                                    <i class="ico ico1">
+                                                        <svg viewBox="0 0 42 28">
+                                                            <circle class="circle" cx="14" cy="14" r="12.5"
+                                                                style="stroke:#fff; stroke-width:1; fill:none; opacity:1">
+                                                            </circle>
+                                                            <circle class="circle" cx="28.196" cy="14" r="12.5"
+                                                                style="stroke:#fff; stroke-width:1; fill:none; opacity:1">
+                                                            </circle>
+                                                        </svg>
+                                                    </i>
+                                                    <strong class="title split-line">
+                                                        Food contact safety<br />
+                                                        compliance
+                                                    </strong>
+                                                    <ul class="crf-list">
+                                                        <li class="crf-item">
+                                                            <p><span class="txt-wrap"><span
+                                                                        class="txt">EC1935-2004</span></span></p>
+                                                            <p><span class="txt-wrap"><span class="txt">EC
+                                                                        10-2011</span></span></p>
+                                                            <p><span class="txt-wrap"><span class="txt">EC
+                                                                        2023-2006</span></span></p>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="process-item swiper-slide">
+                                                    <i class="ico ico2">
+                                                        <svg viewBox="0 0 42 28">
+                                                            <circle class="circle" cx="14" cy="14" r="10"></circle>
+                                                            <circle class="circle" cx="21.5" cy="6.5" r="5"></circle>
+                                                            <circle class="circle" cx="21.5" cy="21.5" r="5"></circle>
+                                                            <circle class="circle" cx="6.5" cy="21.5" r="5"></circle>
+                                                            <circle class="circle" cx="6.5" cy="6.5" r="5"></circle>
+                                                        </svg>
+                                                    </i>
+                                                    <strong class="title split-line">
+                                                        Quality<br />
+                                                        Management System
+                                                    </strong>
+                                                    <ul class="crf-list">
+                                                        <li class="crf-item">
+                                                            <p><span class="txt-wrap"><span class="txt">ISO
+                                                                        9001</span></span></p>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="process-item swiper-slide">
+                                                    <i class="ico ico3">
+                                                        <svg viewBox="0 0 42 28">
+                                                            <circle class="circle" cx="14" cy="8.5" r="7"></circle>
+                                                            <circle class="circle" cx="14" cy="14" r="5"></circle>
+                                                            <circle class="circle" cx="14" cy="14" r="12.5"></circle>
+                                                        </svg>
+                                                    </i>
+                                                    <strong class="title split-line">
+                                                        Safety<br />
+                                                        Management System
+                                                    </strong>
+                                                    <ul class="crf-list">
+                                                        <li class="crf-item">
+                                                            <p><span class="txt-wrap"><span class="txt">OHSAS
+                                                                        18001:2007</span></span></p>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="process-item swiper-slide">
+                                                    <i class="ico ico4">
+                                                        <svg viewBox="0 0 42 28">
+                                                            <circle class="circle" cx="21.75" cy="6.25" r="4.75">
+                                                            </circle>
+                                                            <circle class="circle" cx="3.75" cy="3.75" r="2.25">
+                                                            </circle>
+                                                            <circle class="circle" cx="24.25" cy="24.25" r="2.25">
+                                                            </circle>
+                                                            <circle class="circle" cx="9.75" cy="18.25" r="8.25">
+                                                            </circle>
+                                                        </svg>
+                                                    </i>
+                                                    <strong class="title split-line">
+                                                        Food Safety System<br />
+                                                        Certification
+                                                    </strong>
+                                                    <ul class="crf-list">
+                                                        <li class="crf-item">
+                                                            <p><span class="txt-wrap"><span
+                                                                        class="txt">ISO22000</span></span></p>
+                                                            <p><span class="txt-wrap"><span
+                                                                        class="txt">FSSC22000</span></span></p>
+                                                            <p><span class="txt-wrap"><span
+                                                                        class="txt">ISO22002-4</span></span></p>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="process-item swiper-slide">
+                                                    <i class="ico ico1">
+                                                        <svg viewBox="0 0 42 28">
+                                                            <circle class="circle" cx="14" cy="14" r="12.5"></circle>
+                                                            <circle class="circle" cx="8.75" cy="19.25" r="7.25">
+                                                            </circle>
+                                                            <circle class="circle" cx="5.25" cy="22.75" r="3.75">
+                                                            </circle>
+                                                        </svg>
+                                                    </i>
+                                                    <strong class="title split-line">
+                                                        Complete traceability<br />
+                                                        and control plan
+                                                    </strong>
+                                                    <ul class="crf-list">
+                                                        <li class="crf-item">
+                                                            <p><span class="txt-wrap"><span class="txt">HACCP
+                                                                        procedures</span></span></p>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <div class="swiper-pagination mob"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -854,39 +930,44 @@
 
                 </section>
 
-                <section class="sc-contact">
+                <section id="contact" class="sc-contact">
                     <div class="section full-w">
                         <div class="absolute">
                             <div class="sticky">
-                                <div class="bg-area"><div class="bg"></div></div>
+                                <div class="bg-area">
+                                    <div class="bg"></div>
+                                </div>
                                 <div class="content">
                                     <div class="title-area">
                                         <h2 class="title">
-                                            <span class="txt-wrap txt-stroke"><span class="txt">CONTACT</span></span>
+                                            <span class="txt-wrap txt-stroke"><span
+                                                    class="txt">CONTACT</span></span>
                                             <span class="txt-wrap font-e"><span class="txt">US</span></span>
                                         </h2>
                                     </div>
                                     <div class="txt-area">
-                                        <p class="txt">
+                                        <p class="txt split-line">
                                             Capsul’in Pro is a coffee capsules
                                             specialist with strong focus on result in
                                             cup. We do only empty coffee capsules.
                                         </p>
                                     </div>
-                                    <btutton class="btn btn-modal"><span class="txt-wrap"><span class="txt">Get in touch</span></span></btutton>
+                                    <btutton class="btn btn-modal"><span class="txt-wrap"><span class="txt">Get in
+                                                touch</span></span></btutton>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                
+
             </div>
         </main>
 
         <div class="modal modal-right modal-closed">
             <div class="modal-inner">
                 <div class="modal-box">
-                    <p class="txt">For any request, please fill in the following form. Our team will get back to you as soon as possible.</p>
+                    <p class="txt">For any request, please fill in the following form. Our team will get back to you
+                        as soon as possible.</p>
 
                     <div class="form-wrap">
                         <form action="post" class="form">
@@ -912,7 +993,10 @@
                                     <button class="btn btn-select" data-items="Order, Information, Estimate">
                                         <span class="txt"></span>
                                         <i class="ico ico-arw-down">
-                                            <svg viewBox="0 0 14 14"><path d="M1,4l6,6l6-6" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                            <svg viewBox="0 0 14 14">
+                                                <path d="M1,4l6,6l6-6" fill="none" stroke="#000"
+                                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
                                         </i>
                                     </button>
                                 </div>

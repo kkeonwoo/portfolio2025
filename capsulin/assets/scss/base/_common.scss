@@ -7,6 +7,20 @@
     clip: rect(0, 0, 0, 0);
 }
 
+.pc {
+    display: block !important;
+    @include portrait() {
+        display: none !important;
+    }
+}
+
+.mob {
+    display: none !important;
+    @include portrait() {
+        display: block !important;
+    }
+}
+
 .sticky {
     position: sticky;
     top: 0;
@@ -37,6 +51,7 @@
 .section {
     position: relative;
     height: 300vh;
+    pointer-events: none;
 
     .sticky {
         --inset: 0;
@@ -57,25 +72,48 @@
 
         .sticky {
             display: flex;
+            @include portrait() {
+                flex-direction: column;
+            }
         }
 
         & > *,
         .sticky > * {
             flex: 1;
+            @include portrait() {
+                flex: unset;
+            }
         }
 
         .inner {
             width: 100%;
             padding: 0 7.380949999999999vw;
+            @include portrait() {
+                padding: 0 8.51064vw;
+            }
         }
 
         .sc-left {
             @extend .txt-type2;
+            @include portrait() {
+                height: 44%;
+            }
         }
 
         &:not(.color) {
             .sc-right {
                 @extend .txt-type2;
+                @include portrait() {
+                    height: 56%;
+                }
+            }
+        }
+        
+        &:not(.color, .sc-img) {
+            .sc-right {
+                @include portToTablet() {
+                    padding-top: 4.61538vh;
+                }
             }
         }
     }
@@ -109,6 +147,7 @@
 
 .img-box {
     height: 100%;
+    overflow: hidden;
     .img {
         width: 100%;
         height: 100%;
@@ -155,7 +194,7 @@
     position: fixed;
     top: 0;
     width: 630px;
-    height: 100%;
+    height: 100vh;
     background-color: #fff;
     color: #000;
     text-transform: uppercase;
@@ -163,6 +202,7 @@
     transition: transform .3s;
     will-change: transform;
     transform: translateX(0);
+    overflow-y: auto;
     
     &.modal-right {
         right: 0;
@@ -229,11 +269,11 @@
     }
 
     &.textarea {
-        .form-box {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
+        // .form-box {
+        //     display: flex;
+        //     flex-direction: column;
+        //     height: 100%;
+        // }
 
         .form-textarea {
             flex: 1;
@@ -260,6 +300,7 @@
         box-sizing: border-box;
         margin-top: 16px;
         width: 100%;
+        height: 272px;
         resize: none;
         border: 1.34px solid #dadada; 
     }
