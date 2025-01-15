@@ -430,7 +430,7 @@
         &.sc-04 {
             z-index: 60;
             margin-top: -300vh;
-            pointer-events: all;
+            // pointer-events: all;
             @include portrait() {
                 z-index: 90;
             }

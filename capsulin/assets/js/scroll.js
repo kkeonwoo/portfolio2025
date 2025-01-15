@@ -7,6 +7,7 @@ $(document).ready(() => {
         const text = new SplitType('.split-line', { types: 'lines' })
         const text2 = new SplitType('.split-txt .line', { types: 'chars' })
         const lines = $('.half .title .line, .txt-area .txt .line, .sc-spec .sc-04 .sc-right .line');
+        lines.unwrap('.txt-wrap');
         $(lines).wrap('<div class="txt-wrap"></div>');
     }
     
@@ -16,6 +17,12 @@ $(document).ready(() => {
         ScrollTrigger.refresh();
         SplitType.revert('.split-line, .split-txt .line');
         splitLinesInit();
+    })
+    gsap.set('.split-line .char', {
+        yPercent: -120
+    })
+    gsap.set('.split-txt.active .char', {
+        yPercent: 0
     })
 
     // default
@@ -135,7 +142,7 @@ $(document).ready(() => {
             clipPath: 'inset(50% 0% 50% 0%)'
         }, '<')
         .from('.sc-design .sc-04 .sc-left', { 
-            clipPath: 'inset(50% 50% 50% 50%)'
+            clipPath: 'inset(50% 50% 50% 50%)',
         }, '<')
         
         ScrollTrigger.create({
@@ -625,7 +632,7 @@ $(document).ready(() => {
                     width: '100%', 
                     stagger: {
                         each: 0.2
-                    }
+                    },
                 })
             },
             onEnterBack: () => {
@@ -634,7 +641,7 @@ $(document).ready(() => {
                     width: 0, 
                     stagger: { 
                         each: 0.2
-                    }
+                    },
                 })
             },
         })
