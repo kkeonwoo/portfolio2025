@@ -1,0 +1,12 @@
+$flex-map: (
+    start: flex-start,
+    end: flex-end,
+    between: space-between,
+    around: space-around,
+    stretch: stretch,
+    center: center,
+);
+
+$breakpoint-mobile: 580px;
+$breakpoint-tablet: 960px;
+$breakpoint-laptop: 1280px;

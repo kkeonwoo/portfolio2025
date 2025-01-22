@@ -1,0 +1,43 @@
+.header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    &__inner {
+        padding: 0 10px;
+        @include flex(between, center);
+    }
+}
+
+.logo {
+    margin: 26px 0;
+
+    img {
+        width: 80px;
+    }
+}
+
+.gnb {
+    &__list {
+        display: flex;
+        gap: 30px;
+    }
+
+    &__link {
+        position: relative;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 1;
+        letter-spacing: -0.008em;
+        text-transform: uppercase;
+        &--active::before {
+            left: 0;
+            bottom: -3px;
+            width: 100%;
+            height: 1px;
+            background-color: #fff;
+            @include pseudo();
+        }
+    }
+}
