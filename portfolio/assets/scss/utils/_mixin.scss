@@ -59,7 +59,7 @@
 }
 
 @mixin bg($url, $pos: center center, $size: 100% auto) {
-    background: url("../images/#{$url}") no-repeat $pos / $size;
+    background: url("../images/img/#{$url}") no-repeat $pos / $size;
 }
 
 @mixin bge($pos: center center, $size: 100% auto) {

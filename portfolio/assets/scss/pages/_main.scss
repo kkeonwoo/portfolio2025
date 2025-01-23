@@ -1,0 +1,50 @@
+.section {
+    padding: 12.5px 0;
+    border-top: 1px solid #dfe3e8;
+
+    &__title {
+        position: relative;
+        font-weight: 500;
+        font-size: 13vw;
+        line-height: 0.8;
+        text-transform: uppercase;
+        letter-spacing: -0.06em;
+
+        .line {
+            &:last-child {
+                text-align: right !important;
+            }
+        }
+    }
+}
+
+.sc-visual {
+    .split-line {
+        &::before, &::after {
+            z-index: 10;
+            aspect-ratio: 1 / 1;
+            @include pseudo();
+        }
+
+        &::before {
+            top: 15.5vw;
+            left: 27vw;
+            width: 100%;
+            max-width: 12vw;
+            @include bg('img-visual1.svg');
+        }
+        
+        &::after {
+            top: 0;
+            width: 13vw;
+            margin-left: 63vw;
+            transform: translateY(-4vw);
+            @include bg('img-visual2.svg');
+        }
+    }
+
+    .time {
+        font-size: 0.9vw;
+        line-height: 0.95;
+    }
+}
