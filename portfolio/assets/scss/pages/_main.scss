@@ -1,25 +1,24 @@
+// common
 .section {
     padding: 12.5px 0;
     border-top: 1px solid #dfe3e8;
-
+}
+// sc-visual
+.sc-visual {
     &__title {
         position: relative;
         font-weight: 500;
         font-size: 13vw;
         line-height: 0.8;
-        text-transform: uppercase;
         letter-spacing: -0.06em;
+        text-transform: uppercase;
 
         .line {
             &:last-child {
                 text-align: right !important;
             }
         }
-    }
-}
 
-.sc-visual {
-    .split-line {
         &::before, &::after {
             z-index: 10;
             aspect-ratio: 1 / 1;
@@ -43,8 +42,54 @@
         }
     }
 
-    .time {
+    &_time {
         font-size: 0.9vw;
         line-height: 0.95;
+    }
+}
+// sc-project
+.sc-project {
+    &__item + &__item {
+        margin-top: 20px;
+    }
+}
+.project-card {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding: 10vw 0;
+
+    &__bg {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        transform: translateY(-50%);
+    }
+
+    &__tags {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 1.25rem;
+        gap: .25rem;
+    }
+    
+    &__tag {
+        padding: 12px 14px;
+        background-color: #f9f9f9bf;
+        font-size: .75rem;
+        color: #242424;
+        line-height: 1;
+        backdrop-filter: blur(5px);
+        border-radius: 1000px;
+    }
+
+    &__title {
+        font-weight: 500;
+        font-size: 13vw;
+        line-height: 1;
+        text-transform: uppercase;
     }
 }

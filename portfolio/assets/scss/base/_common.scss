@@ -10,3 +10,22 @@
 .inner {
     padding: 0 20px;
 }
+
+.marquee {
+    display: flex;
+    white-space: nowrap;
+    gap: 0.45em;
+    &__txt {
+        display: block;
+        animation: marqueeX 15s linear infinite forwards;
+    }
+}
+
+@keyframes marqueeX {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}

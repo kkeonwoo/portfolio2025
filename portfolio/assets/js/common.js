@@ -21,19 +21,35 @@ Portfolio = {
         return time;
     },
     updateDayTime: function() {
-        const $time = $('.sc-visual .time');
+        const $time = $('.sc-visual__time');
 
         setInterval(() => {
             $time.html(Portfolio.setDayTime());
         }, 1000);
-        
     },
     setGeoLocation: function() {
+        let lat, lon;
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => {
-                console.log(position)
-            });
+            navigator.geolocation.getCurrentPosition(({coords: { latitude, longitude}}) => {
+			}, (error) => {
+			});
+		} else {
+            
         }
+        
+        $.ajax({
+            url : 'https://dapi.kakao.com/v2/local/geo/coord2address.json?x=' + lon +'&y=' + lat,
+            type : 'GET',
+            headers : {
+                'Authorization' : 'KakaoAK {REST_API_KEY}'
+            },
+            success : function(data) {
+                console.log(data);
+            },
+            error : function(e) {
+                console.log(e);
+            }
+        });
     },
     updateGeoLocation: function() {
         Portfolio.setGeoLocation();
