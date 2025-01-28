@@ -2,10 +2,13 @@ Portfolio = {
     init: function () {
         this.splitText();
         this.updateDayTime();
-        this.updateGeoLocation();
+        this.setGeoLocation();
+        this.masterAni();
     },
     splitText: function() {
-        const line = new SplitType('.split-line', { types: 'lines' });
+        const all = new SplitType('.split-all', { types: 'lines, words, chars', lineClass: 'txt-cover' });
+        const words = new SplitType('.split-word', { types: 'lines, words', lineClass: 'txt-cover' });
+        const lines = new SplitType('.split-line', { types: 'lines', lineClass: 'txt-cover' });
     },
     setDayTime: function() {
         let today = new Date();   
@@ -13,8 +16,8 @@ Portfolio = {
         let month = today.getMonth() + 1;
         let date = today.getDate();
         let hours = today.getHours().toString().replaceAll("[^0-9]","");
-        let minutes = today.getMinutes(); 
-        let seconds = today.getSeconds(); 
+        let minutes = today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes(); 
+        let seconds = today.getSeconds() < 10 ? '0' + today.getSeconds() : today.getSeconds(); 
 
         let time = year + '/' + month + '/' + date + '<br>' + hours + ':' + minutes + ':' + seconds;
 
@@ -28,34 +31,120 @@ Portfolio = {
         }, 1000);
     },
     setGeoLocation: function() {
-        let lat, lon;
+        const $geo = $('.sc-visual__geo');
+
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(({coords: { latitude, longitude}}) => {
-			}, (error) => {
-			});
-		} else {
-            
+            navigator.geolocation.getCurrentPosition(({coords: { latitude, longitude }}) => {
+                const lat = latitude; // 위도
+                const lng = longitude; // 경도
+
+                let geoText = lat + '°, &nbsp;' + lng + '°';
+
+                $geo.html(geoText);
+
+                // return geoText;
+                // 카카오 API
+                // const geocoder = new kakao.maps.services.Geocoder();
+                // geocoder.coord2Address(lng, lat, (result, status) => {
+                //     if (status === kakao.maps.services.Status.OK) {
+                //         const address = result[0].address.address_name;
+                //     }
+                // })
+            }, (error) => {
+                $geo.html('37.5642135°, 127.0016985°');
+            });
+        } else {
+            $geo.html('37.5642135°, 127.0016985°');
         }
-        
-        $.ajax({
-            url : 'https://dapi.kakao.com/v2/local/geo/coord2address.json?x=' + lon +'&y=' + lat,
-            type : 'GET',
-            headers : {
-                'Authorization' : 'KakaoAK {REST_API_KEY}'
-            },
-            success : function(data) {
-                console.log(data);
-            },
-            error : function(e) {
-                console.log(e);
-            }
-        });
     },
-    updateGeoLocation: function() {
-        Portfolio.setGeoLocation();
+    visualAni: function() {
+        
+    },
+    aboutAni: function() {
+        // about 진입 시 애니메이션
+        const enterTl = gsap.timeline({ paused: true })
+        .to('.sc-about__left .word', {
+            y: 0,
+            stagger: {
+                each: .1
+            }
+        })
+        .to('.sc-about__right .word', {
+            y: 0,
+            stagger: {
+                amount: .8
+            }
+        }, '<')
+        // about 영역 스크롤 시 애니메이션
+        const aboutTl = gsap.timeline()
+        .to('.sc-about .char', { 
+            opacity: 1, 
+            stagger: {
+                each: .1
+            }
+        })
+
+        ScrollTrigger.create({
+            trigger: '.sc-about',
+            start: '0% 0%',
+            end: '100% 100%',
+            animation: aboutTl,
+            scrub: 0,
+            onEnter: () => enterTl.play(),
+            onLeaveBack: () => enterTl.reverse()
+        })
+    },
+    projectAni: function() {
+        // project card hover 시 애니메이션
+        const $projectCard = $('.project-card');
+
+        $projectCard.each((idx, card) => {
+            let $projectTags = $(card).find('.project-card__tag')
+            $(card).on('mouseenter', () => {
+                gsap.to($projectTags, {
+                    y: -5,
+                    duration: .3,
+                    stagger: {
+                        each: .1,
+                        repeat: 1,
+                        yoyo: true,
+                    },
+                })
+            })
+        })
+
+        // sc-project 스크롤 애니메이션
+        const $marquee = $('.sc-project .marquee');
+        const $marqueeTxt = $('.sc-project .marquee__txt');
+        const marqeeContainMotion = gsap.to($marquee,{
+            xPercent: -100,
+            paused: true,
+        })
+        gsap.to($marqueeTxt,{
+            repeat: -1,
+            xPercent: -100,
+            duration: 25,
+        })
+
+        ScrollTrigger.create({
+            trigger: '.sc-project',
+            start: '0% 100%',
+            end: '100% 0%',
+            animation: marqeeContainMotion,
+            markers: true,
+            scrub: 0,
+        })
+    },
+    masterAni: function() {
+        Portfolio.aboutAni();
+        Portfolio.projectAni();
     }
 }
 
 $(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.defaults({
+        ease: 'none'
+    })
     Portfolio.init();
 });

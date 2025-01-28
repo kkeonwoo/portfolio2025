@@ -7,25 +7,36 @@
     clip: rect(0, 0, 0, 0);
 }
 
+.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
 .inner {
     padding: 0 20px;
+}
+
+.txt-cover {
+    overflow: hidden;
+}
+
+.word {
+    transform: translateY(120%);
 }
 
 .marquee {
     display: flex;
     white-space: nowrap;
-    gap: 0.45em;
     &__txt {
         display: block;
-        animation: marqueeX 15s linear infinite forwards;
-    }
-}
-
-@keyframes marqueeX {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
+        padding: 0 0.225em;
     }
 }
