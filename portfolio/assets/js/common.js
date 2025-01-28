@@ -65,21 +65,31 @@ Portfolio = {
         
     },
     aboutAni: function() {
-        // about 진입 시 애니메이션
+        // about left 진입 시 애니메이션
         const enterTl = gsap.timeline({ paused: true })
         .to('.sc-about__left .word', {
             y: 0,
             stagger: {
-                each: .1
+                amount: .3
             }
         })
+        // about left 영역 스크롤트리거
+        ScrollTrigger.create({
+            trigger: '.sc-about__left',
+            start: '0% 0%',
+            end: '100% 100%',
+            onEnter: () => enterTl.play(),
+            onLeaveBack: () => enterTl.reverse()
+        })
+        // about right 진입 시 애니메이션
+        const enterTl2 = gsap.timeline({ paused: true })
         .to('.sc-about__right .word', {
             y: 0,
             stagger: {
                 amount: .8
             }
-        }, '<')
-        // about 영역 스크롤 시 애니메이션
+        })
+        // about right 영역 스크롤 시 애니메이션
         const aboutTl = gsap.timeline()
         .to('.sc-about .char', { 
             opacity: 1, 
@@ -87,15 +97,20 @@ Portfolio = {
                 each: .1
             }
         })
-
+        // about right 영역 스크롤트리거
         ScrollTrigger.create({
             trigger: '.sc-about',
-            start: '0% 0%',
+            start: () => {
+                const rightTop = $('.sc-about__right').offset().top;
+
+                return `top+=${rightTop} 100%`;
+            },
             end: '100% 100%',
             animation: aboutTl,
             scrub: 0,
-            onEnter: () => enterTl.play(),
-            onLeaveBack: () => enterTl.reverse()
+            onEnter: () => enterTl2.play(),
+            onLeaveBack: () => enterTl2.reverse(),
+            invalidateOnRefresh: true,
         })
     },
     projectAni: function() {

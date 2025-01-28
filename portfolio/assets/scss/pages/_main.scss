@@ -65,25 +65,31 @@
 }
 // sc-about
 .sc-about {
-    position: relative;
-    height: 300vh;
-
-    .sticky {
-        width: 100%;
-        @include flex(_, center);
-    }
-    
     &__inner {
+        position: relative;
         width: 100%;
+        height: 600vh;
+        align-items: start;
         justify-content: space-between;
+
+        > * {
+            display: flex;
+            position: sticky;
+            top: 0;
+            padding: 14vw 0;
+        }
     }
 
     &__left {
         flex: 3;
+        flex-direction: column;
+        justify-content: center;
     }
     
     &__right {
         flex: 7;
+        align-items: center;
+        margin-top: 86vh;
     }
 
     &__title {
@@ -149,7 +155,7 @@
     position: relative;
     overflow: hidden;
     padding: 10vw 0;
-
+    
     &__bg {
         position: absolute;
         top: 0;
@@ -157,10 +163,20 @@
         width: 100%;
         overflow: hidden;
         height: 100vh;
-        background: url('../images/img/@portfolio1.jpg') no-repeat center center / cover;
-        background-attachment: fixed;
+        z-index: -1;
+        
+        &::before {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(#23272d, .2);
+            z-index: 10;
+            pointer-events: none;
+            @include pseudo();
+        }
     }
-
+    
     &__tags {
         display: flex;
         align-items: center;
@@ -186,5 +202,12 @@
         font-size: 13vw;
         line-height: 1;
         text-transform: uppercase;
+    }
+}
+
+@for $i from 1 through 10 {
+    .sc-project__item:nth-of-type(#{$i}) .project-card__bg {
+        background: url('../images/img/@portfolio#{$i}.jpg') no-repeat center center / cover;
+        background-attachment: fixed;
     }
 }
