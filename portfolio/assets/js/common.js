@@ -6,9 +6,13 @@ Portfolio = {
         this.masterAni();
     },
     splitText: function() {
-        const all = new SplitType('.split-all', { types: 'lines, words, chars', lineClass: 'txt-cover' });
-        const words = new SplitType('.split-word', { types: 'lines, words', lineClass: 'txt-cover' });
-        const lines = new SplitType('.split-line', { types: 'lines', lineClass: 'txt-cover' });
+        const splits = [
+            new SplitType('.split-all', { types: 'lines, words, chars' }),
+            new SplitType('.split-word', { types: 'lines, words' }),
+            new SplitType('.split-line', { types: 'lines' })
+        ];
+        
+        splits.forEach(split => split.elements.forEach(el => $(el).children().wrap('<div class="txt-cover"></div>')))
     },
     setDayTime: function() {
         let today = new Date();   
@@ -102,7 +106,7 @@ Portfolio = {
             let $projectTags = $(card).find('.project-card__tag')
             $(card).on('mouseenter', () => {
                 gsap.to($projectTags, {
-                    y: -5,
+                    y: -8,
                     duration: .3,
                     stagger: {
                         each: .1,

@@ -6,9 +6,7 @@
     &__inner {
         display: flex;
     }
-}
-// sc-visual
-.sc-visual {
+
     &__title {
         position: relative;
         font-weight: 500;
@@ -16,9 +14,13 @@
         line-height: 0.8;
         letter-spacing: -0.06em;
         text-transform: uppercase;
-
-        .line {
-            &:last-child {
+    }
+}
+// sc-visual
+.sc-visual {
+    &__title {
+        .txt-cover {
+            &:last-child .line {
                 text-align: right !important;
             }
         }
@@ -65,10 +67,15 @@
 .sc-about {
     position: relative;
     height: 300vh;
+
+    .sticky {
+        width: 100%;
+        @include flex(_, center);
+    }
     
     &__inner {
+        width: 100%;
         justify-content: space-between;
-        padding: 14vw 0;
     }
 
     &__left {
