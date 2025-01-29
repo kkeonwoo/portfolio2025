@@ -3,7 +3,6 @@ Portfolio = {
         this.splitText();
         this.updateDayTime();
         this.setGeoLocation();
-        this.translateX();
         this.masterAni();
     },
     splitText: function() {
@@ -73,7 +72,7 @@ Portfolio = {
                 trigger: $(ani).closest('.section__title-area'),
                 start: '0% 100%',
                 end: '100% 100%',
-                animation: gsap.to($textTranslateX, { x: '0%'}),
+                animation: gsap.to($textTranslateX, { xPercent: 0}),
                 scrub: 0,
             })
         })
@@ -84,15 +83,15 @@ Portfolio = {
     aboutAni: function() {
         // about left 진입 시 애니메이션
         const enterTl = gsap.timeline({ paused: true })
-        .to('.sc-about__left .word', {
-            y: 0,
+        .to('.sc-about .section__left .word', {
+            yPercent: 0,
             stagger: {
                 amount: .3
             }
         })
         // about left 영역 스크롤트리거
         ScrollTrigger.create({
-            trigger: '.sc-about__left',
+            trigger: '.sc-about .section__left',
             start: '0% 0%',
             end: '100% 100%',
             onEnter: () => enterTl.play(),
@@ -100,8 +99,8 @@ Portfolio = {
         })
         // about right 진입 시 애니메이션
         const enterTl2 = gsap.timeline({ paused: true })
-        .to('.sc-about__right .word', {
-            y: 0,
+        .to('.sc-about .section__right .word', {
+            yPercent: 0,
             stagger: {
                 amount: .8
             }
@@ -118,7 +117,7 @@ Portfolio = {
         ScrollTrigger.create({
             trigger: '.sc-about',
             start: () => {
-                const rightTop = $('.sc-about__right').offset().top;
+                const rightTop = $('.sc-about .section__right').offset().top;
 
                 return `top+=${rightTop} 100%`;
             },
@@ -189,6 +188,10 @@ Portfolio = {
 
     },
     masterAni: function() {
+        gsap.set('.word', { yPercent: 120})
+        gsap.set('.ani-tx .line', { xPercent: idx => idx === 0 || idx === 3 ? -100 : 100 })
+
+        Portfolio.translateX();
         Portfolio.aboutAni();
         Portfolio.projectAni();
         Portfolio.workAni();
@@ -197,8 +200,6 @@ Portfolio = {
 
 $(() => {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.defaults({
-        ease: 'none'
-    })
+    gsap.defaults({ ease: 'none' })
     Portfolio.init();
 });

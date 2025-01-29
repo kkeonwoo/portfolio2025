@@ -11,9 +11,18 @@
 
         > * {
             display: flex;
-            position: sticky;
-            top: 0;
         }
+    }
+
+    &__left {
+        flex-direction: column;
+        position: sticky;
+        top: 0;
+        flex: 3;
+    }
+
+    &__right {
+        flex: 7;
     }
 
     &__title-area {
@@ -86,15 +95,15 @@
             padding: 14vw 0;
         }
     }
-    &__left {
-        flex: 3;
-        flex-direction: column;
+
+    .section__left {
         justify-content: center;
     }
     
-    &__right {
-        flex: 7;
+    .section__right {
         align-items: center;
+        position: sticky;
+        top: 0;
         margin-top: 86vh;
     }
 
@@ -130,14 +139,14 @@
 
             .line {
                 padding: 0 20px;
-                transform: translateX(-50%);
+                // transform: translateX(-50%);
             }
 
             &:nth-of-type(2) {
                 margin-left: auto;
 
                 .line {
-                    transform: translateX(50%);
+                    // transform: translateX(50%);
                 }
             }
         }
@@ -191,21 +200,21 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
-        overflow: hidden;
-        height: 100vh;
         z-index: -1;
+        overflow: hidden;
+        width: 100%;
+        height: 100vh;
         
         &::before {
             top: 0;
             left: 0;
+            z-index: 10;
             width: 100%;
             height: 100%;
             background-color: rgba(#23272d, .2);
-            z-index: 10;
+            transition: all .5s cubic-bezier(0.55, 0, 1, 0.45);
             pointer-events: none;
             backdrop-filter: blur(4px);
-            transition: all .5s cubic-bezier(0.55, 0, 1, 0.45);
             @include pseudo();
         }
     }
@@ -256,14 +265,14 @@
 
             .line {
                 padding: 0 20px;
-                transform: translateX(50%);
+                // transform: translateX(50%);
             }
             
             &:nth-of-type(2) {
                 margin-left: 0;
 
                 .line {
-                    transform: translateX(-50%);
+                    // transform: translateX(-50%);
                 }
             }
         }
