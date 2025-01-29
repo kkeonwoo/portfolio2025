@@ -3,6 +3,7 @@ Portfolio = {
         this.splitText();
         this.updateDayTime();
         this.setGeoLocation();
+        this.translateX();
         this.masterAni();
     },
     splitText: function() {
@@ -61,6 +62,21 @@ Portfolio = {
         } else {
             $geo.html('37.5642135°, 127.0016985°');
         }
+    },
+    translateX: function() {
+        const aniTarget = $('.ani-tx');
+        
+        aniTarget.each((_, ani) => {
+            const $textTranslateX = $(ani).find('.line');
+            
+            ScrollTrigger.create({
+                trigger: $(ani).closest('.section__title-area'),
+                start: '0% 100%',
+                end: '100% 100%',
+                animation: gsap.to($textTranslateX, { x: '0%'}),
+                scrub: 0,
+            })
+        })
     },
     visualAni: function() {
         
@@ -137,6 +153,7 @@ Portfolio = {
         // sc-project 스크롤 애니메이션
         const $projectItem = $('.sc-project__item');
         const $marquee = $('.sc-project .marquee');
+
         const marqeeContainMotion = gsap.to($marquee,{
             xPercent: -100,
             paused: true,
@@ -155,13 +172,26 @@ Portfolio = {
             const marqueeAni = gsap.to($marqueeTxt,{
                 repeat: -1,
                 xPercent: -100,
-                duration: 25,
+                duration: 15,
+                paused: true,
+            })
+
+            ScrollTrigger.create({
+                trigger: project,
+                start: '0% 100%',
+                end: '100% 0%',
+                animation: marqueeAni,
+                toggleActions: 'play pause resume pause',
             })
         })
+    },
+    workAni: function() {
+
     },
     masterAni: function() {
         Portfolio.aboutAni();
         Portfolio.projectAni();
+        Portfolio.workAni();
     }
 }
 
