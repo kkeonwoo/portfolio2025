@@ -256,6 +256,9 @@ body {
   overflow: hidden;
   padding: 10vw 0;
 }
+.project-card:hover .project-card__bg::before {
+  backdrop-filter: blur(0);
+}
 .project-card__bg {
   position: absolute;
   top: 0;
@@ -273,6 +276,8 @@ body {
   background-color: rgba(35, 39, 45, 0.2);
   z-index: 10;
   pointer-events: none;
+  backdrop-filter: blur(4px);
+  transition: all 0.5s cubic-bezier(0.55, 0, 1, 0.45);
   display: block;
   position: absolute;
   content: "";
@@ -292,7 +297,6 @@ body {
   font-size: 12px;
   color: #242424;
   line-height: 1;
-  backdrop-filter: blur(5px);
   border-radius: 1000px;
 }
 .project-card__title {

@@ -30,6 +30,7 @@ Portfolio = {
     updateDayTime: function() {
         const $time = $('.sc-visual__time');
 
+        $time.html(Portfolio.setDayTime());
         setInterval(() => {
             $time.html(Portfolio.setDayTime());
         }, 1000);
@@ -121,11 +122,12 @@ Portfolio = {
             let $projectTags = $(card).find('.project-card__tag')
             $(card).on('mouseenter', () => {
                 gsap.to($projectTags, {
-                    y: -8,
+                    y: -10,
                     duration: .3,
                     stagger: {
                         each: .1,
                         repeat: 1,
+                        repeatDelay: .1,
                         yoyo: true,
                     },
                 })
@@ -133,16 +135,11 @@ Portfolio = {
         })
 
         // sc-project 스크롤 애니메이션
+        const $projectItem = $('.sc-project__item');
         const $marquee = $('.sc-project .marquee');
-        const $marqueeTxt = $('.sc-project .marquee__txt');
         const marqeeContainMotion = gsap.to($marquee,{
             xPercent: -100,
             paused: true,
-        })
-        gsap.to($marqueeTxt,{
-            repeat: -1,
-            xPercent: -100,
-            duration: 25,
         })
 
         ScrollTrigger.create({
@@ -150,8 +147,16 @@ Portfolio = {
             start: '0% 100%',
             end: '100% 0%',
             animation: marqeeContainMotion,
-            markers: true,
             scrub: 0,
+        })
+
+        $projectItem.each((_, project) => {
+            const $marqueeTxt = $(project).find('.marquee__txt');
+            const marqueeAni = gsap.to($marqueeTxt,{
+                repeat: -1,
+                xPercent: -100,
+                duration: 25,
+            })
         })
     },
     masterAni: function() {
