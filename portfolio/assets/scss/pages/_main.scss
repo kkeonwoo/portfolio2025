@@ -152,14 +152,13 @@
         }
     }
     
+    &__item {
+        position: relative;
+    }
+
     &__item + &__item {
         margin-top: 20px;
     }
-    
-    // &__item {
-    //     position: sticky;
-    //     top: 0;
-    // }
 
     // &__bg-area {
     //     position: absolute;
@@ -220,11 +219,14 @@
     }
     
     &__tags {
-        display: flex;
-        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
         padding: 1.25rem;
         padding-bottom: 0;
         gap: .25rem;
+        z-index: 10;
+        @include flex(_, center);
     }
     
     &__tag {
@@ -235,10 +237,26 @@
         line-height: 1;
         border-radius: 1000px;
         backdrop-filter: blur(5px);
+
+        &--review {
+            position: relative;
+            background-color: #fff;
+            gap: 14px;
+            font-weight: 500;
+            @include flex(center, center);
+
+            &::after {
+                width: 14px;
+                height: 14px;
+                background: url('../images/icon/icon-arw-up.svg') no-repeat center center / 100% auto;
+                transform: rotate(45deg);
+                @include pseudo($pos: static);
+            }
+        }
     }
 
     &__title {
-        padding: 10vw 0;
+        padding: calc(10vw + 56px) 0 10vw;
         font-weight: 500;
         font-size: 13vw;
         line-height: 1;

@@ -270,6 +270,9 @@ body {
 .sc-project__title .txt-cover:nth-of-type(2) {
   margin-left: auto;
 }
+.sc-project__item {
+  position: relative;
+}
 .sc-project__item + .sc-project__item {
   margin-top: 20px;
 }
@@ -306,11 +309,15 @@ body {
   content: "";
 }
 .project-card__tags {
-  display: flex;
-  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
   padding: 1.25rem;
   padding-bottom: 0;
   gap: 0.25rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
 }
 .project-card__tag {
   padding: 12px 14px;
@@ -321,8 +328,26 @@ body {
   border-radius: 1000px;
   backdrop-filter: blur(5px);
 }
+.project-card__tag--review {
+  position: relative;
+  background-color: #fff;
+  gap: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.project-card__tag--review::after {
+  width: 14px;
+  height: 14px;
+  background: url("../images/icon/icon-arw-up.svg") no-repeat center center/100% auto;
+  transform: rotate(45deg);
+  display: block;
+  position: static;
+  content: "";
+}
 .project-card__title {
-  padding: 10vw 0;
+  padding: calc(10vw + 56px) 0 10vw;
   font-weight: 500;
   font-size: 13vw;
   line-height: 1;
