@@ -4,6 +4,7 @@ Portfolio = {
         this.updateDayTime();
         this.setGeoLocation();
         this.masterAni();
+        this.workNav();
     },
     splitText: function() {
         const splits = [
@@ -185,7 +186,7 @@ Portfolio = {
         })
     },
     workAni: function() {
-
+        
     },
     masterAni: function() {
         gsap.set('.word', { yPercent: 120})
@@ -195,6 +196,19 @@ Portfolio = {
         Portfolio.aboutAni();
         Portfolio.projectAni();
         Portfolio.workAni();
+    },
+    workNav: function() {
+        const $workNavItem = $('.snb__item');
+        
+        $workNavItem.on('click', function(e) {
+            e.preventDefault();
+            let target = $(this).find('a').data('year');
+            let $workNavPadding = $('.snb').offset().top - $('.sc-work .section__left').offset().top;
+            let moveY = $(target).offset().top - $workNavPadding;
+            
+            $(this).addClass('snb__item--active').siblings().removeClass('snb__item--active');
+            $('html, body').animate({ scrollTop: moveY }, 300);
+        })
     }
 }
 

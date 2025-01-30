@@ -154,6 +154,13 @@
     
     &__item {
         position: relative;
+
+        @for $i from 1 through 10 {
+            &:nth-of-type(#{$i}) .project-card__bg {
+                background: url('../images/img/@portfolio#{$i}.jpg') no-repeat center center / 100% auto;
+                background-attachment: fixed;
+            }
+        }
     }
 
     &__item + &__item {
@@ -190,6 +197,10 @@
     overflow: hidden;
 
     &:hover {
+        .project-card__bg {
+            background-size: 105% auto;
+        }
+
         .project-card__bg::before {
             backdrop-filter: blur(0);
         }
@@ -203,6 +214,7 @@
         overflow: hidden;
         width: 100%;
         height: 100vh;
+        transition: all 0.3s cubic-bezier(0.45, 0, 0.55, 1) .2s;
         
         &::before {
             top: 0;
@@ -248,9 +260,15 @@
             &::after {
                 width: 14px;
                 height: 14px;
-                background: url('../images/icon/icon-arw-up.svg') no-repeat center center / 100% auto;
-                transform: rotate(45deg);
+                background: url('../images/icons/icon-arw-up.svg') no-repeat center center / 100% auto;
+                transform: rotate(90deg);
+                transition: transform .3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                will-change: transform;
                 @include pseudo($pos: static);
+            }
+            
+            &:hover::after {
+                transform: rotate(45deg);
             }
         }
     }
@@ -266,6 +284,12 @@
 // work
 .sc-work {
     position: relative;
+
+    &__inner {
+        > * {
+            padding: 10vw 0;
+        }
+    }
     
     &__title-area {
         display: flex;
@@ -295,11 +319,144 @@
             }
         }
     }
-}
 
-@for $i from 1 through 10 {
-    .sc-project__item:nth-of-type(#{$i}) .project-card__bg {
-        background: url('../images/img/@portfolio#{$i}.jpg') no-repeat center center / cover;
-        background-attachment: fixed;
+    &__link--more {
+        position: relative;
+        width: fit-content;
+        margin-top: 20px;
+        font-size: 14px;
+        font-weight: 700;
+
+        &::before {
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: .5px;
+            background-color: #dfe3e8;
+            transition: all .3s;
+            @include pseudo();
+        }
+
+        &:hover::before {
+            width: 100%;
+        }
+    }
+
+    &__list {
+        width: 100%;
+    }
+
+    &__item {
+        position: relative;
+        padding: 2vw 2vw calc(2vw + 30px) 0;
+        counter-increment: item-counter;
+        border-bottom: 1px solid #dfe3e8;
+        
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &::before {
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: #fff;
+            transition: all .3s;
+            @include pseudo();
+        }
+
+        &:hover {
+            &::before {
+                width: 100%;
+            }
+
+            .work-card::after {
+                transform: translateY(-50%) rotate(45deg);
+            }
+        }
+
+        .work-card::before {
+            content: counter(item-counter);
+            display: block;
+            font-size: 14px;
+            line-height: 1;
+        }
+        
+        &:nth-child(-n+9) .work-card::before {
+            content: '0' counter(item-counter);
+        }
+    }
+
+    &__review {
+        position: absolute;
+        left: calc(1.35vw + 17px);
+        bottom: 2vw;
+        font-size: 14px;
+        line-height: 1;
+        text-transform: uppercase;
+
+        &::before {
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: .5px;
+            background-color: #fff;
+            transition: all .3s;
+            @include pseudo();
+        }
+
+        &:hover::before {
+            width: 100%;
+        }
+    }
+}
+.work-card {
+    display: flex;
+    position: relative;
+    gap: 1.35vw;
+
+    &::after {
+        top: calc(50% + 15px);
+        right: 0;
+        width: 32px;
+        height: 32px;
+        background: url('../images/icons/icon-arw-up-white.svg') no-repeat center center / 100% auto;
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform: translateY(-50%) rotate(90deg);
+        @include pseudo();
+    }
+
+    &__num {
+        font-size: 14px;
+        line-height: 1;
+    }
+
+    &__title-area {
+        border-bottom: #dfe3e8;
+    }
+
+    &__title {
+        display: block;
+        font-size: 3.33vw;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+
+    &__desc {
+        margin-top: 16px;
+        font-size: 14px;
+    }
+}
+.snb {
+    &__item {
+        width: fit-content;
+        opacity: .3;
+        font-size: 14px;
+        line-height: 1.15;
+
+        &--active {
+            opacity: 1;
+        }
     }
 }
