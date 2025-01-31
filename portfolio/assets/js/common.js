@@ -135,7 +135,7 @@ Portfolio = {
         const $projectCard = $('.project-card');
 
         $projectCard.each((idx, card) => {
-            let $projectTags = $(card).find('.project-card__tag')
+            let $projectTags = $(card).parent().find('.project-card__tag')
             $(card).on('mouseenter', () => {
                 gsap.to($projectTags, {
                     y: -10,
@@ -156,6 +156,7 @@ Portfolio = {
 
         const marqeeContainMotion = gsap.to($marquee,{
             xPercent: -100,
+            duration: .1,
             paused: true,
         })
 
@@ -164,7 +165,7 @@ Portfolio = {
             start: '0% 100%',
             end: '100% 0%',
             animation: marqeeContainMotion,
-            scrub: 0,
+            scrub: 1,
         })
 
         $projectItem.each((_, project) => {
@@ -186,11 +187,42 @@ Portfolio = {
         })
     },
     workAni: function() {
+        const $workItem = $('.sc-work__item');
         
+        $workItem.each((idx, item) => {
+            // work item mouse 추적
+            let xTo = gsap.quickTo(item, "--x", { duration: 0.3}),
+                yTo = gsap.quickTo(item, "--y", { duration: 0.3});
+                
+            $(item).on('mousemove', function(e) {
+                let posX = e.offsetX;
+                let posY = e.offsetY;
+
+                xTo(posX);
+                yTo(posY);
+            })
+            // work item hover 시 애니메이션
+            $(item).hover(function() {
+                gsap.to(item, { '--inset': 0, duration: .3, delay: .2, ease: 'power3.in' })
+            }, function() {
+                gsap.to(item, { '--inset': '50%', duration: .3, delay: .2, ease: 'power3.out' })
+            })
+        })
+
+        // work 영역 스크롤 애니메이션
+        ScrollTrigger.create({
+            trigger: '.sc-work',
+            start: '0% 80%',
+            end: '100% 80%',
+            animation: gsap.to($workItem, { xPercent: 0, stagger: { each: .1}}),
+            markers: true,
+            scrub: 0,
+        })
     },
     masterAni: function() {
         gsap.set('.word', { yPercent: 120})
         gsap.set('.ani-tx .line', { xPercent: idx => idx === 0 || idx === 3 ? -100 : 100 })
+        gsap.set('.sc-work__item', { xPercent: 100})
 
         Portfolio.translateX();
         Portfolio.aboutAni();
@@ -199,15 +231,26 @@ Portfolio = {
     },
     workNav: function() {
         const $workNavItem = $('.snb__item');
-        
-        $workNavItem.on('click', function(e) {
-            e.preventDefault();
-            let target = $(this).find('a').data('year');
+
+        $workNavItem.each((_, item) => {
+            let target = $(item).find('a').data('year');
             let $workNavPadding = $('.snb').offset().top - $('.sc-work .section__left').offset().top;
             let moveY = $(target).offset().top - $workNavPadding;
-            
-            $(this).addClass('snb__item--active').siblings().removeClass('snb__item--active');
-            $('html, body').animate({ scrollTop: moveY }, 300);
+
+            $(item).on('click', function(e) {
+                e.preventDefault();
+                
+                $(this).addClass('snb__item--active').siblings().removeClass('snb__item--active');
+                $('html, body').animate({ scrollTop: moveY }, 300);
+            })
+
+            $(window).on('scroll', () => {
+                let wTop = $(window).scrollTop();
+
+                if (wTop > moveY) {
+                    $(item).addClass('snb__item--active').siblings().removeClass('snb__item--active');
+                }
+            })
         })
     }
 }
