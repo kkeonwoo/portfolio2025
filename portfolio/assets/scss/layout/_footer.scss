@@ -1,0 +1,50 @@
+.footer {
+    &__top {
+
+    }
+
+    &__bottom {
+
+    }
+
+    &__inner {
+
+    }
+
+    &__left {
+        
+    }
+
+    &__right {
+
+    }
+    
+    &__title {
+        font-size: 4.6875vw;
+        text-transform: uppercase;
+        font-weight: 700;
+
+        .txt-cover {
+            &:nth-of-type(2) {
+                margin-left: 17vw;
+            }
+            &:nth-of-type(3) {
+                margin-left: 5.4vw;
+            }
+        }
+    }
+
+    &__marquee {
+
+    }
+}
+
+.f-nav {
+    &__list {
+
+    }
+
+    &__item {
+
+    }
+}
