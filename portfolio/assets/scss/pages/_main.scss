@@ -17,11 +17,9 @@
         flex-direction: column;
         position: sticky;
         top: 0;
-        flex: 3;
     }
 
     &__right {
-        flex: 7;
     }
 
     &__title-area {
@@ -124,10 +122,12 @@
     }
 
     .section__left {
+        flex: 3;
         justify-content: center;
     }
     
     .section__right {
+        flex: 7;
         align-items: center;
         position: sticky;
         top: 0;
@@ -223,15 +223,15 @@
     position: relative;
     overflow: hidden;
 
-    &:hover {
-        .project-card__bg {
-            background-size: 105% auto;
-        }
+    // &:hover {
+    //     .project-card__bg {
+    //         background-size: 105% auto;
+    //     }
 
-        .project-card__bg::before {
-            backdrop-filter: blur(0);
-        }
-    }
+    //     .project-card__bg::before {
+    //         backdrop-filter: blur(0);
+    //     }
+    // }
     
     &__bg {
         position: absolute;
@@ -252,7 +252,7 @@
             background-color: rgba(#23272d, .2);
             transition: all .5s cubic-bezier(0.55, 0, 1, 0.45);
             pointer-events: none;
-            backdrop-filter: blur(4px);
+            // backdrop-filter: blur(4px);
             @include pseudo();
         }
     }
@@ -293,17 +293,19 @@
 // work
 .sc-work {
     position: relative;
-
-    &__inner {
-        
-        > * {
-            padding: 10vw 0;
-        }
+    
+    &__left {
+        flex: 1;
+        padding-top: 10vw;
+        padding-bottom: 17.5vh;
     }
 
-    // &__right {
-    //     overflow: hidden;
-    // }
+    &__right {
+        width: calc(70% + 12.5vw);
+        margin-right: -20px;
+        padding: 10vw 20px 17.5vh 12.5vw;
+        overflow: hidden;
+    }
     
     &__title-area {
         display: flex;
@@ -368,6 +370,10 @@
         counter-increment: item-counter;
         border-bottom: 1px solid #dfe3e8;
 
+        &:first-child {
+            padding-top: 0;
+        }
+
         &::before {
             left: 0;
             bottom: 0;
@@ -381,8 +387,11 @@
         &::after {
             top: calc(var(--y) * 1px);
             left: calc(var(--x) * 1px);
-            height: 120%;
-            aspect-ratio: 1.8;
+            // height: 120%;
+            // aspect-ratio: 1.8;
+            width: 25vw;
+            height: 35vh;
+            overflow: hidden;
             border-radius: 8px;
             clip-path: inset(var(--inset));
             transform: translate(-50%, -50%);
@@ -393,7 +402,7 @@
 
         @for $i from 1 through 14 {
             &:nth-child(#{$i})::after {
-                @include bg('@work#{$i}.jpg')
+                @include bg('@work#{$i}.jpg', $size: cover)
             }
         }
 
@@ -464,7 +473,7 @@
     }
 }
 .snb {
-    padding-top: 2vw;
+    // padding-top: 2vw;
 
     &__item {
         width: fit-content;

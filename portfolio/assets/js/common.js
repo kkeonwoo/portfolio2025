@@ -203,9 +203,9 @@ Portfolio = {
             })
             // work item hover 시 애니메이션
             $(item).hover(function() {
-                gsap.to(item, { '--inset': 0, duration: .3, delay: .2, ease: 'power3.in' })
+                gsap.to(item, { '--inset': 0, duration: .3, ease: 'powe2.in' })
             }, function() {
-                gsap.to(item, { '--inset': '50%', duration: .3, delay: .2, ease: 'power3.out' })
+                gsap.to(item, { '--inset': '50%', duration: .3, ease: 'power2.out' })
             })
         })
 
@@ -231,10 +231,11 @@ Portfolio = {
     },
     workNav: function() {
         const $workNavItem = $('.snb__item');
+        const $workItem = $('.sc-work__item[data-year]');
+        let $workNavPadding = $('.snb').offset().top - $('.sc-work .section__left').offset().top;
 
         $workNavItem.each((_, item) => {
-            let target = $(item).find('a').data('year');
-            let $workNavPadding = $('.snb').offset().top - $('.sc-work .section__left').offset().top;
+            let target = $(item).data('year');
             let moveY = $(target).offset().top - $workNavPadding;
 
             $(item).on('click', function(e) {
@@ -243,15 +244,24 @@ Portfolio = {
                 $(this).addClass('snb__item--active').siblings().removeClass('snb__item--active');
                 $('html, body').animate({ scrollTop: moveY }, 300);
             })
+        })
+        
+        $(window).on('scroll', () => {
+            let wTop = $(window).scrollTop();
 
-            $(window).on('scroll', () => {
-                let wTop = $(window).scrollTop();
-
-                if (wTop > moveY) {
-                    $(item).addClass('snb__item--active').siblings().removeClass('snb__item--active');
+            $workItem.each((idx, item) => {
+                let itemTop = $(item).offset().top;
+                let nextItemTop = idx + 1 < $workItem.length ? $($workItem[idx + 1]).offset().top : Infinity;
+                
+                if (wTop >= itemTop - $workNavPadding && wTop < nextItemTop - $workNavPadding) {
+                    let itemData = $(item).data("year");
+                    
+                    $workNavItem.removeClass("snb__item--active");
+                    $(`.snb__item[data-year="${itemData}"]`).addClass("snb__item--active");
                 }
             })
         })
+
     }
 }
 
