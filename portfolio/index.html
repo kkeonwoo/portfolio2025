@@ -23,11 +23,6 @@
         <!-- s: header -->
         <header id="header" class="header">
             <div class="header__inner">
-                <strong class="logo">
-                    <a href="#">
-                        <img src="./assets/images/img/ARCR_LOGO.svg" alt="">
-                    </a>
-                </strong>
                 <nav class="gnb">
                     <ul class="gnb__list">
                         <li class="gnb__item"><a href="#" class="gnb__link gnb__link--active">Home</a></li>
@@ -36,33 +31,54 @@
                         <li class="gnb__item"><a href="#" class="gnb__link">Work</a></li>
                     </ul>
                 </nav>
+                <strong class="logo">
+                    <a href="#">
+                        <img src="./assets/images/img/ARCR_LOGO.svg" alt="">
+                    </a>
+                </strong>
+                <div class="header__utils utils">
+                    <a href="#" class="utils__link utils__link--velog"><span class="blind">벨로그</span></a>
+                    <a href="#" class="utils__link utils__link--github"><span class="blind">git</span></a>
+                </div>
             </div>
         </header>
         <!-- e: header -->
         
         <main id="main">
             <div class="main">
-                <div class="inner">
-                    <!-- s: main-visual -->
-                    <section class="section sc-visual">
+                <!-- s: main-visual -->
+                <section class="section sc-visual">
+                    
+                    <div class="sc-visual__video-area">
 
-                        <h1 class="section__title sc-visual__title split-line">
-                            UI developer<br>
-                            creating<br>
-                            eye-catching<br>
-                            interfaces
-                        </h1>
+                        <video class="sc-visual__video" muted playsinline loop autoplay>
+                            <source src="./assets/videos/video-visual.mp4">
+                        </video>
 
                         <div class="sc-visual__info">
                             <time class="sc-visual__time"></time>
-                            <span class="sc-visual__info-text">scroll</span>
+                            <span class="sc-visual__info-txt">scroll</span>
                             <span class="sc-visual__geo"></span>
                         </div>
 
-                    </section>
-                    <!-- e: main-visual -->
-                    <!-- s: sc-about -->
-                    <section class="section sc-about">
+                    </div>
+
+                    <div class="sc-visual__title-area">
+                        <div class="sticky">
+                            <h1 class="section__title sc-visual__title split-line">
+                                UI developer<br>
+                                creating<br>
+                                eye-catching<br>
+                                interfaces
+                            </h1>
+                        </div>
+                    </div>
+
+                </section>
+                <!-- e: main-visual -->
+                <!-- s: sc-about -->
+                <section class="section sc-about">
+                    <div class="inner">
                         <div class="sc-about__top">
                             <div class="keywords">
                                 <ul class="keywords__list">
@@ -108,10 +124,13 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    <!-- e:s c-about -->
-                    <!-- s: sc-project -->
-                    <section class="section sc-project">
+                    </div>
+                </section>
+                <!-- e:s c-about -->
+                <!-- s: sc-project -->
+                <section class="section sc-project">
+                    <div class="inner">
+
                         <div class="section__title-area">
                             <h2 class="section__title sc-project__title split-line ani-tx">
                                 featured <br>
@@ -120,8 +139,8 @@
                         </div>
 
                         <ul class="sc-project__list">
-                            <li class="sc-project__item">
 
+                            <li class="sc-project__item">
                                 <div class="project-card__tags">
                                     <a href="#" target="_blank" class="project-card__tag project-card__tag--review tag--review">CODE REVIEW</a>
                                     <span class="project-card__tag">GSAP</span>
@@ -129,11 +148,8 @@
                                     <span class="project-card__tag">SCSS</span>
                                     <span class="project-card__tag">JS</span>
                                 </div>
-
                                 <a href="https://kkeonwoo.github.io/portfolio2025/capsulin/index.html" target="_blank" class="project-card">
-
                                     <div class="project-card__bg"></div>
-
                                     <div class="project-card__content">
                                         <h3 class="project-card__title marquee" aria-label="Capsulin" aria-hidden="true">
                                             <span class="marquee__txt">Capsulin</span>
@@ -144,11 +160,10 @@
                                             <span class="marquee__txt">Capsulin</span>
                                         </h3>
                                     </div>
-
                                 </a>
                             </li>
-                            <li class="sc-project__item">
 
+                            <li class="sc-project__item">
                                 <div class="project-card__tags">
                                     <a href="#" target="_blank" class="project-card__tag project-card__tag--review tag--review">CODE REVIEW</a>
                                     <span class="project-card__tag">GSAP</span>
@@ -156,12 +171,8 @@
                                     <span class="project-card__tag">SCSS</span>
                                     <span class="project-card__tag">JS</span>
                                 </div>
-
                                 <a href="https://kkeonwoo.github.io/portfolio2025/jazean/index.html" target="_blank" class="project-card">
-
                                     <div class="project-card__bg"></div>
-
-
                                     <div class="project-card__content">
                                         <h3 class="project-card__title marquee" aria-label="Jazean" aria-hidden="true">
                                             <span class="marquee__txt">Jazean</span>
@@ -172,11 +183,10 @@
                                             <span class="marquee__txt">Jazean</span>
                                         </h3>
                                     </div>
-
                                 </a>
                             </li>
-                            <li class="sc-project__item">
 
+                            <li class="sc-project__item">
                                 <div class="project-card__tags">
                                     <a href="#" target="_blank" class="project-card__tag project-card__tag--review tag--review">CODE REVIEW</a>
                                     <span class="project-card__tag">GSAP</span>
@@ -184,11 +194,8 @@
                                     <span class="project-card__tag">SCSS</span>
                                     <span class="project-card__tag">JS</span>
                                 </div>
-
                                 <a href="https://kkeonwoo.github.io/portfolio2025/thickPickle/index.html" target="_blank" class="project-card">
-
                                     <div class="project-card__bg"></div>
-
                                     <div class="project-card__content">
                                         <h3 class="project-card__title marquee" aria-label="thickPickle" aria-hidden="true">
                                             <span class="marquee__txt">thickPickle</span>
@@ -199,23 +206,19 @@
                                             <span class="marquee__txt">thickPickle</span>
                                         </h3>
                                     </div>
-
                                 </a>
                             </li>
-                            <li class="sc-project__item">
 
+                            <li class="sc-project__item">
                                 <div class="project-card__tags">
                                     <a href="#" target="_blank" class="project-card__tag project-card__tag--review tag--review">CODE REVIEW</a>
                                     <span class="project-card__tag">GSAP</span>
                                     <span class="project-card__tag">SCSS</span>
                                     <span class="project-card__tag">JS</span>
                                 </div>
-                                
+                        
                                 <a href="https://kkeonwoo.github.io/portfolio2025/enterpriseBlockChain/index.html" target="_blank" class="project-card">
-
                                     <div class="project-card__bg"></div>
-
-
                                     <div class="project-card__content">
                                         <h3 class="project-card__title marquee" aria-label="enterpriseBlockChain" aria-hidden="true">
                                             <span class="marquee__txt">enterpriseBlockChain</span>
@@ -226,11 +229,10 @@
                                             <span class="marquee__txt">enterpriseBlockChain</span>
                                         </h3>
                                     </div>
-
                                 </a>
                             </li>
-                            <li class="sc-project__item">
 
+                            <li class="sc-project__item">
                                 <div class="project-card__tags">
                                     <a href="#" target="_blank" class="project-card__tag project-card__tag--review tag--review">CODE REVIEW</a>
                                     <span class="project-card__tag">CAFE24</span>
@@ -238,12 +240,8 @@
                                     <span class="project-card__tag">CSS</span>
                                     <span class="project-card__tag">JS</span>
                                 </div>
-
                                 <a href="https://kwlee1324.cafe24.com/skin-skin5" target="_blank" class="project-card">
-
                                     <div class="project-card__bg"></div>
-
-
                                     <div class="project-card__content">
                                         <h3 class="project-card__title marquee" aria-label="northface" aria-hidden="true">
                                             <span class="marquee__txt">northface</span>
@@ -254,21 +252,17 @@
                                             <span class="marquee__txt">northface</span>
                                         </h3>
                                     </div>
-
                                 </a>
                             </li>
-                            <li class="sc-project__item">
 
+                            <li class="sc-project__item">
                                 <div class="project-card__tags">
                                     <a href="#" target="_blank" class="project-card__tag project-card__tag--review tag--review">CODE REVIEW</a>
                                     <span class="project-card__tag">CSS</span>
                                     <span class="project-card__tag">JS</span>
                                 </div>
-
                                 <a href="https://kkeonwoo.github.io/portfolio2025/naver/index.html" target="_blank" class="project-card">
-
                                     <div class="project-card__bg"></div>
-
                                     <div class="project-card__content">
                                         <h3 class="project-card__title marquee" aria-label="naver" aria-hidden="true">
                                             <span class="marquee__txt">naver</span>
@@ -279,9 +273,9 @@
                                             <span class="marquee__txt">naver</span>
                                         </h3>
                                     </div>
-
                                 </a>
                             </li>
+                            
                         </ul>
                         <!-- <div class="sc-project__bg-area">
                             <div class="sc-project__bg">
@@ -294,10 +288,12 @@
                                 <img src="./assets/images/img/@portfolio1.jpg" alt="" class="sc-project__img">
                             </div>
                         </div> -->
-                    </section>
-                    <!-- e: sc-project -->
-                    <!-- s: sc-work -->
-                    <section class="section sc-work">
+                    </div>
+                </section>
+                <!-- e: sc-project -->
+                <!-- s: sc-work -->
+                <section class="section sc-work">
+                    <div class="inner">
 
                         <div class="section__title-area">
                             <h2 class="section__title sc-work__title split-line ani-tx">
@@ -325,7 +321,6 @@
                             </div>
                             <div class="section__right sc-work__right">
                                 <ol class="sc-work__list">
-
                                     <li id="year2024" class="sc-work__item">
                                         <a href="#" target="_blank" class="work-card">
                                             <div class="work-card__title-area">
@@ -335,7 +330,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li class="sc-work__item">
                                         <a href="#" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">02</span> -->
@@ -346,7 +340,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li class="sc-work__item">
                                         <a href="#" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">03</span> -->
@@ -357,7 +350,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li class="sc-work__item">
                                         <a href="https://www.cardif.co.kr/" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">04</span> -->
@@ -368,7 +360,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li class="sc-work__item">
                                         <a href="https://www.spcmagazine.com/" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">05</span> -->
@@ -379,7 +370,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li class="sc-work__item">
                                         <a href="#" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">06</span> -->
@@ -390,7 +380,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li class="sc-work__item">
                                         <a href="http://dentalmuseum.co.kr/" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">07</span> -->
@@ -401,7 +390,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li id="year2023" class="sc-work__item">
                                         <a href="#" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">08</span> -->
@@ -412,7 +400,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li class="sc-work__item">
                                         <a href="http://www.kmtclogistics.com/#sec4" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">09</span> -->
@@ -423,7 +410,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li class="sc-work__item">
                                         <a href="https://munkh.shop/" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">10</span> -->
@@ -434,7 +420,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li class="sc-work__item">
                                         <a href="http://www.blorange.co.kr/" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">11</span> -->
@@ -445,7 +430,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li class="sc-work__item">
                                         <a href="#" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">12</span> -->
@@ -456,7 +440,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li class="sc-work__item">
                                         <a href="#" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">13</span> -->
@@ -467,7 +450,6 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                     <li id="year2022" class="sc-work__item">
                                         <a href="#" target="_blank" class="work-card">
                                             <!-- <span class="work-card__num">14</span> -->
@@ -478,20 +460,20 @@
                                         </a>
                                         <a href="#" class="sc-work__tag--review tag--review">code reivew</a>
                                     </li>
-
                                 </ol>
                             </div>
                         </div>
-                    </section>
-                    <!-- e: sc-work -->
-                    <!-- s: sc-goal -->
-                    <section class="section sc-goal">
-                        <h2 class="section__title split-all">
 
-                        </h2>
-                    </section>
-                    <!-- e: sc-goal -->
-                </div>
+                    </div>
+                </section>
+                <!-- e: sc-work -->
+                <!-- s: sc-goal -->
+                <section class="section sc-goal">
+                    <h2 class="section__title split-all">
+
+                    </h2>
+                </section>
+                <!-- e: sc-goal -->
             </div>
         </main>
 

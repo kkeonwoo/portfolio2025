@@ -79,7 +79,55 @@ Portfolio = {
         })
     },
     visualAni: function() {
+        // header logo 스크롤 애니메이션
+        const visualVideoTl = gsap.timeline()
+        .to('.header', { 
+            top: 0
+        })
+        .to('.header .logo img', { 
+            scale: 1, 
+            yPercent: 0
+        }, '<')
+
+        ScrollTrigger.create({
+            trigger: '.sc-visual__video-area',
+            start: '0% 0%',
+            end: '100% 0%',
+            animation: visualVideoTl,
+            scrub: 0,
+        })
+
+        // title 스크롤 애니메이션
+        const visualTitleTl = gsap.timeline()
+        .add(titleAni())
+        .fromTo('.sc-visual', { 
+            '--y': '150%', 
+            '--opacity': 0
+        }, { 
+            '--y' : '0%', 
+            '--opacity': 1 
+        }, '-=.3')
+
+        function titleAni() {
+            const tl = gsap.timeline()
+
+            gsap.utils.toArray('.sc-visual__title-area .line').forEach((line, idx) => {
+                tl.to(line, { 
+                    xPercent: 0
+                })
+            })
+
+            return tl;
+        }
         
+        ScrollTrigger.create({
+            trigger: '.sc-visual__title-area',
+            start: '0% 50%',
+            end: '100% 100%',
+            animation:visualTitleTl ,
+            markers: true,
+            scrub: 0,
+        })
     },
     aboutAni: function() {
         // about left 진입 시 애니메이션
@@ -221,8 +269,11 @@ Portfolio = {
     masterAni: function() {
         gsap.set('.word', { yPercent: 120})
         gsap.set('.ani-tx .line', { xPercent: idx => idx === 0 || idx === 3 ? -100 : 100 })
+        gsap.set('.header .logo img', { scale: 5, yPercent: -500})
+        gsap.set('.sc-visual__title-area .line', { xPercent: idx => idx % 2 === 0 ? -120 : 120})
         gsap.set('.sc-work__item', { xPercent: 100})
 
+        Portfolio.visualAni();
         Portfolio.translateX();
         Portfolio.aboutAni();
         Portfolio.projectAni();
