@@ -20,12 +20,29 @@
     height: 100vh;
 }
 
-.main {
-    --scaleX: 0;
-}
-
 .inner {
     padding: 0 20px;
+}
+
+.txt-aniY {
+    // display: block;
+    
+    .txt-cover {
+        display: block !important;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .word {
+        &:nth-of-type(2) {
+            position: absolute !important;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+        }
+    }
+
 }
 
 .txt-cover {

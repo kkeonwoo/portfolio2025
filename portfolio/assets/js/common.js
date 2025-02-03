@@ -3,6 +3,7 @@ Portfolio = {
         this.splitText();
         this.updateDayTime();
         this.setGeoLocation();
+        this.handleNav();
         // this.handleMatter();
         this.masterAni();
         this.workNav();
@@ -203,6 +204,21 @@ Portfolio = {
             text.style.visibility = "hidden";
         }
     },
+    handleNav: function() {
+        const nav = $('.header .gnb');
+        const $navLink = nav.find('.gnb__link');
+
+        $navLink.on('click', function(e) {
+            e.preventDefault();
+            
+            let target = $(this).attr('href');
+            let moveY = target !== "#home" ? $(target).offset().top : 0;
+
+            $navLink.closest('.gnb__item').find('.gnb__link').removeClass('gnb__link--active');
+            $(this).addClass('gnb__link--active');
+            $('html, body').animate({ scrollTop: moveY}, 500);
+        })
+    },
     translateX: function() {
         const aniTarget = $('.ani-tx');
         
@@ -218,13 +234,48 @@ Portfolio = {
             })
         })
     },
+    textAniY: function() {
+        // split text
+        new SplitType('.txt-aniY', { types: 'chars' })
+
+        const texts = $('.txt-aniY');
+        
+        texts.each((idx, text) => {
+            // clone text
+            const $cover = $(text).find('.txt-cover');
+            const $clone = $(text).find('.word').clone();
+            $($cover).append($clone);
+            
+            const $chars = $(text).find('.char');
+
+            const tween = gsap.to($chars, { 
+                duration: .3,
+                yPercent: -100, 
+                stagger: { 
+                    amount: .3
+                },
+                paused: true,
+            })
+
+            $(text).hover(() => {
+                tween.play();
+            }, () => {
+                tween.reverse();
+            })
+        })
+    },
+    introAni: function() {
+        lenis.stop();
+
+        
+    },
     sectionAni: function() {
-        gsap.utils.toArray('.section').forEach((sec, idx) => {
+        gsap.utils.toArray('.section, .footer').forEach((sec, idx) => {
             ScrollTrigger.create({
                 trigger: sec,
                 start: '0% 100%',
                 end: '100% 100%',
-                animation: gsap.to('.main', { '--scaleX': 1}),
+                animation: gsap.to('body', { '--scaleX': 1}),
             })
         })
     },
@@ -253,7 +304,6 @@ Portfolio = {
             start: '0% 0%',
             end: '100% 100%',
             endTrigger: '#footer',
-            markers: true,
             onUpdate: ({ direction }) => {
                 if ( direction > 0) {// 내릴 때
                     gsap.to('.logo', { scale: 1.2})
@@ -287,7 +337,7 @@ Portfolio = {
 
             return tl;
         }
-        
+
         ScrollTrigger.create({
             trigger: '.sc-visual__title-area',
             start: '0% 50%',
@@ -463,26 +513,52 @@ Portfolio = {
         })
     },
     workAni: function() {
+        const $workBg = $('.sc-work__bg-area');
+        const $workList = $('.sc-work__list');
         const $workItem = $('.sc-work__item');
         
-        $workItem.each((idx, item) => {
-            // work item mouse 추적
-            let xTo = gsap.quickTo(item, "--x", { duration: 0.3}),
-                yTo = gsap.quickTo(item, "--y", { duration: 0.3});
-                
-            $(item).on('mousemove', function(e) {
-                let posX = e.offsetX;
-                let posY = e.offsetY;
+        // work item mouse 추적
+        let xTo = gsap.quickTo($workBg, "--x", { duration: 0.3}),
+            yTo = gsap.quickTo($workBg, "--y", { duration: 0.3}),
+            count = 5;
 
-                xTo(posX);
-                yTo(posY);
+        $workItem.each((idx, item) => {
+            let activeIdx = 0;
+            $(item).on('mouseenter', function() {
+                const dir = idx > activeIdx ? 'up' : 'down';
+                const except = `.sc-work__bg-area .bg:not(:nth-child(${idx + 1}))`
+                const target = `.sc-work__bg-area .bg:nth-child(${idx + 1})`
+    
+                const bgAnimation = gsap.timeline({ overwrite: 'auto'})
+                .to(except, { 
+                    clipPath: () => dir === 'up' ? 'inset(100% 0 0% 0)': 'inset(0% 0 100% 0)', 
+                    onComplete: () => {
+                        gsap.set(target, { zIndex: ++count })
+                    }
+                })
+                .fromTo(target, { 
+                    clipPath: () => dir === 'up' ? 'inset(0% 0 100% 0)': 'inset(100% 0 0% 0)',  
+                }, {
+                    clipPath: 'inset(0% 0 0% 0)' 
+                }, '<')
+
+                activeIdx = idx;
             })
-            // work item hover 시 애니메이션
-            $(item).hover(function() {
-                gsap.to(item, { '--inset': 0, duration: .3, ease: 'powe2.in' })
-            }, function() {
-                gsap.to(item, { '--inset': '50%', duration: .3, ease: 'power2.out' })
-            })
+        })
+        
+        $workList.on('mousemove', function(e) {
+            let posX = e.clientX;
+            let posY = e.clientY;
+
+            xTo(posX);
+            yTo(posY);
+        })
+        
+        // work item hover 시 애니메이션
+        $workList.hover(function(e) {
+            gsap.to($workBg, { '--inset': 0, duration: .3, ease: 'powe2.in' })
+        }, function() {
+            gsap.to($workBg, { '--inset': '50%', duration: .3, ease: 'power2.out' })
         })
 
 
@@ -498,7 +574,25 @@ Portfolio = {
             }
         })
     },
+    footerAni: function() {
+        // footer 하단 애니메이션
+        const footerBottomTween = gsap.from('.footer__marquee', { yPercent: 80})
+
+        ScrollTrigger.create({
+            trigger: '.footer__bottom',
+            start: '0% 80%',
+            end: '100% 80%',
+            animation: gsap.to('.footer .marquee__txt', { xPercent: -100, repeat: -1, duration: 20}),
+            onEnter: () => {
+                footerBottomTween.play()
+            },
+            onLeaveBack: () => {
+                footerBottomTween.reverse()
+            },
+        })
+    },
     masterAni: function() {
+        gsap.set('.sc-visual__info > *', { autoAlpha: 0})
         gsap.set('.sc-about .word', { autoAlpha: 0, yPercent: 120})
         gsap.set('.ani-tx .line', { xPercent: idx => idx === 0 || idx === 3 ? -100 : 100 })
         gsap.set('.header .logo img', { scale: 5, yPercent: -500})
@@ -508,12 +602,18 @@ Portfolio = {
         gsap.set('.sc-about__top .keywords__item', { autoAlpha: 0, filter: 'blur(10px)'})
         gsap.set('.sc-work__item', { xPercent: 100})
 
-        Portfolio.sectionAni();
-        Portfolio.visualAni();
-        Portfolio.translateX();
-        Portfolio.aboutAni();
-        Portfolio.projectAni();
-        Portfolio.workAni();
+        Portfolio.introAni();
+        $(window).on('load', () => {
+            lenis.start();
+            Portfolio.sectionAni();
+            Portfolio.visualAni();
+            Portfolio.translateX();
+            Portfolio.textAniY();
+            Portfolio.aboutAni();
+            Portfolio.projectAni();
+            Portfolio.workAni();
+            Portfolio.footerAni();
+        })
     },
     workNav: function() {
         let flag = false;

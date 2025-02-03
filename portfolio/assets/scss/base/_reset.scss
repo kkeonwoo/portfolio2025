@@ -11,6 +11,7 @@ table {border-collapse:collapse;border-spacing:0;}
 ul,ol {list-style: none;}
 fieldset, input {border: 0;}
 body { 
+    --scaleX: 0;
     font-family: 'Neue', sans-serif;
     font-weight: 400;
     color: #dfe3e8; 
