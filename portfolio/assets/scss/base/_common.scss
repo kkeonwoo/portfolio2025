@@ -20,18 +20,22 @@
     height: 100vh;
 }
 
+.main {
+    --scaleX: 0;
+}
+
 .inner {
     padding: 0 20px;
 }
 
 .txt-cover {
-    overflow: hidden;
     padding-right: 0.06em;
 }
 
 .marquee {
     display: flex;
     white-space: nowrap;
+
     &__txt {
         display: block;
         padding: 0 0.225em;

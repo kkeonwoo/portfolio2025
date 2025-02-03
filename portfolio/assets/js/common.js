@@ -3,6 +3,7 @@ Portfolio = {
         this.splitText();
         this.updateDayTime();
         this.setGeoLocation();
+        // this.handleMatter();
         this.masterAni();
         this.workNav();
     },
@@ -63,6 +64,145 @@ Portfolio = {
             $geo.html('37.5642135°, 127.0016985°');
         }
     },
+    handleMatter: function() {
+        const container = document.querySelector("#container");
+
+        const keywordTl = gsap.timeline()
+        .to('.sc-about__top .keywords__item', { 
+            autoAlpha: 1, 
+            filter: 'blur(0px)', 
+            ease: 'linear',
+            duration: 1,
+            stagger: {
+                each: .2,
+                from: "random",
+            },
+        })
+        .to('.sc-about__top .keywords__item', { 
+            autoAlpha: 0, 
+            filter: 'blur(5px)', 
+            ease: 'linear',
+            duration: 1,
+            stagger: {
+                each: .2,
+                from: "random",
+            },
+        })
+        // about keyword 애니메이션
+        const st = ScrollTrigger.create({
+            trigger: '.sc-about__top',
+            start: '0% 0%',
+            end: '100% 100%',
+            animation: keywordTl,
+            scrub: 0,
+        })
+
+        gsap.utils.toArray(".keywords__txt").forEach((text) => {
+            const anim = gsap.to(text, {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top 80%",
+                    end: "bottom 60%",
+                    scrub: true
+                }
+            });
+    
+            text.addEventListener("click", () => {
+                console.log("텍스트 클릭됨, ScrollTrigger 제거");
+    
+                // 현재 애니메이션 완료된 상태로 설정
+                gsap.set(text, { autoAlpha: 1, filter: 'blur(0)' });
+    
+                // ScrollTrigger 제거
+                st.kill();
+    
+                // Matter.js 실행
+                startMatter(text);
+            });
+        });
+
+        let matterEngine = null; // 기존 엔진을 저장할 변수
+        let matterRender = null; // 기존 렌더를 저장할 변수
+        let matterRunner = null; // 기존 러너를 저장할 변수
+        
+        function startMatter(text) {
+            const { Engine, Render, World, Bodies, Runner, Events } = Matter;
+            const container = document.querySelector("#container");
+        
+            // 기존 엔진이 있으면 삭제 후 새로 생성
+            if (matterEngine) {
+                Matter.World.clear(matterEngine.world);
+                Matter.Engine.clear(matterEngine);
+                Matter.Render.stop(matterRender);
+                Matter.Runner.stop(matterRunner);
+                container.removeChild(matterRender.canvas); // 기존 캔버스 삭제
+            }
+        
+            // 새로운 Matter.js 엔진 생성
+            matterEngine = Engine.create();
+            matterEngine.world.gravity.y = 1;
+        
+            // 새로운 렌더 생성
+            matterRender = Render.create({
+                element: container,
+                engine: matterEngine,
+                options: {
+                    width: container.clientWidth,
+                    height: container.clientHeight,
+                    wireframes: false,
+                    background: "transparent"
+                }
+            });
+        
+            // 러너 생성 (FPS 컨트롤)
+            matterRunner = Runner.create();
+        
+            // 클릭한 텍스트의 위치 및 크기 가져오기
+            const rect = text.getBoundingClientRect();
+            const computedStyle = window.getComputedStyle(text); // CSS 속성 가져오기
+        
+            // Matter.js 바디 생성 (CSS 속성 반영)
+            const body = Bodies.rectangle(
+                rect.left - container.offsetLeft + rect.width / 2,
+                rect.top - container.offsetTop + rect.height / 2,
+                rect.width,
+                rect.height,
+                {
+                    restitution: 0.6,
+                    friction: 0.5,
+                    isStatic: false,
+                    render: {
+                        fillStyle: computedStyle.backgroundColor, // 배경색 유지
+                        strokeStyle: computedStyle.borderColor, // 테두리 유지
+                        lineWidth: parseFloat(computedStyle.borderWidth) || 2 // 보더 두께
+                    }
+                }
+            );
+        
+            // 바닥 추가 (텍스트가 떨어질 수 있도록)
+            const ground = Bodies.rectangle(
+                container.clientWidth / 2,
+                container.clientHeight,
+                container.clientWidth,
+                10,
+                { isStatic: true }
+            );
+        
+            // 월드에 추가
+            World.add(matterEngine.world, [body, ground]);
+        
+            // 엔진 실행
+            Engine.run(matterEngine);
+            Runner.run(matterRunner, matterEngine);
+            Render.run(matterRender);
+        
+            // 기존 HTML 요소 숨김 (Matter.js만 보이도록)
+            text.style.visibility = "hidden";
+        }
+    },
     translateX: function() {
         const aniTarget = $('.ani-tx');
         
@@ -75,6 +215,16 @@ Portfolio = {
                 end: '100% 100%',
                 animation: gsap.to($textTranslateX, { xPercent: 0}),
                 scrub: 0,
+            })
+        })
+    },
+    sectionAni: function() {
+        gsap.utils.toArray('.section').forEach((sec, idx) => {
+            ScrollTrigger.create({
+                trigger: sec,
+                start: '0% 100%',
+                end: '100% 100%',
+                animation: gsap.to('.main', { '--scaleX': 1}),
             })
         })
     },
@@ -95,6 +245,24 @@ Portfolio = {
             end: '100% 0%',
             animation: visualVideoTl,
             scrub: 0,
+        })
+
+        // header 애니메이션
+        ScrollTrigger.create({
+            trigger: '.sc-visual__title-area',
+            start: '0% 0%',
+            end: '100% 100%',
+            endTrigger: '#footer',
+            markers: true,
+            onUpdate: ({ direction }) => {
+                if ( direction > 0) {// 내릴 때
+                    gsap.to('.logo', { scale: 1.2})
+                    gsap.to('.gnb, .header__utils', { y: -70})
+                } else { // 올릴 때 
+                    gsap.to('.logo', { scale: 1})
+                    gsap.to('.gnb, .header__utils', { y: 0})
+                }
+            }
         })
 
         // title 스크롤 애니메이션
@@ -124,18 +292,48 @@ Portfolio = {
             trigger: '.sc-visual__title-area',
             start: '0% 50%',
             end: '100% 100%',
-            animation:visualTitleTl ,
-            markers: true,
+            animation: visualTitleTl,
             scrub: 0,
         })
     },
     aboutAni: function() {
+        const keywordTl = gsap.timeline()
+        .to('.sc-about__top .keywords__item', { 
+            autoAlpha: 1, 
+            filter: 'blur(0px)', 
+            ease: 'linear',
+            duration: 1,
+            stagger: {
+                each: .2,
+                from: "random",
+            },
+        })
+        .to('.sc-about__top .keywords__item', { 
+            autoAlpha: 0, 
+            filter: 'blur(5px)', 
+            ease: 'linear',
+            duration: 1,
+            stagger: {
+                each: .2,
+                from: "random",
+            },
+        })
+        // about keyword 애니메이션
+        ScrollTrigger.create({
+            trigger: '.sc-about__top',
+            start: '0% 0%',
+            end: '100% 100%',
+            animation: keywordTl,
+            scrub: 0,
+        })
         // about left 진입 시 애니메이션
         const enterTl = gsap.timeline({ paused: true })
         .to('.sc-about .section__left .word', {
+            autoAlpha: 1,
             yPercent: 0,
+            duration: .3,
             stagger: {
-                amount: .3
+                each: .1
             }
         })
         // about left 영역 스크롤트리거
@@ -149,10 +347,12 @@ Portfolio = {
         // about right 진입 시 애니메이션
         const enterTl2 = gsap.timeline({ paused: true })
         .to('.sc-about .section__right .word', {
+            autoAlpha: 1,
             yPercent: 0,
+            duration: .3,
             stagger: {
-                amount: .8
-            }
+                amount: .5
+            },
         })
         // about right 영역 스크롤 시 애니메이션
         const aboutTl = gsap.timeline()
@@ -164,18 +364,14 @@ Portfolio = {
         })
         // about right 영역 스크롤트리거
         ScrollTrigger.create({
-            trigger: '.sc-about',
-            start: () => {
-                const rightTop = $('.sc-about .section__right').offset().top;
-
-                return `top+=${rightTop} 100%`;
-            },
+            trigger: '.sc-about .section__right',
+            start: '0% 0%',
             end: '100% 100%',
+            endTrigger: '.sc-about',
             animation: aboutTl,
             scrub: 0,
             onEnter: () => enterTl2.play(),
             onLeaveBack: () => enterTl2.reverse(),
-            invalidateOnRefresh: true,
         })
     },
     projectAni: function() {
@@ -200,38 +396,70 @@ Portfolio = {
 
         // sc-project 스크롤 애니메이션
         const $projectItem = $('.sc-project__item');
-        const $marquee = $('.sc-project .marquee');
-
-        const marqeeContainMotion = gsap.to($marquee,{
-            xPercent: -100,
-            duration: .1,
-            paused: true,
-        })
-
-        ScrollTrigger.create({
-            trigger: '.sc-project',
-            start: '0% 100%',
-            end: '100% 0%',
-            animation: marqeeContainMotion,
-            scrub: 1,
-        })
 
         $projectItem.each((_, project) => {
+            const $marquee = $(project).find('.marquee');
             const $marqueeTxt = $(project).find('.marquee__txt');
+            const $projectCnt = $(project).find('.project-card__content');
+
+            // marquee Animation
+            const marqeeContainMotion = gsap.to($marquee,{
+                xPercent: -100,
+                duration: .1,
+                paused: true,
+            })
             const marqueeAni = gsap.to($marqueeTxt,{
                 repeat: -1,
                 xPercent: -100,
                 duration: 15,
                 paused: true,
             })
-
-            ScrollTrigger.create({
+            ScrollTrigger.create({ // container
                 trigger: project,
                 start: '0% 100%',
                 end: '100% 0%',
-                animation: marqueeAni,
-                toggleActions: 'play pause resume pause',
+                animation: marqeeContainMotion,
+                scrub: 1,
             })
+            ScrollTrigger.create({ // marquee
+                trigger: project,
+                start: '0% 100%',
+                end: '100% 0%',
+                toggleActions: 'play pause play pause',
+                animation: marqueeAni,
+            })
+
+            // marquee txt enter Animation
+            const enterTl = gsap.timeline({ paused: true})
+            .to($projectCnt, { '--scaleX': 1})
+            .to($marquee, { autoAlpha: 1, yPercent: 0}, '-=.1')
+
+            ScrollTrigger.create({
+                trigger: project,
+                start: '0% 50%',
+                end: '100% 50%',
+                animation: enterTl,
+                // toggleActions: 'play reverse play reverse'
+            })
+        })
+
+        // process link Animation
+        const $linkProcess = $('.sc-project__link');
+        const processTween = gsap.to($linkProcess, { duration: 2, ease:'power2.out', '--rotate': 1080, paused: true})
+        $linkProcess.hover(function() {
+            gsap.to($linkProcess, { duration: .3, borderColor: '#dfe3e8'})
+            processTween.play();
+        }, function() {
+            gsap.to($linkProcess, { duration: .3, borderColor: '#40454b'})
+            processTween.reverse();
+        })
+
+        ScrollTrigger.create({
+            trigger: '.sc-project__link-wrap',
+            start: '0% 100%',
+            end: '100% 70%',
+            animation: gsap.to($linkProcess, { xPercent: 0}),
+            scrub: 0,
         })
     },
     workAni: function() {
@@ -257,6 +485,7 @@ Portfolio = {
             })
         })
 
+
         // work 영역 스크롤 애니메이션
         ScrollTrigger.create({
             trigger: '.sc-work',
@@ -264,15 +493,22 @@ Portfolio = {
             end: '100% 80%',
             animation: gsap.to($workItem, { xPercent: 0, stagger: { each: .1}}),
             scrub: 0,
+            onEnter: () => {
+                gsap.to('.sc-work .hr__line', { scale: 1})
+            }
         })
     },
     masterAni: function() {
-        gsap.set('.word', { yPercent: 120})
+        gsap.set('.sc-about .word', { autoAlpha: 0, yPercent: 120})
         gsap.set('.ani-tx .line', { xPercent: idx => idx === 0 || idx === 3 ? -100 : 100 })
         gsap.set('.header .logo img', { scale: 5, yPercent: -500})
         gsap.set('.sc-visual__title-area .line', { xPercent: idx => idx % 2 === 0 ? -120 : 120})
+        gsap.set('.project-card__title', { autoAlpha: 0, yPercent: 120})
+        gsap.set('.sc-project__link', { xPercent: 100})
+        gsap.set('.sc-about__top .keywords__item', { autoAlpha: 0, filter: 'blur(10px)'})
         gsap.set('.sc-work__item', { xPercent: 100})
 
+        Portfolio.sectionAni();
         Portfolio.visualAni();
         Portfolio.translateX();
         Portfolio.aboutAni();
@@ -315,7 +551,7 @@ Portfolio = {
             }
         });
 
-    }
+    },
 }
 
 $(() => {

@@ -14,6 +14,7 @@
     <script src="./assets/js/lib/gsap/gsap.min.js"></script>
     <script src="./assets/js/lib/gsap/ScrollTrigger.min.js"></script>
     <script src="./assets/js/lib/swiper/swiper.min.js"></script>
+    <script src="./assets/js/lib/matter.min.js"></script>
     <!-- <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=1fc15ed7ddf688ae1e44a60a6bb67890&libraries=services"></script> -->
     <script src="./assets/js/common.js" defer></script>
 </head>
@@ -79,27 +80,29 @@
                 <!-- s: sc-about -->
                 <section class="section sc-about">
                     <div class="inner">
+
                         <div class="sc-about__top">
-                            <div class="keywords">
+                            <div class="keywords sticky">
                                 <ul class="keywords__list">
-                                    <li class="keywords__item"><span class="keywords__txt">KEYWORDS</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">Jquery</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">Passion</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">SCSS</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">Flexible</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">GSAP</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">Meticulous</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">JS</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">ABOUT ME</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">CAFE24</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">HTML</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">Tenacity</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">Positive</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">CSS</span></li>
-                                    <li class="keywords__item"><span class="keywords__txt">More</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">KEYW✪RDS</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">Jquery</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">Passion</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">SCSS</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">Flexible</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">GSAP</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">Meticulous</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">JS</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">AB◑UT ME</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">CAFE24</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">HTML</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">Tenacity</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">Positive</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">CSS</span></li>
+                                    <li class="keywords__item"><span class="keywords__txt shuffle-txt">More</span></li>
                                 </ul>
                             </div>
                         </div>
+
                         <div class="section__inner sc-about__inner">
                             <div class="section__left">
                                 <h2 class="sc-about__title split-word">
@@ -124,20 +127,20 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </section>
                 <!-- e:s c-about -->
                 <!-- s: sc-project -->
                 <section class="section sc-project">
+                    <div class="section__title-area">
+                        <h2 class="section__title sc-project__title split-line ani-tx">
+                            featured <br>
+                            pr✺ject
+                        </h2>
+                    </div>
+                    
                     <div class="inner">
-
-                        <div class="section__title-area">
-                            <h2 class="section__title sc-project__title split-line ani-tx">
-                                featured <br>
-                                pr✺ject
-                            </h2>
-                        </div>
-
                         <ul class="sc-project__list">
 
                             <li class="sc-project__item">
@@ -150,15 +153,17 @@
                                 </div>
                                 <a href="https://kkeonwoo.github.io/portfolio2025/capsulin/index.html" target="_blank" class="project-card">
                                     <div class="project-card__bg"></div>
-                                    <div class="project-card__content">
-                                        <h3 class="project-card__title marquee" aria-label="Capsulin" aria-hidden="true">
-                                            <span class="marquee__txt">Capsulin</span>
-                                            <span class="marquee__txt">Capsulin</span>
-                                            <span class="marquee__txt">Capsulin</span>
-                                            <span class="marquee__txt">Capsulin</span>
-                                            <span class="marquee__txt">Capsulin</span>
-                                            <span class="marquee__txt">Capsulin</span>
-                                        </h3>
+                                    <div class="project-card__inner">
+                                        <div class="project-card__content">
+                                            <h3 class="project-card__title marquee" aria-label="Capsulin" aria-hidden="true">
+                                                <span class="marquee__txt">Capsulin</span>
+                                                <span class="marquee__txt">Capsulin</span>
+                                                <span class="marquee__txt">Capsulin</span>
+                                                <span class="marquee__txt">Capsulin</span>
+                                                <span class="marquee__txt">Capsulin</span>
+                                                <span class="marquee__txt">Capsulin</span>
+                                            </h3>
+                                        </div>
                                     </div>
                                 </a>
                             </li>
@@ -173,15 +178,17 @@
                                 </div>
                                 <a href="https://kkeonwoo.github.io/portfolio2025/jazean/index.html" target="_blank" class="project-card">
                                     <div class="project-card__bg"></div>
-                                    <div class="project-card__content">
-                                        <h3 class="project-card__title marquee" aria-label="Jazean" aria-hidden="true">
-                                            <span class="marquee__txt">Jazean</span>
-                                            <span class="marquee__txt">Jazean</span>
-                                            <span class="marquee__txt">Jazean</span>
-                                            <span class="marquee__txt">Jazean</span>
-                                            <span class="marquee__txt">Jazean</span>
-                                            <span class="marquee__txt">Jazean</span>
-                                        </h3>
+                                    <div class="project-card__inner">
+                                        <div class="project-card__content">
+                                            <h3 class="project-card__title marquee" aria-label="Jazean" aria-hidden="true">
+                                                <span class="marquee__txt">Jazean</span>
+                                                <span class="marquee__txt">Jazean</span>
+                                                <span class="marquee__txt">Jazean</span>
+                                                <span class="marquee__txt">Jazean</span>
+                                                <span class="marquee__txt">Jazean</span>
+                                                <span class="marquee__txt">Jazean</span>
+                                            </h3>
+                                        </div>
                                     </div>
                                 </a>
                             </li>
@@ -196,15 +203,17 @@
                                 </div>
                                 <a href="https://kkeonwoo.github.io/portfolio2025/thickPickle/index.html" target="_blank" class="project-card">
                                     <div class="project-card__bg"></div>
-                                    <div class="project-card__content">
-                                        <h3 class="project-card__title marquee" aria-label="thickPickle" aria-hidden="true">
-                                            <span class="marquee__txt">thickPickle</span>
-                                            <span class="marquee__txt">thickPickle</span>
-                                            <span class="marquee__txt">thickPickle</span>
-                                            <span class="marquee__txt">thickPickle</span>
-                                            <span class="marquee__txt">thickPickle</span>
-                                            <span class="marquee__txt">thickPickle</span>
-                                        </h3>
+                                    <div class="project-card__inner">
+                                        <div class="project-card__content">
+                                            <h3 class="project-card__title marquee" aria-label="thickPickle" aria-hidden="true">
+                                                <span class="marquee__txt">thickPickle</span>
+                                                <span class="marquee__txt">thickPickle</span>
+                                                <span class="marquee__txt">thickPickle</span>
+                                                <span class="marquee__txt">thickPickle</span>
+                                                <span class="marquee__txt">thickPickle</span>
+                                                <span class="marquee__txt">thickPickle</span>
+                                            </h3>
+                                        </div>
                                     </div>
                                 </a>
                             </li>
@@ -219,15 +228,17 @@
                         
                                 <a href="https://kkeonwoo.github.io/portfolio2025/enterpriseBlockChain/index.html" target="_blank" class="project-card">
                                     <div class="project-card__bg"></div>
-                                    <div class="project-card__content">
-                                        <h3 class="project-card__title marquee" aria-label="enterpriseBlockChain" aria-hidden="true">
-                                            <span class="marquee__txt">enterpriseBlockChain</span>
-                                            <span class="marquee__txt">enterpriseBlockChain</span>
-                                            <span class="marquee__txt">enterpriseBlockChain</span>
-                                            <span class="marquee__txt">enterpriseBlockChain</span>
-                                            <span class="marquee__txt">enterpriseBlockChain</span>
-                                            <span class="marquee__txt">enterpriseBlockChain</span>
-                                        </h3>
+                                    <div class="project-card__inner">
+                                        <div class="project-card__content">
+                                            <h3 class="project-card__title marquee" aria-label="enterpriseBlockChain" aria-hidden="true">
+                                                <span class="marquee__txt">enterpriseBlockChain</span>
+                                                <span class="marquee__txt">enterpriseBlockChain</span>
+                                                <span class="marquee__txt">enterpriseBlockChain</span>
+                                                <span class="marquee__txt">enterpriseBlockChain</span>
+                                                <span class="marquee__txt">enterpriseBlockChain</span>
+                                                <span class="marquee__txt">enterpriseBlockChain</span>
+                                            </h3>
+                                        </div>
                                     </div>
                                 </a>
                             </li>
@@ -242,15 +253,17 @@
                                 </div>
                                 <a href="https://kwlee1324.cafe24.com/skin-skin5" target="_blank" class="project-card">
                                     <div class="project-card__bg"></div>
-                                    <div class="project-card__content">
-                                        <h3 class="project-card__title marquee" aria-label="northface" aria-hidden="true">
-                                            <span class="marquee__txt">northface</span>
-                                            <span class="marquee__txt">northface</span>
-                                            <span class="marquee__txt">northface</span>
-                                            <span class="marquee__txt">northface</span>
-                                            <span class="marquee__txt">northface</span>
-                                            <span class="marquee__txt">northface</span>
-                                        </h3>
+                                    <div class="project-card__inner">
+                                        <div class="project-card__content">
+                                            <h3 class="project-card__title marquee" aria-label="northface" aria-hidden="true">
+                                                <span class="marquee__txt">northface</span>
+                                                <span class="marquee__txt">northface</span>
+                                                <span class="marquee__txt">northface</span>
+                                                <span class="marquee__txt">northface</span>
+                                                <span class="marquee__txt">northface</span>
+                                                <span class="marquee__txt">northface</span>
+                                            </h3>
+                                        </div>
                                     </div>
                                 </a>
                             </li>
@@ -263,15 +276,17 @@
                                 </div>
                                 <a href="https://kkeonwoo.github.io/portfolio2025/naver/index.html" target="_blank" class="project-card">
                                     <div class="project-card__bg"></div>
-                                    <div class="project-card__content">
-                                        <h3 class="project-card__title marquee" aria-label="naver" aria-hidden="true">
-                                            <span class="marquee__txt">naver</span>
-                                            <span class="marquee__txt">naver</span>
-                                            <span class="marquee__txt">naver</span>
-                                            <span class="marquee__txt">naver</span>
-                                            <span class="marquee__txt">naver</span>
-                                            <span class="marquee__txt">naver</span>
-                                        </h3>
+                                    <div class="project-card__inner">
+                                        <div class="project-card__content">
+                                            <h3 class="project-card__title marquee" aria-label="naver" aria-hidden="true">
+                                                <span class="marquee__txt">naver</span>
+                                                <span class="marquee__txt">naver</span>
+                                                <span class="marquee__txt">naver</span>
+                                                <span class="marquee__txt">naver</span>
+                                                <span class="marquee__txt">naver</span>
+                                                <span class="marquee__txt">naver</span>
+                                            </h3>
+                                        </div>
                                     </div>
                                 </a>
                             </li>
@@ -289,17 +304,31 @@
                             </div>
                         </div> -->
                     </div>
+
+                    <div class="sc-project__link-wrap"><a href="#" class="sc-project__link">PROCESS</a></div>
                 </section>
                 <!-- e: sc-project -->
                 <!-- s: sc-work -->
                 <section class="section sc-work">
                     <div class="inner">
 
-                        <div class="section__title-area">
-                            <h2 class="section__title sc-work__title split-line ani-tx">
-                                w❂rk <br>
-                                experience
-                            </h2>
+                        <div class="sc-work__title-area section__title-area">
+                            <div class="sc-work__desc-box">
+                                <hr class="hr__line">
+                                <span class="sc-work__desc">working in ad-up <br> Responsive, Interactive, web &#38; mobile publishing</span>
+                                <hr class="hr__line">
+                            </div>
+                            <div class="sc-work__title-box">
+                                <h2 aria-hidden="true" aria-label="work experience" class="section__title sc-work__title">
+                                    <span class="line"><span class="sc-work__txt">w❂rk</span><span class="sc-work__txt">w❂rk</span><span class="sc-work__txt">w❂rk</span></span>
+                                    <span class="line"><span class="sc-work__txt">experience</span><span class="sc-work__txt">experience</span><span class="sc-work__txt">experience</span></span>
+                                </h2>
+                            </div>
+                            <div class="sc-work__desc-box">
+                                <hr class="hr__line">
+                                <span class="sc-work__desc">I learned how to communicate <br>  by working with planners, designs, and developers</span>
+                                <hr class="hr__line">
+                            </div>
                         </div>
 
                         <div class="section__inner sc-work__inner">
