@@ -475,6 +475,7 @@ body.dark {
   transition: all 0.3s;
   opacity: 0;
   visibility: hidden;
+  z-index: 50;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
