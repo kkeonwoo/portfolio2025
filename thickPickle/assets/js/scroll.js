@@ -1,9 +1,10 @@
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 gsap.defaults({ease: 'none'});
 
+let splitLines;
 // 텍스트 나누기
 splitLinesInit = () => {
-    const splitLines = new SplitType('.split', { types: 'lines'});
+    splitLines = new SplitType('.split', { types: 'lines'});
     $('.line').wrap('<div class="txt-ani"></div>');
     $('.sc-product .line').addClass('ty-txt');
 }
@@ -11,6 +12,7 @@ splitLinesInit = () => {
 splitLinesInit();
 $(window).resize(function() {
     SplitType.revert('.split');
+    $('.sc-product .line').removeClass('ty-txt');
     splitLinesInit();
 })
 
@@ -158,7 +160,9 @@ ScrollTrigger.create({
     onUpdate: (self) => {
         playMotion = (motion1, motion2) => {
             if (motion1.isActive()) {
-                motion1.reverse();
+                motion1.reverse().eventCallback("onReverseComplete",function(){
+                    motion2.play();
+                });
             } else {
                 motion2.play();
             }
