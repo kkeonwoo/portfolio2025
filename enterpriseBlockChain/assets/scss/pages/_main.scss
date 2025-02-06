@@ -99,6 +99,7 @@
         transition: all .3s;
         opacity: 0;
         visibility: hidden;
+        z-index: 50;
         @include absCenter(true, false);
         &.show {
             opacity: 1;

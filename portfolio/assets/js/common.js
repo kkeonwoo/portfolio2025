@@ -267,7 +267,57 @@ Portfolio = {
     introAni: function() {
         lenis.stop();
 
-        
+        const introTl = gsap.timeline({
+            defaults: {
+                duration: 1,
+                ease: 'expo.inOut'
+            }
+        })
+        .to('.intro__txt:nth-child(1) .line', { 
+            autoAlpha: 1,
+            yPercent: 0,
+            duration: 1,
+        })
+        .to('.intro__txt:nth-child(1)', {
+            clipPath: 'inset(0% 50% 0% 50%)',
+        }, '-=.2')
+        .to('.intro__txt:nth-child(2)', {
+            clipPath: 'inset(0 0 100% 0)',
+        })      
+        .to('.intro__txt:nth-child(3)', {
+            clipPath: 'inset(0 0 0 100%)',
+        })      
+        .to('.intro__txt:nth-child(4)', {
+            clipPath: 'inset(50% 0 50% 0)',
+        })      
+        .to('.intro__txt:nth-child(5)', {
+            autoAlpha: 0,
+            scale: 2,
+            duration: 1.5
+        })     
+        .from('.sc-visual__video', {
+            scale: 2
+        }, '-=0.6')
+        .to('.sc-visual__info > *, .logo', {
+            autoAlpha: 1,
+            stagger: {
+                each: .1
+            },
+            onComplete: () => {
+                lenis.start();
+            }
+        }, '-=.6')
+
+        // gsap.utils.toArray('.intro__txt').forEach((char, idx) => {
+        //     introTl.to(`.intro__txt .char`, { 
+        //         yPercent: -100 * idx, 
+        //         duration: .3,
+        //         stagger: { 
+        //             amount: 1,
+        //         },
+        //     })
+        // })
+
     },
     sectionAni: function() {
         gsap.utils.toArray('.section, .footer').forEach((sec, idx) => {
@@ -592,7 +642,9 @@ Portfolio = {
         })
     },
     masterAni: function() {
-        gsap.set('.sc-visual__info > *', { autoAlpha: 0})
+        // gsap.set('.intro__txt .char', { yPercent: 100})
+        gsap.set('.intro__txt:nth-child(1) .line', { autoAlpha: 0, yPercent: 100})
+        gsap.set('.sc-visual__info > *, .logo', { autoAlpha: 0})
         gsap.set('.sc-about .word', { autoAlpha: 0, yPercent: 120})
         gsap.set('.ani-tx .line', { xPercent: idx => idx === 0 || idx === 3 ? -100 : 100 })
         gsap.set('.header .logo img', { scale: 5, yPercent: -500})
@@ -604,7 +656,6 @@ Portfolio = {
 
         Portfolio.introAni();
         $(window).on('load', () => {
-            lenis.start();
             Portfolio.sectionAni();
             Portfolio.visualAni();
             Portfolio.translateX();
