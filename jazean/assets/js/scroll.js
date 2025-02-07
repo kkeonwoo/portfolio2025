@@ -97,23 +97,16 @@ $(document).ready(function() {
     .to('.sc-grain .line-grain .path', { 
         strokeDashoffset: 0
     })
-    .add(pathGrainMobile())
-    .to('.sc-grain .line-farmer .outline', { 
+    if(isMobile) {
+        grainTl.to('.sc-grain .line-bean .path', { duration: 1, strokeDashoffset: 0})
+        .to('.sc-grain .line-grain2 .path', { strokeDashoffset: 0})
+    }
+    grainTl.to('.sc-grain .line-farmer .outline', { 
         strokeDashoffset: 0
     })
     .to('.sc-grain .line-farmer .path:not(.outline)', { 
         strokeDashoffset: 0
     }, '-=.2')
-
-    // grain 영역 모바일 svg 애니메이션 추가
-    function pathGrainMobile() {
-        if(isMobile) {
-            const tl = gsap.timeline()
-            .to('.sc-grain .line-bean .path', { duration: 1, strokeDashoffset: 0})
-            .to('.sc-grain .line-grain2 .path', { strokeDashoffset: 0})
-            return tl
-        }
-    }
 
     ScrollTrigger.create({
         trigger: '.sc-grain',
@@ -122,6 +115,7 @@ $(document).ready(function() {
             return isMobile ? 'bottom 100%' :'bottom 45%'
         } ,
         animation: grainTl,
+        invalidateOnRefresh: true,
         scrub: 0,
     })
     
@@ -138,6 +132,7 @@ $(document).ready(function() {
         animation: gsap.to('.sc-tech .line .path', { 
             strokeDashoffset: 0
         }),
+        invalidateOnRefresh: true,
     })
 
     // tech 영역 비디오, 커피 애니메이션
@@ -160,6 +155,7 @@ $(document).ready(function() {
         },
         animation: techTl,
         scrub: 1,
+        invalidateOnRefresh: true,
     })
     
     // roast 영역 비디오 애니메이션
@@ -201,6 +197,7 @@ $(document).ready(function() {
         },
         animation: roatTl,
         scrub: 0,
+        invalidateOnRefresh: true,
     })
 
     // roast 영역 텍스트 애니메이션
@@ -263,7 +260,8 @@ $(document).ready(function() {
             gsap.to('.sc-discover .group-cnt .path', { 
                 strokeDashoffset: 0, 
             })
-        }
+        },
+        invalidateOnRefresh: true,
     })
 
     // 센터 영역 애니메이션
@@ -322,5 +320,9 @@ $(document).ready(function() {
         start: 'top bottom',
         end: 'bottom bottom',
         animation: footerTL,
+    })
+
+    ScrollTrigger.addEventListener('matchmedia', () =>  {
+        ScrollTrigger.refresh()
     })
 })
