@@ -18,9 +18,14 @@
 .logo {
     @include absCenter(true, true);
 
-    img {
-        width: 80px;
+    &__link {
+        font-size: 2vw;
+        font-family: 'LeagueSpartan', sans-serif;
     }
+
+    // img {
+    //     width: 80px;
+    // }
 }
 
 .gnb {

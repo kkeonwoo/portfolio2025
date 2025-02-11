@@ -566,11 +566,6 @@ Portfolio = {
         const $workBg = $('.sc-work__bg-area');
         const $workList = $('.sc-work__list');
         const $workItem = $('.sc-work__item');
-        
-        // work item mouse 추적
-        let xTo = gsap.quickTo($workBg, "--x", { duration: 0.3}),
-            yTo = gsap.quickTo($workBg, "--y", { duration: 0.3}),
-            count = 5;
 
         $workItem.each((idx, item) => {
             let activeIdx = 0;
@@ -595,10 +590,19 @@ Portfolio = {
                 activeIdx = idx;
             })
         })
+
+        // work item mouse 추적
+        let posX = window.innerWidth / 2,
+            posY = window.innerHeight / 2,
+            xTo = gsap.quickTo($workBg, "--x", { duration: 0.3}),
+            yTo = gsap.quickTo($workBg, "--y", { duration: 0.3}),
+            count = 5;
         
+        gsap.set($workBg, {'--x': posX, '--y': posY})
+
         $workList.on('mousemove', function(e) {
-            let posX = e.clientX;
-            let posY = e.clientY;
+            posX = e.clientX;
+            posY = e.clientY;
 
             xTo(posX);
             yTo(posY);
@@ -606,11 +610,10 @@ Portfolio = {
         
         // work item hover 시 애니메이션
         $workList.hover(function(e) {
-            gsap.to($workBg, { '--inset': 0, duration: .3, ease: 'powe2.in' })
+            gsap.to($workBg, { '--inset': '0%', duration: .3, ease: 'powe2.in' })
         }, function() {
             gsap.to($workBg, { '--inset': '50%', duration: .3, ease: 'power2.out' })
         })
-
 
         // work 영역 스크롤 애니메이션
         ScrollTrigger.create({
@@ -626,7 +629,7 @@ Portfolio = {
     },
     footerAni: function() {
         // footer 하단 애니메이션
-        const footerBottomTween = gsap.from('.footer__marquee', { yPercent: 80})
+        const footerBottomTween = gsap.to('.footer__marquee', { autoAlpha: 1, yPercent: 0, paused: true})
 
         ScrollTrigger.create({
             trigger: '.footer__bottom',
@@ -653,8 +656,9 @@ Portfolio = {
         gsap.set('.sc-project__link', { xPercent: 100})
         gsap.set('.sc-about__top .keywords__item', { autoAlpha: 0, filter: 'blur(10px)'})
         gsap.set('.sc-work__item', { xPercent: 100})
+        gsap.set('.footer__marquee', { autoAlpha: 0, yPercent: 80})
 
-        Portfolio.introAni();
+        // Portfolio.introAni();
         $(window).on('load', () => {
             Portfolio.sectionAni();
             Portfolio.visualAni();
