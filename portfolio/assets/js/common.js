@@ -234,6 +234,28 @@ Portfolio = {
             })
         })
     },
+    translateY: function(t, stagger) {
+        const tl = gsap.timeline({ paused: true })
+        .to(t, {
+            autoAlpha: 1,
+            yPercent: 0,
+            duration: .3,
+            stagger: stagger
+        })
+
+        return tl;
+    },
+    txtAniOpacity: function(t) {
+        const tl = gsap.timeline()
+        .to(t, { 
+            opacity: 1, 
+            stagger: {
+                each: .1
+            }
+        })
+
+        return tl;
+    },
     textAniY: function() {
         // split text
         new SplitType('.txt-aniY', { types: 'chars' })
@@ -273,28 +295,28 @@ Portfolio = {
                 ease: 'expo.inOut'
             }
         })
-        .to('.intro__txt:nth-child(1) .line', { 
-            autoAlpha: 1,
-            yPercent: 0,
-            duration: 1,
-        })
-        .to('.intro__txt:nth-child(1)', {
-            clipPath: 'inset(0% 50% 0% 50%)',
-        }, '-=.2')
-        .to('.intro__txt:nth-child(2)', {
-            clipPath: 'inset(0 0 100% 0)',
-        })      
-        .to('.intro__txt:nth-child(3)', {
-            clipPath: 'inset(0 0 0 100%)',
-        })      
-        .to('.intro__txt:nth-child(4)', {
-            clipPath: 'inset(50% 0 50% 0)',
-        })      
-        .to('.intro__txt:nth-child(5)', {
-            autoAlpha: 0,
-            scale: 2,
-            duration: 1.5
-        })     
+        // .to('.intro__txt:nth-child(1) .line', { 
+        //     autoAlpha: 1,
+        //     yPercent: 0,
+        //     duration: 1,
+        // })
+        // .to('.intro__txt:nth-child(1)', {
+        //     clipPath: 'inset(0% 50% 0% 50%)',
+        // }, '-=.2')
+        // .to('.intro__txt:nth-child(2)', {
+        //     clipPath: 'inset(0 0 100% 0)',
+        // })      
+        // .to('.intro__txt:nth-child(3)', {
+        //     clipPath: 'inset(0 0 0 100%)',
+        // })      
+        // .to('.intro__txt:nth-child(4)', {
+        //     clipPath: 'inset(50% 0 50% 0)',
+        // })      
+        // .to('.intro__txt:nth-child(5)', {
+        //     autoAlpha: 0,
+        //     scale: 2,
+        //     duration: 1.5
+        // })     
         .from('.sc-visual__video', {
             scale: 2
         }, '-=0.6')
@@ -335,7 +357,7 @@ Portfolio = {
         .to('.header', { 
             top: 0
         })
-        .to('.header .logo img', { 
+        .to('.header .logo__link', { 
             scale: 1, 
             yPercent: 0
         }, '<')
@@ -426,16 +448,10 @@ Portfolio = {
             animation: keywordTl,
             scrub: 0,
         })
+
         // about left 진입 시 애니메이션
-        const enterTl = gsap.timeline({ paused: true })
-        .to('.sc-about .section__left .word', {
-            autoAlpha: 1,
-            yPercent: 0,
-            duration: .3,
-            stagger: {
-                each: .1
-            }
-        })
+        const enterTl = Portfolio.translateY('.sc-about .section__left .word', { amount: .3})
+        const enterTl2 = Portfolio.translateY('.sc-about .section__right .word', { amount: .3})
         // about left 영역 스크롤트리거
         ScrollTrigger.create({
             trigger: '.sc-about .section__left',
@@ -444,31 +460,13 @@ Portfolio = {
             onEnter: () => enterTl.play(),
             onLeaveBack: () => enterTl.reverse()
         })
-        // about right 진입 시 애니메이션
-        const enterTl2 = gsap.timeline({ paused: true })
-        .to('.sc-about .section__right .word', {
-            autoAlpha: 1,
-            yPercent: 0,
-            duration: .3,
-            stagger: {
-                amount: .5
-            },
-        })
-        // about right 영역 스크롤 시 애니메이션
-        const aboutTl = gsap.timeline()
-        .to('.sc-about .char', { 
-            opacity: 1, 
-            stagger: {
-                each: .1
-            }
-        })
         // about right 영역 스크롤트리거
         ScrollTrigger.create({
             trigger: '.sc-about .section__right',
             start: '0% 0%',
             end: '100% 100%',
             endTrigger: '.sc-about',
-            animation: aboutTl,
+            animation: Portfolio.txtAniOpacity('.sc-about .char'),
             scrub: 0,
             onEnter: () => enterTl2.play(),
             onLeaveBack: () => enterTl2.reverse(),
@@ -627,6 +625,26 @@ Portfolio = {
             }
         })
     },
+    goalAni: function() {
+        const enterTl = Portfolio.translateY('.sc-goal__title .word', { each: .1})
+        const enterTl2 = Portfolio.translateY('.sc-goal__txt .word', { amount: .5})
+        // goal 영역 스크롤트리거
+        ScrollTrigger.create({
+            trigger: '.sc-goal',
+            start: '0% 50%',
+            end: '100% 50%',
+            animation: Portfolio.txtAniOpacity('.sc-goal__txt .char'),
+            scrub: 0,
+            onEnter: () => {
+                enterTl.play()
+                enterTl2.play()
+            },
+            onLeaveBack: () => {
+                enterTl.reverse()
+                enterTl2.reverse()
+            }
+        })
+    },
     footerAni: function() {
         // footer 하단 애니메이션
         const footerBottomTween = gsap.to('.footer__marquee', { autoAlpha: 1, yPercent: 0, paused: true})
@@ -648,9 +666,9 @@ Portfolio = {
         // gsap.set('.intro__txt .char', { yPercent: 100})
         gsap.set('.intro__txt:nth-child(1) .line', { autoAlpha: 0, yPercent: 100})
         gsap.set('.sc-visual__info > *, .logo', { autoAlpha: 0})
-        gsap.set('.sc-about .word', { autoAlpha: 0, yPercent: 120})
+        gsap.set('.sc-about .word, .sc-goal .word', { autoAlpha: 0, yPercent: 120})
         gsap.set('.ani-tx .line', { xPercent: idx => idx === 0 || idx === 3 ? -100 : 100 })
-        gsap.set('.header .logo img', { scale: 5, yPercent: -500})
+        gsap.set('.header .logo__link', { scale: 5, yPercent: -500})
         gsap.set('.sc-visual__title-area .line', { xPercent: idx => idx % 2 === 0 ? -120 : 120})
         gsap.set('.project-card__title', { autoAlpha: 0, yPercent: 120})
         gsap.set('.sc-project__link', { xPercent: 100})
@@ -658,7 +676,7 @@ Portfolio = {
         gsap.set('.sc-work__item', { xPercent: 100})
         gsap.set('.footer__marquee', { autoAlpha: 0, yPercent: 80})
 
-        // Portfolio.introAni();
+        Portfolio.introAni();
         $(window).on('load', () => {
             Portfolio.sectionAni();
             Portfolio.visualAni();
@@ -667,6 +685,7 @@ Portfolio = {
             Portfolio.aboutAni();
             Portfolio.projectAni();
             Portfolio.workAni();
+            Portfolio.goalAni();
             Portfolio.footerAni();
         })
     },

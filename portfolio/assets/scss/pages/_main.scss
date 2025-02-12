@@ -194,9 +194,9 @@
         }
         
         &::after {
-            top: 4.5vw;
+            top: 6.9vw;
             width: 13vw;
-            margin-left: 48vw;
+            margin-left: 50.3vw;
             opacity: var(--opacity);
             @include bg('img-visual2.svg');
         }
@@ -285,6 +285,7 @@
         font-size: 4vw;
         text-transform: uppercase;
         border-radius: 100px;
+        line-height: 1;
     }
 }
 // sc-project
@@ -727,7 +728,8 @@
         clip-path: inset(var(--inset));
         transform: translate(-50%, -50%);
         pointer-events: none;
-        // z-index: -1;
+        user-select: none;
+        z-index: -1;
         overflow: hidden;
         border-radius: 8px;
         
@@ -778,6 +780,31 @@
     &__desc {
         margin-top: 16px;
         font-size: 14px;
+    }
+}
+// goal
+.sc-goal {
+    height: 300vh;
+
+    &__inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__title {
+        font-size: 16px;
+        text-transform: uppercase;
+    }
+    
+    &__txt {
+        margin-top: 24px;
+        font-size: 2vw;
+        line-height: 1;
+        .char {
+            opacity: .2;
+        }
     }
 }
 .snb {
