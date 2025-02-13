@@ -17,6 +17,9 @@
         position: relative;
         width: 100%;
         @include flex(between, start);
+        @include mobile() {
+            display: block;
+        }
 
         > * {
             display: flex;
@@ -77,10 +80,10 @@
 
 .intro {
     position: absolute;
+    z-index: 10;
+    overflow: hidden;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
-    z-index: 10;
 
     .intro__bg {
         position: absolute;
@@ -103,39 +106,39 @@
     }
 
     &__txt-box {
+        // position: relative;
+        z-index: 10;
         overflow: hidden;
         width: 100%;
         height: 1.8vw;
         mix-blend-mode: difference;
-        // position: relative;
-        z-index: 10;
     }
     
     &__txt {
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
         position: absolute;
         top: 0;
         left: 50%;
         width: 100%;
         height: 100%;
-        transform: translateX(-50%);
-        font-size: 1.5vw;
-        text-transform: uppercase;
-        font-weight: 700;
-        text-align: center;
         background-color: #23272d;
-
-        &:nth-child(2n) {
-            color: #23272d;
-            background-color: #dfe3e8;
-        }
+        font-weight: 700;
+        font-size: 1.5vw;
+        text-align: center;
+        transform: translateX(-50%);
+        text-transform: uppercase;
 
         @for $i from 1 through 5 {
             &:nth-child(#{$i}) {
                 z-index: calc(-1 * #{$i});
             }
+        }
+
+        &:nth-child(2n) {
+            background-color: #dfe3e8;
+            color: #23272d;
         }
     }
 }
@@ -147,8 +150,8 @@
     user-select: none;
 
     &__video-area {
-        height: 100vh;
         overflow: hidden;
+        height: 100vh;
     }
 
     &__video {
@@ -177,8 +180,8 @@
     }
 
     &__title {
-        width: 100%;
         overflow: hidden;
+        width: 100%;
 
         .txt-cover {
             &:last-child .line {
@@ -216,8 +219,8 @@
         top: 20px;
         right: 20px;
         left: 20px;
-        margin-top: 10px;
         overflow: hidden;
+        margin-top: 10px;
         font-size: 0.9vw;
         line-height: 0.95;
         mix-blend-mode: difference;
@@ -233,22 +236,38 @@
 .sc-about {
     user-select: none;
 
+    &__top {
+        height: 600vh;
+    }
+
+    &__bottom {
+        height: 600vh;
+    }
+
     &__inner {
         height: 600vh;
         gap: 2vw;
+        @include mobile() {
+            display: block;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
 
         > * {
             padding: 14vw 0;
+            @include mobile() {
+                padding: 14vw 0 0;
+            }
         }
-    }
-
-    &__top {
-        height: 600vh;
     }
 
     .section__left {
         justify-content: center;
         flex: 3;
+        @include mobile() {
+            position: static;
+        }
     }
     
     .section__right {
@@ -256,6 +275,9 @@
         top: 0;
         // margin-top: 86vh;
         flex: 7;
+        @include mobile() {
+            position: static;
+        }
     }
 
     &__title {
@@ -302,13 +324,13 @@
         padding: 10px 50px;
         border: 4px solid #dfe3e8;
         font-size: 4vw;
+        line-height: 1;
         text-transform: uppercase;
         border-radius: 100px;
-        line-height: 1;
         @include tablet() {
-            font-size: 3vw;
-            border-width: 2px;
             padding: 0.9vw 4.6vw;
+            border-width: 2px;
+            font-size: 3vw;
         }
         @include mobile() {
             border-width: 1px;
@@ -751,14 +773,14 @@
         position: fixed;
         top: calc(var(--y) * 1px);
         left: calc(var(--x) * 1px);
-        width: 25vw;
-        height: 35vh;
-        clip-path: inset(var(--inset));
-        transform: translate(-50%, -50%);
-        pointer-events: none;
-        user-select: none;
         z-index: -1;
         overflow: hidden;
+        width: 25vw;
+        height: 35vh;
+        transform: translate(-50%, -50%);
+        clip-path: inset(var(--inset));
+        pointer-events: none;
+        user-select: none;
         border-radius: 8px;
         
         .bg {
@@ -781,8 +803,8 @@
 .work-card {
     display: flex;
     position: relative;
-    gap: 1.35vw;
     padding-right: calc(2vw + 32px);
+    gap: 1.35vw;
 
     &::after {
         top: calc(50% + 15px);
