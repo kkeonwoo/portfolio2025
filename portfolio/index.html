@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>keonwoo's puzzle</title>
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./assets/favicon/android-chrome-512x512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="./assets/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./assets/favicon/site.webmanifest">
     <!-- css -->
     <link rel="stylesheet" href="./assets/css/swiper.min.css">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
@@ -12,6 +20,7 @@
     <!-- js -->
     <script src="./assets/js/lib/jquery-3.7.1.min.js"></script>
     <script src="./assets/js/lib/splittype.js"></script>
+    <script src="./assets/js/lib/lodash.js" defer></script>
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script> 
     <script src="./assets/js/lib/gsap/gsap.min.js"></script>
     <script src="./assets/js/lib/gsap/ScrollTrigger.min.js"></script>
@@ -43,7 +52,7 @@
         <!-- s: header -->
         <header id="header" class="header">
             <div class="header__inner">
-                <nav class="gnb">
+                <nav role="menu" aria-hidden="false" class="gnb">
                     <ul class="gnb__list">
                         <li class="gnb__item"><a role="button" href="#home" class="txt-aniY gnb__link gnb__link--active"><div class="txt-cover"><div class="word">Home</div></div></a></li>
                         <li class="gnb__item"><a role="button" href="#about" class="txt-aniY gnb__link"><div class="txt-cover"><div class="word">About</div></div></a></li>
@@ -51,6 +60,10 @@
                         <li class="gnb__item"><a role="button" href="#work" class="txt-aniY gnb__link"><div class="txt-cover"><div class="word">Work</div></div></a></li>
                     </ul>
                 </nav>
+                <button aria-haspopup="true" aria-expanded="false" aria-label="메뉴 열기" class="btn btn__hamburger mobile">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </button>
                 <strong class="logo">
                     <a href="#" class="logo__link">
                         puzz
@@ -86,12 +99,14 @@
 
                     <div class="sc-visual__title-area">
                         <div class="sticky">
-                            <h1 class="section__title sc-visual__title split-line">
-                                UI developer<br>
-                                creating<br>
-                                eye-catching<br>
-                                interfaces
-                            </h1>
+                            <div class="inner sc-visual__inner">
+                                <h1 class="section__title sc-visual__title split-line">
+                                    UI developer<br>
+                                    creating<br>
+                                    eye-catching<br>
+                                    interfaces
+                                </h1>
+                            </div>
                         </div>
                     </div>
 
@@ -123,27 +138,29 @@
                             </div>
                         </div>
 
-                        <div class="section__inner sc-about__inner">
-                            <div class="section__left">
-                                <h2 class="sc-about__title split-word">
-                                    Dynamic UI, Immersive UX
-                                </h2>
-                                <p class="sc-about__desc split-word">탄탄한 코드, 감각적인 UI, 몰입감 있는 UX</p>
-                            </div>
-                            <div class="section__right">
-                                <div class="sc-about__txt-area ani-opacity">
-                                    <p class="sc-about__txt split-all">
-                                        안녕하세요! 2년차 웹 퍼블리셔 이건우입니다.<br>
-                                        코드를 작성하고 UI에 생동감을 입히는데 즐거움을 느끼며 일하고 있습니다.
-                                    </p>
-                                    <p class="sc-about__txt split-all">
-                                        탄탄한 코드와 감각적인 UI를 만들어내는 것에 관심이 많습니다. <br>
-                                        웹 표준, 웹 접근성, 반응형 설계를 바탕으로 최적화된 웹 페이지를 구현하며, <br>
-                                        정보와 가치를 효과적으로 전달하는 인터랙션을 설계하고 구현합니다.
-                                    </p>
-                                    <p class="sc-about__txt split-all">
-                                        코드 작성을 즐거워하며, 매 순간 더 나은 결과를 위해 노력합니다.
-                                    </p>
+                        <div class="sc-about__bottom">
+                            <div class="section__inner sc-about__inner">
+                                <div class="section__left">
+                                    <h2 class="sc-about__title split-word">
+                                        Dynamic UI, Immersive UX
+                                    </h2>
+                                    <p class="sc-about__desc split-word">탄탄한 코드, 감각적인 UI, 몰입감 있는 UX</p>
+                                </div>
+                                <div class="section__right">
+                                    <div class="sc-about__txt-area ani-opacity">
+                                        <p class="sc-about__txt split-all">
+                                            안녕하세요! 2년차 웹 퍼블리셔 이건우입니다.<br>
+                                            코드를 작성하고 UI에 생동감을 입히는데 즐거움을 느끼며 일하고 있습니다.
+                                        </p>
+                                        <p class="sc-about__txt split-all">
+                                            탄탄한 코드와 감각적인 UI를 만들어내는 것에 관심이 많습니다. <br>
+                                            웹 표준, 웹 접근성, 반응형 설계를 바탕으로 최적화된 웹 페이지를 구현하며, <br>
+                                            정보와 가치를 효과적으로 전달하는 인터랙션을 설계하고 구현합니다.
+                                        </p>
+                                        <p class="sc-about__txt split-all">
+                                            코드 작성을 즐거워하며, 매 순간 더 나은 결과를 위해 노력합니다.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -4,9 +4,15 @@ Portfolio = {
         this.updateDayTime();
         this.setGeoLocation();
         this.handleNav();
+        this.handleResize();
         // this.handleMatter();
         this.masterAni();
         this.workNav();
+
+        $(window).on('resize', _.debounce(() => {
+            SplitType.revert();
+            this.handleResize();
+        }, 100))
     },
     splitText: function() {
         const splits = [
@@ -15,7 +21,10 @@ Portfolio = {
             new SplitType('.split-line', { types: 'lines' })
         ];
         
-        splits.forEach(split => split.elements.forEach(el => $(el).children().wrap('<div class="txt-cover"></div>')))
+        splits.forEach(split => split.elements.forEach(el => {
+            $(el).find('.txt-cover')?.unwrap()
+            $(el).children().wrap('<div class="txt-cover"></div>')
+        }))
     },
     setDayTime: function() {
         let today = new Date();   
@@ -205,9 +214,10 @@ Portfolio = {
         }
     },
     handleNav: function() {
-        const nav = $('.header .gnb');
-        const $navLink = nav.find('.gnb__link');
+        const $nav = $('.header .gnb');
+        const $navLink = $nav.find('.gnb__link');
 
+        // nav link 클릭 시
         $navLink.on('click', function(e) {
             e.preventDefault();
             
@@ -217,7 +227,73 @@ Portfolio = {
             $navLink.closest('.gnb__item').find('.gnb__link').removeClass('gnb__link--active');
             $(this).addClass('gnb__link--active');
             $('html, body').animate({ scrollTop: moveY}, 500);
+
+            if(window.innerWidth < 768) {
+                navTl.reverse();
+            }
         })
+
+        // 모바일 햄버거 버튼
+        const $btnHamburger = $('.btn__hamburger');
+        let flag = false;
+
+        const navTl = gsap.timeline({ paused: true })
+        .set($nav, { autoAlpha: 1})
+        .to($nav, { 
+            '--inset1': 0,
+            onStart: () => {
+                $('.header').addClass('open');
+            },
+            onReverseComplete: () => {
+                $('.header').removeClass('open');
+            }
+        })
+        .to($nav, { '--inset2': 0})
+        .to($navLink, { 
+            yPercent: 0, 
+            ease: 'power2.inOut',
+            stagger: {
+                each: .1
+            }
+        })
+
+        $btnHamburger.on('click', function() {
+            flag = !flag;
+            $btnHamburger.toggleClass('open', flag).attr('aria-expanded', flag);
+            $nav.attr('aria-hidden', !flag);
+
+            if (flag) {
+                lenis.stop();
+                navTl.play();
+            } else {
+                lenis.start();
+                navTl.reverse();
+            }
+        })
+
+        // nav hidden 속성 resize
+        // const handleResize = () => {
+        //     const isMobile = window.innerWidth < 768;
+
+        //     gsap.set($navLink, { yPercent: isMobile ? 120 : 0 });
+        //     $nav.attr('aria-hidden', isMobile);
+
+        //     ScrollTrigger.refresh();
+        // }
+
+        
+    },
+    handleResize: function() {
+        console.log('a');
+        const $nav = $('.header .gnb');
+        const $navLink = $nav.find('.gnb__link');
+        const isMobile = window.innerWidth < 768;
+
+        gsap.set($nav, {autoAlpha: isMobile ? 0 : 1});
+        gsap.set($navLink, { yPercent: isMobile ? 120 : 0 });
+        $nav.attr('aria-hidden', isMobile);
+
+        ScrollTrigger.refresh();
     },
     translateX: function() {
         const aniTarget = $('.ani-tx');
@@ -378,11 +454,15 @@ Portfolio = {
             endTrigger: '#footer',
             onUpdate: ({ direction }) => {
                 if ( direction > 0) {// 내릴 때
-                    gsap.to('.logo', { scale: 1.2})
-                    gsap.to('.gnb, .header__utils', { y: -70})
+                    if (!$('.btn__hamburger').hasClass('open')) {
+                        gsap.to('.logo', { scale: 1.2})
+                        gsap.to('.gnb, .header__utils, .btn__hamburger', { y: -70})
+                    }
                 } else { // 올릴 때 
-                    gsap.to('.logo', { scale: 1})
-                    gsap.to('.gnb, .header__utils', { y: 0})
+                    if (!$('.btn__hamburger').hasClass('open')) {
+                        gsap.to('.logo', { scale: 1})
+                        gsap.to('.gnb, .header__utils, .btn__hamburger', { y: 0})
+                    }
                 }
             }
         })
@@ -675,6 +755,7 @@ Portfolio = {
         gsap.set('.sc-about__top .keywords__item', { autoAlpha: 0, filter: 'blur(10px)'})
         gsap.set('.sc-work__item', { xPercent: 100})
         gsap.set('.footer__marquee', { autoAlpha: 0, yPercent: 80})
+        gsap.set('.footer .marquee__txt', { yPercent: 18})
 
         Portfolio.introAni();
         $(window).on('load', () => {

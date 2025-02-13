@@ -95,13 +95,8 @@
         @content;
     }
 }
-@mixin desktop {
-    @media (min-width: #{$breakpoint-tablet + 1px}) {
-        @content;
-    }
-}
 @mixin laptop {
-    @media (min-width: #{$breakpoint-laptop + 1px}) {
+    @media (max-width: #{$breakpoint-laptop}) {
         @content;
     }
 }

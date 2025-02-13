@@ -45,6 +45,7 @@
         text-transform: uppercase;
     }
 }
+
 .tag {
     padding: 12px 14px;
     font-size: 12px;
@@ -162,14 +163,22 @@
         height: 100%;
         @include flex(_, center);
     }
-
+    
     &__title-area {
         height: 600vh;
+        
+        .sticky {
+            @include flex(_, center);
+        }
+    }
+    
+    &__inner {
+        width: 100%;
     }
 
     &__title {
+        width: 100%;
         overflow: hidden;
-        padding: 70px 20px 0;
 
         .txt-cover {
             &:last-child .line {
@@ -194,7 +203,7 @@
         }
         
         &::after {
-            top: 6.9vw;
+            top: 3.2vw;
             width: 13vw;
             margin-left: 50.3vw;
             opacity: var(--opacity);
@@ -226,6 +235,7 @@
 
     &__inner {
         height: 600vh;
+        gap: 2vw;
 
         > * {
             padding: 14vw 0;
@@ -242,10 +252,9 @@
     }
     
     .section__right {
-        align-items: center;
         position: sticky;
         top: 0;
-        margin-top: 86vh;
+        // margin-top: 86vh;
         flex: 7;
     }
 
@@ -262,6 +271,10 @@
     
     &__txt {
         font-size: 2vw;
+
+        & + & {
+            margin-top: 24px;
+        }
     }
 
     .char {
@@ -277,6 +290,12 @@
         max-width: 80vw;
         gap: 1vw;
         @include flex(center, _);
+        @include tablet() {
+            gap: 2vw;
+        }
+        @include mobile() {
+            gap: 3vw 2vw;
+        }
     }
 
     &__item {
@@ -286,6 +305,15 @@
         text-transform: uppercase;
         border-radius: 100px;
         line-height: 1;
+        @include tablet() {
+            font-size: 3vw;
+            border-width: 2px;
+            padding: 0.9vw 4.6vw;
+        }
+        @include mobile() {
+            border-width: 1px;
+            font-size: 14px;
+        }
     }
 }
 // sc-project
@@ -319,7 +347,7 @@
 
         @for $i from 1 through 10 {
             &:nth-of-type(#{$i}) .project-card__bg {
-                background: url('../images/img/@portfolio#{$i}.jpg') no-repeat center center / 100% auto;
+                background: url('../images/img/@portfolio#{$i}.jpg') no-repeat center center / cover;
                 background-attachment: fixed;
             }
         }
@@ -754,6 +782,7 @@
     display: flex;
     position: relative;
     gap: 1.35vw;
+    padding-right: calc(2vw + 32px);
 
     &::after {
         top: calc(50% + 15px);
@@ -801,7 +830,7 @@
     &__txt {
         margin-top: 24px;
         font-size: 2vw;
-        line-height: 1;
+
         .char {
             opacity: .2;
         }

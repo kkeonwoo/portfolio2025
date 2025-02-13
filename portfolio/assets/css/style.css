@@ -1,5 +1,23 @@
 /* utils */
 /* base */
+.mobile {
+  display: none;
+}
+@media (max-width: 768px) {
+  .mobile {
+    display: block;
+  }
+}
+
+.pc {
+  display: block;
+}
+@media (max-width: 768px) {
+  .pc {
+    display: none;
+  }
+}
+
 .blind {
   position: absolute;
   overflow: hidden;
@@ -50,6 +68,36 @@
 .marquee__txt {
   display: block;
   padding: 0 0.225em;
+}
+
+.btn__hamburger {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  gap: 4px;
+  z-index: 999;
+}
+@media (max-width: 768px) {
+  .btn__hamburger {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.btn__hamburger .line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #dfe3e8;
+  transform-origin: 50% 50%;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.btn__hamburger.open .line:first-child {
+  transform: rotate(45deg) translate(0.5px, 3px);
+}
+.btn__hamburger.open .line:last-child {
+  transform: rotate(-45deg) translate(0.5px, -3px);
 }
 
 @font-face {
@@ -129,6 +177,8 @@ body {
   right: 0;
   left: 0;
   z-index: 999;
+}
+.header:not(.open) {
   mix-blend-mode: difference;
 }
 .header__inner {
@@ -139,8 +189,14 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+@media (max-width: 768px) {
+  .header__inner {
+    padding: 0 2.6vw;
+  }
+}
 
 .logo {
+  z-index: 999;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -148,15 +204,76 @@ body {
 }
 .logo__link {
   display: block;
+  font-family: "LeagueSpartan", sans-serif;
   font-size: 2vw;
   line-height: 1;
   letter-spacing: -0.02em;
-  font-family: "LeagueSpartan", sans-serif;
+}
+@media (max-width: 1080px) {
+  .logo__link {
+    font-size: 3.5vw;
+  }
+}
+@media (max-width: 768px) {
+  .logo__link {
+    font-size: 4.9vw;
+  }
 }
 
+@media (max-width: 768px) {
+  .gnb {
+    --inset1: 100;
+    --inset2: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 990;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .gnb::before, .gnb::after {
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    content: "";
+  }
+  .gnb::before {
+    clip-path: inset(0 0 calc(var(--inset1) * 1%) 0);
+    background-color: #dfe3e8;
+  }
+  .gnb::after {
+    clip-path: inset(0 0 calc(var(--inset2) * 1%) 0);
+    background-color: #23272d;
+  }
+}
 .gnb__list {
   display: flex;
   gap: 30px;
+}
+@media (max-width: 1080px) {
+  .gnb__list {
+    gap: 2.78vw;
+  }
+}
+@media (max-width: 768px) {
+  .gnb__list {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    gap: 4vw;
+  }
+}
+@media (max-width: 768px) {
+  .gnb__item {
+    overflow: hidden;
+  }
 }
 .gnb__link {
   position: relative;
@@ -165,6 +282,17 @@ body {
   line-height: 1;
   letter-spacing: -0.008em;
   text-transform: uppercase;
+}
+@media (max-width: 1080px) {
+  .gnb__link {
+    font-size: 1.67vw;
+  }
+}
+@media (max-width: 768px) {
+  .gnb__link {
+    display: block;
+    font-size: 6vw;
+  }
 }
 .gnb__link--active::before {
   bottom: -3px;
@@ -176,10 +304,27 @@ body {
   position: absolute;
   content: "";
 }
+@media (max-width: 768px) {
+  .gnb__link--active::before {
+    display: none;
+  }
+}
 
 .utils {
   display: flex;
+  position: relative;
+  z-index: 999;
   gap: 30px;
+}
+@media (max-width: 1080px) {
+  .utils {
+    gap: 2.78vw;
+  }
+}
+@media (max-width: 768px) {
+  .utils {
+    gap: 3.9063vw;
+  }
 }
 .utils__link {
   width: 20px;
@@ -188,6 +333,12 @@ body {
   background-position: center;
   background-size: cover;
   filter: invert(1);
+}
+@media (max-width: 1080px) {
+  .utils__link {
+    width: 16px;
+    height: 16px;
+  }
 }
 .utils__link--velog {
   background-image: url("../images/icons/icon-velog.png");
@@ -249,12 +400,10 @@ body {
   opacity: 0.4;
 }
 .footer__marquee {
-  height: 40vh;
   padding: 0 1vw;
   mix-blend-mode: difference;
 }
 .footer__marquee .marquee__txt {
-  transform: translateY(2%);
   font-size: 24vw;
   font-weight: 700;
   text-transform: uppercase;
@@ -502,9 +651,16 @@ body {
 .sc-visual__title-area {
   height: 600vh;
 }
+.sc-visual__title-area .sticky {
+  display: flex;
+  align-items: center;
+}
+.sc-visual__inner {
+  width: 100%;
+}
 .sc-visual__title {
+  width: 100%;
   overflow: hidden;
-  padding: 70px 20px 0;
 }
 .sc-visual__title .txt-cover:last-child .line {
   text-align: right !important;
@@ -526,7 +682,7 @@ body {
   background: url("../images/img/img-visual1.svg") no-repeat center center/100% auto;
 }
 .sc-visual__title::after {
-  top: 6.9vw;
+  top: 3.2vw;
   width: 13vw;
   margin-left: 50.3vw;
   opacity: var(--opacity);
@@ -558,6 +714,7 @@ body {
 }
 .sc-about__inner {
   height: 600vh;
+  gap: 2vw;
 }
 .sc-about__inner > * {
   padding: 14vw 0;
@@ -570,10 +727,8 @@ body {
   flex: 3;
 }
 .sc-about .section__right {
-  align-items: center;
   position: sticky;
   top: 0;
-  margin-top: 86vh;
   flex: 7;
 }
 .sc-about__title {
@@ -587,6 +742,9 @@ body {
 }
 .sc-about__txt {
   font-size: 2vw;
+}
+.sc-about__txt + .sc-about__txt {
+  margin-top: 24px;
 }
 .sc-about .char {
   opacity: 0.2;
@@ -604,6 +762,16 @@ body {
   display: flex;
   justify-content: center;
 }
+@media (max-width: 1080px) {
+  .keywords__list {
+    gap: 2vw;
+  }
+}
+@media (max-width: 768px) {
+  .keywords__list {
+    gap: 3vw 2vw;
+  }
+}
 .keywords__item {
   padding: 10px 50px;
   border: 4px solid #dfe3e8;
@@ -611,6 +779,19 @@ body {
   text-transform: uppercase;
   border-radius: 100px;
   line-height: 1;
+}
+@media (max-width: 1080px) {
+  .keywords__item {
+    font-size: 3vw;
+    border-width: 2px;
+    padding: 0.9vw 4.6vw;
+  }
+}
+@media (max-width: 768px) {
+  .keywords__item {
+    border-width: 1px;
+    font-size: 14px;
+  }
 }
 
 .sc-project {
@@ -633,43 +814,43 @@ body {
   position: relative;
 }
 .sc-project__item:nth-of-type(1) .project-card__bg {
-  background: url("../images/img/@portfolio1.jpg") no-repeat center center/100% auto;
+  background: url("../images/img/@portfolio1.jpg") no-repeat center center/cover;
   background-attachment: fixed;
 }
 .sc-project__item:nth-of-type(2) .project-card__bg {
-  background: url("../images/img/@portfolio2.jpg") no-repeat center center/100% auto;
+  background: url("../images/img/@portfolio2.jpg") no-repeat center center/cover;
   background-attachment: fixed;
 }
 .sc-project__item:nth-of-type(3) .project-card__bg {
-  background: url("../images/img/@portfolio3.jpg") no-repeat center center/100% auto;
+  background: url("../images/img/@portfolio3.jpg") no-repeat center center/cover;
   background-attachment: fixed;
 }
 .sc-project__item:nth-of-type(4) .project-card__bg {
-  background: url("../images/img/@portfolio4.jpg") no-repeat center center/100% auto;
+  background: url("../images/img/@portfolio4.jpg") no-repeat center center/cover;
   background-attachment: fixed;
 }
 .sc-project__item:nth-of-type(5) .project-card__bg {
-  background: url("../images/img/@portfolio5.jpg") no-repeat center center/100% auto;
+  background: url("../images/img/@portfolio5.jpg") no-repeat center center/cover;
   background-attachment: fixed;
 }
 .sc-project__item:nth-of-type(6) .project-card__bg {
-  background: url("../images/img/@portfolio6.jpg") no-repeat center center/100% auto;
+  background: url("../images/img/@portfolio6.jpg") no-repeat center center/cover;
   background-attachment: fixed;
 }
 .sc-project__item:nth-of-type(7) .project-card__bg {
-  background: url("../images/img/@portfolio7.jpg") no-repeat center center/100% auto;
+  background: url("../images/img/@portfolio7.jpg") no-repeat center center/cover;
   background-attachment: fixed;
 }
 .sc-project__item:nth-of-type(8) .project-card__bg {
-  background: url("../images/img/@portfolio8.jpg") no-repeat center center/100% auto;
+  background: url("../images/img/@portfolio8.jpg") no-repeat center center/cover;
   background-attachment: fixed;
 }
 .sc-project__item:nth-of-type(9) .project-card__bg {
-  background: url("../images/img/@portfolio9.jpg") no-repeat center center/100% auto;
+  background: url("../images/img/@portfolio9.jpg") no-repeat center center/cover;
   background-attachment: fixed;
 }
 .sc-project__item:nth-of-type(10) .project-card__bg {
-  background: url("../images/img/@portfolio10.jpg") no-repeat center center/100% auto;
+  background: url("../images/img/@portfolio10.jpg") no-repeat center center/cover;
   background-attachment: fixed;
 }
 .sc-project__item + .sc-project__item {
@@ -1050,6 +1231,7 @@ body {
   display: flex;
   position: relative;
   gap: 1.35vw;
+  padding-right: calc(2vw + 32px);
 }
 .work-card::after {
   top: calc(50% + 15px);
@@ -1093,7 +1275,6 @@ body {
 .sc-goal__txt {
   margin-top: 24px;
   font-size: 2vw;
-  line-height: 1;
 }
 .sc-goal__txt .char {
   opacity: 0.2;

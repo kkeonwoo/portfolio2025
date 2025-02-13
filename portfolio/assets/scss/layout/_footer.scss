@@ -60,7 +60,7 @@
     }
 
     &__marquee {
-        height: 40vh;
+        // height: 40vh;
         padding: 0 1vw;
         mix-blend-mode: difference;
         // color: #fff;
@@ -68,7 +68,7 @@
         .marquee__txt {
             // display: flex;
             // align-items: center;
-            transform: translateY(2%);
+            // transform: translateY(2%);
             font-size: 24vw;
             font-weight: 700;
             text-transform: uppercase;
