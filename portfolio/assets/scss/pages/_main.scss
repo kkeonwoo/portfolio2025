@@ -912,6 +912,11 @@
     padding-right: calc(2vw + 32px);
     gap: 1.35vw;
 
+    &[href="#"] {
+        pointer-events: none;
+        cursor: none;
+    }
+
     &::after {
         top: calc(50% + 15px);
         right: 0;
