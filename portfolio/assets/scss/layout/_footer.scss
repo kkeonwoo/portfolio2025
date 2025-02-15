@@ -32,9 +32,12 @@
     }
     
     &__title {
+        font-weight: 700;
         font-size: 4.6875vw;
         text-transform: uppercase;
-        font-weight: 700;
+        @include mobile() {
+            font-size: 48px;
+        }
 
         .txt-cover {
             display: block;
@@ -57,6 +60,12 @@
         bottom: 0;
         text-align: right;
         opacity: .4;
+        @include mobile() {
+            position: static;
+            font-size: 12px;
+            text-align: left;
+            margin-top: 16px;
+        }
     }
 
     &__marquee {
@@ -66,13 +75,13 @@
         // color: #fff;
 
         .marquee__txt {
+            font-weight: 700;
             // display: flex;
             // align-items: center;
             // transform: translateY(2%);
             font-size: 24vw;
-            font-weight: 700;
-            text-transform: uppercase;
             line-height: 1;
+            text-transform: uppercase;
 
             span {
                 font-weight: 400;
@@ -85,10 +94,10 @@
         position: absolute;
         top: 0;
         left: 0;
+        z-index: -1;
         width: 100%;
         height: 100%;
         object-fit: cover;
-        z-index: -1;
         filter: grayscale(1);
     }
 }
@@ -109,6 +118,9 @@
         flex-wrap: wrap;
         gap: 1vw;
         @include flex(_, center);
+        @include mobile() {
+            gap: 50px 20px;
+        }
     }
 
     &__item {
@@ -119,10 +131,10 @@
             .word {
                 position: relative;
         
-                &::before { 
+                &::before {
+                    right: 0; 
                     bottom: -2px;
                     left: 0;
-                    right: 0;
                     height: 1px;
                     background-color: #dfe3e8;
                     transform: scaleX(0);
@@ -141,9 +153,9 @@
         &:nth-of-type(n+2) {
             .f-nav__link {
                 display: flex;
-                gap: 7px;
                 position: relative;
                 padding-right: 18px;
+                gap: 7px;
 
                 &::before {
                     top: 50%;
@@ -154,6 +166,10 @@
                     transform: translateY(-50%) rotate(45deg);
                     transition: transform .3s cubic-bezier(0.215, 0.610, 0.355, 1);
                     @include pseudo();
+                    @include mobile() {
+                        width: 12px;
+                        height: 12px;
+                    }
                 }
 
                 &:hover::before {

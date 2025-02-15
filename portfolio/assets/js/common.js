@@ -228,7 +228,7 @@ Portfolio = {
             $(this).addClass('gnb__link--active');
             $('html, body').animate({ scrollTop: moveY}, 500);
 
-            if(window.innerWidth < 768) {
+            if(window.innerWidth < 769) {
                 navTl.reverse();
             }
         })
@@ -270,24 +270,11 @@ Portfolio = {
                 navTl.reverse();
             }
         })
-
-        // nav hidden 속성 resize
-        // const handleResize = () => {
-        //     const isMobile = window.innerWidth < 768;
-
-        //     gsap.set($navLink, { yPercent: isMobile ? 120 : 0 });
-        //     $nav.attr('aria-hidden', isMobile);
-
-        //     ScrollTrigger.refresh();
-        // }
-
-        
     },
     handleResize: function() {
-        console.log('a');
         const $nav = $('.header .gnb');
         const $navLink = $nav.find('.gnb__link');
-        const isMobile = window.innerWidth < 768;
+        const isMobile = window.innerWidth < 769;
 
         gsap.set($nav, {autoAlpha: isMobile ? 0 : 1});
         gsap.set($navLink, { yPercent: isMobile ? 120 : 0 });
@@ -371,28 +358,28 @@ Portfolio = {
                 ease: 'expo.inOut'
             }
         })
-        // .to('.intro__txt:nth-child(1) .line', { 
-        //     autoAlpha: 1,
-        //     yPercent: 0,
-        //     duration: 1,
-        // })
-        // .to('.intro__txt:nth-child(1)', {
-        //     clipPath: 'inset(0% 50% 0% 50%)',
-        // }, '-=.2')
-        // .to('.intro__txt:nth-child(2)', {
-        //     clipPath: 'inset(0 0 100% 0)',
-        // })      
-        // .to('.intro__txt:nth-child(3)', {
-        //     clipPath: 'inset(0 0 0 100%)',
-        // })      
-        // .to('.intro__txt:nth-child(4)', {
-        //     clipPath: 'inset(50% 0 50% 0)',
-        // })      
-        // .to('.intro__txt:nth-child(5)', {
-        //     autoAlpha: 0,
-        //     scale: 2,
-        //     duration: 1.5
-        // })     
+        .to('.intro__txt:nth-child(1) .line', { 
+            autoAlpha: 1,
+            yPercent: 0,
+            duration: 1,
+        })
+        .to('.intro__txt:nth-child(1)', {
+            clipPath: 'inset(0% 50% 0% 50%)',
+        }, '-=.2')
+        .to('.intro__txt:nth-child(2)', {
+            clipPath: 'inset(0 0 100% 0)',
+        })      
+        .to('.intro__txt:nth-child(3)', {
+            clipPath: 'inset(0 0 0 100%)',
+        })      
+        .to('.intro__txt:nth-child(4)', {
+            clipPath: 'inset(50% 0 50% 0)',
+        })      
+        .to('.intro__txt:nth-child(5)', {
+            autoAlpha: 0,
+            scale: 2,
+            duration: 1.5
+        })     
         .from('.sc-visual__video', {
             scale: 2
         }, '-=0.6')
@@ -649,8 +636,8 @@ Portfolio = {
             let activeIdx = 0;
             $(item).on('mouseenter', function() {
                 const dir = idx > activeIdx ? 'up' : 'down';
-                const except = `.sc-work__bg-area .bg:not(:nth-child(${idx + 1}))`
-                const target = `.sc-work__bg-area .bg:nth-child(${idx + 1})`
+                const except = `.sc-work__bg-area.pc .bg:not(:nth-child(${idx + 1}))`
+                const target = `.sc-work__bg-area.pc .bg:nth-child(${idx + 1})`
     
                 const bgAnimation = gsap.timeline({ overwrite: 'auto'})
                 .to(except, { 

@@ -36,6 +36,9 @@
 
 .inner {
     padding: 0 20px;
+    @include mobile() {
+        padding: 0 2.6vw;
+    }
 }
 
 .txt-aniY {

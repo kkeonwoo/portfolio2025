@@ -11,6 +11,9 @@
         background-color: #dfe3e8;
         transform: translateX(-50%) scale(var(--scaleX));
         @include pseudo();
+        @include mobile() {
+            width: calc(100% - 20px);
+        }
     }
 
     &__inner {
@@ -37,6 +40,10 @@
         align-items: center;
         height: 100vh;
         // margin: 0 -20px;
+        @include mobile() {
+            height: unset;
+            padding: 20vw 0;
+        }
     }
 
     &__title {
@@ -46,6 +53,9 @@
         line-height: 0.8;
         letter-spacing: -0.06em;
         text-transform: uppercase;
+        @include mobile() {
+            font-size: 18vw;
+        }
     }
 }
 
@@ -54,11 +64,18 @@
     font-size: 12px;
     border-radius: 1000px;
     backdrop-filter: blur(5px);
+    @include mobile() {
+        padding: clamp(4px, 1.56vw,12px) clamp(6px, 1.8vw, 14px);
+        font-size: clamp(10px, 1.56vw,12px);
+    }
     
     &--review {
         position: relative;
         padding-right: 42px;
         font-weight: 500;
+        @include mobile() {
+            padding-right: clamp(26px, 5.47vw, 42px);
+        }
     
         &::after {
             top: 50%;
@@ -70,6 +87,12 @@
             transition: transform .3s cubic-bezier(0.34, 1.56, 0.64, 1);
             will-change: transform;
             @include pseudo();
+            @include mobile() {
+                right: clamp(10px, 1.8vw, 14px);
+                width: clamp(10px, 1.8vw, 14px);
+                height: clamp(10px, 1.8vw, 14px);
+                margin-left: clamp(10px, 1.8vw, 14px);
+            }
         }
         
         &:hover::after {
@@ -257,7 +280,7 @@
         > * {
             padding: 14vw 0;
             @include mobile() {
-                padding: 14vw 0 0;
+                padding: clamp(70px, 35vw,14vw) 0 0;
             }
         }
     }
@@ -285,17 +308,37 @@
         font-size: 3.2vw;
         line-height: 0.85;
         letter-spacing: -1px;
+        @include mobile() {
+            font-size: 8vw;
+        }
     }
 
     &__desc {
         margin-top: 24px;
+        @include tablet() {
+            font-size: 12px;
+        }
+        @include mobile() {
+            margin-top: 8px;
+            font-size: 10px;
+        }
     }
     
     &__txt {
         font-size: 2vw;
+        @include tablet() {
+            font-size: 1.85vw;
+            
+        }
+        @include mobile() {
+            font-size: clamp(12px, 2.3vw, 18px);
+        }
 
         & + & {
             margin-top: 24px;
+            @include mobile() {
+                margin-top: 8px;
+            }
         }
     }
 
@@ -469,6 +512,7 @@
     }
     
     &__tags {
+        flex-wrap: wrap;
         position: absolute;
         top: 0;
         left: 0;
@@ -495,6 +539,9 @@
 
     &__inner {
         padding: calc(10vw + 60px) 0 10vw;
+        @include mobile() {
+            padding: clamp(calc(22vw + 38px), 29.3vw, calc(22vw + 56px)) 0 22vw;
+        }
     }
 
     &__content {
@@ -536,6 +583,10 @@
         padding-top: 10vw;
         padding-bottom: 17.5vh;
         flex: 1;
+        @include mobile() {
+            padding-top: 4vw;
+            padding-bottom: 7vh;
+        }
     }
 
     &__right {
@@ -544,6 +595,11 @@
         width: calc(70% + 12.5vw);
         // margin-right: -20px;
         padding: 10vw 20px 17.5vh 12.5vw;
+        @include mobile() {
+            width: calc(100% + 20px);
+            margin: 0 -10px;
+            padding: 4vw 10px 7vh;
+        }
     }
     
     &__title-area {
@@ -584,6 +640,9 @@
         width: 100%;
         gap: 0.5vw;
         @include flex(_, center);
+        @include mobile() {
+            flex-direction: column;
+        }
 
         &:last-child {
             top: 50%;
@@ -597,6 +656,9 @@
             height: 1px;
             background-color: #dfe3e8;
             transform: scaleX(0);
+            @include mobile() {
+                margin: 13px 0;
+            }
 
             &:nth-of-type(1) {
                 transform-origin: 100% 50%;
@@ -610,6 +672,10 @@
     &__desc {
         text-transform: uppercase;
         white-space: nowrap;
+        @include mobile() {
+            display: block;
+            white-space: wrap;
+        }
     }
 
     &__txt { 
@@ -638,6 +704,9 @@
 
         & + .line {
             margin-top: 38px;
+            @include mobile() {
+                margin-top: 100px;
+            }
         }
 
         &:nth-of-type(1) {
@@ -695,6 +764,16 @@
         padding: 2vw 2vw calc(2vw + 68px) 0;
         border-bottom: 1px solid #dfe3e8;
         counter-increment: item-counter;
+        @include mobile() {
+            padding: 14px 10px;
+        }
+
+        @for $i from 1 through 14 {
+            &:nth-child(#{$i}) .bg {
+                z-index: -#{$i};
+                @include bg('@work#{$i}.jpg', $size: cover);
+            }
+        }
 
         &:first-child {
             padding-top: 0;
@@ -747,6 +826,12 @@
             font-size: 14px;
             line-height: 1;
             content: counter(item-counter);
+            @include tablet() {
+                font-size: 12px;
+            }
+            @include mobile() {
+                font-size: 10px;
+            }
         }
         
         &:nth-child(-n+9) .work-card::before {
@@ -760,6 +845,13 @@
         left: calc(1.35vw + 17px);
         border: 1px solid #dfe3e8;
         @extend .tag;
+        @include mobile() {
+            display: block;
+            position: static;
+            width: fit-content;
+            margin-top: 14px;
+            margin-left: calc(1.35vw + 14px);
+        }
 
         &::after {
             background: url('../images/icons/icon-arw-up-white.svg') no-repeat center center / 100% auto;
@@ -770,33 +862,47 @@
         --x: 0;
         --y: 0;
         --inset: 50%;
-        position: fixed;
-        top: calc(var(--y) * 1px);
-        left: calc(var(--x) * 1px);
-        z-index: -1;
+        width: 150px;
+        height: 120px;
         overflow: hidden;
-        width: 25vw;
-        height: 35vh;
-        transform: translate(-50%, -50%);
-        clip-path: inset(var(--inset));
-        pointer-events: none;
-        user-select: none;
         border-radius: 8px;
         
-        .bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            clip-path: inset(0% 0 0% 0);
+        &.pc {
+            position: fixed;
+            top: calc(var(--y) * 1px);
+            left: calc(var(--x) * 1px);
+            z-index: -1;
+            width: 25vw;
+            height: 35vh;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            user-select: none;
+            clip-path: inset(var(--inset));
 
-            @for $i from 1 through 14 {
-                &:nth-child(#{$i}) {
-                    z-index: -#{$i};
-                    @include bg('@work#{$i}.jpg', $size: cover);
+            .bg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                clip-path: inset(0% 0 0% 0);
+                
+                @for $i from 1 through 14 {
+                    &:nth-child(#{$i}) {
+                        z-index: -#{$i};
+                        @include bg('@work#{$i}.jpg', $size: cover);
+                    }
                 }
             }
+        }
+
+        &.mobile {
+            margin-top: 14px;
+            margin-left: calc(1.35vw + 14px);
+        }
+        
+        .bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 }
@@ -815,6 +921,11 @@
         transform: translateY(-50%) rotate(90deg);
         transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         @include pseudo();
+        @include mobile() {
+            top: 50%;
+            width: 16px;
+            height: 16px;
+        }
     }
 
     &__title-area {
@@ -826,11 +937,23 @@
         font-size: 3.33vw;
         line-height: 1;
         text-transform: uppercase;
+        @include tablet() {
+            font-size: 4vw;
+        }
+        @include mobile() {
+            font-size: 28px;
+        }
     }
 
     &__desc {
         margin-top: 16px;
         font-size: 14px;
+        @include tablet() {
+            font-size: 12px;
+        }
+        @include mobile() {
+            font-size: 10px;
+        }
     }
 }
 // goal
@@ -841,7 +964,12 @@
         position: absolute;
         top: 50%;
         left: 50%;
+        width: 70%;
         transform: translate(-50%, -50%);
+        // @include mobile() {
+        //     width: 100%;
+        //     padding: 0 10px;
+        // }
     }
 
     &__title {
@@ -852,6 +980,14 @@
     &__txt {
         margin-top: 24px;
         font-size: 2vw;
+        line-height: 1.1;
+        @include tablet() {
+            font-size: 1.85vw;
+        }
+        @include mobile() {
+            margin-top: 8px;
+            font-size: clamp(12px, 2.3vw, 18px);
+        }
 
         .char {
             opacity: .2;
