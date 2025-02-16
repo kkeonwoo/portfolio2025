@@ -853,6 +853,11 @@
             margin-left: calc(1.35vw + 14px);
         }
 
+        &[href="#"] {
+            pointer-events: none;
+            cursor: none;
+        }
+
         &::after {
             background: url('../images/icons/icon-arw-up-white.svg') no-repeat center center / 100% auto;
         }

@@ -1388,6 +1388,10 @@ body {
     margin-left: calc(1.35vw + 14px);
   }
 }
+.sc-work__tag--review[href="#"] {
+  pointer-events: none;
+  cursor: none;
+}
 .sc-work__tag--review::after {
   background: url("../images/icons/icon-arw-up-white.svg") no-repeat center center/100% auto;
 }
