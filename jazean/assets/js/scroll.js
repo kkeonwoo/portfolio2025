@@ -115,6 +115,7 @@ $(document).ready(function() {
             return isMobile ? 'bottom 100%' :'bottom 45%'
         } ,
         animation: grainTl,
+        markers:true,
         invalidateOnRefresh: true,
         scrub: 0,
     })
@@ -286,6 +287,7 @@ $(document).ready(function() {
         trigger: '.sc-news',
         start: 'top center',
         end: 'bottom center',
+        markers:true,
         animation: gsap.from('.sc-news .swiper-slide', { 
             autoAlpha: 0, 
             xPercent: 100, 

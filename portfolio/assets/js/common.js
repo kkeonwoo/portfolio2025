@@ -22,7 +22,7 @@ Portfolio = {
         ];
         
         splits.forEach(split => split.elements.forEach(el => {
-            $(el).find('.txt-cover')?.unwrap()
+            // $(el).find('.txt-cover')?.unwrap()
             $(el).children().wrap('<div class="txt-cover"></div>')
         }))
     },

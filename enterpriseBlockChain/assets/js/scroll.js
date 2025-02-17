@@ -202,9 +202,10 @@ const verticalTl02 = gsap.timeline()
 .from('.sc-09 .vertical2 .service-right .title', { opacity: 0}, '<')
 
 ScrollTrigger.create({
-    trigger: '.sc-09 .vertical-wrap2',
+    trigger: '.sc-09 .vertical-wrap2 .vertical2',
     start: '0% 0%',
     end: '100% 100%',
+    markers:true,
     animation: verticalTl02,
     scrub: 0,
 })

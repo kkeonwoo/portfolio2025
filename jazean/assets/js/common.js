@@ -361,7 +361,7 @@ Jazean = {
      */
     setStrokeAnimation: function(t) {
         $(t).each((_, path) => {
-            const pathLength = this.getPathLength(path);
+            const pathLength = Math.floor(this.getPathLength(path) + 3);
             
             gsap.set(path, { 
                 strokeDasharray: pathLength, 
