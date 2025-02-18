@@ -17,6 +17,8 @@ $(document).ready(function() {
     let mm = gsap.matchMedia();
     // 텍스트 애니메이션 : translateY, opacity
     gsap.utils.toArray('.ani-translateY').forEach((target) => {
+        let trigger = isMobile ? target.closest('.group-cnt') : target.closest('section');
+
         // 기본값 세팅
         gsap.set(target, { 
             autoAlpha: 0, 
@@ -32,24 +34,16 @@ $(document).ready(function() {
             paused: true,
         })
 
-        // pc
-        mm.add("(min-width: 960px)", () => {
-            ScrollTrigger.create({
-                trigger: target.closest('section'),
-                start: 'top center',
-                end: 'bottom center',
-                onEnter: () => tween.play(),
-            });
-        });
 
-        // mobile
-        mm.add("(max-width: 959px)", () => {
-            ScrollTrigger.create({
-                trigger: target.closest('.group-cnt'),
-                start: 'top 80%',
-                end: 'bottom 80%',
-                onEnter: () => tween.play(),
-            })
+        ScrollTrigger.create({
+            trigger: trigger,
+            start: () => {
+                return isMobile ? 'top 70%' : 'top center'
+            },
+            end: () => {
+                return isMobile ? 'bottom 70%' : 'bottom center'
+            },
+            onEnter: () => tween.play(),
         });
     });
 
