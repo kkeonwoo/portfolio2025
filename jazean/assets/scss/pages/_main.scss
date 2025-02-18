@@ -278,6 +278,15 @@
             }
         }
 
+        .cherry-wrap {
+            top: 0;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
         .cherry-box {
             position: absolute;
             z-index: 10;
@@ -376,6 +385,7 @@
     height: 60em;
     background: #ead7ca;
     color: #341212;
+    overflow: hidden;
     @include tablet() {
         height: 81.7em;
     }
@@ -712,7 +722,6 @@
     height: 200vh;
 
     .sticky {
-
         .group-bg {
             .bg-wrap {
                 position: absolute;
@@ -721,6 +730,7 @@
                 width: 100%;
                 height: 100%;
                 pointer-events: none;
+                overflow: hidden;
                 
                 &#roast {
                     clip-path: inset(calc(var(--inset) * 1%) 0 0 0);

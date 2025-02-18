@@ -6,7 +6,12 @@ $(document).ready(function() {
     const centerTxt = new SplitType('.sc-center .title-area .title', { types: 'words' });
     
     // 모바일 체크
-    const isMobile = window.matchMedia("(max-width: 960px)").matches;
+    let isMobile = window.matchMedia("(max-width: 960px)").matches;
+
+    window.addEventListener('resize', () => {
+        ScrollTrigger.refresh();
+        isMobile = window.matchMedia("(max-width: 960px)").matches;
+    });
 
     // gsap matchmedia
     let mm = gsap.matchMedia();
@@ -92,32 +97,56 @@ $(document).ready(function() {
         scrub: true,
     })
 
-    // grain 영역 svg 애니메이션
-    const grainTl = gsap.timeline()
-    .to('.sc-grain .line-grain .path', { 
-        strokeDashoffset: 0
-    })
-    if(isMobile) {
-        grainTl.to('.sc-grain .line-bean .path', { duration: 1, strokeDashoffset: 0})
-        .to('.sc-grain .line-grain2 .path', { strokeDashoffset: 0})
-    }
-    grainTl.to('.sc-grain .line-farmer .outline', { 
-        strokeDashoffset: 0
-    })
-    .to('.sc-grain .line-farmer .path:not(.outline)', { 
-        strokeDashoffset: 0
-    }, '-=.2')
+    // pc
+    mm.add("(min-width: 960px)", () => {
+        // grain 영역 svg 애니메이션
+        const grainTl = gsap.timeline()
+        .to('.sc-grain .line-grain .path', { 
+            strokeDashoffset: 0
+        })
+        .to('.sc-grain .line-farmer .outline', { 
+            strokeDashoffset: 0
+        })
+        .to('.sc-grain .line-farmer .path:not(.outline)', { 
+            strokeDashoffset: 0
+        }, '-=.2')
 
-    ScrollTrigger.create({
-        trigger: '.sc-grain',
-        start: 'top 65%',
-        end: () => {
-            return isMobile ? 'bottom 100%' :'bottom 45%'
-        } ,
-        animation: grainTl,
-        invalidateOnRefresh: true,
-        scrub: 0,
-    })
+        ScrollTrigger.create({
+            trigger: '.sc-grain',
+            start: 'top 65%',
+            end: 'bottom 45%',
+            animation: grainTl,
+            invalidateOnRefresh: true,
+            scrub: 0,
+        })
+    });
+
+    // mobile
+    mm.add("(max-width: 959px)", () => {
+        // grain 영역 svg 애니메이션
+        const grainTl = gsap.timeline()
+        .to('.sc-grain .line-grain .path', { 
+            strokeDashoffset: 0
+        })
+        .to('.sc-grain .line-bean .path', { duration: 1, strokeDashoffset: 0})
+        .to('.sc-grain .line-grain2 .path', { strokeDashoffset: 0})
+        .to('.sc-grain .line-farmer .outline', { 
+            strokeDashoffset: 0
+        })
+        .to('.sc-grain .line-farmer .path:not(.outline)', { 
+            strokeDashoffset: 0
+        }, '-=.2')
+
+        ScrollTrigger.create({
+            trigger: '.sc-grain',
+            start: 'top 65%',
+            end: 'bottom 100%',
+            animation: grainTl,
+            invalidateOnRefresh: true,
+            scrub: 0,
+        })
+    });
+
     
     // tech 영역 svg 애니메이션
     ScrollTrigger.create({
@@ -320,9 +349,5 @@ $(document).ready(function() {
         start: 'top bottom',
         end: 'bottom bottom',
         animation: footerTL,
-    })
-
-    ScrollTrigger.addEventListener('matchmedia', () =>  {
-        ScrollTrigger.refresh()
     })
 })

@@ -1,5 +1,6 @@
 Jazean = {
     init: function () {
+        history.scrollRestoration = 'manual';
         this.openingAni();
         this.setStrokeAnimation('.path');
         this.setSwiper();
@@ -280,16 +281,14 @@ Jazean = {
         const splitTxt = new SplitType('.marquee .txt', { types: 'words' });
 
         gsap.utils.toArray('.marquee').forEach((marquee, idx) => {
-            $(marquee).hover(function() {
-                gsap.to($(this).find('.txt .word, svg'), { 
+            $('.marquee-wrap').on('mouseenter', function() {
+                gsap.fromTo($(this).find('.txt .word, svg'),{
+                    yPercent: 0,
+                }, { 
                     yPercent: -100, 
                     stagger: { 
                         amount: 0.3
                     }
-                })
-            }, function() {
-                gsap.set($(this).find('.txt .word, svg'), { 
-                    yPercent: 0,
                 })
             })
         })
