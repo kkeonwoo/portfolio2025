@@ -68,23 +68,20 @@
     background-size: $size;
 }
 
+
 @mixin font-face($name,
     $file-path,
     $weight: 400,
     $style: normal,
-    $woff2: true,
-    $woff: true,
-    $ttf: false,
-    $otf: false,
-    $eot: false) {
+    $formats: ()) {
     @font-face {
         font-family: $name;
         font-weight: $weight;
         font-style: $style;
-
-        src: #{"url('#{$file-path}.woff2') format(' woff2')"}if  $woff2,
-             #{"url('#{$file-path}.woff') format(' woff')"} if $woff,
-             #{"url('#{$file-path}.ttf') format(' truetype')"} if $ttf,
-             #{"url('#{$file-path}.otf') format(' opentype')"} if $otf,
+        src:#{if(index($formats, 'woff2'), "url('#{$file-path}.woff2') format('woff2')", '')}
+            #{if(index($formats, 'woff'), "url('#{$file-path}.woff') format('woff')", '')}
+            #{if(index($formats, 'truetype'), "url('#{$file-path}.ttf') format('truetype')", '')}
+            #{if(index($formats, 'opentype'), "url('#{$file-path}.otf') format('opentype')", '')}
+            #{if(index($formats, 'embedded-opentype'), "url('#{$file-path}.eot') format('embedded-opentype')", '')};
     }
 }

@@ -209,34 +209,46 @@
 }
 
 @font-face {
-  font-family: "archivo";
-  font-weight: 100;
-  font-style: normal;
-  src: url('../fonts/archivo/Archivo-Thin.woff2') format(' woff2')if true, url('../fonts/archivo/Archivo-Thin.woff') format(' woff') if true, url('../fonts/archivo/Archivo-Thin.ttf') format(' truetype') if false, url('../fonts/archivo/Archivo-Thin.otf') format(' opentype') if false;
-}
-@font-face {
-  font-family: "archivo";
+  font-family: "Archivo";
   font-weight: 300;
   font-style: normal;
-  src: url('../fonts/archivo/Archivo-Light.woff2') format(' woff2')if true, url('../fonts/archivo/Archivo-Light.woff') format(' woff') if true, url('../fonts/archivo/Archivo-Light.ttf') format(' truetype') if false, url('../fonts/archivo/Archivo-Light.otf') format(' opentype') if false;
+  src: url('../fonts/archivo/Archivo-Light.woff2') format('woff2');
 }
 @font-face {
-  font-family: "archivo";
+  font-family: "Archivo";
   font-weight: 400;
   font-style: normal;
-  src: url('../fonts/archivo/Archivo-Regular.woff2') format(' woff2')if true, url('../fonts/archivo/Archivo-Regular.woff') format(' woff') if true, url('../fonts/archivo/Archivo-Regular.ttf') format(' truetype') if false, url('../fonts/archivo/Archivo-Regular.otf') format(' opentype') if false;
+  src: url('../fonts/archivo/Archivo-Regular.woff2') format('woff2');
 }
 @font-face {
-  font-family: "archivo";
-  font-weight: 500;
-  font-style: normal;
-  src: url('../fonts/archivo/Archivo-Medium.woff2') format(' woff2')if true, url('../fonts/archivo/Archivo-Medium.woff') format(' woff') if true, url('../fonts/archivo/Archivo-Medium.ttf') format(' truetype') if false, url('../fonts/archivo/Archivo-Medium.otf') format(' opentype') if false;
-}
-@font-face {
-  font-family: "archivo";
+  font-family: "Archivo";
   font-weight: 600;
   font-style: normal;
-  src: url('../fonts/archivo/Archivo-SemiBold.woff2') format(' woff2')if true, url('../fonts/archivo/Archivo-SemiBold.woff') format(' woff') if true, url('../fonts/archivo/Archivo-SemiBold.ttf') format(' truetype') if false, url('../fonts/archivo/Archivo-SemiBold.otf') format(' opentype') if false;
+  src: url('../fonts/archivo/Archivo-SemiBold.woff2') format('woff2');
+}
+@font-face {
+  font-family: "Archivo";
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/archivo/Archivo-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: "NotoSansCJKkr";
+  font-weight: 300;
+  font-style: normal;
+  src: url('../fonts/notoSansCJK/NotoSansCJKkr-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: "NotoSansCJKkr";
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/notoSansCJK/NotoSansCJKkr-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: "NotoSansCJKkr";
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/notoSansCJK/NotoSansCJKkr-Bold.woff2') format('woff2');
 }
 * {
   margin: 0;
@@ -301,8 +313,8 @@ body.dark {
   left: 0;
   z-index: 999;
   color: #fff;
-  transition: 0.3s;
   transform: translateY(-100%);
+  transition: 0.3s;
 }
 #header.show {
   transform: translateY(0);
@@ -314,8 +326,8 @@ body.dark {
   filter: brightness(0) invert(0);
 }
 #header svg {
-  filter: none;
   transition: all 0.3s;
+  filter: none;
 }
 #header .header-inner {
   display: flex;
@@ -331,16 +343,19 @@ body.dark {
 }
 #header .header-inner .group-nav .nav-list .nav-item {
   position: relative;
-  padding: 0 25px;
 }
 #header .header-inner .group-nav .nav-list .nav-item.lang > .link {
   display: flex;
   align-items: center;
   gap: 5px;
+  padding: 20px 0 18px 25px;
+  font-family: "Archivo";
 }
 #header .header-inner .group-nav .nav-list .nav-item .link {
-  font-weight: normal;
-  font-size: 16px;
+  padding: 23px 25px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1;
 }
 #header .header-inner .group-nav .nav-list .nav-item .depth2 {
   position: absolute;

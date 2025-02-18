@@ -5,8 +5,8 @@
     left: 0;
     z-index: 999;
     color: #fff;
-    transition: .3s;
     transform: translateY(-100%);
+    transition: .3s;
 
     &.show {
         transform: translateY(0);
@@ -20,8 +20,8 @@
     }
 
     svg {
-        filter: none;
         transition: all .3s;
+        filter: none;
     }
 
     .header-inner {
@@ -39,19 +39,22 @@
 
                 .nav-item {
                     position: relative;
-                    padding: 0 25px;
 
                     &.lang {
                         &>.link {
                             display: flex;
                             align-items: center;
                             gap: 5px;
+                            padding: 20px 0 18px 25px;
+                            font-family: 'Archivo';
                         }
                     }
 
                     .link {
-                        font-weight: normal;
-                        font-size: 16px;
+                        padding: 23px 25px;
+                        font-weight: 600;
+                        font-size: 18px;
+                        line-height: 1;
                     }
 
                     .depth2 {

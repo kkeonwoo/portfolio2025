@@ -1,6 +1,7 @@
-// @include font-face($font-primary, '../fonts/MyCustomFont', 400, normal);
-@include font-face('archivo', '../fonts/archivo/Archivo-Thin', 100, normal);
-@include font-face('archivo', '../fonts/archivo/Archivo-Light', 300, normal);
-@include font-face('archivo', '../fonts/archivo/Archivo-Regular', 400, normal);
-@include font-face('archivo', '../fonts/archivo/Archivo-Medium', 500, normal);
-@include font-face('archivo', '../fonts/archivo/Archivo-SemiBold', 600, normal);
+@include font-face('Archivo', '../fonts/archivo/Archivo-Light', 300, normal, 'woff2');
+@include font-face('Archivo', '../fonts/archivo/Archivo-Regular', 400, normal, 'woff2');
+@include font-face('Archivo', '../fonts/archivo/Archivo-SemiBold', 600, normal, 'woff2');
+@include font-face('Archivo', '../fonts/archivo/Archivo-Bold', 700, normal, 'woff2');
+@include font-face('NotoSansCJKkr', '../fonts/notoSansCJK/NotoSansCJKkr-Bold', 300, normal, 'woff2');
+@include font-face('NotoSansCJKkr', '../fonts/notoSansCJK/NotoSansCJKkr-Bold', 400, normal, 'woff2');
+@include font-face('NotoSansCJKkr', '../fonts/notoSansCJK/NotoSansCJKkr-Bold', 600, normal, 'woff2');
