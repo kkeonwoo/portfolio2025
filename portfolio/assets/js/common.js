@@ -1,5 +1,6 @@
 Portfolio = {
     init: function () {
+        history.scrollRestoration = 'manual';
         this.splitText();
         this.updateDayTime();
         this.setGeoLocation();
@@ -22,7 +23,6 @@ Portfolio = {
         ];
         
         splits.forEach(split => split.elements.forEach(el => {
-            // $(el).find('.txt-cover')?.unwrap()
             $(el).children().wrap('<div class="txt-cover"></div>')
         }))
     },
@@ -246,6 +246,7 @@ Portfolio = {
             },
             onReverseComplete: () => {
                 $('.header').removeClass('open');
+                lenis.start();
             }
         })
         .to($nav, { '--inset2': 0})
@@ -358,6 +359,7 @@ Portfolio = {
                 ease: 'expo.inOut'
             }
         })
+        .set('.intro__txt:nth-child(1)', { autoAlpha: 1}) 
         .to('.intro__txt:nth-child(1) .line', { 
             autoAlpha: 1,
             yPercent: 0,
@@ -486,6 +488,9 @@ Portfolio = {
         })
     },
     aboutAni: function() {
+        gsap.set('.sc-about .word', { autoAlpha: 0, yPercent: 120})
+        gsap.set('.sc-about__top .keywords__item', { autoAlpha: 0, filter: 'blur(10px)'})
+
         const keywordTl = gsap.timeline()
         .to('.sc-about__top .keywords__item', { 
             autoAlpha: 1, 
@@ -713,36 +718,52 @@ Portfolio = {
         })
     },
     footerAni: function() {
-        // footer 하단 애니메이션
-        const footerBottomTween = gsap.to('.footer__marquee', { autoAlpha: 1, yPercent: 0, paused: true})
+        let mm = gsap.matchMedia();
 
-        ScrollTrigger.create({
-            trigger: '.footer__bottom',
-            start: '0% 80%',
-            end: '100% 80%',
-            animation: gsap.to('.footer .marquee__txt', { xPercent: -100, repeat: -1, duration: 20}),
-            onEnter: () => {
-                footerBottomTween.play()
-            },
-            onLeaveBack: () => {
-                footerBottomTween.reverse()
-            },
+        const options = {
+            isMobile: '(max-width: 768px)',
+            isDesktop: '(min-width: 767px)',
+        }
+        
+        mm.add(options, (ctx) => {
+            const {isMobile, isDesktop} = ctx.conditions;
+
+            // footer 하단 애니메이션
+            const footerBottomTween = gsap.to('.footer__marquee', { autoAlpha: 1, yPercent: 0, paused: true})
+    
+            ScrollTrigger.create({
+                trigger: '.footer__bottom',
+                start: () => {
+                    return isMobile ? '0% 100%': '0% 80%';
+                },
+                end: () => {
+                    return isMobile ? '100% 100%': '100% 80%';
+                },
+                animation: gsap.to('.footer .marquee__txt', { xPercent: -100, repeat: -1, duration: 20}),
+                onEnter: () => {
+                    footerBottomTween.play()
+                },
+                onLeaveBack: () => {
+                    footerBottomTween.reverse()
+                },
+            })
         })
     },
     masterAni: function() {
         // gsap.set('.intro__txt .char', { yPercent: 100})
         gsap.set('.intro__txt:nth-child(1) .line', { autoAlpha: 0, yPercent: 100})
         gsap.set('.sc-visual__info > *, .logo', { autoAlpha: 0})
-        gsap.set('.sc-about .word, .sc-goal .word', { autoAlpha: 0, yPercent: 120})
+        // gsap.set('.sc-about .word, .sc-goal .word', { autoAlpha: 0, yPercent: 120})
         gsap.set('.ani-tx .line', { xPercent: idx => idx === 0 || idx === 3 ? -100 : 100 })
         gsap.set('.header .logo__link', { scale: 5, yPercent: -500})
         gsap.set('.sc-visual__title-area .line', { xPercent: idx => idx % 2 === 0 ? -120 : 120})
         gsap.set('.project-card__title', { autoAlpha: 0, yPercent: 120})
         gsap.set('.sc-project__link', { xPercent: 100})
-        gsap.set('.sc-about__top .keywords__item', { autoAlpha: 0, filter: 'blur(10px)'})
         gsap.set('.sc-work__item', { xPercent: 100})
         gsap.set('.footer__marquee', { autoAlpha: 0, yPercent: 80})
         gsap.set('.footer .marquee__txt', { yPercent: 18})
+
+        let mm = gsap.matchMedia();
 
         Portfolio.introAni();
         $(window).on('load', () => {
@@ -750,10 +771,17 @@ Portfolio = {
             Portfolio.visualAni();
             Portfolio.translateX();
             Portfolio.textAniY();
-            Portfolio.aboutAni();
+            // Portfolio.aboutAni();
+            mm.add('(min-width: 767px)', (ctx) => {
+                ctx.add('about', () => {
+                    Portfolio.aboutAni();
+                })
+
+                ctx.about();
+            })
             Portfolio.projectAni();
             Portfolio.workAni();
-            Portfolio.goalAni();
+            // Portfolio.goalAni();
             Portfolio.footerAni();
         })
     },

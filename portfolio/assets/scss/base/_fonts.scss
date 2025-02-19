@@ -1,3 +1,6 @@
 @include font-face('Neue', '../fonts/PPNeueMontreal-Regular', 400, normal, "woff");
 @include font-face('Neue', '../fonts/PPNeueMontreal-Medium', 500, normal, "woff");
 @include font-face('LeagueSpartan', '../fonts/LeagueSpartan-Bold', 700, normal, "opentype");
+@include font-face('notoSansCJK', '../fonts/notoSansCJK/NotoSansCJKkr-Light', 300, normal, "woff2");
+@include font-face('notoSansCJK', '../fonts/notoSansCJK/NotoSansCJKkr-Regular', 400, normal, "woff2");
+@include font-face('notoSansCJK', '../fonts/notoSansCJK/NotoSansCJKkr-Bold', 700, normal, "woff2");
