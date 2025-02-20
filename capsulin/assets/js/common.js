@@ -1,5 +1,6 @@
 Capsulin = {
     init: function () {
+        history.scrollRestoration = 'manual';
         this.introAni();
         this.customHTML();
         this.handleSwiper();
@@ -18,7 +19,7 @@ Capsulin = {
             const num = $(".intro .num");
             const obj = { value: 0 };
             const ratio = instance.progressedCount / instance.images.length;
-
+            const tl = gsap.timeline()
             gsap.to(obj, {
                 value: ratio * 100,
                 ease: "none",
@@ -32,7 +33,9 @@ Capsulin = {
                         yPercent: -100
                     })
                     .add(Capsulin.aniHeroEnter())
-                    .call(() => lenis.start())
+                    .call(() => {
+                        lenis.start()
+                    })
                 }
             });
         })
@@ -367,12 +370,15 @@ Capsulin = {
      * @param {*} amount 애니메이션 총 시간
      */
     fadeUp: function(t, amount) {
-        let tween = gsap.fromTo(t, { 
-            yPercent: 130
-        }, { 
+        lenis.stop();
+        gsap.set(t, { yPercent: 130 })
+        let tween = gsap.to(t, { 
             yPercent: 0, 
             stagger: { 
-                amount: amount ? amount : 0
+                amount: amount ? amount : 0,
+            },
+            onComplete: () => {
+                lenis.start()
             }
         })
     },
@@ -381,16 +387,20 @@ Capsulin = {
      * @param {*} t 애니메이션 타겟
      * @param {*} dir 스크롤 방향
      * @param {*} amount 애니메이션 총 시간
-     */
+    */
     fadeOut: function(t, dir, amount) {
-        let tween = gsap.fromTo(t, { 
-            yPercent: 0
-        }, { 
+        lenis.stop();
+        gsap.set(t, { yPercent: 0 })
+        gsap.set('#no-scroll', { display: 'block' })
+        let tween = gsap.to(t, { 
             yPercent: () => {
                 return dir < 0 ? 120 : -120
             }, 
             stagger: {
-                amount: amount ? amount : 0
+                amount: amount ? amount : 0,
+            },
+            onComplete: () => {
+                lenis.start()
             }
         })
     },

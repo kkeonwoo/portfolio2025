@@ -1,13 +1,38 @@
 gsap.registerPlugin(ScrollTrigger);
-gsap.defaults({ease: 'none'});
+gsap.defaults({
+    ease: 'none',
+});
 
 $(document).ready(() => {
+    // hero 영역 텍스트 쪼개기
+    const heroText = new SplitType('.sc-hero .title .txt', { types: 'chars' })
+    // hero 영역 애니메이션
+    $(window).on('scroll', ({scroll}) => {
+        let wt = $(this).scrollTop;
+
+        if (wt === 0) { // 스크롤 최상단
+            Capsulin.aniHeroEnter();
+        } else { // 스크롤 시
+            gsap.to('.sc-hero .img-box', { 
+                autoAlpha: 0, 
+                yPercent: -100
+            })
+            gsap.to('.sc-hero .title .char', { 
+                yPercent: -100
+            })
+            gsap.to('.sc-hero .scroll-down-area .txt', { 
+                yPercent: -100
+            })
+            gsap.to('.sc-hero .scroll-down-area .ico', { 
+                yPercent: -100,
+            })  
+        }
+    })
     // split text
     splitLinesInit = () => {
         const text = new SplitType('.split-line', { types: 'lines' })
         const text2 = new SplitType('.split-txt .line', { types: 'chars' })
         const lines = $('.half .title .line, .txt-area .txt .line, .sc-spec .sc-04 .sc-right .line');
-        lines.unwrap('.txt-wrap');
         $(lines).wrap('<div class="txt-wrap"></div>');
     }
     

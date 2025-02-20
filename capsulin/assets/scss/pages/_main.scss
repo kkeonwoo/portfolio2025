@@ -167,6 +167,17 @@
     }
 }
 
+#no-scroll {
+    // display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255,255,255, .2);
+    z-index: 9999;
+}
+
 .progress {
     position: fixed;
     top: 0;

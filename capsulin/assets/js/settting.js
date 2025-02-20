@@ -1,4 +1,8 @@
-const lenis = new Lenis()
+const lenis = new Lenis({
+  // lerp: 0.05,
+  // damping: 0, 
+  // sensitivity: 2,
+})
 
 lenis.on('scroll', () => {
   ScrollTrigger.update()
@@ -29,7 +33,7 @@ lenis.on('scroll', ({scroll}) => {
       yPercent: -100
     })
     gsap.to('.sc-hero .scroll-down-area .ico', { 
-      yPercent: -100
+      yPercent: -100,
     })  
   }
 })
