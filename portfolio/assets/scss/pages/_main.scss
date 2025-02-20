@@ -54,7 +54,7 @@
         letter-spacing: -0.06em;
         text-transform: uppercase;
         @include mobile() {
-            font-size: 18vw;
+            font-size: 16vw;
         }
     }
 }
@@ -196,6 +196,7 @@
     .inner {
         position: relative;
         height: 100%;
+        padding: 0;
         @include flex(_, center);
     }
     
@@ -212,8 +213,9 @@
     }
 
     &__title {
-        overflow: hidden;
         width: 100%;
+        padding: 0 20px;
+        overflow: hidden;
 
         .txt-cover {
             &:last-child .line {
