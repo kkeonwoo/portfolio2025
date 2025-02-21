@@ -5,30 +5,6 @@ gsap.defaults({
 ScrollTrigger .clearScrollMemory ( 'manual' ) ;
 
 $(document).ready(() => {
-    // hero 영역 텍스트 쪼개기
-    const heroText = new SplitType('.sc-hero .title .txt', { types: 'chars' })
-    // hero 영역 애니메이션
-    $(window).on('scroll', ({scroll}) => {
-        let wt = $(this).scrollTop;
-
-        if (wt === 0) { // 스크롤 최상단
-            Capsulin.aniHeroEnter();
-        } else { // 스크롤 시
-            gsap.to('.sc-hero .img-box', { 
-                autoAlpha: 0, 
-                yPercent: -100
-            })
-            gsap.to('.sc-hero .title .char', { 
-                yPercent: -100
-            })
-            gsap.to('.sc-hero .scroll-down-area .txt', { 
-                yPercent: -100
-            })
-            gsap.to('.sc-hero .scroll-down-area .ico', { 
-                yPercent: -100,
-            })  
-        }
-    })
     // split text
     splitLinesInit = () => {
         const text = new SplitType('.split-line', { types: 'lines' })
@@ -38,32 +14,35 @@ $(document).ready(() => {
     }
     splitLinesInit();
 
-    gsap.set('.split-line .char', {
-        yPercent: -120
-    })
-    gsap.set('.split-txt.active .char', {
-        yPercent: 0
-    })
-
-    // default
-    gsap.set('.tab-list .line', { 
-        width: 0
-    })
-    gsap.set('.main .txt-wrap .txt, .main .txt-wrap .line, .main .txt-wrap .num, .main .txt-wrap .ico, .title .img, .title-box .char', {
-        yPercent: 120
-    })
-    gsap.set('.sc-hero .txt-wrap .txt, .title-box .line', { 
-        yPercent: 0
-    })
-    gsap.set('.pagination .page-item', { 
-        yPercent: 100
-    })
-    gsap.set('.sc-custom .sc-02 .color-item', { 
-        scale: 0 
-    })
-    gsap.set('.split-line .char', {
-        yPercent: -120
-    })
+    function setTweenDefaults() {
+        gsap.set('.split-line .char', {
+            yPercent: -120
+        })
+        gsap.set('.split-txt.active .char', {
+            yPercent: 0
+        })
+    
+        // default
+        gsap.set('.tab-list .line', { 
+            width: 0
+        })
+        gsap.set('.main .txt-wrap .txt, .main .txt-wrap .line, .main .txt-wrap .num, .main .txt-wrap .ico, .title .img, .title-box .char', {
+            yPercent: 120
+        })
+        gsap.set('.sc-hero .txt-wrap .txt, .title-box .line', { 
+            yPercent: 0
+        })
+        gsap.set('.pagination .page-item', { 
+            yPercent: 100
+        })
+        gsap.set('.sc-custom .sc-02 .color-item', { 
+            scale: 0 
+        })
+        gsap.set('.split-line .char', {
+            yPercent: -120
+        })
+    }
+    setTweenDefaults();
 
     // 진행률 애니메이션
     gsap.from('.progress-bar', {
@@ -573,7 +552,7 @@ $(document).ready(() => {
         // design 영역 애니메이션1
         const designTl01 = gsap.timeline()
         .fromTo('.sc-design .sc-01 .sticky', {
-            delay: .1,
+            delay: .2,
             clipPath: 'inset(0)'
         }, {
             clipPath: 'inset(44% 0 56% 0)'
@@ -607,7 +586,7 @@ $(document).ready(() => {
         // design 영역 애니메이션2
         const designTl02 = gsap.timeline()
         .to('.sc-design .sc-02 .sc-left .img-box img', { 
-            delay: .1,
+            delay: .2,
             yPercent: 10,
             scale: 1.3
         })
@@ -676,7 +655,7 @@ $(document).ready(() => {
         // design 영역 애니메이션3
         const designTl03 = gsap.timeline()
         .to('.sc-design .sc-04 .sticky', {
-            delay: .1,
+            delay: .2,
             '--inset': 100
         })
         .from('.sc-engine .sc-01 .bg', {
@@ -768,7 +747,7 @@ $(document).ready(() => {
         // engine 영역 애니메이션2
         const engineTl02 = gsap.timeline()
         .to('.sc-engine .sc-02 .sticky', {
-            delay: .1,
+            delay: .2,
             '--inset': 100
         })
         .fromTo('.sc-engine .sc-02 .bg', {
@@ -828,7 +807,7 @@ $(document).ready(() => {
         // engine 영역 애니메이션3
         const engineTl03 = gsap.timeline()
         .to('.sc-engine .sc-03 .sticky', {
-            delay: .1,
+            delay: .2,
             '--inset': 100
         })
         .fromTo('.sc-engine .sc-03 .sc-left', {
@@ -879,7 +858,7 @@ $(document).ready(() => {
 
         const engineTl04 = gsap.timeline()
         .to('.sc-engine .sc-04 .sticky', {
-            delay: .1,
+            delay: .2,
             '--inset': 100
         })
         .to('.sc-custom .sc-01 .bg-gradient', {
@@ -918,7 +897,7 @@ $(document).ready(() => {
 
         const customTl01 = gsap.timeline()
         .fromTo('.sc-custom .sc-01 .bg-gradient', {
-            delay: .1,
+            delay: .2,
             '--top': 0
         }, {
             '--top': -100
@@ -986,7 +965,7 @@ $(document).ready(() => {
 
         const customTl02 = gsap.timeline()
         .fromTo('.sc-custom .sc-02 .sticky', {
-            delay: .1,
+            delay: .2,
             clipPath: 'inset(0% 0% 0% 0%)'
         }, {
             clipPath: 'inset(44% 0% 56% 0%)'
@@ -1020,7 +999,7 @@ $(document).ready(() => {
         })
 
         const customTl03 = gsap.timeline()
-        .to('.sc-custom .sc-03 .sticky', {delay: .1,'--inset': 100})
+        .to('.sc-custom .sc-03 .sticky', {delay: .2,'--inset': 100})
         .from('.sc-experience .sc-01 .bg', { yPercent: 10}, '<')
 
         ScrollTrigger.create({
@@ -1054,7 +1033,7 @@ $(document).ready(() => {
 
         const experienceTl01 = gsap.timeline()
         .fromTo('.sc-experience .sc-01 .bg', { 
-            delay: .1,
+            delay: .2,
             yPercent: 0
         }, {
             yPercent: -5
@@ -1125,7 +1104,7 @@ $(document).ready(() => {
         })
         
         const experienceTl02 = gsap.timeline()
-        .to('.sc-experience .sc-03 .sticky', {delay: .1,'--inset': 100})
+        .to('.sc-experience .sc-03 .sticky', {delay: .2,'--inset': 100})
         .from('.sc-spec .sc-01 .bg', {yPercent: 30}, '<')
 
         ScrollTrigger.create({
@@ -1159,7 +1138,7 @@ $(document).ready(() => {
 
         const specTl01 = gsap.timeline()
         .fromTo('.sc-spec .sc-01 .bg',{
-            delay: .1,
+            delay: .2,
             yPercent: 0
         }, {
             yPercent: -30
@@ -1198,7 +1177,7 @@ $(document).ready(() => {
         })
 
         const specTl02 = gsap.timeline()
-        .to('.sc-spec .sc-02 .sticky', {delay: .1,'--inset': 100})
+        .to('.sc-spec .sc-02 .sticky', {delay: .2,'--inset': 100})
         .from('.sc-spec .sc-03 .bg',{yPercent: 10}, '<')
 
         ScrollTrigger.create({
@@ -1214,7 +1193,7 @@ $(document).ready(() => {
         })
 
         const specTl04 = gsap.timeline()
-        .to('.sc-spec .sc-04 .sticky', {delay: .1,'--inset': 100})
+        .to('.sc-spec .sc-04 .sticky', {delay: .2,'--inset': 100})
         .fromTo('.sc-spec .sc-04 .bg',{yPercent: 0}, {yPercent: -10}, '<')
         .from('.sc-contact .bg',{yPercent: 10}, '<')
 
@@ -1224,7 +1203,7 @@ $(document).ready(() => {
             gsap.set(cir, { strokeDashoffset: circleLength, strokeDasharray: circleLength, opacity: 0})
         })
         const specTl03 = gsap.timeline()
-        .to('.sc-spec .sc-03 .sticky', {delay: .1,'--inset': 100})
+        .to('.sc-spec .sc-03 .sticky', {delay: .2,'--inset': 100})
         .fromTo('.sc-spec .sc-03 .bg',{yPercent: 0}, {yPercent: -10}, '<')
         .from('.sc-spec .sc-04 .bg',{yPercent: 10}, '<')
 
@@ -1305,6 +1284,7 @@ $(document).ready(() => {
         ScrollTrigger.refresh();
         SplitType.revert('.split-line, .split-txt .line');
         splitLinesInit();
+        setTweenDefaults();
     })
     
 })

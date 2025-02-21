@@ -371,6 +371,9 @@ Capsulin = {
     fadeUp: function(t, amount) {
         lenis.stop();
         gsap.set(t, { yPercent: 130 })
+        $(window).on('resize', function() {
+            gsap.set(t, { yPercent: 130 })
+        })
         let tween = gsap.to(t, { 
             yPercent: 0, 
             stagger: { 
@@ -390,6 +393,10 @@ Capsulin = {
     fadeOut: function(t, dir, amount) {
         lenis.stop();
         gsap.set(t, { yPercent: 0 })
+        $(window).on('resize', function() {
+            gsap.set(t, { yPercent: 0 })
+        })
+
         let tween = gsap.to(t, { 
             yPercent: () => {
                 return dir < 0 ? 120 : -120
