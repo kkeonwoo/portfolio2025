@@ -2,6 +2,7 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.defaults({
     ease: 'none',
 });
+ScrollTrigger .clearScrollMemory ( 'manual' ) ;
 
 $(document).ready(() => {
     // hero 영역 텍스트 쪼개기
@@ -35,14 +36,8 @@ $(document).ready(() => {
         const lines = $('.half .title .line, .txt-area .txt .line, .sc-spec .sc-04 .sc-right .line');
         $(lines).wrap('<div class="txt-wrap"></div>');
     }
-    
     splitLinesInit();
-    ScrollTrigger.refresh();
-    $(window).resize(function() {
-        ScrollTrigger.refresh();
-        SplitType.revert('.split-line, .split-txt .line');
-        splitLinesInit();
-    })
+
     gsap.set('.split-line .char', {
         yPercent: -120
     })
@@ -84,6 +79,7 @@ $(document).ready(() => {
     // hero 영역 애니메이션
     const heroTl = gsap.timeline()
     .to('.sc-hero .sticky', { 
+        delay: .1,
         '--inset': 100
     })
     .to('.sc-hero .bg', {
@@ -118,6 +114,7 @@ $(document).ready(() => {
         // design 영역 애니메이션1
         const designTl01 = gsap.timeline()
         .to('.sc-design .sc-01 .sticky', {
+            delay: .1,
             '--inset': 100
         })
         .to('.sc-design .sc-01 .bg', {
@@ -151,6 +148,7 @@ $(document).ready(() => {
         // design 영역 애니메이션2
         const designTl02 = gsap.timeline()
         .to('.sc-design .sc-02 .sc-left .img-box', { 
+            delay: .1,
             clipPath: "inset(50% 50% 50% 50%)",
             scale: 0.8
         })
@@ -201,6 +199,7 @@ $(document).ready(() => {
         // design 영역 애니메이션3
         const designTl03 = gsap.timeline()
         .to('.sc-design .sc-04 .sticky', {
+            delay: .1,
             '--inset': 100
         })
         .from('.sc-engine .sc-01 .bg', {
@@ -248,6 +247,7 @@ $(document).ready(() => {
         // engine 영역 애니메이션1
         const engineTl01 = gsap.timeline()
         .to('.sc-engine .sc-01 .sticky', {
+            delay: .1,
             '--inset': 100
         })
         .fromTo('.sc-engine .sc-01 .bg', {
@@ -272,7 +272,7 @@ $(document).ready(() => {
         })
 
         const engineTl02 = gsap.timeline()
-        .to('.sc-engine .sc-02 .sticky', {'--inset': 100})
+        .to('.sc-engine .sc-02 .sticky', {delay: .1,'--inset': 100})
         .fromTo('.sc-engine .sc-02 .bg', {yPercent: 0}, {yPercent: -30}, '<')
         .from('.sc-engine .sc-03 #eTab1', {yPercent: 10}, '<')
 
@@ -295,7 +295,7 @@ $(document).ready(() => {
         })
 
         const engineTl03 = gsap.timeline()
-        .to('.sc-engine .sc-03 .sticky', {'--inset': 100})
+        .to('.sc-engine .sc-03 .sticky', {delay: .1,'--inset': 100})
         .fromTo('.sc-engine .sc-03 #eTab1', {yPercent: 0}, {yPercent: -10}, '<')
         .from('.sc-engine .sc-04 .bg', {yPercent: 30}, '<')
 
@@ -318,7 +318,7 @@ $(document).ready(() => {
         })
 
         const engineTl04 = gsap.timeline()
-        .to('.sc-engine .sc-04 .sticky', {'--inset': 100})
+        .to('.sc-engine .sc-04 .sticky', {delay: .1,'--inset': 100})
         .to('.sc-custom .sc-01 .bg-gradient', {'--top': 0}, '<')
         .from('.sc-custom .sc-01 .bg-capsule', {yPercent: 10}, '<')
 
@@ -341,7 +341,7 @@ $(document).ready(() => {
         })
 
         const customTl01 = gsap.timeline()
-        .fromTo('.sc-custom .sc-01 .bg-gradient', {'--top': 0}, {'--top': -100}, '<')
+        .fromTo('.sc-custom .sc-01 .bg-gradient', {'--top': 0}, {delay: .1,'--top': -100})
         .fromTo('.sc-custom .sc-01 .bg-capsule', {yPercent: 0}, {yPercent: -10}, '<')
         .fromTo('.sc-custom .sc-02 .sc-left .tab-cont .con', { clipPath: 'inset(50% 50% 50% 50%)'}, { clipPath: 'inset(0% 0% 0% 0%)'}, '<')
         .from('.sc-custom .sc-02 .sc-right .bg-area', { clipPath: 'inset(0% 50% 0% 50%)'}, '<')
@@ -369,7 +369,7 @@ $(document).ready(() => {
         })
 
         const customTl02 = gsap.timeline()
-        .to('.sc-custom .sc-02 .sticky', {'--inset': 100})
+        .to('.sc-custom .sc-02 .sticky', {delay: .1,'--inset': 100})
         .to('.sc-custom .sc-02 .sc-left', { yPercent: -100}, '<')
         .fromTo('.sc-custom .sc-02 .sc-left .tab-cont .con', { clipPath: 'inset(0% 0% 0% 0%)'}, { clipPath: 'inset(50% 50% 50% 50%)'}, '<')
         .to('.sc-custom .sc-02 .sc-right .bg-area .bg', { yPercent: -30}, '<')
@@ -396,7 +396,7 @@ $(document).ready(() => {
         })
 
         const customTl03 = gsap.timeline()
-        .to('.sc-custom .sc-03 .sticky', {'--inset': 100})
+        .to('.sc-custom .sc-03 .sticky', {delay: .1,'--inset': 100})
         .fromTo('.sc-custom .sc-03 .sc-right .img-box .img', { yPercent: 0}, { yPercent: -30}, '<')
         .from('.sc-experience .sc-01 .bg', { yPercent: 10}, '<')
 
@@ -419,7 +419,7 @@ $(document).ready(() => {
         })
 
         const experienceTl01 = gsap.timeline()
-        .to('.sc-experience .sc-01 .sticky', {'--inset': 100})
+        .to('.sc-experience .sc-01 .sticky', {delay: .1,'--inset': 100})
         .fromTo('.sc-experience .sc-01 .bg', { yPercent: 0}, { yPercent: -30}, '<')
         .from('.sc-experience .sc-02', { '--top': 100}, '<')
         .from('.sc-experience .sc-02 .sc-right .img-box', { clipPath: 'inset(50% 50% 50% 50%)'}, '<')
@@ -440,7 +440,7 @@ $(document).ready(() => {
         })
         
         const experienceTl02 = gsap.timeline()
-        .to('.sc-experience .sc-03 .sticky', {'--inset': 100})
+        .to('.sc-experience .sc-03 .sticky', {delay: .1,'--inset': 100})
         .from('.sc-spec .sc-01 .bg', {yPercent: 30}, '<')
 
         ScrollTrigger.create({
@@ -462,7 +462,7 @@ $(document).ready(() => {
         })
 
         const specTl01 = gsap.timeline()
-        .to('.sc-spec .sc-01 .sticky', {'--inset': 100})
+        .to('.sc-spec .sc-01 .sticky', {delay: .1,'--inset': 100})
         .fromTo('.sc-spec .sc-01 .bg',{yPercent: 0}, {yPercent: -30}, '<')
         .from('.sc-spec .sc-02 .sc-left', { '--top': 100}, '<')
 
@@ -479,7 +479,7 @@ $(document).ready(() => {
         })
 
         const specTl02 = gsap.timeline()
-        .to('.sc-spec .sc-02 .sticky', {'--inset': 100})
+        .to('.sc-spec .sc-02 .sticky', {delay: .1,'--inset': 100})
         .fromTo('.sc-spec .sc-02 .sc-left', { '--top': 0}, {'--top': -10}, '<')
         .from('.sc-spec .sc-03 .bg',{yPercent: 10}, '<')
 
@@ -496,7 +496,7 @@ $(document).ready(() => {
         })
 
         const specTl04 = gsap.timeline()
-        .to('.sc-spec .sc-04 .sticky', {'--inset': 100})
+        .to('.sc-spec .sc-04 .sticky', {delay: .1,'--inset': 100})
         .fromTo('.sc-spec .sc-04 .bg',{yPercent: 0}, {yPercent: -10}, '<')
         .from('.sc-contact .bg',{yPercent: 10}, '<')
 
@@ -506,7 +506,7 @@ $(document).ready(() => {
             gsap.set(cir, { strokeDashoffset: circleLength, strokeDasharray: circleLength, opacity: 0})
         })
         const specTl03 = gsap.timeline()
-        .to('.sc-spec .sc-03 .sticky', {'--inset': 100})
+        .to('.sc-spec .sc-03 .sticky', {delay: .1,'--inset': 100})
         .fromTo('.sc-spec .sc-03 .bg',{yPercent: 0}, {yPercent: -10}, '<')
         .from('.sc-spec .sc-04 .bg',{yPercent: 10}, '<')
 
@@ -573,7 +573,8 @@ $(document).ready(() => {
         // design 영역 애니메이션1
         const designTl01 = gsap.timeline()
         .fromTo('.sc-design .sc-01 .sticky', {
-        clipPath: 'inset(0)'
+            delay: .1,
+            clipPath: 'inset(0)'
         }, {
             clipPath: 'inset(44% 0 56% 0)'
         })
@@ -606,6 +607,7 @@ $(document).ready(() => {
         // design 영역 애니메이션2
         const designTl02 = gsap.timeline()
         .to('.sc-design .sc-02 .sc-left .img-box img', { 
+            delay: .1,
             yPercent: 10,
             scale: 1.3
         })
@@ -674,6 +676,7 @@ $(document).ready(() => {
         // design 영역 애니메이션3
         const designTl03 = gsap.timeline()
         .to('.sc-design .sc-04 .sticky', {
+            delay: .1,
             '--inset': 100
         })
         .from('.sc-engine .sc-01 .bg', {
@@ -729,6 +732,7 @@ $(document).ready(() => {
         const engineTl01 = gsap.timeline()
         .to('.sc-engine .sc-01 .sticky', {
             '--inset': 100
+            
         })
         .fromTo('.sc-engine .sc-01 .bg', {
             yPercent: 0
@@ -764,6 +768,7 @@ $(document).ready(() => {
         // engine 영역 애니메이션2
         const engineTl02 = gsap.timeline()
         .to('.sc-engine .sc-02 .sticky', {
+            delay: .1,
             '--inset': 100
         })
         .fromTo('.sc-engine .sc-02 .bg', {
@@ -823,6 +828,7 @@ $(document).ready(() => {
         // engine 영역 애니메이션3
         const engineTl03 = gsap.timeline()
         .to('.sc-engine .sc-03 .sticky', {
+            delay: .1,
             '--inset': 100
         })
         .fromTo('.sc-engine .sc-03 .sc-left', {
@@ -873,6 +879,7 @@ $(document).ready(() => {
 
         const engineTl04 = gsap.timeline()
         .to('.sc-engine .sc-04 .sticky', {
+            delay: .1,
             '--inset': 100
         })
         .to('.sc-custom .sc-01 .bg-gradient', {
@@ -911,6 +918,7 @@ $(document).ready(() => {
 
         const customTl01 = gsap.timeline()
         .fromTo('.sc-custom .sc-01 .bg-gradient', {
+            delay: .1,
             '--top': 0
         }, {
             '--top': -100
@@ -978,6 +986,7 @@ $(document).ready(() => {
 
         const customTl02 = gsap.timeline()
         .fromTo('.sc-custom .sc-02 .sticky', {
+            delay: .1,
             clipPath: 'inset(0% 0% 0% 0%)'
         }, {
             clipPath: 'inset(44% 0% 56% 0%)'
@@ -1011,7 +1020,7 @@ $(document).ready(() => {
         })
 
         const customTl03 = gsap.timeline()
-        .to('.sc-custom .sc-03 .sticky', {'--inset': 100})
+        .to('.sc-custom .sc-03 .sticky', {delay: .1,'--inset': 100})
         .from('.sc-experience .sc-01 .bg', { yPercent: 10}, '<')
 
         ScrollTrigger.create({
@@ -1045,6 +1054,7 @@ $(document).ready(() => {
 
         const experienceTl01 = gsap.timeline()
         .fromTo('.sc-experience .sc-01 .bg', { 
+            delay: .1,
             yPercent: 0
         }, {
             yPercent: -5
@@ -1115,7 +1125,7 @@ $(document).ready(() => {
         })
         
         const experienceTl02 = gsap.timeline()
-        .to('.sc-experience .sc-03 .sticky', {'--inset': 100})
+        .to('.sc-experience .sc-03 .sticky', {delay: .1,'--inset': 100})
         .from('.sc-spec .sc-01 .bg', {yPercent: 30}, '<')
 
         ScrollTrigger.create({
@@ -1149,6 +1159,7 @@ $(document).ready(() => {
 
         const specTl01 = gsap.timeline()
         .fromTo('.sc-spec .sc-01 .bg',{
+            delay: .1,
             yPercent: 0
         }, {
             yPercent: -30
@@ -1187,7 +1198,7 @@ $(document).ready(() => {
         })
 
         const specTl02 = gsap.timeline()
-        .to('.sc-spec .sc-02 .sticky', {'--inset': 100})
+        .to('.sc-spec .sc-02 .sticky', {delay: .1,'--inset': 100})
         .from('.sc-spec .sc-03 .bg',{yPercent: 10}, '<')
 
         ScrollTrigger.create({
@@ -1203,7 +1214,7 @@ $(document).ready(() => {
         })
 
         const specTl04 = gsap.timeline()
-        .to('.sc-spec .sc-04 .sticky', {'--inset': 100})
+        .to('.sc-spec .sc-04 .sticky', {delay: .1,'--inset': 100})
         .fromTo('.sc-spec .sc-04 .bg',{yPercent: 0}, {yPercent: -10}, '<')
         .from('.sc-contact .bg',{yPercent: 10}, '<')
 
@@ -1213,7 +1224,7 @@ $(document).ready(() => {
             gsap.set(cir, { strokeDashoffset: circleLength, strokeDasharray: circleLength, opacity: 0})
         })
         const specTl03 = gsap.timeline()
-        .to('.sc-spec .sc-03 .sticky', {'--inset': 100})
+        .to('.sc-spec .sc-03 .sticky', {delay: .1,'--inset': 100})
         .fromTo('.sc-spec .sc-03 .bg',{yPercent: 0}, {yPercent: -10}, '<')
         .from('.sc-spec .sc-04 .bg',{yPercent: 10}, '<')
 
@@ -1289,4 +1300,11 @@ $(document).ready(() => {
             },
         })
     })
+
+    $(window).resize(function() {
+        ScrollTrigger.refresh();
+        SplitType.revert('.split-line, .split-txt .line');
+        splitLinesInit();
+    })
+    
 })

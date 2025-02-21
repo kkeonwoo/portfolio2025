@@ -1,6 +1,9 @@
 const lenis = new Lenis({
-  // lerp: 0.05,
-  // damping: 0, 
+  lerp: 0.05,
+  damping: 0, 
+  smooth: false,
+  velocity: 0,
+  easing: 'none'
   // sensitivity: 2,
 })
 

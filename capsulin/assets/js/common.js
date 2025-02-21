@@ -1,6 +1,5 @@
 Capsulin = {
     init: function () {
-        history.scrollRestoration = 'manual';
         this.introAni();
         this.customHTML();
         this.handleSwiper();
@@ -391,7 +390,6 @@ Capsulin = {
     fadeOut: function(t, dir, amount) {
         lenis.stop();
         gsap.set(t, { yPercent: 0 })
-        gsap.set('#no-scroll', { display: 'block' })
         let tween = gsap.to(t, { 
             yPercent: () => {
                 return dir < 0 ? 120 : -120

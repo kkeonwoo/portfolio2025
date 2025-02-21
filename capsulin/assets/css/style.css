@@ -1053,6 +1053,7 @@ body::-webkit-scrollbar {
 }
 @media (orientation: portrait) {
   .sc-design .section.sc-02 .sc-right {
+    padding-top: 4.61538vh;
     align-items: flex-start;
   }
 }

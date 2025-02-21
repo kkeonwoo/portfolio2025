@@ -388,6 +388,7 @@
             z-index: 80;
             .sc-right {
                 @include portrait() {
+                    padding-top: 4.61538vh;
                     align-items: flex-start;
                 }
             }
