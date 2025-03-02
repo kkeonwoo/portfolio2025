@@ -13,14 +13,12 @@ Capsulin = {
      * 인트로 애니메이션
      */
     introAni: function() {
-        $('#wrap').imagesLoaded()
-        .progress( function( instance, image ) {
+        $(window).on('load', function() {
             const num = $(".intro .num");
             const obj = { value: 0 };
-            const ratio = instance.progressedCount / instance.images.length;
             const tl = gsap.timeline()
             gsap.to(obj, {
-                value: ratio * 100,
+                value: 100,
                 ease: "none",
                 onUpdate: () => {
                     num.text(`${Math.round(obj.value)}`);

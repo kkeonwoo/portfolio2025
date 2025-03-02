@@ -2,7 +2,7 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.defaults({
     ease: 'none',
 });
-ScrollTrigger .clearScrollMemory ( 'manual' ) ;
+ScrollTrigger.clearScrollMemory('manual');
 
 $(document).ready(() => {
     // split text

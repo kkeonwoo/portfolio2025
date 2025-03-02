@@ -1,5 +1,6 @@
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 gsap.defaults({ease: 'none'});
+ScrollTrigger.clearScrollMemory('manual');
 
 let splitLines;
 // 텍스트 나누기
@@ -223,13 +224,28 @@ gsap.utils.toArray('.sc-fact .group-banner').forEach((banner, idx) => {
 })
 
 // species 영역 애니메이션
-ScrollTrigger.create({
-    trigger: '.sc-species .group-swiper',
-    start: '0% 50%',
-    end: '100% 50%',
-    once: true,
-    toggleClass: {
-        targets: '.sc-species',
-        className: 'first'
-    }
+let mm = gsap.matchMedia();
+mm.add('(max-width:767px)', () => {
+    ScrollTrigger.create({
+        trigger: '.sc-species .group-swiper',
+        start: '0% 100%',
+        end: '100% 100%',
+        once: true,
+        toggleClass: {
+            targets: '.sc-species',
+            className: 'first'
+        }
+    })
+})
+mm.add('(min-width:768px)', () => {
+    ScrollTrigger.create({
+        trigger: '.sc-species .group-swiper',
+        start: '0% 50%',
+        end: '100% 50%',
+        once: true,
+        toggleClass: {
+            targets: '.sc-species',
+            className: 'first'
+        }
+    })
 })

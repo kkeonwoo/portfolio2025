@@ -1318,4 +1318,9 @@ html {
   transform-origin: 50% 50%;
   pointer-events: none;
   mix-blend-mode: difference;
+}
+@media (max-width: 767px) {
+  .cursor {
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */

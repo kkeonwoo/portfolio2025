@@ -1,5 +1,6 @@
 $(document).ready(function() {
     gsap.registerPlugin(ScrollTrigger)
+    ScrollTrigger.clearScrollMemory('manual');
 
     // 단어 쪼개기
     const roastTxt = new SplitType('.sc-roast .txt-area .title', { types: 'words' });

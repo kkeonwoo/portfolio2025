@@ -64,11 +64,17 @@
   --inset: 0;
   clip-path: inset(0 0 calc(var(--inset) * 1%) 0);
   margin-top: -300vh;
+  overflow: hidden;
 }
 .section.full-w .sticky {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media (orientation: portrait) {
+  .section.full-w .sticky {
+    flex-direction: column;
+  }
 }
 .section.half {
   display: flex;
@@ -747,6 +753,10 @@ body::-webkit-scrollbar {
 @media (orientation: portrait) {
   .txt-type1 .txt-area, .section.full-w .txt-area {
     margin-top: 3.1746vh;
+    width: 82.97872vw;
+    margin-left: 8.51064vw;
+    max-width: 100%;
+    position: static;
   }
 }
 
@@ -1324,9 +1334,17 @@ body::-webkit-scrollbar {
     align-items: flex-start;
   }
 }
-.sc-engine .section.sc-02 .title-area {
-  width: 100%;
-  margin-left: 25.71429vw;
+@media (orientation: landscape) and (min-aspect-ratio: 1680/945) {
+  .sc-engine .section.sc-02 .title-area {
+    width: 100%;
+    margin-left: 25.71429vw;
+  }
+}
+@media (orientation: portrait) {
+  .sc-engine .section.sc-02 .title-area {
+    width: 82.97872vw;
+    margin-left: 8.51064vw;
+  }
 }
 @media (orientation: portrait) and (min-width: 700px) {
   .sc-engine .section.sc-02 .title-area {
@@ -1378,6 +1396,14 @@ body::-webkit-scrollbar {
     top: 14.14894vw;
     left: 29.25532vw;
     line-height: 12.65957vw;
+  }
+}
+@media (orientation: landscape) and (min-aspect-ratio: 1680/945) {
+  .sc-engine .section.sc-02 .txt-area {
+    top: 55.2381vh;
+    right: 13.33333vw;
+    width: 20vw;
+    max-width: 336px;
   }
 }
 .sc-engine .section.sc-03 {
@@ -1438,6 +1464,12 @@ body::-webkit-scrollbar {
     align-items: flex-start;
   }
 }
+@media (orientation: portrait) {
+  .sc-engine .section.sc-04 .sticky {
+    justify-content: center;
+    align-items: start;
+  }
+}
 .sc-engine .section.sc-04 .bg {
   background: url("../images/bg-engine3.webp") no-repeat center center/cover;
 }
@@ -1455,6 +1487,11 @@ body::-webkit-scrollbar {
   .sc-engine .section.sc-04 .title-area .title {
     width: 73.33333vw;
     margin-left: 13.33333vw;
+  }
+}
+@media (orientation: portrait) {
+  .sc-engine .section.sc-04 .title-area .title {
+    margin-left: 8.51064vw;
   }
 }
 .sc-engine .section.sc-04 .title-area .title .txt-wrap:nth-child(1) {
@@ -2142,6 +2179,16 @@ body::-webkit-scrollbar {
   }
 }
 @media (orientation: portrait) {
+  .sc-custom .section.sc-03 .inner {
+    width: 100%;
+  }
+}
+@media (orientation: portrait) {
+  .sc-custom .section.sc-03 .sc-left {
+    width: 82.97872vw;
+  }
+}
+@media (orientation: portrait) {
   .sc-custom .section.sc-03 .sc-left {
     padding-top: 4.61538vh;
     align-items: flex-start;
@@ -2149,12 +2196,13 @@ body::-webkit-scrollbar {
   }
 }
 .sc-custom .section.sc-03 .sc-left .txt-area {
+  width: 58.09524vw;
   margin-left: 7.61905vw;
 }
 @media (orientation: portrait) {
   .sc-custom .section.sc-03 .sc-left .txt-area {
-    width: 58.09524vw;
     margin-left: 0;
+    width: 100%;
   }
 }
 @media (orientation: portrait) {
@@ -2368,9 +2416,6 @@ body::-webkit-scrollbar {
 }
 .sc-spec .section.sc-03 {
   z-index: 30;
-}
-.sc-spec .section.sc-03 .sticky {
-  justify-content: flex-start;
 }
 .sc-spec .section.sc-03 .bg {
   background: url("../images/bg-spec2.webp") no-repeat center center/cover;
@@ -2629,6 +2674,11 @@ body::-webkit-scrollbar {
   height: 100vh;
   pointer-events: all;
 }
+@media (orientation: portrait) {
+  .sc-contact .section .sticky {
+    flex-direction: row;
+  }
+}
 .sc-contact .section .bg {
   background: url("../images/bg-contact.webp") no-repeat center center/cover;
 }
@@ -2681,7 +2731,7 @@ body::-webkit-scrollbar {
 @media (orientation: portrait) {
   .sc-contact .section .content .txt-area {
     width: 100%;
-    max-width: 100%;
+    max-width: 80%;
     margin-top: 7.97872vw;
     margin-left: 14.89362vw;
   }
