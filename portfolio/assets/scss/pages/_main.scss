@@ -1,6 +1,5 @@
 // common
 .section {
-    // border-top: 1px solid #dfe3e8;
     position: relative;
     padding: 12.5px 0;
 
@@ -39,7 +38,6 @@
         display: flex;
         align-items: center;
         height: 100vh;
-        // margin: 0 -20px;
         @include mobile() {
             height: unset;
             padding: 20vw 0;
@@ -129,7 +127,6 @@
     }
 
     &__txt-box {
-        // position: relative;
         z-index: 10;
         overflow: hidden;
         width: 100%;
@@ -320,18 +317,17 @@
         @include mobile() {
             position: static;
             padding: 0;
-            flex: 1;
+            flex: unset;
         }
     }
     
     .section__right {
         position: sticky;
         top: 0;
-        // margin-top: 86vh;
         flex: 7;
         @include mobile() {
             position: static;
-            flex: 1;
+            flex: unset;
         }
     }
 
@@ -365,13 +361,6 @@
         @include mobile() {
             font-size: clamp(12px, 2.3vw, 18px);
         }
-
-        // & + & {
-        //     margin-top: 24px;
-        //     @include mobile() {
-        //         margin-top: 8px;
-        //     }
-        // }
     }
 
     .char {
@@ -429,15 +418,10 @@
 
             .line {
                 padding: 0 20px;
-                // transform: translateX(-50%);
             }
 
             &:nth-of-type(2) {
                 margin-left: auto;
-
-                .line {
-                    // transform: translateX(50%);
-                }
             }
         }
     }
@@ -449,6 +433,10 @@
             &:nth-of-type(#{$i}) .project-card__bg {
                 background: url('../images/img/@portfolio#{$i}.jpg') no-repeat center center / cover;
                 background-attachment: fixed;
+                @include mobile() {
+                    background: url('../images/img/@portfolio#{$i}.jpg') no-repeat center center / cover;
+                    background-attachment: fixed;
+                }
             }
         }
     }
@@ -482,41 +470,13 @@
             @include pseudo($pos: static);
         }
     }
-
-    // &__bg-area {
-    //     position: absolute;
-    //     top: 0;
-    //     width: 100%;
-    //     height: 100vh;
-    //     z-index: -1;
-    // }
-
-    // &__bg {
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-    //     width: 100%;
-    //     overflow: hidden;
-    //     height: 100vh;
-    // }
-
-    // &__img {
-    //     width: 100%;
-    //     height: 100vh;
-    //     object-fit: cover;
-    // }
 }
 .project-card {
-    // position: absolute;
     display: block;
     position: relative;
     overflow: hidden;
 
     &:hover {
-        // .project-card__bg {
-        //     background-size: 102% auto;
-        // }
-
         .project-card__bg::before {
             background-color: rgba(#23272d, .5);
         }
@@ -531,6 +491,9 @@
         width: 100%;
         height: 100vh;
         transition: all 0.3s cubic-bezier(0.45, 0, 0.55, 1);
+        @include mobile() {
+            height: 100%;
+        }
         
         &::before {
             top: 0;
@@ -541,7 +504,6 @@
             background-color: rgba(#23272d, .2);
             transition: all .5s cubic-bezier(0.55, 0, 1, 0.45);
             pointer-events: none;
-            // backdrop-filter: blur(4px);
             @include pseudo();
         }
     }
@@ -625,8 +587,6 @@
         padding-bottom: 17.5vh;
         flex: 1;
         @include mobile() {
-            // padding-top: 4vw;
-            // padding-bottom: 7vh;
             z-index: 990;
             padding: 0;
             top: 70px;
@@ -637,7 +597,6 @@
         position: relative;
         overflow: hidden;
         width: calc(70% + 12.5vw);
-        // margin-right: -20px;
         padding: 10vw 20px 17.5vh 12.5vw;
         @include mobile() {
             width: calc(100% + 20px);
@@ -663,15 +622,10 @@
 
             .line {
                 padding: 0 20px;
-                // transform: translateX(50%);
             }
             
             &:nth-of-type(2) {
                 margin-left: 0;
-
-                .line {
-                    // transform: translateX(-50%);
-                }
             }
         }
     }
@@ -806,9 +760,6 @@
     }
 
     &__item {
-        // --x: 0;
-        // --y: 0;
-        // --inset: 50%;
         padding: 2vw 2vw calc(2vw + 68px) 0;
         border-bottom: 1px solid #dfe3e8;
         counter-increment: item-counter;
@@ -836,28 +787,6 @@
             transition: all .3s;
             @include pseudo();
         }
-
-        // &::after {
-        //     top: calc(var(--y) * 1px);
-        //     left: calc(var(--x) * 1px);
-        //     // height: 120%;
-        //     // aspect-ratio: 1.8;
-        //     width: 25vw;
-        //     height: 35vh;
-        //     overflow: hidden;
-        //     border-radius: 8px;
-        //     clip-path: inset(var(--inset));
-        //     transform: translate(-50%, -50%);
-        //     pointer-events: none;
-        //     z-index: -1;
-        //     @include pseudo();
-        // }
-
-        // @for $i from 1 through 14 {
-        //     &:nth-child(#{$i})::after {
-        //         @include bg('@work#{$i}.jpg', $size: cover)
-        //     }
-        // }
 
         &:hover {
             &::before {
@@ -1024,10 +953,6 @@
         left: 50%;
         width: 70%;
         transform: translate(-50%, -50%);
-        // @include mobile() {
-        //     width: 100%;
-        //     padding: 0 10px;
-        // }
     }
 
     &__title {
@@ -1053,7 +978,6 @@
     }
 }
 .snb {
-    // padding-top: 2vw;
     &__list {
         @include mobile() {
             gap: 10px;
