@@ -1,6 +1,5 @@
 Portfolio = {
     init: function () {
-        history.scrollRestoration = 'manual';
         this.splitText();
         this.updateDayTime();
         this.setGeoLocation();
@@ -750,10 +749,8 @@ Portfolio = {
         })
     },
     masterAni: function() {
-        // gsap.set('.intro__txt .char', { yPercent: 100})
         gsap.set('.intro__txt:nth-child(1) .line', { autoAlpha: 0, yPercent: 100})
         gsap.set('.sc-visual__info > *, .logo', { autoAlpha: 0})
-        // gsap.set('.sc-about .word, .sc-goal .word', { autoAlpha: 0, yPercent: 120})
         gsap.set('.ani-tx .line', { xPercent: idx => idx === 0 || idx === 3 ? -100 : 100 })
         gsap.set('.header .logo__link', { scale: 5, yPercent: -500})
         gsap.set('.sc-visual__title-area .line', { xPercent: idx => idx % 2 === 0 ? -120 : 120})
@@ -765,8 +762,8 @@ Portfolio = {
 
         let mm = gsap.matchMedia();
 
-        Portfolio.introAni();
         $(window).on('load', () => {
+            Portfolio.introAni();
             Portfolio.sectionAni();
             Portfolio.visualAni();
             Portfolio.translateX();

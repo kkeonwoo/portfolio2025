@@ -1002,7 +1002,6 @@ body {
 @media (max-width: 768px) {
   .sc-project__item:nth-of-type(1) .project-card__bg {
     background: url("../images/img/@portfolio1.jpg") no-repeat center center/cover;
-    background-attachment: fixed;
   }
 }
 .sc-project__item:nth-of-type(2) .project-card__bg {
@@ -1012,7 +1011,6 @@ body {
 @media (max-width: 768px) {
   .sc-project__item:nth-of-type(2) .project-card__bg {
     background: url("../images/img/@portfolio2.jpg") no-repeat center center/cover;
-    background-attachment: fixed;
   }
 }
 .sc-project__item:nth-of-type(3) .project-card__bg {
@@ -1022,7 +1020,6 @@ body {
 @media (max-width: 768px) {
   .sc-project__item:nth-of-type(3) .project-card__bg {
     background: url("../images/img/@portfolio3.jpg") no-repeat center center/cover;
-    background-attachment: fixed;
   }
 }
 .sc-project__item:nth-of-type(4) .project-card__bg {
@@ -1032,7 +1029,6 @@ body {
 @media (max-width: 768px) {
   .sc-project__item:nth-of-type(4) .project-card__bg {
     background: url("../images/img/@portfolio4.jpg") no-repeat center center/cover;
-    background-attachment: fixed;
   }
 }
 .sc-project__item:nth-of-type(5) .project-card__bg {
@@ -1042,7 +1038,6 @@ body {
 @media (max-width: 768px) {
   .sc-project__item:nth-of-type(5) .project-card__bg {
     background: url("../images/img/@portfolio5.jpg") no-repeat center center/cover;
-    background-attachment: fixed;
   }
 }
 .sc-project__item:nth-of-type(6) .project-card__bg {
@@ -1052,7 +1047,6 @@ body {
 @media (max-width: 768px) {
   .sc-project__item:nth-of-type(6) .project-card__bg {
     background: url("../images/img/@portfolio6.jpg") no-repeat center center/cover;
-    background-attachment: fixed;
   }
 }
 .sc-project__item:nth-of-type(7) .project-card__bg {
@@ -1062,7 +1056,6 @@ body {
 @media (max-width: 768px) {
   .sc-project__item:nth-of-type(7) .project-card__bg {
     background: url("../images/img/@portfolio7.jpg") no-repeat center center/cover;
-    background-attachment: fixed;
   }
 }
 .sc-project__item:nth-of-type(8) .project-card__bg {
@@ -1072,7 +1065,6 @@ body {
 @media (max-width: 768px) {
   .sc-project__item:nth-of-type(8) .project-card__bg {
     background: url("../images/img/@portfolio8.jpg") no-repeat center center/cover;
-    background-attachment: fixed;
   }
 }
 .sc-project__item:nth-of-type(9) .project-card__bg {
@@ -1082,7 +1074,6 @@ body {
 @media (max-width: 768px) {
   .sc-project__item:nth-of-type(9) .project-card__bg {
     background: url("../images/img/@portfolio9.jpg") no-repeat center center/cover;
-    background-attachment: fixed;
   }
 }
 .sc-project__item:nth-of-type(10) .project-card__bg {
@@ -1092,7 +1083,6 @@ body {
 @media (max-width: 768px) {
   .sc-project__item:nth-of-type(10) .project-card__bg {
     background: url("../images/img/@portfolio10.jpg") no-repeat center center/cover;
-    background-attachment: fixed;
   }
 }
 .sc-project__item + .sc-project__item {
