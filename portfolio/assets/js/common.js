@@ -358,7 +358,6 @@ Portfolio = {
                 ease: 'expo.inOut'
             }
         })
-        .set('.intro__txt:nth-child(1)', { autoAlpha: 1}) 
         .to('.intro__txt:nth-child(1) .line', { 
             autoAlpha: 1,
             yPercent: 0,
@@ -749,7 +748,6 @@ Portfolio = {
         })
     },
     masterAni: function() {
-        // gsap.set('.intro__txt:nth-child(1) .line', { autoAlpha: 0, yPercent: 100})
         gsap.set('.sc-visual__info > *, .logo', { autoAlpha: 0})
         gsap.set('.ani-tx .line', { xPercent: idx => idx === 0 || idx === 3 ? -100 : 100 })
         gsap.set('.header .logo__link', { scale: 5, yPercent: -500})

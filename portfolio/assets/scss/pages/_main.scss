@@ -160,11 +160,6 @@
             }
         }
 
-        &:nth-child(1) {
-            opacity: 0;
-            visibility: hidden;
-        }
-
         &:nth-child(2n) {
             background-color: #dfe3e8;
             color: #23272d;

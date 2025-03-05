@@ -715,10 +715,6 @@ body {
 .intro__txt:nth-child(5) {
   z-index: calc(-1 * 5);
 }
-.intro__txt:nth-child(1) {
-  opacity: 0;
-  visibility: hidden;
-}
 .intro__txt:nth-child(2n) {
   background-color: #dfe3e8;
   color: #23272d;
