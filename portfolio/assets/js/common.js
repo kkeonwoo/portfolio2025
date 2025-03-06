@@ -443,12 +443,12 @@ Portfolio = {
                 if ( direction > 0) {// 내릴 때
                     if (!$('.btn__hamburger').hasClass('open')) {
                         gsap.to('.logo', { scale: 1.2})
-                        gsap.to('.gnb, .header__utils, .btn__hamburger', { y: -70})
+                        gsap.to('#header, .gnb, .header__utils, .btn__hamburger', { y: -70})
                     }
                 } else { // 올릴 때 
                     if (!$('.btn__hamburger').hasClass('open')) {
                         gsap.to('.logo', { scale: 1})
-                        gsap.to('.gnb, .header__utils, .btn__hamburger', { y: 0})
+                        gsap.to('#header, .gnb, .header__utils, .btn__hamburger', { y: 0})
                     }
                 }
             }
