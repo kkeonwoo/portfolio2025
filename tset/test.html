@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/jquery-3.7.1.min.js"></script>
+    <script src="./lib/gsap/gsap.min.js"></script>
+    <script src="./lib/gsap/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
+    <style>
+        *{margin:0;padding:0;font:inherit;color:inherit;}
+        *, :after, :before {box-sizing:border-box;}
+        html, body {height:100%;}
+        img, picture, video, canvas, svg {display: block;max-width:100%;object-fit: cover;}
+        button {border:0;background:none;cursor:pointer;}
+        a {text-decoration:none;}
+        table {border-collapse:collapse;border-spacing:0;}
+        ul,ol {list-style: none;}
+        fieldset, input {border: 0;}
+
+        .wrapper { position: relative; height: 400vh; margin-top: -100vh;}
+        .sticky { position: sticky; top: 0; left: 0; height: 100vh;}
+        .nav { position: absolute; display: flex; gap: 10px;}
+        .nav-item {}
+        .list {}
+        .text-area { position: absolute; top: 50%; left: 50%; width: 50%; transform: translate(-50%, -50%);}
+        .text { position: absolute; top: 0; left: 0; width: 100%; opacity: 0; visibility: hidden;}
+        .text.active { opacity: 1; visibility: visible;}
+        .item, .bg { height: 100vh;}
+        .bg-area { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;}
+        .bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden;}
+        .bg.active { opacity: 1; visibility: visible;}
+        .bg:nth-child(1) { z-index: 4; background-color: #ccc;}
+        .bg:nth-child(2) { z-index: 3; background-color: #ff0;}
+        .bg:nth-child(3) { z-index: 2; background-color: #0f0;}
+        .bg:nth-child(4) { z-index: 1; background-color: #f0f;}
+        .section { height: 100vh;}
+    </style>
+</head>
+<body>
+    <div>
+        <div class="section"></div>
+        <div class="wrapper">
+            <div class="sticky">
+                <div class="nav">
+                    <div class="nav-item"><a href="#item01">nav1</a></div>
+                    <div class="nav-item"><a href="#item02">nav2</a></div>
+                    <div class="nav-item"><a href="#item03">nav3</a></div>
+                    <div class="nav-item"><a href="#item04">nav4</a></div>
+                </div>
+                <div class="text-area">
+                    <p class="text active">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur dolor facilis modi culpa rerum aliquid quae ducimus, aspernatur molestiae numquam!</p>
+                    <p class="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur dolor facilis modi culpa rerum aliquid quae ducimus, aspernatur molestiae numquam!</p>
+                    <p class="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur dolor facilis modi culpa rerum aliquid quae ducimus, aspernatur molestiae numquam!</p>
+                    <p class="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur dolor facilis modi culpa rerum aliquid quae ducimus, aspernatur molestiae numquam!</p>
+                </div>
+                <div class="bg-area">
+                    <div class="bg active"></div>
+                    <div class="bg"></div>
+                    <div class="bg"></div>
+                    <div class="bg"></div>
+                </div>
+                <div class="list">
+                    <div id="item01" class="item"></div>
+                    <div id="item02" class="item"></div>
+                    <div id="item03" class="item"></div>
+                    <div id="item04" class="item"></div>
+                </div>
+            </div>
+        </div>
+        <div class="section"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            gsap.registerPlugin(ScrollToPlugin)
+
+            gsap.utils.toArray('.item').forEach((item, idx) => {
+                ScrollTrigger.create({
+                    trigger: item,
+                    start: '1% 0%',
+                    end: '1% 0%',
+                    markers: true,
+                    onEnter: () => {
+                        $('.bg').eq(idx).addClass('active').siblings().removeClass('active');
+                        $('.text').eq(idx).addClass('active').siblings().removeClass('active');
+                    },
+                    onLeave: () => {
+                        $('.bg').eq(idx).addClass('active').siblings().removeClass('active');
+                        $('.text').eq(idx).addClass('active').siblings().removeClass('active');
+                    },
+                    onEnterBack: () => {
+                        $('.bg').eq(idx).addClass('active').siblings().removeClass('active');
+                        $('.text').eq(idx).addClass('active').siblings().removeClass('active');
+                    },
+                    onLeaveBack: () => {
+                        $('.bg').eq(idx).addClass('active').siblings().removeClass('active');
+                        $('.text').eq(idx).addClass('active').siblings().removeClass('active');
+                    },
+                })
+            })
+            $(window).on('scroll', function() {
+                console.log('window scroll ==========',$(window).scrollTop());
+            })
+            $('.nav-item a').each((idx, link) => {
+                $(link).on('click', function(e) {
+                    e.preventDefault();
+                    let targets = $(link).attr('href');
+                    let offset = $(targets)[0].getBoundingClientRect().top + 80;
+                    console.log(offset);
+                    gsap.to(window, { duration: 2, scrollTo: offset });
+                })
+            })
+        })
+    </script>
+</body>
+</html>
